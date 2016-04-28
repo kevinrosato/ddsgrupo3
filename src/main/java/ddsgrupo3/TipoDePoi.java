@@ -2,6 +2,7 @@ package ddsgrupo3;
 
 public interface TipoDePoi {
 
-	public void estaCercaDe(TipoDePoi poi);
+/* estaCercaDe ya esta definido en POI */	
+//	public void estaCercaDe(TipoDePoi poi);
 
 }

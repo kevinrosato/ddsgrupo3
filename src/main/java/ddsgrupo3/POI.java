@@ -14,13 +14,19 @@ public class POI {
 	
 	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
-		
 	}
 
 	public Double getLatitud(){
 		return latitud;
 	}
 	public Boolean esValido() {
-		  return (!nombre.equals(null) && !latitud.equals(null) && !longitud.equals(null));
+		return (!nombre.equals(null) && !latitud.equals(null) && !longitud.equals(null));
 	}
+	
+	public boolean seEncuentraAMenosDe (POI poi1,int dist){
+	    int distancia=0;
+	    //Se calcula distancia entre pois con la libreria
+	    return distancia<dist;
+	}
+    
 }
