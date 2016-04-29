@@ -1,10 +1,24 @@
 package ddsgrupo3;
 
 public class ParadaColectivo implements TipoDePoi{
+	private String[] lineas;
 
+	//----------
+	//Metodos
+	//----------
 	
-//	public void estaCercaDe(TipoDePoi poi) {
-//		//logica de estaCerca de PARADA DE COLECTIVO
-//	}
-
+	public String conocerTipo(){
+		return "Parada De Colectivos";
+	}
+	
+	//----------
+	//Getters y Setters
+	//----------
+	
+	public String[] getLineas() {
+		return lineas;
+	}
+	public void setLineas(String[] lineas) {
+		this.lineas = lineas;
+	}
 }
