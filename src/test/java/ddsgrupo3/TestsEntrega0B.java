@@ -10,15 +10,14 @@ public class TestsEntrega0B {
 	@Before
 	public void init(){
 		poi = new POI();
-		poi.setLatitud(150);
+		poi.setLatitud(150.2);
 		
 	}
 	
 	
 	@Test
 	public void tieneLatitud() {
-		Assert.assertEquals(150,poi.getLatitud());
-		
+		Assert.assertEquals(140.2,poi.getLatitud(),0);
 	}
 	
 	
