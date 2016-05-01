@@ -23,11 +23,11 @@ public class POI {
 	}
 	public Boolean seEncuentraAMenosDe (POI poi,Double dist){
 		final int R = 6371; // Radio de la tierra
-	    Double latDistance = Math.toRadians(poi.latitud - this.latitud);
-	    Double lonDistance = Math.toRadians(poi.longitud - this.longitud);
+	    Double latDistance = Math.toRadians(poi.getLatitud() - this.getLatitud());
+	    Double lonDistance = Math.toRadians(poi.getLongitud() - this.getLongitud());
 	    
 	    Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
-	            + Math.cos(Math.toRadians(this.latitud)) * Math.cos(Math.toRadians(poi.latitud))
+	            + Math.cos(Math.toRadians(this.getLatitud())) * Math.cos(Math.toRadians(poi.getLatitud()))
 	            * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
 	    Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 	    

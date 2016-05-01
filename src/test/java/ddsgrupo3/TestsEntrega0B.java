@@ -30,7 +30,6 @@ public class TestsEntrega0B {
 	@Test
 	public void probarTipo(){
 		poi.setPois(pois);
-		
 		Assert.assertEquals("Parada De Colectivos",poi.pois.get(0).conocerTipo());
 	}
 	

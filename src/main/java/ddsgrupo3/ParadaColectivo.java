@@ -8,7 +8,6 @@ public class ParadaColectivo implements TipoDePoi{
 	//----------
 	
 	public String conocerTipo(){
-		
 		return "Parada De Colectivos";
 	}
 	
