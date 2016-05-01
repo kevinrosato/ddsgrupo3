@@ -21,9 +21,17 @@ public class POI {
 	public Boolean esValido() {
 		return (!nombre.equals(null) && !latitud.equals(null) && !longitud.equals(null));
 	}
-	public Boolean seEncuentraAMenosDe (POI poi1,Double dist){
-	    Double distancia=0.00;
-	    //Se calcula distancia entre pois con la libreria
+	public Boolean seEncuentraAMenosDe (POI poi,Double dist){
+		final int R = 6371; // Radio de la tierra
+	    Double latDistance = Math.toRadians(poi.latitud - this.latitud);
+	    Double lonDistance = Math.toRadians(poi.longitud - this.longitud);
+	    
+	    Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+	            + Math.cos(Math.toRadians(this.latitud)) * Math.cos(Math.toRadians(poi.latitud))
+	            * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+	    Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	    
+	    Double distancia = R * c * 1000; // Convertir a Metros
 	    return distancia<dist;
 	}
 	
