@@ -19,7 +19,7 @@ public class POI {
 	//Metodos
 	//----------
 	public Boolean esValido() {
-		return (!nombre.equals(null) && !latitud.equals(null) && !longitud.equals(null));
+		return (nombre!=null && latitud!=null && longitud!=null);
 	}
 	public Boolean seEncuentraAMenosDe (POI poi,Double dist){
 		final int R = 6371; // Radio de la tierra
