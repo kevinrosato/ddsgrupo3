@@ -1,7 +1,5 @@
 package ddsgrupo3;
 
-import java.util.List;
-
 public class POI {
 	private String nombre;
 	private String barrio;
@@ -13,7 +11,7 @@ public class POI {
 	private Integer altura;
 	private Double latitud;
 	private Double longitud;
-	List<TipoDePoi> pois;
+	TipoDePoi tipoPOI;
 	
 	//----------
 	//Metodos
@@ -80,17 +78,17 @@ public class POI {
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
-	public List<TipoDePoi> getPois() {
-		return pois;
-	}
-	public void setPois(List<TipoDePoi> pois) {
-		this.pois = pois;
-	}
 	public String[] getCallesPerpendiculares() {
 		return callesPerpendiculares;
 	}
 	public void setCallesPerpendiculares(String[] callesPerpendiculares) {
 		this.callesPerpendiculares = callesPerpendiculares;
+	}
+	public TipoDePoi getTipoPOI() {
+		return tipoPOI;
+	}
+	public void setTipoPOI(TipoDePoi tipoPOI) {
+		this.tipoPOI = tipoPOI;
 	}
 	public String getProvincia() {
 		return provincia;

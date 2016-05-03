@@ -1,7 +1,5 @@
 package ddsgrupo3;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,7 +15,6 @@ public class TestsEntrega0B {
 	Local local;
 	CGP cgp;
 	SucursalBanco sucursal;
-	List<TipoDePoi> pois;
 	@Before
 	public void init(){
 		poi = new POI();
@@ -34,7 +31,6 @@ public class TestsEntrega0B {
 		cgp = new CGP();
 		sucursal= new SucursalBanco ();
 		parada = new ParadaColectivo();
-		pois = new ArrayList<TipoDePoi>();
 	}
 	
 	
@@ -73,34 +69,30 @@ public class TestsEntrega0B {
 	public void pruebaValidez2() {
 		Assert.assertFalse(poi2.esValido());
 	}
-	@Test //Test de distancia entre dos POIs los puntos probados deben encontrar
-		  //Los puntos deben encontrarse en 87km, como calculamos en metros, 87000mts
+	@Test //Test de distancia entre dos POIs los puntos probados 
+		  //Los puntos deben encontrarse en 87km. Como calculamos en metros, 87000mts,
 	public void pruebaDistancia() {
 		Assert.assertTrue(poi.seEncuentraAMenosDe(poi2, 87000.00));
 	}
 	@Test //Test de tipo de una parada de colectivos
 	public void probarTipoColectivo(){
-		pois.add(parada);
-		poi.setPois(pois);
-		Assert.assertEquals("Parada De Colectivos",poi.pois.get(0).conocerTipo());
+		poi.setTipoPOI(parada);
+		Assert.assertEquals("Parada De Colectivos",poi.tipoPOI.conocerTipo());
 	}
 	@Test //Test de tipo de un CGP
 	public void probarTipoCGP(){
-		pois.add(cgp);
-		poi.setPois(pois);
-		Assert.assertEquals("Centro De Gestión y Participación",poi.pois.get(0).conocerTipo());
+		poi.setTipoPOI(cgp);
+		Assert.assertEquals("Centro De Gestión y Participación",poi.tipoPOI.conocerTipo());
 	}
 	@Test //Test de tipo de una sucursal
 	public void probarTipoSucursal(){
-		pois.add(sucursal);
-		poi.setPois(pois);
-		Assert.assertEquals("Sucursal De Banco",poi.pois.get(0).conocerTipo());
+		poi.setTipoPOI(sucursal);
+		Assert.assertEquals("Sucursal De Banco",poi.tipoPOI.conocerTipo());
 	}
 	@Test //Test de tipo de un local comercial
 	public void probarTipoLocal(){
-		pois.add(local);
-		poi.setPois(pois);
-		Assert.assertEquals("Local Comercial",poi.pois.get(0).conocerTipo());
+		poi.setTipoPOI(local);
+		Assert.assertEquals("Local Comercial",poi.tipoPOI.conocerTipo());
 	}
 	
 }
