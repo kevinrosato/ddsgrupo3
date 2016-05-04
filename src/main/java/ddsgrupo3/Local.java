@@ -5,7 +5,7 @@ public class Local extends POI{
 	private Byte departamento;
 	private Byte piso;
 	private Byte unidad; 
-	private Servicio rubro; 
+	private Service rubro; 
 	
 	
 	//----------
@@ -17,6 +17,16 @@ public class Local extends POI{
 	}
 	public Boolean estaCercaDe(Double latitud, Double longitud){
 		return this.seEncuentraAMenosDe(latitud, longitud, this.getRubro().getRadioCercania());
+	}
+	public	Boolean	tieneLaClave(String clave)
+	{
+		Boolean valorVerdad;
+		valorVerdad = super.tieneLaClave(clave);
+		valorVerdad = (clave == this.getPiso().toString()) || valorVerdad;
+		valorVerdad = (clave == this.getCodigoPostal().toString()) || valorVerdad;
+		valorVerdad = (clave == this.getDepartamento().toString()) || valorVerdad;
+		valorVerdad = (this.getRubro().tieneLaClave(clave)) || valorVerdad;
+		return valorVerdad;
 	}
 	//----------
 	//Getters y Setters
@@ -46,11 +56,10 @@ public class Local extends POI{
 	public void setUnidad(Byte unidad) {
 		this.unidad = unidad;
 	}
-	public Servicio getRubro() {
+	public Service getRubro() {
 		return rubro;
 	}
-	public void setRubro(Servicio rubro) {
+	public void setRubro(Service rubro) {
 		this.rubro = rubro;
 	}
-	
 }

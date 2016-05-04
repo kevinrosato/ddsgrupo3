@@ -3,9 +3,10 @@ package ddsgrupo3;
 import java.util.List;
 
 public class CGP extends Local{
-	private List<Servicio> servicios;
+	private List<Service> servicios;
 	private Byte numeroCGP;
 	private Byte comuna;
+	
 	//----------
 	//Metodos
 	//----------
@@ -16,6 +17,21 @@ public class CGP extends Local{
 	
 	public Boolean estaCercaDe(Byte comuna){
 		return (this.comuna == comuna);		
+	}
+
+	public	Boolean	tieneLaClave(String clave)
+	{
+		Boolean valorVerdad;
+		valorVerdad = super.tieneLaClave(clave);
+		valorVerdad = (clave == this.getComuna().toString()) || valorVerdad;
+		valorVerdad = (clave == this.getNumeroCGP().toString()) || valorVerdad;
+		valorVerdad = (this.serviciosTienenLaClave(clave)) || valorVerdad;
+		return valorVerdad;
+	}
+	
+	public	Boolean	serviciosTienenLaClave(String clave)
+	{
+		return this.getServicios().contains();;
 	}
 
 	//----------
@@ -34,11 +50,10 @@ public class CGP extends Local{
 	public void setComuna(Byte comuna) {
 		this.comuna = comuna;
 	}
-	public List<Servicio> getServicios() {
+	public List<Service> getServicios() {
 		return servicios;
 	}
-	public void setServicios(List<Servicio> servicios) {
+	public void setServicios(List<Service> servicios) {
 		this.servicios = servicios;
 	}
-	
 }

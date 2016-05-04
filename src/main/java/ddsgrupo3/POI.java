@@ -4,7 +4,8 @@ public abstract class POI {
 	private String nombre;
 	private String barrio;
 	private String calle;
-	private String[] callesPerpendiculares;
+	private String callesPerpenIzq;
+	private String callesPerpenDer;
 	private String localidad;
 	private String provincia;
 	private String pais;
@@ -15,6 +16,20 @@ public abstract class POI {
 	//----------
 	//Metodos
 	//----------
+	public	Boolean	tieneLaClave(String clave)
+	{
+		Boolean valorVerdad;
+		valorVerdad = (clave == this.getNombre());
+		valorVerdad = (clave == this.getBarrio()) || valorVerdad;
+		valorVerdad = (clave == this.getCalle()) || valorVerdad;
+		valorVerdad = (clave == this.getLocalidad()) || valorVerdad;
+		valorVerdad = (clave == this.getCallesPerpenIzq()) || valorVerdad;
+		valorVerdad = (clave == this.getCallesPerpenDer()) || valorVerdad;
+		valorVerdad = (clave == this.getProvincia()) || valorVerdad;		
+		valorVerdad = (clave == this.getPais()) || valorVerdad;
+	
+		return valorVerdad;
+	}
 	public Boolean esValido() {
 		return (nombre!=null && latitud!=null && longitud!=null);
 	}
@@ -82,11 +97,17 @@ public abstract class POI {
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
-	public String[] getCallesPerpendiculares() {
-		return callesPerpendiculares;
+	public String getCallesPerpenIzq() {
+		return callesPerpenIzq;
 	}
-	public void setCallesPerpendiculares(String[] callesPerpendiculares) {
-		this.callesPerpendiculares = callesPerpendiculares;
+	public String getCallesPerpenDer() {
+		return callesPerpenDer;
+	}
+	public String setCallesPerpenIzq() {
+		return callesPerpenIzq;
+	}
+	public String setCallesPerpenDer() {
+		return callesPerpenDer;
 	}
 	public String getProvincia() {
 		return provincia;
