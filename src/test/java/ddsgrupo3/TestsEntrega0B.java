@@ -6,24 +6,22 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestsEntrega0B {
-	
 	//----------
 	//Parametros Iniciales
 	//----------
-	POI poi, poi2;
-	ParadaColectivo parada;
+	ParadaColectivo parada, poi, poi2;
 	Local local;
 	CGP cgp;
 	SucursalBanco sucursal;
 	@Before
 	public void init(){
-		poi = new POI();
+		poi = new ParadaColectivo();
 		poi.setLatitud(40.12);
 		poi.setLongitud(42.13);
 		poi.setNombre("POI de prueba");
 		poi.setCalle("Avenida Rivadavia");
 		poi.setAltura(1456);
-		poi2= new POI();
+		poi2= new ParadaColectivo();
 		poi2.setLatitud(40.9);
 		poi2.setLongitud(42.12);
 		parada= new ParadaColectivo();
@@ -72,27 +70,23 @@ public class TestsEntrega0B {
 	@Test //Test de distancia entre dos POIs los puntos probados 
 		  //Los puntos deben encontrarse en 87km. Como calculamos en metros, 87000mts,
 	public void pruebaDistancia() {
-		Assert.assertTrue(poi.seEncuentraAMenosDe(poi2, 87000.00));
+		Assert.assertTrue(poi.seEncuentraAMenosDe(poi2.getLatitud(),poi2.getLongitud(),87000.00));
 	}
 	@Test //Test de tipo de una parada de colectivos
 	public void probarTipoColectivo(){
-		poi.setTipoPOI(parada);
-		Assert.assertEquals("Parada De Colectivos",poi.tipoPOI.conocerTipo());
+		Assert.assertEquals("Parada De Colectivos",parada.conocerTipo());
 	}
 	@Test //Test de tipo de un CGP
 	public void probarTipoCGP(){
-		poi.setTipoPOI(cgp);
-		Assert.assertEquals("Centro De Gestión y Participación",poi.tipoPOI.conocerTipo());
+		Assert.assertEquals("Centro De Gestion y Participacion",cgp.conocerTipo());
 	}
 	@Test //Test de tipo de una sucursal
 	public void probarTipoSucursal(){
-		poi.setTipoPOI(sucursal);
-		Assert.assertEquals("Sucursal De Banco",poi.tipoPOI.conocerTipo());
+		Assert.assertEquals("Sucursal De Banco",sucursal.conocerTipo());
 	}
 	@Test //Test de tipo de un local comercial
 	public void probarTipoLocal(){
-		poi.setTipoPOI(local);
-		Assert.assertEquals("Local Comercial",poi.tipoPOI.conocerTipo());
+		Assert.assertEquals("Local Comercial",local.conocerTipo());
 	}
 	
 }

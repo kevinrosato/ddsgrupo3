@@ -1,6 +1,6 @@
 package ddsgrupo3;
 
-public class POI {
+public abstract class POI {
 	private String nombre;
 	private String barrio;
 	private String calle;
@@ -11,7 +11,6 @@ public class POI {
 	private Integer altura;
 	private Double latitud;
 	private Double longitud;
-	TipoDePoi tipoPOI;
 	
 	//----------
 	//Metodos
@@ -19,16 +18,21 @@ public class POI {
 	public Boolean esValido() {
 		return (nombre!=null && latitud!=null && longitud!=null);
 	}
-	public Boolean seEncuentraAMenosDe (POI poi,Double dist){
+	
+	public Boolean estaCercaDePorDefecto(Double latitud, Double longitud){
+		return (this.seEncuentraAMenosDe(latitud, longitud, 500.00));
+	}
+	
+	public Boolean seEncuentraAMenosDe (Double latitud, Double longitud,Double dist){
 		final int R = 6371; // Radio de la tierra
-	    Double latDistance = Math.toRadians(poi.getLatitud() - this.getLatitud());
-	    Double lonDistance = Math.toRadians(poi.getLongitud() - this.getLongitud());
+	    Double latDistance = Math.toRadians(latitud - this.getLatitud());
+	    Double lonDistance = Math.toRadians(longitud - this.getLongitud());
 	    
 	    Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
-	            + Math.cos(Math.toRadians(this.getLatitud())) * Math.cos(Math.toRadians(poi.getLatitud()))
+	            + Math.cos(Math.toRadians(this.getLatitud())) * Math.cos(Math.toRadians(latitud))
 	            * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-	    Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 	    
+	    Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 	    Double distancia = R * c * 1000; // Convertir a Metros
 	    return distancia<dist;
 	}
@@ -83,12 +87,6 @@ public class POI {
 	}
 	public void setCallesPerpendiculares(String[] callesPerpendiculares) {
 		this.callesPerpendiculares = callesPerpendiculares;
-	}
-	public TipoDePoi getTipoPOI() {
-		return tipoPOI;
-	}
-	public void setTipoPOI(TipoDePoi tipoPOI) {
-		this.tipoPOI = tipoPOI;
 	}
 	public String getProvincia() {
 		return provincia;

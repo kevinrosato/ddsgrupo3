@@ -1,6 +1,6 @@
 package ddsgrupo3;
 
-public class ParadaColectivo implements TipoDePoi{
+public class ParadaColectivo extends POI{
 	private String[] lineas;
 
 	//----------
@@ -9,6 +9,9 @@ public class ParadaColectivo implements TipoDePoi{
 	
 	public String conocerTipo(){
 		return "Parada De Colectivos";
+	}
+	public Boolean estaCercaDe(Double latitud, Double longitud){
+		return this.seEncuentraAMenosDe(latitud, longitud, 100.00);
 	}
 	
 	//----------
