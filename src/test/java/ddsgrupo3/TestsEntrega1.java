@@ -49,7 +49,7 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de cercania con Local. Distancia aproximada 77mts
 	public void pruebaCercaniaLocal() {	
-		local.setRubro(new Servicio());
+		local.setRubro(new Service());
 		local.getRubro().setRadioCercania(78.00);
 		local.setLatitud(1.0007);
 		local.setLongitud(1.00);
