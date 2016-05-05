@@ -9,10 +9,6 @@ public class Service
 	//Metodos
 	//----------
 	
-	public Boolean tieneLaClave(String clave)
-	{
-		return	(this.getNombre().contains(clave));
-	}
 	
 	//----------------
 	//Getters y Setters

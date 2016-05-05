@@ -3,12 +3,19 @@ package ddsgrupo3;
 import java.util.List;
 
 public class SucursalBanco extends Local{
-	private List<Service> servicios;
+	private List<Servicio> servicios;
 	
+	//----------
+	//Constructor
+	//----------
+	public SucursalBanco(String name)
+	{
+		this.setNombre(name);
+		servicios = null;
+	}
 	//----------
 	//Metodos
-	//----------
-	
+	//----------	
 	public String conocerTipo(){
 		return "Sucursal De Banco";
 	}
@@ -17,10 +24,8 @@ public class SucursalBanco extends Local{
 	}
 	public	Boolean	tieneLaClave(String clave)
 	{
-		Boolean valorVerdad;
-		valorVerdad = super.tieneLaClave(clave);
-		valorVerdad = (this.serviciosTienenLaClave(clave)) || valorVerdad;
-		return valorVerdad;
+		return	(super.tieneLaClave(clave))
+				||	(this.serviciosTienenLaClave(clave));
 	}
 	public	Boolean	serviciosTienenLaClave(String clave)
 	{
@@ -36,14 +41,15 @@ public class SucursalBanco extends Local{
 	//Getters y Setters
 	//----------
 	
-	public Service getServicio(Integer n) 
+	public Servicio getServicio(Integer n) 
 	{
 		return servicios.get(n);
 	}
-	public List<Service> getServicios() {
+	public List<Servicio> getServicios() {
 		return servicios;
 	}
-	public void setServicios(List<Service> servicios) {
-		this.servicios = servicios;
+	public void setServicio(Servicio servicio)
+	{
+		servicios.add(servicio);
 	}
 }

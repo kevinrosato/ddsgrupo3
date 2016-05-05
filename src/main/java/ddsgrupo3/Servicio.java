@@ -6,6 +6,22 @@ public class Servicio {
 	private List <Horario> horario;
 	private String nombre;
 	private Double radioCercania;
+
+	//----------
+	//Constructor
+	//----------
+	public Servicio(String name)
+	{
+		this.setNombre(name);
+		horario = null;
+	}
+	//----------
+	//Metodos
+	//----------	
+	public Boolean tieneLaClave(String clave)
+	{
+		return	(this.getNombre().contains(clave));
+	}
 	//----------
 	//Getters y Setters
 	//----------

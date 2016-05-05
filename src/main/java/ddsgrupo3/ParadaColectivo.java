@@ -15,10 +15,8 @@ public class ParadaColectivo extends POI{
 	}
 	public	Boolean	tieneLaClave(String clave)
 	{
-		Boolean valorVerdad;
-		valorVerdad = super.tieneLaClave(clave);
-		valorVerdad = (this.contieneLaLinea(clave)) || valorVerdad;
-		return valorVerdad;
+		return	(super.tieneLaClave(clave))
+				||	(this.contieneLaLinea(clave));
 	}
 	public	Boolean	contieneLaLinea(String clave)
 	{

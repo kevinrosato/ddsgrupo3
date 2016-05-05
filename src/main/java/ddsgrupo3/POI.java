@@ -16,21 +16,18 @@ public abstract class POI {
 	//----------
 	//Metodos
 	//----------
-	
-	public	Boolean	tieneLaClave(String clave)
+public	Boolean	tieneLaClave(String clave)
 	{
-		Boolean valorVerdad;
-		valorVerdad = this.getNombre().contains(clave);
-		valorVerdad = (this.getBarrio().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getCalle().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getLocalidad().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getCallesPerpenIzq().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getCallesPerpenDer().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getProvincia().contains(clave)) || valorVerdad;		
-		valorVerdad = (this.getPais().contains(clave)) || valorVerdad;
-	
-		return valorVerdad;
+		return	(this.getNombre().contains(clave))
+				||	(this.getBarrio().contains(clave))
+				||	(this.getCalle().contains(clave))
+				||	(this.getLocalidad().contains(clave))
+				||	(this.getCallesPerpenIzq().contains(clave))
+				||	(this.getCallesPerpenDer().contains(clave))
+				||	(this.getProvincia().contains(clave))
+				||	(this.getPais().contains(clave));
 	}
+
 	public Boolean esValido() {
 		return (nombre!=null && latitud!=null && longitud!=null);
 	}

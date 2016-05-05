@@ -26,8 +26,8 @@ public class TestsEntrega0B {
 		poi2.setLongitud(42.12);
 		parada= new ParadaColectivo();
 		local= new Local();
-		cgp = new CGP();
-		sucursal= new SucursalBanco ();
+		cgp = new CGP("");
+		sucursal= new SucursalBanco ("");
 		parada = new ParadaColectivo();
 	}
 	

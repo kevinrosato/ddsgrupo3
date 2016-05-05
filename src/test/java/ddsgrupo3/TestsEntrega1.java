@@ -12,17 +12,24 @@ public class TestsEntrega1 {
 	Local local;
 	ParadaColectivo parada;
 	CGP cgp;
+	Servicio rubroM, servicio1, servicio2, servicio3;
 	Double latitudActual, longitudActual;
 	Byte comunaActual;
 	
 	@Before
-	public void init(){
-		sucursal= new SucursalBanco();
-		local= new Local();
-		parada= new ParadaColectivo();
-		cgp= new CGP();
-		latitudActual=1.00;
-		longitudActual=1.00;
+	public void init()
+	{
+		sucursal = new SucursalBanco("Galicia Microcentro");
+		local = new Local();
+		local.setNombre("Lo de Carlos");
+		parada = new ParadaColectivo();
+		cgp = new CGP("Cede Medrano");
+		rubroM = new Servicio("Muebleria");
+		servicio1 = new Servicio("Deposito");
+		servicio2 = new Servicio("Extracciones");
+		servicio3 = new Servicio("Prestamos");
+		latitudActual = 1.00;
+		longitudActual = 1.00;
 	}
 	
 	//-----------------
@@ -49,7 +56,7 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de cercania con Local. Distancia aproximada 77mts
 	public void pruebaCercaniaLocal() {	
-		local.setRubro(new Servicio());
+		local.setRubro(new Servicio(""));
 		local.getRubro().setRadioCercania(78.00);
 		local.setLatitud(1.0007);
 		local.setLongitud(1.00);
@@ -62,4 +69,31 @@ public class TestsEntrega1 {
 	//-----------------
 	//Tests de Busqueda
 	//-----------------
+@Test //Test de Reconocimiento de un Servicio por su nombre
+	public void pruebaReconoceServicio()
+	{
+		Assert.assertTrue(rubroM.tieneLaClave("Muebleria"));
+	}
+@Test //Test de Reconocimiento de un Local por parte de su nombre
+	public void pruebaReconoceParteNombre()
+	{
+		Assert.assertTrue(local.tieneLaClave("Carlos"));
+	}
+@Test //Test de Reconocimiento de un Local por su Rubro
+	public void pruebaReconoceLocalxNombreRubro()
+	{
+		local.setRubro(rubroM);
+		Assert.assertTrue(local.tieneLaClave("Muebleria"));
+	}
+@Test //Test de Reconocimiento de un Local por su Rubro
+	public void pruebaReconoceBancox1Servicio()
+	{
+		sucursal.setServicio(servicio1);
+		sucursal.setServicio(servicio2);
+		sucursal.setServicio(servicio3);
+		Assert.assertTrue(sucursal.tieneLaClave("Prestamo"));
+	}
+
+
+
 }

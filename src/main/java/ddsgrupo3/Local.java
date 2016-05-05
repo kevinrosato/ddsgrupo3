@@ -5,9 +5,11 @@ public class Local extends POI{
 	private Byte departamento;
 	private Byte piso;
 	private Byte unidad; 
-	private Service rubro; 
+	private Servicio rubro; 
 	
-	
+	//----------
+	//Constructor
+	//----------
 	//----------
 	//Metodos
 	//----------
@@ -20,13 +22,12 @@ public class Local extends POI{
 	}
 	public	Boolean	tieneLaClave(String clave)
 	{
-		Boolean valorVerdad;
-		valorVerdad = super.tieneLaClave(clave);
-		valorVerdad = (this.getPiso().toString().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getCodigoPostal().toString().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getDepartamento().toString().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getRubro().tieneLaClave(clave)) || valorVerdad;
-		return valorVerdad;
+		return	(super.tieneLaClave(clave))
+				||	(this.getPiso().toString().contains(clave)) 
+				||	(this.getCodigoPostal().toString().contains(clave))
+				||	(this.getDepartamento().toString().contains(clave))
+				||	(this.rubro.tieneLaClave(clave));
+		
 	}
 	//----------
 	//Getters y Setters
@@ -56,10 +57,10 @@ public class Local extends POI{
 	public void setUnidad(Byte unidad) {
 		this.unidad = unidad;
 	}
-	public Service getRubro() {
+	public Servicio getRubro() {
 		return rubro;
 	}
-	public void setRubro(Service rubro) {
+	public void setRubro(Servicio rubro) {
 		this.rubro = rubro;
 	}
 }

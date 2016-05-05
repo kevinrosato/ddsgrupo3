@@ -3,10 +3,18 @@ package ddsgrupo3;
 import java.util.List;
 
 public class CGP extends Local{
-	private List<Service> servicios;
+	private List<Servicio> servicios;
 	private Byte numeroCGP;
 	private Byte comuna;
 	
+	//----------
+	//Constructor
+	//----------
+	public CGP(String name)
+	{
+		this.setNombre(name);
+		servicios = null;
+	}
 	//----------
 	//Metodos
 	//----------
@@ -21,12 +29,10 @@ public class CGP extends Local{
 
 	public	Boolean	tieneLaClave(String clave)
 	{
-		Boolean valorVerdad;
-		valorVerdad = super.tieneLaClave(clave);
-		valorVerdad = (this.getComuna().toString().contains(clave)) || valorVerdad;
-		valorVerdad = (this.getNumeroCGP().toString().contains(clave)) || valorVerdad;
-		valorVerdad = (this.serviciosTienenLaClave(clave)) || valorVerdad;
-		return valorVerdad;
+		return	(super.tieneLaClave(clave))
+				||	(this.getComuna().toString().contains(clave))
+				||	(this.getNumeroCGP().toString().contains(clave))
+				||	(this.serviciosTienenLaClave(clave));
 	}
 	
 	public	Boolean	serviciosTienenLaClave(String clave)
@@ -43,7 +49,7 @@ public class CGP extends Local{
 	//Getters y Setters
 	//----------
 
-	public Service getServicio(Integer n) 
+	public Servicio getServicio(Integer n) 
 	{
 		return servicios.get(n);
 	}
@@ -59,10 +65,8 @@ public class CGP extends Local{
 	public void setComuna(Byte comuna) {
 		this.comuna = comuna;
 	}
-	public List<Service> getServicios() {
-		return servicios;
-	}
-	public void setServicios(List<Service> servicios) {
-		this.servicios = servicios;
+	public void setServicio(Servicio servicio) 
+	{
+		servicios.add(servicio);
 	}
 }
