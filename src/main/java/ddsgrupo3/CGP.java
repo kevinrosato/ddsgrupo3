@@ -23,21 +23,30 @@ public class CGP extends Local{
 	{
 		Boolean valorVerdad;
 		valorVerdad = super.tieneLaClave(clave);
-		valorVerdad = (clave == this.getComuna().toString()) || valorVerdad;
-		valorVerdad = (clave == this.getNumeroCGP().toString()) || valorVerdad;
+		valorVerdad = (this.getComuna().toString().contains(clave)) || valorVerdad;
+		valorVerdad = (this.getNumeroCGP().toString().contains(clave)) || valorVerdad;
 		valorVerdad = (this.serviciosTienenLaClave(clave)) || valorVerdad;
 		return valorVerdad;
 	}
 	
 	public	Boolean	serviciosTienenLaClave(String clave)
 	{
-		return this.getServicios().contains();;
+		Boolean valorVerdad; Integer i=0;
+		valorVerdad = this.getServicio(i).tieneLaClave(clave);
+		while (!valorVerdad)
+			{	 
+			valorVerdad = (this.getServicio(i).tieneLaClave(clave)) || valorVerdad;
+			}
+		return valorVerdad;
 	}
-
 	//----------
 	//Getters y Setters
 	//----------
 
+	public Service getServicio(Integer n) 
+	{
+		return servicios.get(n);
+	}
 	public Byte getNumeroCGP() {
 		return numeroCGP;
 	}

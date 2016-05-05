@@ -1,5 +1,7 @@
 package ddsgrupo3;
 
+import java.util.List;
+
 public class SucursalBanco extends Local{
 	private List<Service> servicios;
 	
@@ -22,16 +24,26 @@ public class SucursalBanco extends Local{
 	}
 	public	Boolean	serviciosTienenLaClave(String clave)
 	{
-		return this.getServicios().contains());
+		Boolean valorVerdad; Integer i=0;
+		valorVerdad = this.getServicio(i).tieneLaClave(clave);
+		while (!valorVerdad)
+			{	 
+			valorVerdad = (this.getServicio(i).tieneLaClave(clave)) || valorVerdad;
+			}
+		return valorVerdad;
 	}
 	//----------
 	//Getters y Setters
 	//----------
 	
-	public Service[] getServicios() {
+	public Service getServicio(Integer n) 
+	{
+		return servicios.get(n);
+	}
+	public List<Service> getServicios() {
 		return servicios;
 	}
-	public void setServicios(Service[] servicios) {
+	public void setServicios(List<Service> servicios) {
 		this.servicios = servicios;
 	}
 }

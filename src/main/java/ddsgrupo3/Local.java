@@ -22,9 +22,9 @@ public class Local extends POI{
 	{
 		Boolean valorVerdad;
 		valorVerdad = super.tieneLaClave(clave);
-		valorVerdad = (clave == this.getPiso().toString()) || valorVerdad;
-		valorVerdad = (clave == this.getCodigoPostal().toString()) || valorVerdad;
-		valorVerdad = (clave == this.getDepartamento().toString()) || valorVerdad;
+		valorVerdad = (this.getPiso().toString().contains(clave)) || valorVerdad;
+		valorVerdad = (this.getCodigoPostal().toString().contains(clave)) || valorVerdad;
+		valorVerdad = (this.getDepartamento().toString().contains(clave)) || valorVerdad;
 		valorVerdad = (this.getRubro().tieneLaClave(clave)) || valorVerdad;
 		return valorVerdad;
 	}

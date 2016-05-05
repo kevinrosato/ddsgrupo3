@@ -16,17 +16,18 @@ public abstract class POI {
 	//----------
 	//Metodos
 	//----------
+	
 	public	Boolean	tieneLaClave(String clave)
 	{
 		Boolean valorVerdad;
-		valorVerdad = (clave == this.getNombre());
-		valorVerdad = (clave == this.getBarrio()) || valorVerdad;
-		valorVerdad = (clave == this.getCalle()) || valorVerdad;
-		valorVerdad = (clave == this.getLocalidad()) || valorVerdad;
-		valorVerdad = (clave == this.getCallesPerpenIzq()) || valorVerdad;
-		valorVerdad = (clave == this.getCallesPerpenDer()) || valorVerdad;
-		valorVerdad = (clave == this.getProvincia()) || valorVerdad;		
-		valorVerdad = (clave == this.getPais()) || valorVerdad;
+		valorVerdad = this.getNombre().contains(clave);
+		valorVerdad = (this.getBarrio().contains(clave)) || valorVerdad;
+		valorVerdad = (this.getCalle().contains(clave)) || valorVerdad;
+		valorVerdad = (this.getLocalidad().contains(clave)) || valorVerdad;
+		valorVerdad = (this.getCallesPerpenIzq().contains(clave)) || valorVerdad;
+		valorVerdad = (this.getCallesPerpenDer().contains(clave)) || valorVerdad;
+		valorVerdad = (this.getProvincia().contains(clave)) || valorVerdad;		
+		valorVerdad = (this.getPais().contains(clave)) || valorVerdad;
 	
 		return valorVerdad;
 	}
@@ -38,7 +39,7 @@ public abstract class POI {
 		return (this.seEncuentraAMenosDe(latitud, longitud, 500.00));
 	}
 	
-	public Boolean seEncuentraAMenosDe (Double latitud, Double longitud,Double dist){
+	public Boolean seEncuentraAMenosDe(Double latitud, Double longitud,Double dist){
 		final int R = 6371; // Radio de la tierra
 	    Double latDistance = Math.toRadians(latitud - this.getLatitud());
 	    Double lonDistance = Math.toRadians(longitud - this.getLongitud());

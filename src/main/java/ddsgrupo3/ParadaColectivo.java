@@ -27,7 +27,7 @@ public class ParadaColectivo extends POI{
 	//----------
 	//Getters y Setters
 	//----------
-	
+
 	public String[] getLineas() {
 		return lineas;
 	}
