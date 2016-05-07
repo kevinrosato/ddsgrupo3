@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Servicio {
 	private List <Horario> horario;
-	private String nombre;
+	private String nombre="";
 	private Double radioCercania;
 
 	//----------

@@ -1,14 +1,14 @@
 package ddsgrupo3;
 
 public abstract class POI {
-	private String nombre;
-	private String barrio;
-	private String calle;
-	private String callesPerpenIzq;
-	private String callesPerpenDer;
-	private String localidad;
-	private String provincia;
-	private String pais;
+	private String nombre="";
+	private String barrio="";
+	private String calle="";
+	private String callesPerpenIzq="";
+	private String callesPerpenDer="";
+	private String localidad="";
+	private String provincia="";
+	private String pais="";
 	private Integer altura;
 	private Double latitud;
 	private Double longitud;

@@ -1,11 +1,16 @@
 package ddsgrupo3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Local extends POI{
-	private Integer codigoPostal;
-	private Byte departamento;
-	private Byte piso;
-	private Byte unidad; 
-	private Servicio rubro; 
+	private Integer codigoPostal=0;
+	private Byte departamento=0;
+	private Byte piso=0;
+	private Byte unidad=0; 
+	private Servicio rubro=new Servicio(""); 
+	//local no va a usar "servicios", solo sus subclases
+	private List<Servicio> servicios=new ArrayList<Servicio>();
 	
 	//----------
 	//Constructor
@@ -29,6 +34,19 @@ public class Local extends POI{
 				||	(this.rubro.tieneLaClave(clave));
 		
 	}
+	
+	//metodo utilizado por las subclases
+	public	Boolean	serviciosTienenLaClave(String clave)
+	{
+		Boolean valorVerdad=false; 
+		for(int i=0;i<getServicios().size();i++){	 
+			if(getServicios().get(i).tieneLaClave(clave)){
+				valorVerdad = true;
+			}
+		}
+		return valorVerdad;
+	}
+	
 	//----------
 	//Getters y Setters
 	//----------
@@ -62,5 +80,17 @@ public class Local extends POI{
 	}
 	public void setRubro(Servicio rubro) {
 		this.rubro = rubro;
+	}
+	
+	public Servicio getServicio(Integer n) 
+	{
+		return servicios.get(n);
+	}
+	public List<Servicio> getServicios() {
+		return servicios;
+	}
+	public void setServicio(Servicio servicio)
+	{
+		this.getServicios().add(servicio);
 	}
 }
