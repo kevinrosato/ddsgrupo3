@@ -3,14 +3,15 @@ package ddsgrupo3;
 
 public class CGP extends Local{
 	private Byte numeroCGP;
-	private Byte comuna;
+	private Byte comuna=0;
 	
 	//----------
 	//Constructor
 	//----------
-	public CGP(String name)
+	public CGP(String name,Byte numeroCGP)
 	{
 		this.setNombre(name);
+		this.setNumeroCGP(numeroCGP);
 	}
 	//----------
 	//Metodos
@@ -30,6 +31,12 @@ public class CGP extends Local{
 				||	(this.getComuna().toString().contains(clave))
 				||	(this.getNumeroCGP().toString().contains(clave))
 				||	(super.serviciosTienenLaClave(clave));
+	}
+	
+	@Override
+	public void mostrarInformacion()
+	{
+		System.out.println("CGP N°"+this.getNumeroCGP()+", "+this.getNombre());
 	}
 	
 	//----------

@@ -47,6 +47,12 @@ public class Local extends POI{
 		return valorVerdad;
 	}
 	
+	@Override
+	public void mostrarInformacion()
+	{
+		System.out.println("Local "+this.getNombre());
+	}
+	
 	//----------
 	//Getters y Setters
 	//----------

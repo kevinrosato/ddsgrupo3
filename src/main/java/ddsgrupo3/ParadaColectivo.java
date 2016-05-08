@@ -20,8 +20,20 @@ public class ParadaColectivo extends POI{
 	}
 	public	Boolean	contieneLaLinea(String clave)
 	{
-		return this.getLineas().equals(clave);
+		Boolean valorDeVerdad=false;
+		for(int i=0;i<lineas.length;i++){
+			if(lineas[i].equals(clave)){
+				valorDeVerdad=true;
+			}
+		}
+		return valorDeVerdad;
 	}	
+	
+	@Override
+	public void mostrarInformacion()
+	{
+		System.out.println("Parada en la calle "+super.getCalle()+", entre las calles "+super.getCallesPerpenDer()+" y "+super.getCallesPerpenIzq());
+	}
 	//----------
 	//Getters y Setters
 	//----------
@@ -30,6 +42,6 @@ public class ParadaColectivo extends POI{
 		return lineas;
 	}
 	public void setLineas(String[] lineas) {
-		this.lineas = lineas;
+		this.lineas=lineas;
 	}
 }

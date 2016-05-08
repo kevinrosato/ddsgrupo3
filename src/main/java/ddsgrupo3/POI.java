@@ -50,6 +50,8 @@ public	Boolean	tieneLaClave(String clave)
 	    return distancia<dist;
 	}
 	
+	public abstract void mostrarInformacion();
+	
 	//----------------
 	//Getters y Setters
 	//----------------
@@ -101,11 +103,11 @@ public	Boolean	tieneLaClave(String clave)
 	public String getCallesPerpenDer() {
 		return callesPerpenDer;
 	}
-	public String setCallesPerpenIzq() {
-		return callesPerpenIzq;
+	public void setCallesPerpenIzq(String callesPerpenIzq) {
+		this.callesPerpenIzq= callesPerpenIzq;
 	}
-	public String setCallesPerpenDer() {
-		return callesPerpenDer;
+	public void setCallesPerpenDer(String callesPerpenDer) {
+		this.callesPerpenDer= callesPerpenDer;
 	}
 	public String getProvincia() {
 		return provincia;

@@ -23,6 +23,11 @@ public class SucursalBanco extends Local{
 		return	(super.tieneLaClave(clave))
 				||	(super.serviciosTienenLaClave(clave));
 	}
+	
+	public void mostrarInformacion()
+	{
+		System.out.println("Banco "+this.getNombre());
+	}
 
 	//----------
 	//Getters y Setters
