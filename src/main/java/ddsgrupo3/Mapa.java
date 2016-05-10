@@ -11,24 +11,20 @@ public class Mapa {
 	//Metodos
 	//----------
 
-	public	List<POI>	buscarPOI(String palabraClave)
-	{	
+	public	List<POI>	buscarPOI(String palabraClave)	{	
 		List<POI> listaAux =new ArrayList<POI>();
-		for (Integer i = 0; i < this.getListaPois().size(); i++)
-		{
-			if (this.getListaPois().get(i).tieneLaClave(palabraClave))
-			{
+		for (Integer i = 0; i < this.getListaPois().size(); i++){
+			if (this.getListaPois().get(i).tieneLaClave(palabraClave)){
 				listaAux.add(this.getListaPois().get(i));
 			}
 		}
-		return listaAux;
-		
+		return listaAux;	
 	}
 	
 	public void mostrarPOIS(String palabraClave){
 		List<POI> lista=buscarPOI(palabraClave);
 		System.out.println("Puntos de Interes con la clave "+palabraClave+":");
-		for(int i=0;i<lista.size();i++){
+		for(int i=0; i<lista.size(); i++){
 			lista.get(i).mostrarInformacion();
 		}
 		if(lista.size()==0){
@@ -36,8 +32,7 @@ public class Mapa {
 		}
 	}
 	
-	public Integer	cantPOIs()
-	{
+	public Integer	cantPOIs()	{
 		return	this.getListaPois().size();
 	}
 	//----------
@@ -54,5 +49,4 @@ public class Mapa {
 		listaPois.add(poi);
 	}
 	
-
 }

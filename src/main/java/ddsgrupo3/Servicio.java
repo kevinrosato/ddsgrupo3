@@ -10,16 +10,14 @@ public class Servicio {
 	//----------
 	//Constructor
 	//----------
-	public Servicio(String name)
-	{
+	public Servicio(String name) {
 		this.setNombre(name);
 		horario = null;
 	}
 	//----------
 	//Metodos
 	//----------	
-	public Boolean tieneLaClave(String clave)
-	{
+	public Boolean tieneLaClave(String clave) {
 		return	(this.getNombre().contains(clave));
 	}
 	//----------

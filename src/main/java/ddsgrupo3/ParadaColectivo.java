@@ -10,18 +10,20 @@ public class ParadaColectivo extends POI{
 	public String conocerTipo(){
 		return "Parada De Colectivos";
 	}
+	
 	public Boolean estaCercaDe(Double latitud, Double longitud){
 		return this.seEncuentraAMenosDe(latitud, longitud, 100.00);
 	}
-	public	Boolean	tieneLaClave(String clave)
-	{
+	
+	@Override
+	public	Boolean	tieneLaClave(String clave){
 		return	(super.tieneLaClave(clave))
 				||	(this.contieneLaLinea(clave));
 	}
-	public	Boolean	contieneLaLinea(String clave)
-	{
+	
+	public	Boolean	contieneLaLinea(String clave){
 		Boolean valorDeVerdad=false;
-		for(int i=0;i<lineas.length;i++){
+		for(int i=0; i<lineas.length; i++){
 			if(lineas[i].equals(clave)){
 				valorDeVerdad=true;
 			}
@@ -30,8 +32,7 @@ public class ParadaColectivo extends POI{
 	}	
 	
 	@Override
-	public void mostrarInformacion()
-	{
+	public void mostrarInformacion(){
 		System.out.println("Parada en la calle "+super.getCalle()+", entre las calles "+super.getCallesPerpenDer()+" y "+super.getCallesPerpenIzq());
 	}
 	//----------

@@ -16,8 +16,7 @@ public abstract class POI {
 	//----------
 	//Metodos
 	//----------
-public	Boolean	tieneLaClave(String clave)
-	{
+	public	Boolean	tieneLaClave(String clave){
 		return	(this.getNombre().contains(clave))
 				||	(this.getBarrio().contains(clave))
 				||	(this.getCalle().contains(clave))
@@ -36,7 +35,7 @@ public	Boolean	tieneLaClave(String clave)
 		return (this.seEncuentraAMenosDe(latitud, longitud, 500.00));
 	}
 	
-	public Boolean seEncuentraAMenosDe(Double latitud, Double longitud,Double dist){
+	public Boolean seEncuentraAMenosDe(Double latitud, Double longitud, Double dist){
 		final int R = 6371; // Radio de la tierra
 	    Double latDistance = Math.toRadians(latitud - this.getLatitud());
 	    Double lonDistance = Math.toRadians(longitud - this.getLongitud());

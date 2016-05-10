@@ -19,8 +19,7 @@ public class TestsEntrega1 {
 	Byte comunaActual;
 	
 	@Before
-	public void init()
-	{
+	public void init() {
 		mapa= new Mapa();
 		sucursal = new SucursalBanco("Galicia Microcentro");
 		sucursal2 = new SucursalBanco("Santander Rio");
@@ -102,9 +101,8 @@ public class TestsEntrega1 {
 	//Tests de Busqueda
 	//-----------------
 
-@Test //Test de Muestra de las paradas de una linea de colectivos
-	public void pruebaMuestraParadasDeUnaLinea()
-	{
+	@Test //Test de Muestra de las paradas de una linea de colectivos
+	public void pruebaMuestraParadasDeUnaLinea() {
 		mapa.agregarPoi(parada);
 		mapa.agregarPoi(parada2);
 		mapa.mostrarPOIS("151");
@@ -113,9 +111,8 @@ public class TestsEntrega1 {
 		System.out.println("");
 	}	
 
-@Test //Test de Muestra de los pois etiquetados con una palabra clave
-	public void pruebaMuestraPoisConPalabraClave()
-	{
+	@Test //Test de Muestra de los pois etiquetados con una palabra clave
+	public void pruebaMuestraPoisConPalabraClave() {
 		mapa.agregarPoi(parada);
 		mapa.agregarPoi(local);
 		mapa.agregarPoi(local2);
@@ -125,41 +122,33 @@ public class TestsEntrega1 {
 		System.out.println("");
 	}
 	
-@Test //Test de Reconocimiento de un Servicio por su nombre
-	public void pruebaReconoceServicio()
-	{
+	@Test //Test de Reconocimiento de un Servicio por su nombre
+	public void pruebaReconoceServicio() {
 		Assert.assertTrue(rubroM.tieneLaClave("Muebleria"));
 	}
-@Test //Test de Reconocimiento de un Local por parte de su nombre
-	public void pruebaReconoceParteNombre()
-	{
+	@Test //Test de Reconocimiento de un Local por parte de su nombre
+	public void pruebaReconoceParteNombre() {
 		Assert.assertTrue(local.tieneLaClave("Carlos"));
 	}
-@Test //Test de Reconocimiento de un Local por su Rubro
-	public void pruebaReconoceLocalxNombreRubro()
-	{
+	@Test //Test de Reconocimiento de un Local por su Rubro
+	public void pruebaReconoceLocalxNombreRubro() {
 		local.setRubro(rubroM);
 		Assert.assertTrue(local.tieneLaClave("Muebleria"));
 	}
-@Test //Test de Reconocimiento de un Local por su Rubro
-	public void pruebaReconoceBancox1Servicio()
-	{
+	@Test //Test de Reconocimiento de un Local por su Rubro
+	public void pruebaReconoceBancox1Servicio() {
 		sucursal.setServicio(servicio1);
 		sucursal.setServicio(servicio2);
 		sucursal.setServicio(servicio3);
 		Assert.assertTrue(sucursal.tieneLaClave("Prestamo"));
 	}
-@Test //Test de Muestra de los CGPs con detereminado servicio
-	public void pruebaMuestraCGPconUnServicio()
-	{
+	@Test //Test de Muestra de los CGPs con detereminado servicio
+	public void pruebaMuestraCGPconUnServicio() {
 		mapa.agregarPoi(cgp);
 		mapa.agregarPoi(cgp2);
 		mapa.agregarPoi(cgp3);
 		mapa.mostrarPOIS("Asesoramiento");
 		System.out.println("");
 	}
-
-	
-
 
 }

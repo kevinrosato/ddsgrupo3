@@ -22,24 +22,24 @@ public class Local extends POI{
 	public String conocerTipo(){
 		return "Local Comercial";
 	}
+	
 	public Boolean estaCercaDe(Double latitud, Double longitud){
 		return this.seEncuentraAMenosDe(latitud, longitud, this.getRubro().getRadioCercania());
 	}
-	public	Boolean	tieneLaClave(String clave)
-	{
+	
+	@Override
+	public	Boolean	tieneLaClave(String clave){
 		return	(super.tieneLaClave(clave))
 				||	(this.getPiso().toString().contains(clave)) 
 				||	(this.getCodigoPostal().toString().contains(clave))
 				||	(this.getDepartamento().toString().contains(clave))
-				||	(this.rubro.tieneLaClave(clave));
-		
+				||	(this.rubro.tieneLaClave(clave));		
 	}
 	
 	//metodo utilizado por las subclases
-	public	Boolean	serviciosTienenLaClave(String clave)
-	{
+	public	Boolean	serviciosTienenLaClave(String clave){
 		Boolean valorVerdad=false; 
-		for(int i=0;i<getServicios().size();i++){	 
+		for(int i=0; i<getServicios().size(); i++){	 
 			if(getServicios().get(i).tieneLaClave(clave)){
 				valorVerdad = true;
 			}
@@ -48,8 +48,7 @@ public class Local extends POI{
 	}
 	
 	@Override
-	public void mostrarInformacion()
-	{
+	public void mostrarInformacion(){
 		System.out.println("Local "+this.getNombre());
 	}
 	
@@ -87,16 +86,13 @@ public class Local extends POI{
 	public void setRubro(Servicio rubro) {
 		this.rubro = rubro;
 	}
-	
-	public Servicio getServicio(Integer n) 
-	{
+	public Servicio getServicio(Integer n){
 		return servicios.get(n);
 	}
-	public List<Servicio> getServicios() {
+	public List<Servicio> getServicios(){
 		return servicios;
 	}
-	public void setServicio(Servicio servicio)
-	{
+	public void setServicio(Servicio servicio){
 		this.getServicios().add(servicio);
 	}
 }

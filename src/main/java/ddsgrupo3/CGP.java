@@ -8,8 +8,7 @@ public class CGP extends Local{
 	//----------
 	//Constructor
 	//----------
-	public CGP(String name,Byte numeroCGP)
-	{
+	public CGP(String name,Byte numeroCGP) {
 		this.setNombre(name);
 		this.setNumeroCGP(numeroCGP);
 	}
@@ -25,8 +24,7 @@ public class CGP extends Local{
 		return (this.comuna == comuna);		
 	}
 
-	public	Boolean	tieneLaClave(String clave)
-	{
+	public	Boolean	tieneLaClave(String clave) {
 		return	(super.tieneLaClave(clave))
 				||	(this.getComuna().toString().contains(clave))
 				||	(this.getNumeroCGP().toString().contains(clave))
@@ -34,8 +32,7 @@ public class CGP extends Local{
 	}
 	
 	@Override
-	public void mostrarInformacion()
-	{
+	public void mostrarInformacion() {
 		System.out.println("CGP N°"+this.getNumeroCGP()+", "+this.getNombre());
 	}
 	
