@@ -3,7 +3,7 @@ package ddsgrupo3;
 public class Ubicacion {
 	private Double latitud;
 	private Double longitud;
-	private String comuna = "";
+	private Integer comuna;
 	
 	//----------
 	//Metodos
@@ -35,10 +35,10 @@ public class Ubicacion {
 	//----------------
 	//Getters y Setters
 	//----------------
-	public String getComuna() {
+	public Integer getComuna() {
 		return comuna;
 	}
-	public void setComuna(String comuna) 
+	public void setComuna(Integer comuna) 
 	{
 		this.comuna = comuna;
 	}

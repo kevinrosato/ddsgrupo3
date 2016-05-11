@@ -94,7 +94,7 @@ public abstract class POI {
 	public Double getLatitud(){
 		return latitud;
 	}
-*/	public void setComuna(String comuna) 
+*/	public void setComuna(Integer comuna) 
 	{
 	this.ubicacion.setComuna(comuna);
 	}
