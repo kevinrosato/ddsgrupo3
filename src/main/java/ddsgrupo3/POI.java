@@ -2,6 +2,7 @@ package ddsgrupo3;
 
 
 public abstract class POI {
+	private Ubicacion ubicacion;
 	private String nombre="";
 	private String barrio="";
 	private String calle="";
@@ -11,10 +12,15 @@ public abstract class POI {
 	private String provincia="";
 	private String pais="";
 	private Integer altura;
-	private Double latitud;
+/*	private Double latitud;
 	private Double longitud;
-	
+*/	
 	//----------
+	//Constructor
+	//----------
+	public POI() {
+	ubicacion = new Ubicacion();
+	}//----------
 	//Metodos
 	//----------
 	public	Boolean	tieneLaClave(String clave){
@@ -29,14 +35,30 @@ public abstract class POI {
 	}
 
 	public Boolean esValido() {
+		return (nombre!=null && ubicacion.esValido());
+	}
+/*	public Boolean esValido() {
 		return (nombre!=null && latitud!=null && longitud!=null);
 	}
-	
 	public Boolean estaCercaDePorDefecto(Double latitud, Double longitud){
 		return (this.seEncuentraAMenosDe(latitud, longitud, 500.00));
 	}
-	
-	public Boolean seEncuentraAMenosDe(Double latitud, Double longitud, Double dist){
+	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
+		return (this.seEncuentraAMenosDe(posicion, 500.00));
+	}
+*/		
+	public Boolean estaCercaDePorDefecto(Double latitud, Double longitud){
+		Ubicacion lugar = new Ubicacion();
+		lugar.setLatitud(latitud);
+		lugar.setLongitud(longitud);
+		return (this.seEncuentraAMenosDe(lugar, 500.00));
+	}
+	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Double dist)
+	{
+		return this.ubicacion.seEncuentraAMenosDe(posicion, dist);
+	}
+/*	public Boolean seEncuentraAMenosDe(Double latitud, Double longitud, Double dist)
+	{
 		final int R = 6371; // Radio de la tierra
 	    Double latDistance = Math.toRadians(latitud - this.getLatitud());
 	    Double lonDistance = Math.toRadians(longitud - this.getLongitud());
@@ -49,17 +71,44 @@ public abstract class POI {
 	    Double distancia = R * c * 1000; // Convertir a Metros
 	    return distancia<dist;
 	}
-	
+*/	
 	public abstract void mostrarInformacion();
 	
 	//----------------
 	//Getters y Setters
 	//----------------
+	public Ubicacion getPosicion()
+	{
+	return this.ubicacion;
+	}
+		
+/*	public Double getLongitud() {
+		return longitud;
+	}
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
+	}
 	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
 	}
 	public Double getLatitud(){
 		return latitud;
+	}
+*/	public void setComuna(String comuna) 
+	{
+	this.ubicacion.setComuna(comuna);
+	}
+	public Double getLongitud() {
+	return this.ubicacion.getLongitud();
+	}
+	public void setLongitud(Double longitud) {
+	this.ubicacion.setLongitud(longitud);
+	}
+	public Double getLatitud(){
+		return this.ubicacion.getLatitud();
+	}
+	public void setLatitud(Double latitud) {
+		this.ubicacion.setLatitud(latitud);
 	}
 	public String getNombre() {
 		return nombre;
@@ -90,12 +139,6 @@ public abstract class POI {
 	}
 	public void setAltura(Integer altura) {
 		this.altura = altura;
-	}
-	public Double getLongitud() {
-		return longitud;
-	}
-	public void setLongitud(Double longitud) {
-		this.longitud = longitud;
 	}
 	public String getCallesPerpenIzq() {
 		return callesPerpenIzq;

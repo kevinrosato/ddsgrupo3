@@ -16,10 +16,14 @@ public class SucursalBanco extends Local{
 		return "Sucursal De Banco";
 	}
 	
-	public Boolean estaCercaDe (Double latitud,Double longitud){
+/*	public Boolean estaCercaDe (Double latitud,Double longitud){
 		return estaCercaDePorDefecto(latitud,longitud);
 	}
+*/	public Boolean estaCercaDe (Double latitud,Double longitud){
+	return estaCercaDePorDefecto(latitud,longitud);
+	}
 	
+
 	public	Boolean	tieneLaClave(String clave){
 		return	(super.tieneLaClave(clave))
 				||	(super.serviciosTienenLaClave(clave));

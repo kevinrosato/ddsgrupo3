@@ -13,9 +13,6 @@ public class Local extends POI{
 	private List<Servicio> servicios=new ArrayList<Servicio>();
 	
 	//----------
-	//Constructor
-	//----------
-	//----------
 	//Metodos
 	//----------
 	
@@ -23,8 +20,16 @@ public class Local extends POI{
 		return "Local Comercial";
 	}
 	
-	public Boolean estaCercaDe(Double latitud, Double longitud){
+/*	public Boolean estaCercaDe(Double latitud, Double longitud)
+	{
 		return this.seEncuentraAMenosDe(latitud, longitud, this.getRubro().getRadioCercania());
+	}
+*/	public Boolean estaCercaDe(Double latitud, Double longitud)
+	{	
+		Ubicacion lugar = new Ubicacion();
+		lugar.setLatitud(latitud);
+		lugar.setLongitud(longitud);
+		return this.seEncuentraAMenosDe(lugar, this.getRubro().getRadioCercania());
 	}
 	
 	@Override

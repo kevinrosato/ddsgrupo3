@@ -12,8 +12,15 @@ public class ParadaColectivo extends POI{
 		return "Parada De Colectivos";
 	}
 	
-	public Boolean estaCercaDe(Double latitud, Double longitud){
+/*	public Boolean estaCercaDe(Double latitud, Double longitud){
 		return this.seEncuentraAMenosDe(latitud, longitud, 100.00);
+	}
+*/	public Boolean estaCercaDe(Double latitud, Double longitud)
+	{
+		Ubicacion lugar = new Ubicacion();
+		lugar.setLatitud(latitud);
+		lugar.setLongitud(longitud);
+		return this.seEncuentraAMenosDe(lugar, 100.00);
 	}
 	
 	@Override

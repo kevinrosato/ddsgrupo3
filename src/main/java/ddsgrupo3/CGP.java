@@ -3,7 +3,7 @@ package ddsgrupo3;
 
 public class CGP extends Local{
 	private Byte numeroCGP;
-	private Byte comuna=0;
+//	private Byte comuna=0;
 	
 	//----------
 	//Constructor
@@ -20,13 +20,12 @@ public class CGP extends Local{
 		return "Centro De Gestion y Participacion";
 	}
 	
-	public Boolean estaCercaDe(Byte comuna){
-		return (this.comuna == comuna);		
+	public Boolean estaCercaDe(Ubicacion posicion){
+		return this.getPosicion().mismaComuna(posicion);		
 	}
 
 	public	Boolean	tieneLaClave(String clave) {
 		return	(super.tieneLaClave(clave))
-				||	(this.getComuna().toString().contains(clave))
 				||	(this.getNumeroCGP().toString().contains(clave))
 				||	(super.serviciosTienenLaClave(clave));
 	}
@@ -46,10 +45,11 @@ public class CGP extends Local{
 	public void setNumeroCGP(Byte numeroCGP) {
 		this.numeroCGP = numeroCGP;
 	}
-	public Byte getComuna() {
+/*	public Byte getComuna() {
 		return comuna;
 	}
 	public void setComuna(Byte comuna) {
 		this.comuna = comuna;
 	}
+*/
 }

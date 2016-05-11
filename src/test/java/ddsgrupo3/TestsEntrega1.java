@@ -29,8 +29,10 @@ public class TestsEntrega1 {
 		sucursal2 = new SucursalBanco("Santander Rio");
 		local = new Local();
 		local.setNombre("Lo de Carlos");
+		local.setComuna("Palermo");
 		local2 = new Local();
 		local2.setNombre("Rio");
+		local2.setComuna("Caballito");
 		
 		parada = new ParadaColectivo();
 		parada.setCalle("Cordoba");
@@ -51,7 +53,7 @@ public class TestsEntrega1 {
 		servicio5 = new Servicio("Otro Servicio");
 		cgp.setServicio(servicio4);
 		cgp.setServicio(servicio5);
-		
+		cgp.setComuna("Palermo");
 		cgp2 = new CGP("Sede Caballito",(byte) 6);
 		servicio6 = new Servicio("Asesoramiento Legal");
 		cgp2.setServicio(servicio6);
@@ -89,10 +91,10 @@ public class TestsEntrega1 {
 		Assert.assertTrue(parada.estaCercaDe(latitudActual, longitudActual));
 	}
 	@Test //Test de cercania con CGP
-	public void pruebaCercaniaCGP() {	
-		comunaActual = 2;
-		cgp.setComuna((byte)2);
-		Assert.assertTrue(cgp.estaCercaDe(comunaActual));
+	public void pruebaCercaniaCGP(){	
+		Ubicacion ubicacionActual = new Ubicacion();
+		ubicacionActual.setComuna("Palermo");
+		Assert.assertTrue(cgp.estaCercaDe(ubicacionActual));
 	}
 	@Test //Test de cercania con Local. Distancia aproximada 77mts
 	public void pruebaCercaniaLocal() {	
