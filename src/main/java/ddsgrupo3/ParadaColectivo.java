@@ -1,5 +1,6 @@
 package ddsgrupo3;
 
+import java.util.Calendar;
 public class ParadaColectivo extends POI{
 	private String[] lineas;
 
@@ -34,6 +35,10 @@ public class ParadaColectivo extends POI{
 	@Override
 	public void mostrarInformacion(){
 		System.out.println("Parada en la calle "+super.getCalle()+", entre las calles "+super.getCallesPerpenDer()+" y "+super.getCallesPerpenIzq());
+	}
+	
+	public Boolean estaDisponibe (Calendar horario){
+		return (2+2==4);
 	}
 	//----------
 	//Getters y Setters

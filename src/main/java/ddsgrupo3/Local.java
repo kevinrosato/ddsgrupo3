@@ -29,11 +29,11 @@ public class Local extends POI{
 	
 	@Override
 	public	Boolean	tieneLaClave(String clave){
-		return	(super.tieneLaClave(clave))
+		return	((super.tieneLaClave(clave))
 				||	(this.getPiso().toString().contains(clave)) 
 				||	(this.getCodigoPostal().toString().contains(clave))
 				||	(this.getDepartamento().toString().contains(clave))
-				||	(this.rubro.tieneLaClave(clave));		
+				||	(this.rubro.tieneLaClave(clave)));		
 	}
 	
 	//metodo utilizado por las subclases

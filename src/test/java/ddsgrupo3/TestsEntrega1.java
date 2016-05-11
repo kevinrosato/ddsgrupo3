@@ -1,5 +1,7 @@
 package ddsgrupo3;
 
+
+import java.util.Calendar;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +10,7 @@ public class TestsEntrega1 {
 	//----------
 	//Parametros Iniciales
 	//----------
+	Calendar calendario;
 	Mapa mapa;
 	SucursalBanco sucursal,sucursal2;
 	Local local,local2;
@@ -17,6 +20,7 @@ public class TestsEntrega1 {
 	Servicio rubroM, servicio1, servicio2, servicio3, servicio4, servicio5, servicio6;
 	Double latitudActual, longitudActual;
 	Byte comunaActual;
+	Horario horario;
 	
 	@Before
 	public void init() {
@@ -61,6 +65,11 @@ public class TestsEntrega1 {
 		
 		latitudActual = 1.00;
 		longitudActual = 1.00;
+		calendario= Calendar.getInstance();
+		calendario.set(2016,2,22); //Meses empiezan en 0, por lo que esto es 19/5/2016
+		calendario.set(Calendar.HOUR_OF_DAY, 19);
+		calendario.set(Calendar.MINUTE, 59);
+		horario = new Horario();
 	}
 	
 	//-----------------
@@ -96,11 +105,25 @@ public class TestsEntrega1 {
 	//-----------------------
 	//Tests de Disponibilidad
 	//-----------------------
+	@Test //Test de rango de horario
+	public void pruebaCalendar() {	
+		horario.setDiaInicio(3);
+		horario.setDiaFinal(3);
+		horario.setHorarioInicio(900);
+		horario.setHorarioCierre(2000);
+		Assert.assertTrue(horario.estaEnElRango(calendario));
+	}
 	
+	@Test //Test de disponibilidad de la parada de colectivo
+	public void pruebaDispColectivo() {	
+		Assert.assertTrue(parada.estaDisponibe(calendario));
+	}
 	//-----------------
 	//Tests de Busqueda
 	//-----------------
-
+	
+	//Falta Assert para los tests involucrando mapa?
+	
 	@Test //Test de Muestra de las paradas de una linea de colectivos
 	public void pruebaMuestraParadasDeUnaLinea() {
 		mapa.agregarPoi(parada);

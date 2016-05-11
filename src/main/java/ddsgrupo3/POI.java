@@ -1,5 +1,6 @@
 package ddsgrupo3;
 
+
 public abstract class POI {
 	private String nombre="";
 	private String barrio="";
