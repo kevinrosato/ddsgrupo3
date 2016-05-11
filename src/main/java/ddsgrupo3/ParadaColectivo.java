@@ -37,8 +37,8 @@ public class ParadaColectivo extends POI{
 		System.out.println("Parada en la calle "+super.getCalle()+", entre las calles "+super.getCallesPerpenDer()+" y "+super.getCallesPerpenIzq());
 	}
 	
-	public Boolean estaDisponibe (Calendar horario){
-		return (2+2==4);
+	public Boolean estaDisponible (Calendar horario){
+		return (true);
 	}
 	//----------
 	//Getters y Setters

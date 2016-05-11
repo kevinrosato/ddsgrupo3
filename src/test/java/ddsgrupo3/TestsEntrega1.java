@@ -116,7 +116,7 @@ public class TestsEntrega1 {
 	
 	@Test //Test de disponibilidad de la parada de colectivo
 	public void pruebaDispColectivo() {	
-		Assert.assertTrue(parada.estaDisponibe(calendario));
+		Assert.assertTrue(parada.estaDisponible(calendario));
 	}
 	//-----------------
 	//Tests de Busqueda
