@@ -12,17 +12,11 @@ public abstract class POI {
 	private String provincia="";
 	private String pais="";
 	private Integer altura;
-/*	private Double latitud;
-	private Double longitud;
-*/	
+	
 	//----------
-	//Constructor
-	//----------
-	public POI() {
-	ubicacion = new Ubicacion();
-	}//----------
 	//Metodos
 	//----------
+	
 	public	Boolean	tieneLaClave(String clave){
 		return	(this.getNombre().contains(clave))
 				||	(this.getBarrio().contains(clave))
@@ -37,64 +31,27 @@ public abstract class POI {
 	public Boolean esValido() {
 		return (nombre!=null && ubicacion.esValido());
 	}
-/*	public Boolean esValido() {
-		return (nombre!=null && latitud!=null && longitud!=null);
-	}
-	public Boolean estaCercaDePorDefecto(Double latitud, Double longitud){
-		return (this.seEncuentraAMenosDe(latitud, longitud, 500.00));
-	}
+
 	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
 		return (this.seEncuentraAMenosDe(posicion, 500.00));
 	}
-*/		
-	public Boolean estaCercaDePorDefecto(Double latitud, Double longitud){
-		Ubicacion lugar = new Ubicacion();
-		lugar.setLatitud(latitud);
-		lugar.setLongitud(longitud);
-		return (this.seEncuentraAMenosDe(lugar, 500.00));
-	}
+
 	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Double dist)
 	{
 		return this.ubicacion.seEncuentraAMenosDe(posicion, dist);
 	}
-/*	public Boolean seEncuentraAMenosDe(Double latitud, Double longitud, Double dist)
-	{
-		final int R = 6371; // Radio de la tierra
-	    Double latDistance = Math.toRadians(latitud - this.getLatitud());
-	    Double lonDistance = Math.toRadians(longitud - this.getLongitud());
-	    
-	    Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
-	            + Math.cos(Math.toRadians(this.getLatitud())) * Math.cos(Math.toRadians(latitud))
-	            * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-	    
-	    Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-	    Double distancia = R * c * 1000; // Convertir a Metros
-	    return distancia<dist;
-	}
-*/	
+
 	public abstract void mostrarInformacion();
 	
 	//----------------
 	//Getters y Setters
 	//----------------
+	
 	public Ubicacion getPosicion()
 	{
 	return this.ubicacion;
 	}
-		
-/*	public Double getLongitud() {
-		return longitud;
-	}
-	public void setLongitud(Double longitud) {
-		this.longitud = longitud;
-	}
-	public void setLatitud(Double latitud) {
-		this.latitud = latitud;
-	}
-	public Double getLatitud(){
-		return latitud;
-	}
-*/	public void setComuna(Integer comuna) 
+	public void setComuna(Integer comuna) 
 	{
 	this.ubicacion.setComuna(comuna);
 	}

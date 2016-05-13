@@ -4,14 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Local extends POI{
-	private Integer codigoPostal=0;
-	private Byte departamento=0;
-	private Byte piso=0;
-	private Byte unidad=0; 
-	private Servicio rubro=new Servicio(""); 
+	
+	private Integer 	codigoPostal = 0;
+	private Byte 		departamento = 0;
+	private Byte 		piso = 0;
+	private Byte 		unidad = 0; 
+	private Servicio 	rubro; 
 	//local no va a usar "servicios", solo sus subclases
 	private List<Servicio> servicios=new ArrayList<Servicio>();
 	
+	//----------
+	//Constructor
+	//----------
+		
+	public Local (String name)
+	{
+		this.setNombre(name);
+		rubro = new Servicio("");
+	}
 	//----------
 	//Metodos
 	//----------
@@ -20,15 +30,8 @@ public class Local extends POI{
 		return "Local Comercial";
 	}
 	
-/*	public Boolean estaCercaDe(Double latitud, Double longitud)
-	{
-		return this.seEncuentraAMenosDe(latitud, longitud, this.getRubro().getRadioCercania());
-	}
-*/	public Boolean estaCercaDe(Double latitud, Double longitud)
+	public Boolean estaCercaDe(Ubicacion lugar)
 	{	
-		Ubicacion lugar = new Ubicacion();
-		lugar.setLatitud(latitud);
-		lugar.setLongitud(longitud);
 		return this.seEncuentraAMenosDe(lugar, this.getRubro().getRadioCercania());
 	}
 	
@@ -88,16 +91,20 @@ public class Local extends POI{
 	public Servicio getRubro() {
 		return rubro;
 	}
-	public void setRubro(Servicio rubro) {
-		this.rubro = rubro;
+	public void setRubro(String rubroName)
+	{
+		Servicio rubroVenta = new Servicio(rubroName);
+		this.rubro = rubroVenta;
 	}
-	public Servicio getServicio(Integer n){
+	protected Servicio getServicio(Integer n){
 		return servicios.get(n);
 	}
-	public List<Servicio> getServicios(){
+	protected List<Servicio> getServicios(){
 		return servicios;
 	}
-	public void setServicio(Servicio servicio){
+	protected void setServicio(String nameServicio)
+	{
+		Servicio servicio = new Servicio(nameServicio);
 		this.getServicios().add(servicio);
 	}
 }

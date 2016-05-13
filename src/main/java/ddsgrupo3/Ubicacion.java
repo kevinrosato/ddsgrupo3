@@ -6,6 +6,15 @@ public class Ubicacion {
 	private Integer comuna;
 	
 	//----------
+	//Constructor
+	//----------
+		
+	public Ubicacion(Double latitud, Double longitud)
+	{
+		this.setLatitud(latitud);
+		this.setLongitud(longitud);
+	}
+	//----------
 	//Metodos
 	//----------
 	

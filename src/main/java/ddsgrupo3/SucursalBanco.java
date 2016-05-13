@@ -1,14 +1,16 @@
 package ddsgrupo3;
 
+import java.util.List;
+
 public class SucursalBanco extends Local{
 	
 	//----------
 	//Constructor
 	//----------
-	public SucursalBanco(String name){
-		this.setNombre(name);
+	public SucursalBanco(String name)
+	{
+		super(name);
 	}
-	
 	//----------
 	//Metodos
 	//----------	
@@ -19,8 +21,8 @@ public class SucursalBanco extends Local{
 /*	public Boolean estaCercaDe (Double latitud,Double longitud){
 		return estaCercaDePorDefecto(latitud,longitud);
 	}
-*/	public Boolean estaCercaDe (Double latitud,Double longitud){
-	return estaCercaDePorDefecto(latitud,longitud);
+*/	public Boolean estaCercaDe (Ubicacion lugar){
+	return estaCercaDePorDefecto(lugar);
 	}
 	
 
@@ -37,5 +39,14 @@ public class SucursalBanco extends Local{
 	//Getters y Setters
 	//----------
 	
-
+	public Servicio getServicio(Integer n){
+		return super.getServicio(n);
+	}
+	public List<Servicio> getServicios(){
+		return super.getServicios();
+	}
+	public void setServicio(String nameServicio)
+	{
+		super.setServicio(nameServicio);
+	}
 }

@@ -1,15 +1,16 @@
 package ddsgrupo3;
 
+import java.util.List;
 
 public class CGP extends Local{
 	private Byte numeroCGP;
-//	private Byte comuna=0;
 	
 	//----------
 	//Constructor
 	//----------
-	public CGP(String name,Byte numeroCGP) {
-		this.setNombre(name);
+	public CGP (String name,Byte numeroCGP)
+	{
+		super(name);
 		this.setNumeroCGP(numeroCGP);
 	}
 	//----------
@@ -39,17 +40,20 @@ public class CGP extends Local{
 	//Getters y Setters
 	//----------
 
+	public Servicio getServicio(Integer n){
+		return super.getServicio(n);
+	}
+	public List<Servicio> getServicios(){
+		return super.getServicios();
+	}
+	public void setServicio(String nameServicio)
+	{
+		super.setServicio(nameServicio);
+	}
 	public Byte getNumeroCGP() {
 		return numeroCGP;
 	}
 	public void setNumeroCGP(Byte numeroCGP) {
 		this.numeroCGP = numeroCGP;
 	}
-/*	public Byte getComuna() {
-		return comuna;
-	}
-	public void setComuna(Byte comuna) {
-		this.comuna = comuna;
-	}
-*/
 }

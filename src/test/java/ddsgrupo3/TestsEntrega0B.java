@@ -9,10 +9,11 @@ public class TestsEntrega0B {
 	//----------
 	//Parametros Iniciales
 	//----------
-	ParadaColectivo parada, poi, poi2;
-	Local local;
-	CGP cgp;
-	SucursalBanco sucursal;
+	ParadaColectivo 	parada, poi, poi2;
+	Local 				local;
+	CGP 				cgp;
+	SucursalBanco 		sucursal;
+	
 	@Before
 	public void init(){
 		poi = new ParadaColectivo();
@@ -25,7 +26,7 @@ public class TestsEntrega0B {
 		poi2.setLatitud(40.9);
 		poi2.setLongitud(42.12);
 		parada= new ParadaColectivo();
-		local= new Local();
+		local= new Local("");
 		cgp = new CGP("",(byte) 0);
 		sucursal= new SucursalBanco ("");
 		parada = new ParadaColectivo();

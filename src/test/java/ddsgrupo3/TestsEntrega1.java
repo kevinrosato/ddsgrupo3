@@ -10,61 +10,54 @@ public class TestsEntrega1 {
 	//----------
 	//Parametros Iniciales
 	//----------
-	Calendar calendario;
-	Mapa mapa;
-	SucursalBanco sucursal,sucursal2;
-	Local local,local2;
-	ParadaColectivo parada;
-	ParadaColectivo parada2;
-	CGP cgp, cgp2, cgp3;
-	Servicio rubroM, servicio1, servicio2, servicio3, servicio4, servicio5, servicio6;
-	Double latitudActual, longitudActual;
-	Byte comunaActual;
-	Horario horario;
+	Calendar 		calendario;
+	Mapa 			mapa;
+	SucursalBanco 	sucursal,		sucursal2;
+	Local 			local,			local2;
+	ParadaColectivo parada,			parada2;
+	CGP 			cgp, 			cgp2, 			cgp3;
+	Servicio 		rubroM;
+	Integer 		comunaActual;
+	Ubicacion 		ubicacionActual;
+	Horario 		horario;
 	
 	@Before
 	public void init() {
-		mapa= new Mapa();
-		sucursal = new SucursalBanco("Galicia Microcentro");
-		sucursal2 = new SucursalBanco("Santander Rio");
-		local = new Local();
-		local.setNombre("Lo de Carlos");
-		local2 = new Local();
-		local2.setNombre("Rio");
+		mapa		= new Mapa();
+		sucursal 	= new SucursalBanco("Galicia Microcentro");
+		sucursal2 	= new SucursalBanco("Santander Rio");
+		local 		= new Local("Lo de Carlos");
+		local2 		= new Local("Rio");
 		
-		parada = new ParadaColectivo();
-		parada.setCalle("Cordoba");
-		parada.setCallesPerpenIzq("Medrano");
-		parada.setCallesPerpenDer("Figueroa");
-		String[] lista={"151","106","99"};
-		parada.setLineas(lista);
+		parada	= new ParadaColectivo();
+			parada.setCalle("Cordoba");
+			parada.setCallesPerpenIzq("Medrano");
+			parada.setCallesPerpenDer("Figueroa");
+			String[] lista = {"151","106","99"};
+			parada.setLineas(lista);
 		
-		parada2 = new ParadaColectivo();
-		parada2.setCalle("Arenal");
-		parada2.setCallesPerpenIzq("Freire");
-		parada2.setCallesPerpenDer("Conde");
-		String[] lista2={"60","120","151"};
-		parada2.setLineas(lista2);
+		parada2	= new ParadaColectivo();
+			parada2.setCalle("Arenal");
+			parada2.setCallesPerpenIzq("Freire");
+			parada2.setCallesPerpenDer("Conde");
+			String[] lista2={"60","120","151"};
+			parada2.setLineas(lista2);
 		
-		cgp = new CGP("Sede Medrano",(byte) 5);
-		servicio4 = new Servicio("Asesoramiento Contable");
-		servicio5 = new Servicio("Otro Servicio");
-		cgp.setServicio(servicio4);
-		cgp.setServicio(servicio5);
-		cgp.setComuna(5);
+		cgp	= new CGP("Sede Medrano",(byte) 5);
+			cgp.setServicio("Asesoramiento Contable");
+			cgp.setServicio("Otro Servicio");
+			cgp.setComuna(5);
+
 		cgp2 = new CGP("Sede Caballito",(byte) 6);
-		servicio6 = new Servicio("Asesoramiento Legal");
-		cgp2.setServicio(servicio6);
+			cgp2.setServicio("Asesoramiento Legal");
 		
 		cgp3 = new CGP("Sede Lugano",(byte) 8);
 		
 		rubroM = new Servicio("Muebleria");
-		servicio1 = new Servicio("Deposito");
-		servicio2 = new Servicio("Extracciones");
-		servicio3 = new Servicio("Prestamos");
 		
-		latitudActual = 1.00;
-		longitudActual = 1.00;
+		ubicacionActual = new Ubicacion(1.00, 1.00);
+			ubicacionActual.setComuna(comunaActual);
+		
 		calendario= Calendar.getInstance();
 		calendario.set(2016,2,22); //Meses empiezan en 0, por lo que esto es 19/5/2016
 		calendario.set(Calendar.HOUR_OF_DAY, 19);
@@ -80,27 +73,25 @@ public class TestsEntrega1 {
 	public void pruebaCercaniaSucursal() {
 		sucursal.setLatitud(1.004);
 		sucursal.setLongitud(1.00);
-		Assert.assertTrue(sucursal.estaCercaDe(latitudActual, longitudActual));
+		Assert.assertTrue(sucursal.estaCercaDe(ubicacionActual));
 	}
 	@Test //Test de cercania con una parada de colectivo. Distancia aproximada 88mts
 	public void pruebaCercaniaParadaColectivo() {
 		parada.setLatitud(1.0008);
 		parada.setLongitud(1.00);
-		Assert.assertTrue(parada.estaCercaDe(latitudActual, longitudActual));
+		Assert.assertTrue(parada.estaCercaDe(ubicacionActual));
 	}
 	@Test //Test de cercania con CGP
 	public void pruebaCercaniaCGP(){	
-		Ubicacion ubicacionActual = new Ubicacion();
-		ubicacionActual.setComuna(5);
 		Assert.assertTrue(cgp.estaCercaDe(ubicacionActual));
 	}
 	@Test //Test de cercania con Local. Distancia aproximada 77mts
 	public void pruebaCercaniaLocal() {	
-		local.setRubro(new Servicio(""));
+		local.setRubro("");
 		local.getRubro().setRadioCercania(78.00);
 		local.setLatitud(1.0007);
 		local.setLongitud(1.00);
-		Assert.assertTrue(local.estaCercaDe(latitudActual, longitudActual));
+		Assert.assertTrue(local.estaCercaDe(ubicacionActual));
 	}
 	//-----------------------
 	//Tests de Disponibilidad
@@ -155,14 +146,15 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de Reconocimiento de un Local por su Rubro
 	public void pruebaReconoceLocalxNombreRubro() {
-		local.setRubro(rubroM);
+		local.setRubro("Muebleria");
 		Assert.assertTrue(local.tieneLaClave("Muebleria"));
 	}
 	@Test //Test de Reconocimiento de un Local por su Rubro
 	public void pruebaReconoceBancox1Servicio() {
-		sucursal.setServicio(servicio1);
-		sucursal.setServicio(servicio2);
-		sucursal.setServicio(servicio3);
+		sucursal.setServicio("Deposito");
+		sucursal.setServicio("Extracciones");
+		sucursal.setServicio("Prestamos");
+		
 		Assert.assertTrue(sucursal.tieneLaClave("Prestamo"));
 	}
 	@Test //Test de Muestra de los CGPs con detereminado servicio
