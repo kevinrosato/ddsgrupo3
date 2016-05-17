@@ -1,12 +1,13 @@
 package ddsgrupo3;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class Servicio {
-	private List <Horario> horario;
+	private List <Horario> horario=new ArrayList<Horario>();
 	private String nombre="";
-	private Double radioCercania;
+	private Double radioCercania=0.0;
 	
 	//----------
 	//Constructor

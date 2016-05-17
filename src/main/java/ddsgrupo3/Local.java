@@ -10,7 +10,7 @@ public class Local extends POI{
 	private Byte 		departamento = 0;
 	private Byte 		piso = 0;
 	private Byte 		unidad = 0; 
-	private Servicio 	rubro; 
+	private Servicio 	rubro=new Servicio(""); 
 	//local no va a usar "servicios", solo sus subclases
 	private List<Servicio> servicios=new ArrayList<Servicio>();
 	
@@ -31,7 +31,7 @@ public class Local extends POI{
 		return "Local Comercial";
 	}
 	
-	@Override
+	
 	public Boolean estaCercaDe(Ubicacion lugar)
 	{	
 		return this.seEncuentraAMenosDe(lugar, this.getRubro().getRadioCercania());

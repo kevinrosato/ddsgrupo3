@@ -3,7 +3,7 @@ package ddsgrupo3;
 import java.util.Calendar;
 
 public abstract class POI {
-	private Ubicacion ubicacion;
+	private Ubicacion ubicacion=new Ubicacion(0.0,0.0);
 	private String nombre="";
 	private String barrio="";
 	private String calle="";
@@ -12,7 +12,7 @@ public abstract class POI {
 	private String localidad="";
 	private String provincia="";
 	private String pais="";
-	private Integer altura;
+	private Integer altura=0;
 	
 	//----------
 	//Metodos
@@ -33,7 +33,7 @@ public abstract class POI {
 		return (nombre!=null && ubicacion.esValido());
 	}
 
-	public Boolean estaCercaDe(Ubicacion posicion){
+	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
 		return (this.seEncuentraAMenosDe(posicion, 500.00));
 	}
 

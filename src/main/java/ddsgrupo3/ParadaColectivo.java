@@ -12,7 +12,6 @@ public class ParadaColectivo extends POI{
 		return "Parada De Colectivos";
 	}
 	
-	@Override
 	public Boolean estaCercaDe(Ubicacion lugar)
 	{
 		return this.seEncuentraAMenosDe(lugar, 100.00);

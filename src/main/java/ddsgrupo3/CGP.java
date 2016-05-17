@@ -62,9 +62,9 @@ public class CGP extends Local{
 	public List<Servicio> getServicios(){
 		return super.getServicios();
 	}
-	public void setServicio(String nameServicio)
+	public void setServicio(Servicio servicio)
 	{
-		super.setServicio(nameServicio);
+		getServicios().add(servicio);
 	}
 	public Byte getNumeroCGP() {
 		return numeroCGP;

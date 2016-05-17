@@ -29,6 +29,9 @@ public class SucursalBanco extends Local{
 		System.out.println("Banco "+this.getNombre());
 	}
 	
+	public Boolean estaCercaDe(Ubicacion lugar){
+		return super.estaCercaDePorDefecto(lugar);
+	}
 	
 	//CODIGO DUPLICADO con CGP, ver bien como solucionar
 	// Disponibilidad para Banco
@@ -56,8 +59,8 @@ public class SucursalBanco extends Local{
 	public List<Servicio> getServicios(){
 		return super.getServicios();
 	}
-	public void setServicio(String nameServicio)
+	public void setServicio(Servicio servicio)
 	{
-		super.setServicio(nameServicio);
+		getServicios().add(servicio);
 	}
 }

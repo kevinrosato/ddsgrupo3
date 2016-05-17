@@ -1,9 +1,9 @@
 package ddsgrupo3;
 
 public class Ubicacion {
-	private Double latitud;
-	private Double longitud;
-	private Integer comuna;
+	private Double latitud=0.0;
+	private Double longitud=0.0;
+	private Integer comuna=0;
 	
 	//----------
 	//Constructor

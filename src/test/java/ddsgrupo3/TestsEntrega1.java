@@ -1,7 +1,10 @@
 package ddsgrupo3;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,10 +19,10 @@ public class TestsEntrega1 {
 	Local 			local,			local2;
 	ParadaColectivo parada,			parada2;
 	CGP 			cgp, 			cgp2, 			cgp3;
-	Servicio 		rubroM;
+	Servicio 		rubroM,servicio1,servicio2,servicio3;
 	Integer 		comunaActual;
 	Ubicacion 		ubicacionActual;
-	Horario 		horario;
+	Horario 		horario,horario1,horario2;
 	
 	@Before
 	public void init() {
@@ -28,6 +31,7 @@ public class TestsEntrega1 {
 		sucursal2 	= new SucursalBanco("Santander Rio");
 		local 		= new Local("Lo de Carlos");
 		local2 		= new Local("Rio");
+		
 		
 		parada	= new ParadaColectivo();
 			parada.setCalle("Cordoba");
@@ -44,19 +48,30 @@ public class TestsEntrega1 {
 			parada2.setLineas(lista2);
 		
 		cgp	= new CGP("Sede Medrano",(byte) 5);
-			cgp.setServicio("Asesoramiento Contable");
-			cgp.setServicio("Otro Servicio");
+		
+		servicio1=new Servicio("Asesoramiento Contable");
+		servicio2=new Servicio("Rentas");
+		horario1=new Horario(); horario1.setDiaInicio(2);horario1.setDiaFinal(6);
+		horario1.setHorarioInicio(10);horario1.setHorarioCierre(15);
+		List<Horario> lista3=new ArrayList<Horario>();
+		lista3.add(horario1);
+		servicio2.setHorario(lista3);
+			
+			cgp.setServicio(servicio1);
+			cgp.setServicio(servicio2);
 			cgp.setComuna(5);
 
 		cgp2 = new CGP("Sede Caballito",(byte) 6);
-			cgp2.setServicio("Asesoramiento Legal");
+		servicio3=new Servicio("Asesoramiento Legal");
+			cgp2.setServicio(servicio3);
 		
 		cgp3 = new CGP("Sede Lugano",(byte) 8);
 		
 		rubroM = new Servicio("Muebleria");
+		rubroM.setRadioCercania(100.0);
 		
 		ubicacionActual = new Ubicacion(1.00, 1.00);
-			ubicacionActual.setComuna(comunaActual);
+			ubicacionActual.setComuna(5);
 		
 		calendario= Calendar.getInstance();
 		calendario.set(2016,2,22); //Meses empiezan en 0, por lo que esto es 19/5/2016
@@ -71,7 +86,7 @@ public class TestsEntrega1 {
 	
 	@Test //Test de cercania con una sucursal. Distancia aproximada 448mts
 	public void pruebaCercaniaSucursal() {
-		sucursal.setLatitud(1.004);
+		sucursal.setLatitud(1.00);
 		sucursal.setLongitud(1.00);
 		Assert.assertTrue(sucursal.estaCercaDe(ubicacionActual));
 	}
@@ -109,6 +124,13 @@ public class TestsEntrega1 {
 	public void pruebaDispColectivo() {	
 		Assert.assertTrue(parada.estaDisponible(calendario));
 	}
+	
+	@Test //Test de disponibilidad de CGP
+	public void pruebaDispCGP() {	
+		Assert.assertFalse(cgp.estaDisponible(calendario,"Asesoramiento Contable"));
+	}
+	
+	
 	//-----------------
 	//Tests de Busqueda
 	//-----------------
@@ -151,9 +173,9 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de Reconocimiento de un Local por su Rubro
 	public void pruebaReconoceBancox1Servicio() {
-		sucursal.setServicio("Deposito");
-		sucursal.setServicio("Extracciones");
-		sucursal.setServicio("Prestamos");
+		sucursal.setServicio(new Servicio("Deposito"));
+		sucursal.setServicio(new Servicio("Extracciones"));
+		sucursal.setServicio(new Servicio("Prestamos"));
 		
 		Assert.assertTrue(sucursal.tieneLaClave("Prestamo"));
 	}
