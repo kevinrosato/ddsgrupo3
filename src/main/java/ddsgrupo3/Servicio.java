@@ -1,5 +1,6 @@
 package ddsgrupo3;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class Servicio {
@@ -22,6 +23,9 @@ public class Servicio {
 	
 	public Boolean tieneLaClave(String clave) {
 		return	(this.getNombre().contains(clave));
+	}
+	public Boolean atendesEnEsteHorario(Calendar horario){
+		return this.getHorario().stream().anyMatch(unHorario -> unHorario.estaEnElRango(horario));
 	}
 	
 	//----------

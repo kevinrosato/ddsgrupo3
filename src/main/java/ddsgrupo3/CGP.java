@@ -1,5 +1,6 @@
 package ddsgrupo3;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class CGP extends Local{
@@ -34,6 +35,16 @@ public class CGP extends Local{
 	@Override
 	public void mostrarInformacion() {
 		System.out.println("CGP N°"+this.getNumeroCGP()+", "+this.getNombre());
+	}
+	
+	// Disponibilidad para CGP
+	public Boolean estaDisponible (Calendar horario, Servicio servicio){
+		return servicio.atendesEnEsteHorario(horario);
+	}
+	public Boolean estaDisponible (Calendar horario){
+		// tiene que mostrar al menos 1 servicio en el CGP que este atendiendo a esa hora
+		
+		return this.getServicios().stream().anyMatch(unServicio->unServicio.atendesEnEsteHorario(horario));
 	}
 	
 	//----------
