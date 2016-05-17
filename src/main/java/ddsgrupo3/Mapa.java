@@ -2,6 +2,7 @@ package ddsgrupo3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Mapa {
 	
@@ -10,24 +11,59 @@ public class Mapa {
 	//----------
 	//Metodos
 	//----------
-
-	public	List<POI>	buscarPOI(String palabraClave)	{	
+	
+	public void realizarBusqueda ()
+	{
 		List<POI> listaAux =new ArrayList<POI>();
-		for (Integer i = 0; i < this.getListaPois().size(); i++){
-			if (this.getListaPois().get(i).tieneLaClave(palabraClave)){
-				listaAux.add(this.getListaPois().get(i));
+		Scanner scanner = new Scanner(System.in);
+		String control = new String();
+
+		do{	
+			System.out.print("Ingrese palabra Clave: ");
+			String clave = scanner.nextLine();
+			if (clave.startsWith("+"))
+			{
+				clave = clave.substring(1);
+				listaAux = filtrarPOIs(clave, listaAux);	
 			}
+			else	listaAux = buscarPOI(clave);
+			mostrarPOIs(clave, listaAux);
+			System.out.println("Fin Lista");
+			System.out.println("Desea Repetir?  [Y/N]");
+			control = scanner.nextLine();
+			control.toUpperCase();
+		}while (control.equals("Y"));
+		scanner.close();
+	}
+
+	public	List<POI>	filtrarPOIs(String palabraClave, List<POI> listaAux)
+	{	
+		List<POI> listaAux2 =new ArrayList<POI>();
+		for (POI i: listaAux)
+		{
+			if (i.tieneLaClave(palabraClave))	listaAux.add(i);
 		}
-		return listaAux;	
+		return listaAux2;	
 	}
 	
-	public void mostrarPOIS(String palabraClave){
-		List<POI> lista=buscarPOI(palabraClave);
+	public	List<POI>	buscarPOI(String palabraClave)
+	{	
+		return filtrarPOIs(palabraClave, this.getListaPois());
+	}
+	
+	public void buscarYmostrar(String clave)
+	{
+		mostrarPOIs(clave, this.getListaPois());
+	}
+	
+	public void mostrarPOIs(String palabraClave, List<POI> lista)
+	{
 		System.out.println("Puntos de Interes con la clave "+palabraClave+":");
-		for(int i=0; i<lista.size(); i++){
-			lista.get(i).mostrarInformacion();
-		}
-		if(lista.size()==0){
+		
+		for(POI i: lista)			i.mostrarInformacion();
+		
+		if(lista.size() == 0)
+		{
 			System.out.println("No se encontraron resultados.");
 		}
 	}

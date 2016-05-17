@@ -5,7 +5,7 @@ import java.util.List;
 public class Servicio {
 	private List <Horario> horario;
 	private String nombre="";
-	private Double radioCercania;
+	private Integer radioCercania;
 	
 	//----------
 	//Constructor
@@ -40,10 +40,10 @@ public class Servicio {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Double getRadioCercania() {
+	public Integer getRadioCercania() {
 		return radioCercania;
 	}
-	public void setRadioCercania(Double radioCercania) {
+	public void setRadioCercania(Integer radioCercania) {
 		this.radioCercania = radioCercania;
 	}
 }

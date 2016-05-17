@@ -23,7 +23,7 @@ public class Ubicacion {
 		return this.getComuna().equals(comuna2.getComuna());
 	}
 	
-	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Double dist)
+	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Integer dist)
 	{
 		final int R = 6371; // Radio de la tierra
 	    Double latDistance = Math.toRadians(posicion.getLatitud() - this.getLatitud());

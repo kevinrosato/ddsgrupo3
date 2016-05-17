@@ -25,7 +25,8 @@ public abstract class POI {
 				||	(this.getCallesPerpenIzq().contains(clave))
 				||	(this.getCallesPerpenDer().contains(clave))
 				||	(this.getProvincia().contains(clave))
-				||	(this.getPais().contains(clave));
+				||	(this.getPais().contains(clave))
+				||	(this.conocerTipo().contains(clave));
 	}
 
 	public Boolean esValido() {
@@ -33,16 +34,16 @@ public abstract class POI {
 	}
 
 	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
-		return (this.seEncuentraAMenosDe(posicion, 500.00));
+		return (this.seEncuentraAMenosDe(posicion, 500));
 	}
 
-	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Double dist)
+	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Integer dist)
 	{
 		return this.ubicacion.seEncuentraAMenosDe(posicion, dist);
 	}
 
 	public abstract void mostrarInformacion();
-	
+	public abstract String conocerTipo();
 	//----------------
 	//Getters y Setters
 	//----------------

@@ -71,7 +71,7 @@ public class TestsEntrega0B {
 	@Test //Test de distancia entre dos POIs los puntos probados 
 		  //Los puntos deben encontrarse en 87km. Como calculamos en metros, 87000mts,
 	public void pruebaDistancia() {
-		Assert.assertTrue(poi.seEncuentraAMenosDe(poi2.getPosicion(),87000.00));
+		Assert.assertTrue(poi.seEncuentraAMenosDe(poi2.getPosicion(),87000));
 	}
 	@Test //Test de tipo de una parada de colectivos
 	public void probarTipoColectivo(){
@@ -89,5 +89,4 @@ public class TestsEntrega0B {
 	public void probarTipoLocal(){
 		Assert.assertEquals("Local Comercial",local.conocerTipo());
 	}
-	
 }

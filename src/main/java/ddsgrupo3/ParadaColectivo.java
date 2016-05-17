@@ -14,7 +14,7 @@ public class ParadaColectivo extends POI{
 	
 	public Boolean estaCercaDe(Ubicacion lugar)
 	{
-		return this.seEncuentraAMenosDe(lugar, 100.00);
+		return this.seEncuentraAMenosDe(lugar, 100);
 	}
 	
 	@Override
