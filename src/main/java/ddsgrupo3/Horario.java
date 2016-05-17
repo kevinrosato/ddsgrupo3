@@ -20,6 +20,8 @@ public class Horario {
 		return (diaSolicitado>=this.diaInicio &&  diaSolicitado<=this.diaFinal &&
 				(horaSolicitada>=this.horarioInicio)&& (horaSolicitada<=this.horarioCierre));
 	}
+	
+	
 	//Metodo Obsoleto
 //	
 //	private String parserDias(Integer numeroDia){
