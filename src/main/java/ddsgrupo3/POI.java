@@ -1,5 +1,6 @@
 package ddsgrupo3;
 
+import java.util.Calendar;
 
 public abstract class POI {
 	private Ubicacion ubicacion;
@@ -32,10 +33,12 @@ public abstract class POI {
 		return (nombre!=null && ubicacion.esValido());
 	}
 
-	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
+	public Boolean estaCercaDe(Ubicacion posicion){
 		return (this.seEncuentraAMenosDe(posicion, 500.00));
 	}
 
+	public abstract Boolean estaDisponible(Calendar horario);
+	
 	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Double dist)
 	{
 		return this.ubicacion.seEncuentraAMenosDe(posicion, dist);

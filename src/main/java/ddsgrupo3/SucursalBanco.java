@@ -19,14 +19,6 @@ public class SucursalBanco extends Local{
 	public String conocerTipo(){
 		return "Sucursal De Banco";
 	}
-	
-/*	public Boolean estaCercaDe (Double latitud,Double longitud){
-		return estaCercaDePorDefecto(latitud,longitud);
-	}
-*/	public Boolean estaCercaDe (Ubicacion lugar){
-	return estaCercaDePorDefecto(lugar);
-	}
-	
 
 	public	Boolean	tieneLaClave(String clave){
 		return	(super.tieneLaClave(clave))
@@ -37,22 +29,20 @@ public class SucursalBanco extends Local{
 		System.out.println("Banco "+this.getNombre());
 	}
 	
-	public Boolean estaDisponible (Calendar horario, Servicio servicio){
-		Integer horaSolicitada= horario.get(Calendar.HOUR_OF_DAY)*100+horario.get(Calendar.MINUTE);
-		//	return (horaSolicitada>=10 && horaSolicitada<=15);	
-		return (servicio.atendesEnEsteHorario(horario) && horaSolicitada>=10 && horaSolicitada<=15) ;
-		// falta analizar q sea de lunes a viernes
 	
+	//CODIGO DUPLICADO con CGP, ver bien como solucionar
+	// Disponibilidad para Banco
+	public Boolean estaDisponible (Calendar horario, String nombreServicio){
+		Servicio servicio=getServicios().get(0);
+		for(int i=0;!servicio.tieneLaClave(nombreServicio);i++){
+			servicio=getServicios().get(i);
+		}
+		return servicio.atendesEnEsteHorario(horario);
 	}
 	
 	public Boolean estaDisponible (Calendar horario){
-		Integer horaSolicitada= horario.get(Calendar.HOUR_OF_DAY)*100+horario.get(Calendar.MINUTE);
-
-		return (this.getServicios().stream().anyMatch(unServicio->unServicio.atendesEnEsteHorario(horario) &&
-				horaSolicitada>=10 && horaSolicitada<=15));
-		// tmb falta analizar q sea de lunes a viernes horario de banco
-		
-	
+		// tiene que mostrar al menos 1 servicio en el Banco que este atendiendo a esa hora
+		return this.getServicios().stream().anyMatch(unServicio->unServicio.atendesEnEsteHorario(horario));
 	}
 	
 	

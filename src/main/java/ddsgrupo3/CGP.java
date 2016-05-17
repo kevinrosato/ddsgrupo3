@@ -22,6 +22,7 @@ public class CGP extends Local{
 		return "Centro De Gestion y Participacion";
 	}
 	
+	@Override
 	public Boolean estaCercaDe(Ubicacion posicion){
 		return this.getPosicion().mismaComuna(posicion);		
 	}
@@ -38,12 +39,16 @@ public class CGP extends Local{
 	}
 	
 	// Disponibilidad para CGP
-	public Boolean estaDisponible (Calendar horario, Servicio servicio){
+	public Boolean estaDisponible (Calendar horario, String nombreServicio){
+		Servicio servicio=getServicios().get(0);
+		for(int i=0;!servicio.tieneLaClave(nombreServicio);i++){
+			servicio=getServicios().get(i);
+		}
 		return servicio.atendesEnEsteHorario(horario);
 	}
+	
 	public Boolean estaDisponible (Calendar horario){
 		// tiene que mostrar al menos 1 servicio en el CGP que este atendiendo a esa hora
-		
 		return this.getServicios().stream().anyMatch(unServicio->unServicio.atendesEnEsteHorario(horario));
 	}
 	

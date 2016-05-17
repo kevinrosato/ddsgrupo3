@@ -1,6 +1,7 @@
 package ddsgrupo3;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Local extends POI{
@@ -30,9 +31,14 @@ public class Local extends POI{
 		return "Local Comercial";
 	}
 	
+	@Override
 	public Boolean estaCercaDe(Ubicacion lugar)
 	{	
 		return this.seEncuentraAMenosDe(lugar, this.getRubro().getRadioCercania());
+	}
+	
+	public Boolean estaDisponible(Calendar horario){
+		return rubro.atendesEnEsteHorario(horario);
 	}
 	
 	@Override
