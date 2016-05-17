@@ -30,7 +30,7 @@ public abstract class POI {
 	}
 
 	public Boolean esValido() {
-		return (nombre!=null && ubicacion.esValido());
+		return (nombre!="" && ubicacion.esValido());
 	}
 
 	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
