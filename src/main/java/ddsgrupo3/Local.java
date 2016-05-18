@@ -97,10 +97,9 @@ public class Local extends POI{
 	public Servicio getRubro() {
 		return rubro;
 	}
-	public void setRubro(String rubroName)
+	public void setRubro(Servicio rubro)
 	{
-		Servicio rubroVenta = new Servicio(rubroName);
-		this.rubro = rubroVenta;
+		this.rubro = rubro;
 	}
 	protected Servicio getServicio(Integer n){
 		return servicios.get(n);

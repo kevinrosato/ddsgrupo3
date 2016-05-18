@@ -16,22 +16,42 @@ public class TestsEntrega1 {
 	Calendar 		calendario;
 	Mapa 			mapa;
 	SucursalBanco 	sucursal,		sucursal2;
-	Local 			local,			local2;
+	Local 			local,			local2,carrousel;
 	ParadaColectivo parada,			parada2;
 	CGP 			cgp, 			cgp2, 			cgp3;
-	Servicio 		rubroM,servicio1,servicio2,servicio3;
+	Servicio 		rubroM,servicio1,servicio2,servicio3,comercial;
 	Integer 		comunaActual;
 	Ubicacion 		ubicacionActual;
-	Horario 		horario,horario1,horario2;
+	Horario 		horario,horario1,horario2,horario3,horario4,horario5;
 	
 	@Before
 	public void init() {
 		mapa		= new Mapa();
 		sucursal 	= new SucursalBanco("Galicia Microcentro");
+		servicio3= new Servicio("Transferencia");
+		//horario bancario
+		horario3=new Horario(); horario3.setDiaInicio(2);horario3.setDiaFinal(6);
+		horario3.setHorarioInicio(1000);horario3.setHorarioCierre(1500);
+		List<Horario> lista5=new ArrayList<Horario>();
+		lista5.add(horario3);
+		servicio3.setHorario(lista5);
+		sucursal.setServicio(servicio3);
+		
 		sucursal2 	= new SucursalBanco("Santander Rio");
 		local 		= new Local("Lo de Carlos");
 		local2 		= new Local("Rio");
 		
+		carrousel=new Local("Carrousel");
+		comercial=new Servicio("comercial");
+		carrousel.setRubro(comercial);
+		horario4=new Horario(); horario4.setDiaInicio(2);horario4.setDiaFinal(7);
+		horario4.setHorarioInicio(1000);horario4.setHorarioCierre(1300);
+		horario5=new Horario(); horario5.setDiaInicio(2);horario5.setDiaFinal(7);
+		horario5.setHorarioInicio(1700);horario5.setHorarioCierre(2030);
+		List<Horario> lista6=new ArrayList<Horario>();
+		lista6.add(horario4);
+		lista6.add(horario5);
+		comercial.setHorario(lista6);
 		
 		parada	= new ParadaColectivo();
 			parada.setCalle("Cordoba");
@@ -50,12 +70,18 @@ public class TestsEntrega1 {
 		cgp	= new CGP("Sede Medrano",(byte) 5);
 		
 		servicio1=new Servicio("Asesoramiento Contable");
+		horario2=new Horario(); horario2.setDiaInicio(7);horario2.setDiaFinal(7);
+		horario2.setHorarioInicio(1100);horario2.setHorarioCierre(1200);
+		List<Horario> lista3=new ArrayList<Horario>();
+		lista3.add(horario2);
+		servicio1.setHorario(lista3);
+		
 		servicio2=new Servicio("Rentas");
 		horario1=new Horario(); horario1.setDiaInicio(2);horario1.setDiaFinal(6);
-		horario1.setHorarioInicio(10);horario1.setHorarioCierre(15);
-		List<Horario> lista3=new ArrayList<Horario>();
-		lista3.add(horario1);
-		servicio2.setHorario(lista3);
+		horario1.setHorarioInicio(1000);horario1.setHorarioCierre(1500);
+		List<Horario> lista4=new ArrayList<Horario>();
+		lista4.add(horario1);
+		servicio2.setHorario(lista4);
 			
 			cgp.setServicio(servicio1);
 			cgp.setServicio(servicio2);
@@ -74,7 +100,8 @@ public class TestsEntrega1 {
 			ubicacionActual.setComuna(5);
 		
 		calendario= Calendar.getInstance();
-		calendario.set(2016,2,22); //Meses empiezan en 0, por lo que esto es 19/5/2016
+		calendario.set(2016,5,19); 
+		calendario.set(Calendar.DAY_OF_WEEK, 3);
 		calendario.set(Calendar.HOUR_OF_DAY, 19);
 		calendario.set(Calendar.MINUTE, 59);
 		horario = new Horario();
@@ -102,7 +129,7 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de cercania con Local. Distancia aproximada 77mts
 	public void pruebaCercaniaLocal() {	
-		local.setRubro("");
+		local.setRubro(new Servicio(""));
 		local.getRubro().setRadioCercania(78.00);
 		local.setLatitud(1.0007);
 		local.setLongitud(1.00);
@@ -125,11 +152,44 @@ public class TestsEntrega1 {
 		Assert.assertTrue(parada.estaDisponible(calendario));
 	}
 	
-	@Test //Test de disponibilidad de CGP
+	@Test //Test de disponibilidad de CGP con Nombre de Servicio
 	public void pruebaDispCGP() {	
-		Assert.assertFalse(cgp.estaDisponible(calendario,"Asesoramiento Contable"));
+		Assert.assertFalse(cgp.estaDisponible(calendario,"Rentas"));
+		calendario.set(Calendar.DAY_OF_WEEK, 3);
+		calendario.set(Calendar.HOUR_OF_DAY, 11);
+		calendario.set(Calendar.MINUTE, 59);
+		Assert.assertTrue(cgp.estaDisponible(calendario,"Rentas"));
 	}
 	
+	@Test //Test de disponibilidad de CGP sin Nombre de Servicio
+	public void pruebaDispCGP2() {	
+		calendario.set(Calendar.DAY_OF_WEEK, 7);
+		calendario.set(Calendar.HOUR_OF_DAY, 11);
+		calendario.set(Calendar.MINUTE, 20);
+		Assert.assertTrue(cgp.estaDisponible(calendario));
+	}
+	
+	@Test //Test de disponibilidad de Banco
+	public void pruebaBanco() {	
+		Assert.assertFalse(sucursal.estaDisponible(calendario));
+		calendario.set(Calendar.DAY_OF_WEEK, 2);
+		calendario.set(Calendar.HOUR_OF_DAY, 10);
+		calendario.set(Calendar.MINUTE, 20);
+		Assert.assertTrue(sucursal.estaDisponible(calendario));
+	}
+	
+	@Test //Test de disponibilidad de Local
+	public void pruebaLocal() {	
+		calendario.set(Calendar.DAY_OF_WEEK, 2);
+		calendario.set(Calendar.HOUR_OF_DAY, 10);
+		calendario.set(Calendar.MINUTE, 20);
+		Assert.assertTrue(carrousel.estaDisponible(calendario));
+		calendario.set(Calendar.DAY_OF_WEEK, 3);
+		calendario.set(Calendar.HOUR_OF_DAY, 15);
+		calendario.set(Calendar.MINUTE, 00);
+		Assert.assertFalse(carrousel.estaDisponible(calendario));
+		
+	}
 	
 	//-----------------
 	//Tests de Busqueda
@@ -168,7 +228,7 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de Reconocimiento de un Local por su Rubro
 	public void pruebaReconoceLocalxNombreRubro() {
-		local.setRubro("Muebleria");
+		local.setRubro(new Servicio("Muebleria"));
 		Assert.assertTrue(local.tieneLaClave("Muebleria"));
 	}
 	@Test //Test de Reconocimiento de un Local por su Rubro
