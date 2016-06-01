@@ -14,7 +14,7 @@ public class ParadaColectivo extends POI{
 	
 	public Boolean estaCercaDe(Ubicacion lugar)
 	{
-		return this.seEncuentraAMenosDe(lugar, 100);
+		return this.seEncuentraAMenosDe(lugar, 100.00);
 	}
 	
 	@Override
@@ -32,7 +32,6 @@ public class ParadaColectivo extends POI{
 		}
 		return valorDeVerdad;
 	}	
-	
 	@Override
 	public void mostrarInformacion(){
 		System.out.println("Parada en la calle "+super.getCalle()+", entre las calles "+super.getCallesPerpenDer()+" y "+super.getCallesPerpenIzq());

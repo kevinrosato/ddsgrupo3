@@ -1,7 +1,35 @@
 package ddsgrupo3;
 
+import java.util.Scanner;
+
 public class LevenshteinDistance {
 
+	public void pruebaLeven()
+	{
+		Scanner scanner = new Scanner(System.in);
+		String control = new String();
+
+		do{	
+			System.out.print("Ingrese palabra Clave: ");
+			String clave = scanner.nextLine();
+			System.out.println("Clave Ingresada:"+clave);
+
+			System.out.print("Ingrese palabra Clave: ");
+			String clave2 = scanner.nextLine();
+			System.out.println("Clave Ingresada:"+clave2);
+			
+			int distancia = LevenshteinDistance.computeLevenshteinDistance(clave, clave2);
+			
+			System.out.println("Distancia = "+distancia);
+
+			System.out.println("Desea Repetir?  [Y/N]");
+			control = scanner.nextLine();
+			control.toUpperCase();
+		}while (control.equals("Y"));
+		scanner.close();
+
+	}
+	
 	private static int minimum(int a, int b, int c)	{
 		if(a<=b && a<=c)	return a;
 		if(b<=a && b<=c)	return b;

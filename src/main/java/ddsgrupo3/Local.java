@@ -1,6 +1,7 @@
 package ddsgrupo3;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Local extends POI{
@@ -9,9 +10,9 @@ public class Local extends POI{
 	private Byte 		departamento = 0;
 	private Byte 		piso = 0;
 	private Byte 		unidad = 0; 
-	private Servicio 	rubro; 
+	private Servicio 	rubro = new Servicio(""); 
 	//local no va a usar "servicios", solo sus subclases
-	private List<Servicio> servicios=new ArrayList<Servicio>();
+	private List<Servicio> servicios = new ArrayList<Servicio>();
 	
 	//----------
 	//Constructor
@@ -20,7 +21,6 @@ public class Local extends POI{
 	public Local (String name)
 	{
 		this.setNombre(name);
-		rubro = new Servicio("");
 	}
 	//----------
 	//Metodos
@@ -30,9 +30,17 @@ public class Local extends POI{
 		return "Local Comercial";
 	}
 	
+	public Boolean estaCercaComoPOI(Ubicacion lugar){
+		return super.estaCercaDe(lugar);
+	}
+		
 	public Boolean estaCercaDe(Ubicacion lugar)
 	{	
 		return this.seEncuentraAMenosDe(lugar, this.getRubro().getRadioCercania());
+	}
+	
+	public Boolean estaDisponible(Calendar horario){
+		return rubro.atendesEnEsteHorario(horario);
 	}
 	
 	@Override
@@ -47,15 +55,15 @@ public class Local extends POI{
 	//metodo utilizado por las subclases
 	public	Boolean	serviciosTienenLaClave(String clave){
 		Boolean valorVerdad=false; 
-		for(int i=0; i<getServicios().size(); i++){	 
-			if(getServicios().get(i).tieneLaClave(clave)){
-				valorVerdad = true;
-			}
-		}
+		for(Servicio i: this.getServicios())
+		{	if(i.tieneLaClave(clave))	valorVerdad = true;		}
 		return valorVerdad;
 	}
 	
 	@Override
+//	protected void mostrarInformacionServicios(){
+//		System.out.println(""+this.conocerTipo()+": "+this.getNombre()+",\n servicios:"+this.getServicios().);
+//	}
 	public void mostrarInformacion(){
 		System.out.println("Local "+this.getNombre());
 	}
@@ -91,10 +99,9 @@ public class Local extends POI{
 	public Servicio getRubro() {
 		return rubro;
 	}
-	public void setRubro(String rubroName)
+	public void setRubro(Servicio rubro)
 	{
-		Servicio rubroVenta = new Servicio(rubroName);
-		this.rubro = rubroVenta;
+		this.rubro = rubro;
 	}
 	protected Servicio getServicio(Integer n){
 		return servicios.get(n);

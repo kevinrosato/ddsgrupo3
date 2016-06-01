@@ -1,9 +1,9 @@
 package ddsgrupo3;
 
 public class Ubicacion {
-	private Double latitud;
-	private Double longitud;
-	private Integer comuna;
+	private Double latitud=0.0;
+	private Double longitud=0.0;
+	private Integer comuna=0;
 	
 	//----------
 	//Constructor
@@ -23,7 +23,7 @@ public class Ubicacion {
 		return this.getComuna().equals(comuna2.getComuna());
 	}
 	
-	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Integer dist)
+	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Double dist)
 	{
 		final int R = 6371; // Radio de la tierra
 	    Double latDistance = Math.toRadians(posicion.getLatitud() - this.getLatitud());

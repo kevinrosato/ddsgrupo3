@@ -1,71 +1,98 @@
 package ddsgrupo3;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
 public class Mapa {
 	
-	private List<POI> listaPois=new ArrayList<POI>();
-	
+	private List<POI> listaPois = new ArrayList<POI>();
+	private Calendar horaActual;
+	private Ubicacion ubicacionActual;
 	//----------
 	//Metodos
 	//----------
 	
 	public void realizarBusqueda ()
 	{
-		List<POI> listaAux =new ArrayList<POI>();
+		List<POI> listaResultante = new ArrayList<POI>();
 		Scanner scanner = new Scanner(System.in);
-		String control = new String();
-
-		do{	
-			System.out.print("Ingrese palabra Clave: ");
-			String clave = scanner.nextLine();
+		
+		System.out.print("Ingrese palabra Clave: ");
+		String clave = scanner.nextLine();			
+		
+		while (!clave.startsWith("-"))
+		{	
 			if (clave.startsWith("+"))
 			{
 				clave = clave.substring(1);
-				listaAux = filtrarPOIs(clave, listaAux);	
+				listaResultante = buscarVariasFormas(clave, listaResultante);	
 			}
-			else	listaAux = buscarPOI(clave);
-			mostrarPOIs(clave, listaAux);
+			else	listaResultante = buscarVariasFormas(clave, this.getListaPois());
+			
+			mostrarPOIs(clave, listaResultante);
+			
 			System.out.println("Fin Lista");
-			System.out.println("Desea Repetir?  [Y/N]");
-			control = scanner.nextLine();
-			control.toUpperCase();
-		}while (control.equals("Y"));
+
+			System.out.print("Ingrese palabra Clave: ");
+			clave = scanner.nextLine();
+		}		
 		scanner.close();
 	}
-
-	public	List<POI>	filtrarPOIs(String palabraClave, List<POI> listaAux)
+	
+	public	List<POI>	buscarVariasFormas(String palabraClave, List<POI> lista)
 	{	
-		List<POI> listaAux2 =new ArrayList<POI>();
-		for (POI i: listaAux)
+		palabraClave = palabraClave.trim();
+		if (palabraClave.contains("Disponible")) return this.buscarDisponibles(lista);
+		else if (palabraClave.contains("Cercano")) return this.buscarCercanos(lista);
+		else return	this.buscarPOIs(palabraClave, lista);
+	}
+	public	List<POI>	buscarDisponibles(List<POI> lista)
+	{
+		List<POI> listaAux = new ArrayList<POI>();		
+		for (POI i: lista)
+		{
+			if (i.estaDisponible(this.getHoraActual()))	listaAux.add(i);
+		}
+		return listaAux;
+	}
+	public	List<POI>	buscarPOIs(String palabraClave, List<POI> lista)
+	{	
+		List<POI> listaAux = new ArrayList<POI>();
+		for (POI i: lista)
 		{
 			if (i.tieneLaClave(palabraClave))	listaAux.add(i);
 		}
-		return listaAux2;	
+		return listaAux;	
 	}
-	
-	public	List<POI>	buscarPOI(String palabraClave)
-	{	
-		return filtrarPOIs(palabraClave, this.getListaPois());
+	public	List<POI>	buscarCercanos(List<POI> lista)
+	{
+		List<POI> listaAux = new ArrayList<POI>();		
+		for (POI i: lista)
+		{
+			if (i.estaCercaDe(this.getUbicacionActual()))	listaAux.add(i);
+		}
+		return listaAux;	
 	}
-	
+
 	public void buscarYmostrar(String clave)
 	{
-		mostrarPOIs(clave, this.getListaPois());
+		mostrarPOIs(clave, this.buscarPOIs(clave, this.getListaPois()));
 	}
-	
 	public void mostrarPOIs(String palabraClave, List<POI> lista)
 	{
 		System.out.println("Puntos de Interes con la clave "+palabraClave+":");
-		
-		for(POI i: lista)			i.mostrarInformacion();
 		
 		if(lista.size() == 0)
 		{
 			System.out.println("No se encontraron resultados.");
 		}
+		else if(lista.size() == 1)
+		{
+			lista.get(0).mostrarInformacionAvanzada();
+		}
+		else for(POI i: lista)	i.mostrarInformacion();
 	}
 	
 	public Integer	cantPOIs()	{
@@ -84,5 +111,16 @@ public class Mapa {
 	public void agregarPoi(POI poi){
 		listaPois.add(poi);
 	}
-	
+	public Calendar getHoraActual() {
+		return horaActual;
+	}
+	public void setHoraActual(Calendar horaActual) {
+		this.horaActual = horaActual;
+	}
+	public Ubicacion getUbicacionActual() {
+		return ubicacionActual;
+	}
+	public void setUbicacionActual(Ubicacion ubicacionActual) {
+		this.ubicacionActual = ubicacionActual;
+	}
 }

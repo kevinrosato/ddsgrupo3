@@ -1,5 +1,6 @@
 package ddsgrupo3;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class SucursalBanco extends Local{
@@ -14,17 +15,10 @@ public class SucursalBanco extends Local{
 	//----------
 	//Metodos
 	//----------	
+	
 	public String conocerTipo(){
 		return "Sucursal De Banco";
 	}
-	
-/*	public Boolean estaCercaDe (Double latitud,Double longitud){
-		return estaCercaDePorDefecto(latitud,longitud);
-	}
-*/	public Boolean estaCercaDe (Ubicacion lugar){
-	return estaCercaDePorDefecto(lugar);
-	}
-	
 
 	public	Boolean	tieneLaClave(String clave){
 		return	(super.tieneLaClave(clave))
@@ -34,7 +28,27 @@ public class SucursalBanco extends Local{
 	public void mostrarInformacion(){
 		System.out.println("Banco "+this.getNombre());
 	}
-
+	
+	public Boolean estaCercaDe(Ubicacion lugar){
+		return super.estaCercaComoPOI(lugar);
+	}
+	
+	//CODIGO DUPLICADO con CGP, ver bien como solucionar
+	// Disponibilidad para Banco
+	public Boolean estaDisponible (Calendar horario, String nombreServicio){
+		Servicio servicio=getServicios().get(0);
+		for(int i=0;!servicio.tieneLaClave(nombreServicio);i++){
+			servicio=getServicios().get(i);
+		}
+		return servicio.atendesEnEsteHorario(horario);
+	}
+	
+	public Boolean estaDisponible (Calendar horario){
+		// tiene que mostrar al menos 1 servicio en el Banco que este atendiendo a esa hora
+		return this.getServicios().stream().anyMatch(unServicio->unServicio.atendesEnEsteHorario(horario));
+	}
+	
+	
 	//----------
 	//Getters y Setters
 	//----------
@@ -45,8 +59,8 @@ public class SucursalBanco extends Local{
 	public List<Servicio> getServicios(){
 		return super.getServicios();
 	}
-	public void setServicio(String nameServicio)
+	public void setServicio(Servicio servicio)
 	{
-		super.setServicio(nameServicio);
+		getServicios().add(servicio);
 	}
 }

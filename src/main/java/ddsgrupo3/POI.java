@@ -1,22 +1,24 @@
 package ddsgrupo3;
 
+import java.util.Calendar;
 
 public abstract class POI {
-	private Ubicacion ubicacion;
-	private String nombre="";
-	private String barrio="";
-	private String calle="";
-	private String callesPerpenIzq="";
-	private String callesPerpenDer="";
-	private String localidad="";
-	private String provincia="";
-	private String pais="";
-	private Integer altura;
+	private Ubicacion ubicacion = new Ubicacion(0.0,0.0);
+	private String nombre = "";
+	private String barrio = "";
+	private String calle = "";
+	private String callesPerpenIzq = "";
+	private String callesPerpenDer = "";
+	private String localidad = "";
+	private String provincia = "";
+	private String pais = "";
+	private Integer altura = 0;
 	
 	//----------
 	//Metodos
 	//----------
 	
+		
 	public	Boolean	tieneLaClave(String clave){
 		return	(this.getNombre().contains(clave))
 				||	(this.getBarrio().contains(clave))
@@ -30,18 +32,24 @@ public abstract class POI {
 	}
 
 	public Boolean esValido() {
-		return (nombre!=null && ubicacion.esValido());
+		return (nombre!="" && ubicacion.esValido());
 	}
 
-	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
-		return (this.seEncuentraAMenosDe(posicion, 500));
+	public Boolean estaCercaDe(Ubicacion posicion){
+		return (this.seEncuentraAMenosDe(posicion, 500.00));
 	}
 
-	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Integer dist)
+	public abstract Boolean estaDisponible(Calendar horario);
+	
+	public Boolean seEncuentraAMenosDe(Ubicacion posicion, Double dist)
 	{
 		return this.ubicacion.seEncuentraAMenosDe(posicion, dist);
 	}
-
+	public void mostrarInformacionAvanzada()
+	{
+		this.mostrarInformacion();
+		System.out.println("[Acá en un futuro se muestra toda la info]");
+	}
 	public abstract void mostrarInformacion();
 	public abstract String conocerTipo();
 	//----------------
@@ -121,6 +129,5 @@ public abstract class POI {
 	}
 	public void setPais(String pais) {
 		this.pais = pais;
-	}
-    
+	}    
 }
