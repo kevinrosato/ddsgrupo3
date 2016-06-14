@@ -1,5 +1,6 @@
 package ddsgrupo3;
 
+import dds.grupo3.POIsSistem.POI;
 
 public class Rol{
 

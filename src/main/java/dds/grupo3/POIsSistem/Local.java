@@ -1,4 +1,4 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -103,13 +103,13 @@ public class Local extends POI{
 	{
 		this.rubro = rubro;
 	}
-	protected Servicio getServicio(Integer n){
+	public Servicio getServicio(Integer n){
 		return servicios.get(n);
 	}
-	protected List<Servicio> getServicios(){
+	public List<Servicio> getServicios(){
 		return servicios;
 	}
-	protected void setServicio(String nameServicio)
+	public void setServicio(String nameServicio)
 	{
 		Servicio servicio = new Servicio(nameServicio);
 		this.getServicios().add(servicio);

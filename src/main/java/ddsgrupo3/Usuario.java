@@ -1,5 +1,7 @@
 package ddsgrupo3;
 
+import dds.grupo3.POIsSistem.POI;
+
 public class Usuario {
 
 	private Rol rol=new Rol();

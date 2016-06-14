@@ -1,8 +1,8 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 import java.util.Calendar;
 
-public abstract class POI {
+public abstract class POI	implements POIGral{
 	private Ubicacion ubicacion = new Ubicacion(0.0,0.0);
 	private String nombre = "";
 	private String barrio = "";

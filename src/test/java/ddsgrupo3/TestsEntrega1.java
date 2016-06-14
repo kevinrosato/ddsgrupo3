@@ -9,6 +9,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import dds.grupo3.POIsSistem.CGP;
+import dds.grupo3.POIsSistem.Horario;
+import dds.grupo3.POIsSistem.Local;
+import dds.grupo3.POIsSistem.ParadaColectivo;
+import dds.grupo3.POIsSistem.Servicio;
+import dds.grupo3.POIsSistem.SucursalBanco;
+import dds.grupo3.POIsSistem.Ubicacion;
+
 public class TestsEntrega1 {
 	//----------
 	//Parametros Iniciales

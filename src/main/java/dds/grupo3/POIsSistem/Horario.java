@@ -1,4 +1,4 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 import java.util.Calendar;
 

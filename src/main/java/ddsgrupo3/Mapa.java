@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
+import dds.grupo3.POIsSistem.POI;
+import dds.grupo3.POIsSistem.Ubicacion;
+
 public class Mapa {
 	
 	private List<POI> listaPois = new ArrayList<POI>();

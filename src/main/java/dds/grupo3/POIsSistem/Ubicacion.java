@@ -1,4 +1,4 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 public class Ubicacion {
 	private Double latitud=0.0;
