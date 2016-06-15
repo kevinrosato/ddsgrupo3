@@ -1,29 +1,16 @@
 package ddsgrupo3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dds.grupo3.POIsSistem.POI;
 
 public class Rol{
 
-
-	private Funcionalidad func1;
+	private List<POI> permisos=new ArrayList<POI>();
 	
-	//0:Agregar 1:Borrar 2:Modificar 3:Consultar
-	public void realizarFuncPoi(int num,Mapa mapa,POI poi){
-		switch(num){
-		case 0:
-			func1=new AgregarPOI();
-			break;
-		case 1:
-			func1=new BorrarPOI();
-			break;
-		case 2:
-			func1=new ModificarPOI();
-			break;	
-		case 3:
-			func1=new ConsultarPOI();
-			break;		
-		}	
-		func1.realizarFuncionConPOI(mapa, poi);
+	public Boolean verificarPermisos(Funcionalidad funcionalidad){
+		return permisos.contains(funcionalidad);
 	}
 
 	

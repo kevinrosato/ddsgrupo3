@@ -13,6 +13,7 @@ public class Mapa {
 	private List<POI> listaPois = new ArrayList<POI>();
 	private Calendar horaActual;
 	private Ubicacion ubicacionActual;
+	
 	//----------
 	//Metodos
 	//----------
@@ -101,6 +102,14 @@ public class Mapa {
 	public Integer	cantPOIs()	{
 		return	this.getListaPois().size();
 	}
+	
+	//----------------------------------------------
+	//METODOS ABCM
+	public void realizarFuncConPoi(Funcionalidad funcionalidad,POI poi){
+		funcionalidad.realizarFuncionConPOI(this.getListaPois(),poi);
+	}	
+	
+	
 	//----------
 	//Getters y Setters
 	//----------
@@ -110,9 +119,6 @@ public class Mapa {
 	}
 	public void setListaPois(List<POI> listaPois) {
 		this.listaPois = listaPois;
-	}	
-	public void agregarPoi(POI poi){
-		listaPois.add(poi);
 	}
 	public Calendar getHoraActual() {
 		return horaActual;
@@ -125,5 +131,9 @@ public class Mapa {
 	}
 	public void setUbicacionActual(Ubicacion ubicacionActual) {
 		this.ubicacionActual = ubicacionActual;
+	}
+	//VER DE SACARLO SIN QUE ROMPAN LOS TESTS
+	public void agregarPoi(POI poi){
+		listaPois.add(poi);
 	}
 }

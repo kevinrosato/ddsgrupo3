@@ -1,12 +1,14 @@
 package ddsgrupo3;
 
+import java.util.List;
+
 import dds.grupo3.POIsSistem.POI;
 
 public class BorrarPOI implements Funcionalidad{
-
+	
 	@Override
-	public void realizarFuncionConPOI(Mapa mapa, POI poi) {
-		// TODO Auto-generated method stub
+	public void realizarFuncionConPOI(List<POI> listaPois, POI poi) {
+		listaPois.remove(poi);
 	}
 
 }
