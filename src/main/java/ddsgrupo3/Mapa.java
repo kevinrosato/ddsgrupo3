@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
+import dds.grupo3.DTOs.CGPDAO;
 import dds.grupo3.POIsSistem.POI;
 import dds.grupo3.POIsSistem.Ubicacion;
 
@@ -13,7 +14,7 @@ public class Mapa {
 	private List<POI> listaPois = new ArrayList<POI>();
 	private Calendar horaActual;
 	private Ubicacion ubicacionActual;
-	
+	private CGPDAO baseDatosCGP;
 	//----------
 	//Metodos
 	//----------
@@ -68,6 +69,7 @@ public class Mapa {
 		{
 			if (i.tieneLaClave(palabraClave))	listaAux.add(i);
 		}
+		listaAux.addAll(this.getBaseDatosCGP().getByKey(palabraClave));
 		return listaAux;	
 	}
 	public	List<POI>	buscarCercanos(List<POI> lista)
@@ -135,5 +137,11 @@ public class Mapa {
 	//VER DE SACARLO SIN QUE ROMPAN LOS TESTS
 	public void agregarPoi(POI poi){
 		listaPois.add(poi);
+	}
+	public CGPDAO getBaseDatosCGP() {
+		return baseDatosCGP;
+	}
+	public void setBaseDatosCGP(CGPDAO baseDatosCGP) {
+		this.baseDatosCGP = baseDatosCGP;
 	}
 }

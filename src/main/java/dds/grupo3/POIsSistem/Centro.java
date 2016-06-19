@@ -3,16 +3,19 @@ package dds.grupo3.POIsSistem;
 import java.util.Calendar;
 
 import dds.grupo3.DTOs.CentroDTO;
+import dds.grupo3.DTOs.HorariosServDTO;
+import dds.grupo3.DTOs.ServDTO;
 
-public class Centro extends CGP implements POIGral {
+public class Centro extends POI implements POIGral {
 
 	CentroDTO	infoDTO;
 
-//	mensajes
-	public Centro(String name, Byte numeroCGP)
+
+	public Centro(CentroDTO	centro)
 	{
-		super(name, numeroCGP);
+		this.setInfoDTO(centro);
 	}
+//	mensajes
 	@Override
 	public void mostrarInformacionAvanzada()
 	{
@@ -26,30 +29,45 @@ public class Centro extends CGP implements POIGral {
 	@Override
 	public Boolean estaCercaDe(Ubicacion ubicacion)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return ubicacion.getComuna().equals(this.getInfoDTO().getNumComuna());
 	}
 	@Override
-	public Boolean tieneLaClave(String clave) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean tieneLaClave(String clave)
+	{
+		return (this.getInfoDTO().getDomicilioCompleto().contains(clave)
+				|| this.getInfoDTO().getZonasIncluidas().contains(clave));
 	}
 	@Override
-	public Boolean estaDisponible(Calendar horaActual) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean estaDisponible(Calendar horaActual)
+	{
+		for (ServDTO i: this.getInfoDTO().getServicios())
+		{
+			for (HorariosServDTO j: i.getHorarios())
+			{
+				Horario horario = new Horario();
+				horario.setDiaInicio(j.getDia());
+				horario.setDiaFinal(j.getDia());
+				horario.setHorarioInicio(j.getHoraInicio()*100 + j.getMinInicio());
+				horario.setHorarioCierre(j.getHoraFin()*100 + j.getMinFin());
+			
+				if(horaActual.before(horario) && horaActual.after(horario)) //ver que onda
+				{
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	@Override
-	public Boolean esValido() {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean esValido()
+	{
+		return true;
 	}
 	@Override
-	public String conocerTipo() {
-		// TODO Auto-generated method stub
-		return null;
+	public String conocerTipo()
+	{
+		return "Centro De Gestion y Participacion (CGP)";
 	}
-
 	
 //	GyS
 	public CentroDTO getInfoDTO()
