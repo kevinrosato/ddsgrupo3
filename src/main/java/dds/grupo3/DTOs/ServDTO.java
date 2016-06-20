@@ -1,10 +1,12 @@
 package dds.grupo3.DTOs;
 
+import java.util.List;
+
 public class ServDTO {
 
 //	atts
 	String			nombreServ;
-	HorariosServDTO[]	horarios;
+	List<HorariosServDTO>	horarios;
 	
 	@Override
 	public String toString() {
@@ -18,10 +20,10 @@ public class ServDTO {
 	public void setNombreServ(String nombreServ) {
 		this.nombreServ = nombreServ;
 	}
-	public HorariosServDTO[] getHorarios() {
+	public List<HorariosServDTO> getHorarios() {
 		return horarios;
 	}
-	public void setHorarios(HorariosServDTO[] horarios) {
+	public void setHorarios(List<HorariosServDTO> horarios) {
 		this.horarios = horarios;
 	}
 }

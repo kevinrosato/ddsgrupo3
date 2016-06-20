@@ -40,5 +40,4 @@ public class HorariosServDTO {
 	public void setMinFin(int minFin) {
 		this.minFin = minFin;
 	}
-
 }
