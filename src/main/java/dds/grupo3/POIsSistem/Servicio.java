@@ -1,13 +1,13 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class Servicio {
-	private List <Horario> horario=new ArrayList<Horario>();
-	private String nombre="";
-	private Double radioCercania=0.0;
+	private List <Horario> horario = new ArrayList<Horario>();
+	private String nombre = "";
+	private Double radioCercania = 0.0;
 	
 	//----------
 	//Constructor

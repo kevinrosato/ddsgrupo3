@@ -1,4 +1,4 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 import java.util.Calendar;
 import java.util.List;
@@ -19,7 +19,7 @@ public class CGP extends Local{
 	//----------
 		
 	public String conocerTipo(){
-		return "Centro De Gestion y Participacion";
+		return "Centro De Gestion y Participacion (CGP)";
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class CGP extends Local{
 	
 	@Override
 	public void mostrarInformacion() {
-		System.out.println("CGP NÂ°"+this.getNumeroCGP()+", "+this.getNombre());
+		System.out.println("CGP N°"+this.getNumeroCGP()+", "+this.getNombre());
 	}
 	
 	// Disponibilidad para CGP

@@ -1,4 +1,4 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 import java.util.Calendar;
 import java.util.List;
@@ -30,7 +30,7 @@ public class SucursalBanco extends Local{
 	}
 	
 	public Boolean estaCercaDe(Ubicacion lugar){
-		return super.estaCercaDePorDefecto(lugar);
+		return super.estaCercaComoPOI(lugar);
 	}
 	
 	//CODIGO DUPLICADO con CGP, ver bien como solucionar

@@ -5,6 +5,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import dds.grupo3.POIsSistem.CGP;
+import dds.grupo3.POIsSistem.Local;
+import dds.grupo3.POIsSistem.ParadaColectivo;
+import dds.grupo3.POIsSistem.SucursalBanco;
+
 public class TestsEntrega0B {
 	//----------
 	//Parametros Iniciales
@@ -89,5 +94,4 @@ public class TestsEntrega0B {
 	public void probarTipoLocal(){
 		Assert.assertEquals("Local Comercial",local.conocerTipo());
 	}
-	
 }

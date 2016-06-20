@@ -1,23 +1,24 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 import java.util.Calendar;
 
-public abstract class POI {
-	private Ubicacion ubicacion=new Ubicacion(0.0,0.0);
-	private String nombre="";
-	private String barrio="";
-	private String calle="";
-	private String callesPerpenIzq="";
-	private String callesPerpenDer="";
-	private String localidad="";
-	private String provincia="";
-	private String pais="";
-	private Integer altura=0;
+public abstract class POI	implements POIGral{
+	private Ubicacion ubicacion = new Ubicacion(0.0,0.0);
+	private String nombre = "";
+	private String barrio = "";
+	private String calle = "";
+	private String callesPerpenIzq = "";
+	private String callesPerpenDer = "";
+	private String localidad = "";
+	private String provincia = "";
+	private String pais = "";
+	private Integer altura = 0;
 	
 	//----------
 	//Metodos
 	//----------
 	
+		
 	public	Boolean	tieneLaClave(String clave){
 		return	(this.getNombre().contains(clave))
 				||	(this.getBarrio().contains(clave))
@@ -26,14 +27,15 @@ public abstract class POI {
 				||	(this.getCallesPerpenIzq().contains(clave))
 				||	(this.getCallesPerpenDer().contains(clave))
 				||	(this.getProvincia().contains(clave))
-				||	(this.getPais().contains(clave));
+				||	(this.getPais().contains(clave))
+				||	(this.conocerTipo().contains(clave));
 	}
 
 	public Boolean esValido() {
 		return (nombre!="" && ubicacion.esValido());
 	}
 
-	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
+	public Boolean estaCercaDe(Ubicacion posicion){
 		return (this.seEncuentraAMenosDe(posicion, 500.00));
 	}
 
@@ -43,9 +45,13 @@ public abstract class POI {
 	{
 		return this.ubicacion.seEncuentraAMenosDe(posicion, dist);
 	}
-
+	public void mostrarInformacionAvanzada()
+	{
+		this.mostrarInformacion();
+		System.out.println("[Acá en un futuro se muestra toda la info]");
+	}
 	public abstract void mostrarInformacion();
-	
+	public abstract String conocerTipo();
 	//----------------
 	//Getters y Setters
 	//----------------
@@ -123,6 +129,5 @@ public abstract class POI {
 	}
 	public void setPais(String pais) {
 		this.pais = pais;
-	}
-    
+	}    
 }

@@ -9,6 +9,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import dds.grupo3.DTOs.CGPDAO;
+import dds.grupo3.DTOs.CentroDTO;
+import dds.grupo3.DTOs.HorariosServDTO;
+import dds.grupo3.DTOs.ServDTO;
 import dds.grupo3.POIsSistem.CGP;
 import dds.grupo3.POIsSistem.Horario;
 import dds.grupo3.POIsSistem.Local;
@@ -17,7 +21,7 @@ import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
 
-public class TestsEntrega1 {
+public class TestsEntrega2 {
 	//----------
 	//Parametros Iniciales
 	//----------
@@ -32,11 +36,113 @@ public class TestsEntrega1 {
 	Integer 		comunaActual;
 	Ubicacion 		ubicacionActual;
 	Horario 		horario,	horario1,	horario2,	horario3,	horario4,	horario5;
-	
+	CentroDTO		cgpDTO1,	cgpDTO2,	cgpDTO3,	cgpDTO4,	cgpDTO5;
+	ServDTO			servDTO1,	servDTO2,	servDTO3,	servDTO4,	servDTO5;
+	HorariosServDTO	horServDTO1,horServDTO2,horServDTO3,horServDTO4,horServDTO5;
+	CGPDAO			cgpDAO;
 	@Before
-	public void init() {
+public void init() {
 		mapa		= new Mapa();
+
+//////// Seteo DTOs
+		cgpDAO		= new CGPDAO();
+		mapa.setBaseDatosCGP(cgpDAO);
 		
+		cgpDTO1		= new CentroDTO();
+		cgpDTO1.setDomicilioCompleto("Casares 1234");
+		cgpDTO1.setNombreDirector("Oliver Queen");
+		cgpDTO1.setNumComuna(1);
+		cgpDTO1.setZonasIncluidas("Belgrano, Caballito, Zamora");
+			List<ServDTO> servicios = new ArrayList<>();
+			servDTO1	= new ServDTO();
+			servDTO1.setNombreServ("Asesoramiento Contable");
+			List<HorariosServDTO> horarios = new ArrayList<>();
+				horServDTO1	= new HorariosServDTO();
+				horServDTO1.setDia(1);
+				horServDTO1.setHoraInicio(7);
+				horServDTO1.setMinInicio(0);
+				horServDTO1.setHoraFin(15);
+				horServDTO1.setMinFin(30);
+				horarios.add(horServDTO1);
+				horServDTO2	= new HorariosServDTO();
+				horServDTO2.setDia(2);
+				horServDTO2.setHoraInicio(7);
+				horServDTO2.setMinInicio(0);
+				horServDTO2.setHoraFin(15);
+				horServDTO2.setMinFin(30);
+				horarios.add(horServDTO2);
+				horServDTO3	= new HorariosServDTO();
+				horServDTO3.setDia(3);
+				horServDTO3.setHoraInicio(11);
+				horServDTO3.setMinInicio(30);
+				horServDTO3.setHoraFin(18);
+				horServDTO3.setMinFin(30);
+				horarios.add(horServDTO3);
+				horServDTO4	= new HorariosServDTO();
+				horServDTO4.setDia(4);
+				horServDTO4.setHoraInicio(7);
+				horServDTO4.setMinInicio(0);
+				horServDTO4.setHoraFin(15);
+				horServDTO4.setMinFin(30);
+				horarios.add(horServDTO4);
+				horServDTO5	= new HorariosServDTO();
+				horServDTO5.setDia(5);
+				horServDTO5.setHoraInicio(7);
+				horServDTO5.setMinInicio(0);
+				horServDTO5.setHoraFin(15);
+				horServDTO5.setMinFin(30);
+				horarios.add(horServDTO5);
+			servDTO1.setHorarios(horarios);
+			servicios.add(servDTO1);
+			servDTO2	= new ServDTO();
+			servDTO2.setNombreServ("Rentas");
+			servDTO2.setHorarios(horarios);
+			servicios.add(servDTO2);
+		cgpDTO1.setServicios(servicios);
+		
+		cgpDTO2		= new CentroDTO();
+		cgpDTO2.setDomicilioCompleto("Gorriti 1234");
+		cgpDTO2.setNombreDirector("Felicity Smoak");
+		cgpDTO2.setNumComuna(5);
+		cgpDTO2.setZonasIncluidas("Medrano");
+			List<ServDTO> servicios2 = new ArrayList<>();
+			servDTO3	= new ServDTO();
+			servDTO3.setNombreServ("Inmigracion");
+			servDTO4.setHorarios(horarios);
+			servicios2.add(servDTO3);
+			servDTO4	= new ServDTO();
+			servDTO4.setNombreServ("AFIP");
+			servDTO4.setHorarios(horarios);
+			servicios2.add(servDTO4);
+		cgpDTO2.setServicios(servicios2);
+		
+		cgpDTO3		= new CentroDTO();
+		cgpDTO3.setDomicilioCompleto("Salta 1234");
+		cgpDTO3.setNombreDirector("Barry Allen");
+		cgpDTO3.setNumComuna(3);
+		cgpDTO3.setZonasIncluidas("Central City, Starling City, Metropolis");
+			List<ServDTO> servicios3 = new ArrayList<>();
+			servDTO5	= new ServDTO();
+			servDTO5.setNombreServ("Asesoramientos Varios");
+			servDTO5.setHorarios(horarios);
+			servicios3.add(servDTO5);
+			servicios3.add(servDTO1);
+		cgpDTO2.setServicios(servicios3);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		List<CentroDTO>	centrosDTO = new ArrayList<>();
+		centrosDTO.add(cgpDTO1);
+		cgpDAO.setCentros(centrosDTO);
+	
+//////////Fin Seteo DTOs		
 		sucursal 	= new SucursalBanco("Galicia Microcentro");
 				servicio3 = new Servicio("Transferencia");
 					horario3 = new Horario();
@@ -220,9 +326,6 @@ public class TestsEntrega1 {
 	
 	@Test //Test de cercania con una sucursal. Distancia aproximada 448mts
 	public void pruebaCercaniaSucursal() {
-
-		sucursal.setLatitud(4.00);
-		sucursal.setLongitud(1.00);
 		Assert.assertTrue(sucursal.estaCercaDe(ubicacionActual));
 	}
 	@Test //Test de cercania con una parada de colectivo. Distancia aproximada 88mts
@@ -292,16 +395,9 @@ public class TestsEntrega1 {
 	
 	@Test //Test de Muestra de las paradas de una linea de colectivos
 	public void pruebaMuestraParadasDeUnaLinea() {
-
-		mapa.agregarPoi(parada);
-		mapa.agregarPoi(parada2);
-		//mapa.mostrarPOIS("153");
-		//mapa.mostrarPOIS("106");
-		//mapa.mostrarPOIS("7");
 		mapa.buscarYmostrar("151");
 		mapa.buscarYmostrar("106");
 		mapa.buscarYmostrar("7");
-
 		System.out.println("");
 	}	
 	@Test //Test de Muestra de los pois etiquetados con una palabra clave
@@ -315,7 +411,7 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de Reconocimiento de un Local por parte de su nombre
 	public void pruebaReconoceParteNombre() {
-		Assert.assertTrue(local.tieneLaClave("carla"));
+		Assert.assertTrue(local.tieneLaClave("Carlos"));
 	}
 	@Test //Test de Reconocimiento de un Local por su Rubro
 	public void pruebaReconoceLocalxNombreRubro() {

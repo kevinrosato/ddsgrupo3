@@ -1,4 +1,4 @@
-package ddsgrupo3;
+package dds.grupo3.POIsSistem;
 
 import java.util.Calendar;
 public class ParadaColectivo extends POI{
@@ -32,7 +32,6 @@ public class ParadaColectivo extends POI{
 		}
 		return valorDeVerdad;
 	}	
-	
 	@Override
 	public void mostrarInformacion(){
 		System.out.println("Parada en la calle "+super.getCalle()+", entre las calles "+super.getCallesPerpenDer()+" y "+super.getCallesPerpenIzq());
