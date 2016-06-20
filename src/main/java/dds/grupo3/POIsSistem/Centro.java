@@ -38,19 +38,20 @@ public class Centro extends POI implements POIGral {
 				|| this.getInfoDTO().getZonasIncluidas().contains(clave));
 	}
 	@Override
-	public Boolean estaDisponible(Calendar horaActual)
-	{
+	public Boolean estaDisponible(Calendar horaActual){
+		Integer diaSolicitado= horaActual.get(Calendar.DAY_OF_WEEK);
+		Integer horaSolicitada= horaActual.get(Calendar.HOUR_OF_DAY)*100+horaActual.get(Calendar.MINUTE);
 		for (ServDTO i: this.getInfoDTO().getServicios())
 		{
 			for (HorariosServDTO j: i.getHorarios())
 			{
 				Horario horario = new Horario();
-				horario.setDiaInicio(j.getDia());
-				horario.setDiaFinal(j.getDia());
+				horario.setDiaInicio((j.getDia() % 7)+1); //Parseado porque los DTO empiezan 1=Lunes y los nuestros 1=Domingo
+				horario.setDiaFinal((j.getDia() % 7)+1);
 				horario.setHorarioInicio(j.getHoraInicio()*100 + j.getMinInicio());
 				horario.setHorarioCierre(j.getHoraFin()*100 + j.getMinFin());
-			
-				if(horaActual.before(horario) && horaActual.after(horario)) //ver que onda
+				if(diaSolicitado>=horario.getDiaInicio() &&  diaSolicitado<=horario.getDiaFinal() &&
+						(horaSolicitada>=horario.getHorarioInicio())&& (horaSolicitada<=horario.getHorarioCierre()))
 				{
 					return true;
 				}
