@@ -113,7 +113,7 @@ public class TestsEntrega1 {
 	
 	@Test //Test de cercania con una sucursal. Distancia aproximada 448mts
 	public void pruebaCercaniaSucursal() {
-		sucursal.setLatitud(1.00);
+		sucursal.setLatitud(4.00);
 		sucursal.setLongitud(1.00);
 		Assert.assertTrue(sucursal.estaCercaDe(ubicacionActual));
 	}
@@ -201,7 +201,7 @@ public class TestsEntrega1 {
 	public void pruebaMuestraParadasDeUnaLinea() {
 		mapa.agregarPoi(parada);
 		mapa.agregarPoi(parada2);
-		mapa.mostrarPOIS("151");
+		mapa.mostrarPOIS("153");
 		mapa.mostrarPOIS("106");
 		mapa.mostrarPOIS("7");
 		System.out.println("");
@@ -224,7 +224,7 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de Reconocimiento de un Local por parte de su nombre
 	public void pruebaReconoceParteNombre() {
-		Assert.assertTrue(local.tieneLaClave("Carlos"));
+		Assert.assertTrue(local.tieneLaClave("carla"));
 	}
 	@Test //Test de Reconocimiento de un Local por su Rubro
 	public void pruebaReconoceLocalxNombreRubro() {

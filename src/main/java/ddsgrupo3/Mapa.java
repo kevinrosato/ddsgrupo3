@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Mapa {
 	
-	private List<POI> listaPois=new ArrayList<POI>();
+	private List<POI> listaPois = new ArrayList<POI>();
 	
 	//----------
 	//Metodos
@@ -48,5 +48,9 @@ public class Mapa {
 	public void agregarPoi(POI poi){
 		listaPois.add(poi);
 	}
+	
+
+	
+	
 	
 }
