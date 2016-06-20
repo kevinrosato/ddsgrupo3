@@ -39,8 +39,6 @@ public class Centro extends POI implements POIGral {
 	}
 	@Override
 	public Boolean estaDisponible(Calendar horaActual){
-		Integer diaSolicitado= horaActual.get(Calendar.DAY_OF_WEEK);
-		Integer horaSolicitada= horaActual.get(Calendar.HOUR_OF_DAY)*100+horaActual.get(Calendar.MINUTE);
 		for (ServDTO i: this.getInfoDTO().getServicios())
 		{
 			for (HorariosServDTO j: i.getHorarios())
@@ -50,8 +48,7 @@ public class Centro extends POI implements POIGral {
 				horario.setDiaFinal((j.getDia() % 7)+1);
 				horario.setHorarioInicio(j.getHoraInicio()*100 + j.getMinInicio());
 				horario.setHorarioCierre(j.getHoraFin()*100 + j.getMinFin());
-				if(diaSolicitado>=horario.getDiaInicio() &&  diaSolicitado<=horario.getDiaFinal() &&
-						(horaSolicitada>=horario.getHorarioInicio())&& (horaSolicitada<=horario.getHorarioCierre()))
+				if(horario.estaEnElRango(horaActual))
 				{
 					return true;
 				}
