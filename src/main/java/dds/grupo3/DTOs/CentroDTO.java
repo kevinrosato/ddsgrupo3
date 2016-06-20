@@ -1,6 +1,6 @@
 package dds.grupo3.DTOs;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class CentroDTO {
 	
@@ -9,13 +9,17 @@ public class CentroDTO {
 	String	zonasIncluidas;
 	String	nombreDirector;
 	String	domicilioCompleto;
-	ServDTO[]	servicios;
+	List<ServDTO>	servicios;
 
-@Override
+	public String mostrar()
+	{
+		return "CentroDTO [zonasIncluidas=" + zonasIncluidas + ", nombreDirector="
+				+ nombreDirector + ", domicilioCompleto=" + domicilioCompleto + "]";	
+	}
+	@Override
 	public String toString() {
 		return "CentroDTO [numComuna=" + numComuna + ", zonasIncluidas=" + zonasIncluidas + ", nombreDirector="
-				+ nombreDirector + ", domicilioCompleto=" + domicilioCompleto + ", servicios="
-				+ Arrays.toString(servicios) + "]";
+				+ nombreDirector + ", domicilioCompleto=" + domicilioCompleto + ", servicios=" + servicios + "]";
 	}
 	//	GyS	
 	public int getNumComuna() {
@@ -42,10 +46,10 @@ public class CentroDTO {
 	public void setDomicilioCompleto(String domicilioCompleto) {
 		this.domicilioCompleto = domicilioCompleto;
 	}
-	public ServDTO[] getServicios() {
+	public List<ServDTO> getServicios() {
 		return servicios;
 	}
-	public void setServicios(ServDTO[] servicion) {
-		this.servicios = servicion;
+	public void setServicios(List<ServDTO> servicios) {
+		this.servicios = servicios;
 	}
 }

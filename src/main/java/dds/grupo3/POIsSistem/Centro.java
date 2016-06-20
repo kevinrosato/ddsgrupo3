@@ -24,7 +24,7 @@ public class Centro extends POI implements POIGral {
 	@Override
 	public void mostrarInformacion()
 	{
-		this.mostrarInformacionAvanzada();
+		this.getInfoDTO().mostrar();
 	}
 	@Override
 	public Boolean estaCercaDe(Ubicacion ubicacion)

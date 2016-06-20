@@ -69,7 +69,7 @@ public class Mapa {
 		{
 			if (i.tieneLaClave(palabraClave))	listaAux.add(i);
 		}
-		listaAux.addAll(this.getBaseDatosCGP().getByKey(palabraClave));
+		listaAux.addAll(this.buscarCentros(palabraClave));
 		return listaAux;	
 	}
 	public	List<POI>	buscarCercanos(List<POI> lista)
@@ -81,7 +81,10 @@ public class Mapa {
 		}
 		return listaAux;	
 	}
-
+	public List<POI>	buscarCentros(String clave)
+	{
+		return	this.getBaseDatosCGP().getByKey(clave);
+	}
 	public void buscarYmostrar(String clave)
 	{
 		mostrarPOIs(clave, this.buscarPOIs(clave, this.getListaPois()));
