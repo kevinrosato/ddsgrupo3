@@ -35,8 +35,8 @@ public class FabricaDePOIs {
 	public POI crearLocal(String campos,String camposPOI){
 		camposPOI=camposPOI.trim();
 		campos=campos.trim();
-		this.campos=campos.split(campos,',');
-		this.camposPOI=camposPOI.split(camposPOI,',');
+		this.campos=campos.split(",");
+		this.camposPOI=camposPOI.split(",");
 		//campos= "codigoPostal,departamento,piso,unidad,rubro"
 		//Faltaria ver rubro
 		Local local=new Local(this.camposPOI[3]);
@@ -48,8 +48,8 @@ public class FabricaDePOIs {
 	public POI crearCGP(String campos,String camposPOI){
 		camposPOI=camposPOI.trim();
 		campos=campos.trim();
-		this.campos=campos.split(campos,',');
-		this.camposPOI=camposPOI.split(camposPOI,',');
+		this.campos=campos.split(",");
+		this.camposPOI=camposPOI.split(",");
 		//campos= "cp,departamento,piso,unidad,numeroCGP,servicios"
 		//Faltaria ver servicios
 		CGP cgp=new CGP(this.camposPOI[3],Byte.parseByte(this.campos[4]));
@@ -61,8 +61,8 @@ public class FabricaDePOIs {
 	public POI crearSucursalDeBanco(String campos,String camposPOI){
 		camposPOI=camposPOI.trim();
 		campos=campos.trim();
-		this.campos=campos.split(campos,',');
-		this.camposPOI=camposPOI.split(camposPOI,',');
+		this.campos=campos.split(",");
+		this.camposPOI=camposPOI.split(",");
 		//campos= "cp,departamento,piso,unidad,servicios"
 		//Faltaria ver servicios
 		SucursalBanco banco=new SucursalBanco(this.camposPOI[3]);
@@ -74,7 +74,7 @@ public class FabricaDePOIs {
 	public POI crearParadaDeColectivo(String campo,String camposPOI){
 		camposPOI=camposPOI.trim();
 		campo=campo.trim();
-		this.camposPOI=camposPOI.split(camposPOI,',');
+		this.camposPOI=camposPOI.split(",");
 		//campo= "lineas"
 		//Faltaria ver lineas
 		ParadaColectivo parada=new ParadaColectivo();
