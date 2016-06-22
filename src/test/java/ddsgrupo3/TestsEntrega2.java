@@ -108,9 +108,9 @@ public void init() {
 			List<ServDTO> servicios2 = new ArrayList<>();
 			servDTO3	= new ServDTO();
 			servDTO3.setNombreServ("Inmigracion");
+			servDTO4	= new ServDTO();
 			servDTO4.setHorarios(horarios);
 			servicios2.add(servDTO3);
-			servDTO4	= new ServDTO();
 			servDTO4.setNombreServ("AFIP");
 			servDTO4.setHorarios(horarios);
 			servicios2.add(servDTO4);
@@ -158,7 +158,7 @@ public void init() {
 		sucursal.setBarrio("Microcentro");
 		sucursal.setCalle("Espada");
 		sucursal.setCallesPerpenDer("Escudo");
-		sucursal.setCallesPerpenIzq("Peña");
+		sucursal.setCallesPerpenIzq("Peï¿½a");
 		sucursal.setCodigoPostal(2524);
 		sucursal.setComuna(1);
 		sucursal.setLocalidad("Microcentro");
@@ -285,7 +285,7 @@ public void init() {
 		cgp3.setAltura(432);
 		cgp3.setBarrio("Zamore");
 		cgp3.setCalle("Cielo");
-		cgp3.setCallesPerpenDer("España");
+		cgp3.setCallesPerpenDer("Espaï¿½a");
 		cgp3.setCallesPerpenIzq("Boedo");
 		cgp3.setCodigoPostal(3524);
 		cgp3.setComuna(4);
@@ -429,7 +429,7 @@ public void init() {
 		mapa.buscarYmostrar("Asesoramiento");
 		System.out.println("");
 	}
-	@Test //Test de Uso de consola en Mapa
+	/*@Test //Test de Uso de consola en Mapa
 	public void busquedaLibreDePOIs(){
 		calendario.set(Calendar.DAY_OF_WEEK, 2);
 		calendario.set(Calendar.HOUR_OF_DAY, 10);
@@ -439,5 +439,15 @@ public void init() {
 //		calculador.pruebaLeven();
 		mapa.realizarBusqueda();
 		System.out.println("");
-	}	
+	}	*/
+	@Test //Test de prueba de Json
+	public void pruebaJson() {
+		mapa.buscarYmostrar("Javier Loeschbor");
+		System.out.println("");
+	}
+	@Test // Otro test de prueba de Json
+	public void pruebaJson2() {
+		mapa.buscarYmostrar("Fabian Fantaguzzi");
+		System.out.println("");
+	}
 }
