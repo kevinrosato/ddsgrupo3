@@ -38,6 +38,10 @@ public abstract class POI	implements POIGral{
 	public Boolean estaCercaDe(Ubicacion posicion){
 		return (this.seEncuentraAMenosDe(posicion, 500.00));
 	}
+	
+	public Boolean estaCercaDePorDefecto(Ubicacion posicion){
+		return (this.seEncuentraAMenosDe(posicion, 500.00));
+	}
 
 	public abstract Boolean estaDisponible(Calendar horario);
 	
@@ -48,7 +52,7 @@ public abstract class POI	implements POIGral{
 	public void mostrarInformacionAvanzada()
 	{
 		this.mostrarInformacion();
-		System.out.println("[Acá en un futuro se muestra toda la info]");
+		System.out.println("[Acï¿½ en un futuro se muestra toda la info]");
 	}
 	public abstract void mostrarInformacion();
 	public abstract String conocerTipo();

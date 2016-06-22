@@ -3,8 +3,6 @@ package ddsgrupo3;
 import java.util.ArrayList;
 import java.util.List;
 
-import dds.grupo3.POIsSistem.POI;
-
 public class Rol{
 
 	private List<Funcionalidad> permisos=new ArrayList<Funcionalidad>();

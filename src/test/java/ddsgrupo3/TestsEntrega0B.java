@@ -84,7 +84,7 @@ public class TestsEntrega0B {
 	}
 	@Test //Test de tipo de un CGP
 	public void probarTipoCGP(){
-		Assert.assertEquals("Centro De Gestion y Participacion",cgp.conocerTipo());
+		Assert.assertEquals("Centro De Gestion y Participacion (CGP)",cgp.conocerTipo());
 	}
 	@Test //Test de tipo de una sucursal
 	public void probarTipoSucursal(){

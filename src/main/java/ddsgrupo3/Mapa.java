@@ -14,7 +14,7 @@ public class Mapa {
 	private List<POI> listaPois = new ArrayList<POI>();
 	private Calendar horaActual;
 	private Ubicacion ubicacionActual;
-	private CGPDAO baseDatosCGP;
+	private CGPDAO baseDatosCGP= new CGPDAO();
 	//----------
 	//Metodos
 	//----------
@@ -81,10 +81,10 @@ public class Mapa {
 		}
 		return listaAux;	
 	}
-	public List<POI>	buscarCentros(String clave)
-	{
+	public List<POI>	buscarCentros(String clave){
 		return	this.getBaseDatosCGP().getByKey(clave);
 	}
+	
 	public void buscarYmostrar(String clave)
 	{
 		mostrarPOIs(clave, this.buscarPOIs(clave, this.getListaPois()));
