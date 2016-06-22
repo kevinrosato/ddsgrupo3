@@ -24,7 +24,7 @@ public class Aplicacion {
 			password = teclado.nextLine();
 		} while (!this.validarUser(usuario,password));
 		
-		this.menuPrincipal();
+		this.menuPrincipal(usuario);
 
 		
 		teclado.close();
@@ -40,7 +40,7 @@ public class Aplicacion {
 		return false;
 	}
 
-	public void menuPrincipal(){
+	public void menuPrincipal(String usuario){
 		System.out.println("----------------------------------------");
 		System.out.println("Bienvenido al sistema de POIS");
 		System.out.println("----------------------------------------");
@@ -58,10 +58,10 @@ public class Aplicacion {
 
 		switch (opcionElegida) {
           case 1: this.menuAltaPOI(); break;
-          case 2: this.menuBajaPOI(); break;
+          case 2: this.menuBajaPOI(usuario); break;
           case 3: this.menuModificarPOI(); break;
           case 4: this.menuConsultarPOI(); break;
-          case 5: this.menuPrincipal(); break;
+          case 5: this.menuPrincipal(usuario); break;
           default: System.out.println ("Opcion incorrecta"); break;
       }
 		//System.out.println("usted ingreso la opcion:"+n);
@@ -113,35 +113,53 @@ public class Aplicacion {
 		System.out.println("---------------------------------------");
 		System.out.println("	ALTA DE UNA CGP");
 		System.out.println("---------------------------------------");
-
+		Scanner teclado = new Scanner(System.in);
+		System.out.println("Ingrese Numero de CGP:");
+		int numCGP = teclado.nextInt();
+		System.out.println("Ingrese nombre de la CGP:");
+		String nombreCGP = teclado.nextLine();
+		System.out.println("Ingrese codigo postal");
+		Integer codPostal = teclado.nextInt();
+		System.out.println("Ingrese departamento");
+		Byte dpto = teclado.nextByte();
+		
+		System.out.println("Ingrese SERVICIOS que ofrece:");
+	
+		
+		
+		teclado.close();
 	}
 
-	public void menuBajaPOI(){
+	public void menuBajaPOI(Usuario usuario){
 		
 		System.out.println("---------------------------------------");
 		System.out.println("		BAJA DE UN POI");
 		System.out.println("----------------------------------------");
 		System.out.println();
-		System.out.println("");
+		System.out.println("Ingrese el nombre del poi a borrar:");
+		usuario.borrarPOI(poi);
+		
 		
 	}
-	public void menuModificarPOI(){
+	public void menuModificarPOI(Usuario usuario){
 		
 		System.out.println("---------------------------------------");
 		System.out.println("		MODIFICACION DE UN POI");
 		System.out.println("----------------------------------------");
 		System.out.println();
 		System.out.println("");
+		usuario.modificarPOI(poi, poiNuevo);
 		
 	}
 	
-	public void menuConsultarPOI(){
+	public void menuConsultarPOI(Usuario usuario){
 		
 		System.out.println("---------------------------------------");
 		System.out.println("		CONSULTA DE UN POI");
 		System.out.println("----------------------------------------");
 		System.out.println();
 		System.out.println("");
+		usuario.consultarPOI(poi);
 		
 	}
 	
