@@ -270,5 +270,20 @@ public class Aplicacion {
 		aplicacion.menuLogin(usuario);
 	
 	}
-
+	public void ejecutarAplicacion(Mapa mapa)
+	{
+		Usuario usuario=new Usuario();
+		usuario.setMapa(mapa);
+		Rol admin= new Rol();
+		List<Funcionalidad> permisos=new ArrayList<Funcionalidad>();
+		permisos.add(new AgregarPOI());
+		permisos.add(new ConsultarPOI(null));
+		permisos.add(new ModificarPOI(null));
+		permisos.add(new BorrarPOI());
+		admin.setPermisos(permisos);
+		usuario.setRol(admin);
+		
+		Aplicacion aplicacion = new Aplicacion();
+		aplicacion.menuLogin(usuario);		
+	}
 }

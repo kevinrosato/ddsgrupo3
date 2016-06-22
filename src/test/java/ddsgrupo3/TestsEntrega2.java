@@ -45,8 +45,6 @@ public void init() {
 		mapa		= new Mapa();
 
 //////// Seteo DTOs
-		cgpDAO		= new CGPDAO();
-		mapa.setBaseDatosCGP(cgpDAO);
 		
 		cgpDTO1		= new CentroDTO();
 		cgpDTO1.setDomicilioCompleto("Casares 1234");
@@ -127,20 +125,16 @@ public void init() {
 			servDTO5.setHorarios(horarios);
 			servicios3.add(servDTO5);
 			servicios3.add(servDTO1);
-		cgpDTO2.setServicios(servicios3);
+		cgpDTO3.setServicios(servicios3);
 		
+		cgpDAO		= new CGPDAO();
+		List<CentroDTO> coleccionDTO = new ArrayList<CentroDTO>();
+		coleccionDTO.add(cgpDTO1);
+		coleccionDTO.add(cgpDTO2);
+		coleccionDTO.add(cgpDTO3);
+		cgpDAO.setCentros(coleccionDTO);		
+		mapa.setBaseDatosCGP(cgpDAO);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		List<CentroDTO>	centrosDTO = new ArrayList<>();
-		centrosDTO.add(cgpDTO1);
-		cgpDAO.setCentros(centrosDTO);
 	
 //////////Fin Seteo DTOs		
 		sucursal 	= new SucursalBanco("Galicia Microcentro");
@@ -450,4 +444,11 @@ public void init() {
 		mapa.buscarYmostrar("Fabian Fantaguzzi");
 		System.out.println("");
 	}
+
+	@Test // Otro test de prueba de Json
+	public void testApk() {
+		Aplicacion aplicacion = new Aplicacion();
+		aplicacion.ejecutarAplicacion(mapa);
+	}
+
 }
