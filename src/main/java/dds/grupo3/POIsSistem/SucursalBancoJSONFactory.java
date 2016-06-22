@@ -10,8 +10,8 @@ import com.sun.jersey.api.client.ClientResponse;
 
 public class SucursalBancoJSONFactory { //Genera objetos del tipo SucursalBancoJSON conectandose a la URL
 										//Luegos los agrega a la lista de tipo POIGral
-	public List<POIGral> generarPoi() {
-			List<POIGral> listaPois = new ArrayList<POIGral>();
+	public List<POI> generarPoi() {
+			List<POI> listaPois = new ArrayList<POI>();
 			RequestService requester;
 			requester = new RequestService();
 		    JsonFactory jsonFactory = new JsonFactory();

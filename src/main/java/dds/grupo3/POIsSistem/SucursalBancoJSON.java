@@ -2,7 +2,7 @@ package dds.grupo3.POIsSistem;
 
 import java.util.Calendar;
 
-public class SucursalBancoJSON implements POIGral { //POI del tipo SucursalBanco generado desde una consulta JSON 
+public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo SucursalBanco generado desde una consulta JSON 
 	//----------
 	//Parametros
 	//----------
