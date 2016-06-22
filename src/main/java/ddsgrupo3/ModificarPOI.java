@@ -14,11 +14,11 @@ public class ModificarPOI implements Funcionalidad{
 	@Override
 	public void realizarFuncionConPOI(List<POI> listaPois, POI poi) {
 		// TODO Auto-generated method stub
-		int i;
-		for(i=0;i<listaPois.size();i++){
-			if(listaPois.get(i).equals(poi))break;
+		int i=0;
+		while(i<listaPois.size()&&(listaPois.get(i)!=poi)){
+			if(listaPois.get(i)!=poi)i++;
 		}
-		listaPois.set(i,this.poiNuevo);
+		if(i!=listaPois.size()) listaPois.set(i,this.poiNuevo);
 	}
 	
 
