@@ -16,13 +16,12 @@ public class Mapa {
 	private Calendar horaActual;
 	private Ubicacion ubicacionActual;
 	private CGPDAO baseDatosCGP= new CGPDAO();
-	private List<POI> listaPoisJson= new ArrayList<POI>();
 	//----------
 	//Metodos
 	//----------
 	public Mapa(){
 		SucursalBancoJSONFactory factoryJson= new SucursalBancoJSONFactory();
-		listaPoisJson=factoryJson.generarPoi();
+		listaPois.addAll(factoryJson.generarPoi());
 	}
 	
 	public void realizarBusqueda ()
@@ -57,7 +56,7 @@ public class Mapa {
 		palabraClave = palabraClave.trim();
 		if (palabraClave.contains("Disponible")) return this.buscarDisponibles(lista);
 		else if (palabraClave.contains("Cercano")) return this.buscarCercanos(lista);
-		else return	this.buscarPOIs(palabraClave, lista, this.getListaPoisJson());
+		else return	this.buscarPOIs(palabraClave, lista);
 	}
 	public	List<POI>	buscarDisponibles(List<POI> lista)
 	{
@@ -68,15 +67,12 @@ public class Mapa {
 		}
 		return listaAux;
 	}
-	public	List<POI>	buscarPOIs(String palabraClave, List<POI> lista, List<POI> listajson)
+	public	List<POI>	buscarPOIs(String palabraClave, List<POI> lista)
 	{	
 		List<POI> listaAux = new ArrayList<POI>();
 		for (POI i: lista)
 		{
 			if (i.tieneLaClave(palabraClave))	listaAux.add(i);
-		}
-		for(POI i:listajson){
-			if(i.tieneLaClave(palabraClave)) listaAux.add(i);
 		}
 		listaAux.addAll(this.buscarCentros(palabraClave));
 		return listaAux;	
@@ -96,7 +92,7 @@ public class Mapa {
 	
 	public void buscarYmostrar(String clave)
 	{
-		mostrarPOIs(clave, this.buscarPOIs(clave, this.getListaPois(),this.getListaPoisJson()));
+		mostrarPOIs(clave, this.buscarPOIs(clave, this.getListaPois()));
 	}
 	public void mostrarPOIs(String palabraClave, List<POI> lista)
 	{
@@ -158,11 +154,5 @@ public class Mapa {
 		this.baseDatosCGP = baseDatosCGP;
 	}
 
-	public List<POI> getListaPoisJson() {
-		return listaPoisJson;
-	}
-	public void setListaPoisJson(List<POI> listaPoisJson) {
-		this.listaPoisJson = listaPoisJson;
-	}
 	
 }
