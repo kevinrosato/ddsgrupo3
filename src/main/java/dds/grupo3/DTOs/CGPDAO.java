@@ -8,11 +8,12 @@ import dds.grupo3.POIsSistem.POI;
 
 public class CGPDAO {
 
-	private List<CentroDTO>	centros;
+	private List<CentroDTO>	centros= new ArrayList<CentroDTO>();
 
 	public	List<POI>	getByKey(String clave)
-	{
+	{   
 		List<POI> listaAux = new ArrayList<POI>();
+		
 		for (CentroDTO i: centros)
 		{
 			POI	centro = new Centro(i);

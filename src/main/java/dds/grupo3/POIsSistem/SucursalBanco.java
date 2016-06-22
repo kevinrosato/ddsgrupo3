@@ -30,7 +30,7 @@ public class SucursalBanco extends Local{
 	}
 	
 	public Boolean estaCercaDe(Ubicacion lugar){
-		return super.estaCercaComoPOI(lugar);
+		return this.estaCercaDePorDefecto(lugar);
 	}
 	
 	//CODIGO DUPLICADO con CGP, ver bien como solucionar

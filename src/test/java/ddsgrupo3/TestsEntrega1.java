@@ -52,7 +52,7 @@ public class TestsEntrega1 {
 		sucursal.setBarrio("Microcentro");
 		sucursal.setCalle("Espada");
 		sucursal.setCallesPerpenDer("Escudo");
-		sucursal.setCallesPerpenIzq("Peña");
+		sucursal.setCallesPerpenIzq("Peï¿½a");
 		sucursal.setCodigoPostal(2524);
 		sucursal.setComuna(1);
 		sucursal.setLocalidad("Microcentro");
@@ -179,7 +179,7 @@ public class TestsEntrega1 {
 		cgp3.setAltura(432);
 		cgp3.setBarrio("Zamore");
 		cgp3.setCalle("Cielo");
-		cgp3.setCallesPerpenDer("España");
+		cgp3.setCallesPerpenDer("Espaï¿½a");
 		cgp3.setCallesPerpenIzq("Boedo");
 		cgp3.setCodigoPostal(3524);
 		cgp3.setComuna(4);
@@ -220,8 +220,7 @@ public class TestsEntrega1 {
 	
 	@Test //Test de cercania con una sucursal. Distancia aproximada 448mts
 	public void pruebaCercaniaSucursal() {
-
-		sucursal.setLatitud(4.00);
+		sucursal.setLatitud(1.004);
 		sucursal.setLongitud(1.00);
 		Assert.assertTrue(sucursal.estaCercaDe(ubicacionActual));
 	}
@@ -315,7 +314,7 @@ public class TestsEntrega1 {
 	}
 	@Test //Test de Reconocimiento de un Local por parte de su nombre
 	public void pruebaReconoceParteNombre() {
-		Assert.assertTrue(local.tieneLaClave("carla"));
+		Assert.assertTrue(local.tieneLaClave("arlo"));
 	}
 	@Test //Test de Reconocimiento de un Local por su Rubro
 	public void pruebaReconoceLocalxNombreRubro() {
@@ -333,7 +332,7 @@ public class TestsEntrega1 {
 		mapa.buscarYmostrar("Asesoramiento");
 		System.out.println("");
 	}
-	@Test //Test de Uso de consola en Mapa
+	/*@Test //Test de Uso de consola en Mapa
 	public void busquedaLibreDePOIs(){
 		calendario.set(Calendar.DAY_OF_WEEK, 2);
 		calendario.set(Calendar.HOUR_OF_DAY, 10);
@@ -343,5 +342,5 @@ public class TestsEntrega1 {
 //		calculador.pruebaLeven();
 		mapa.realizarBusqueda();
 		System.out.println("");
-	}	
+	}	*/
 }
