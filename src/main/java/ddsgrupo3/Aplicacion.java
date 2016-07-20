@@ -26,17 +26,21 @@ public class Aplicacion {
 		System.out.println("--------------------------------");
 		System.out.println("");
 
-		do {
+		while (usuario == null)
+		{
 			System.out.println("INGRESE USUARIO:");
 			nomUsuario = teclado.nextLine();
 			System.out.println("INGRESE CONTRASENIA:");
 			password = teclado.nextLine();
 			usuario = CuentasUsuario.instanciarUsuario(nomUsuario, password);				
-		} while (usuario.equals(null));
+		}
 		return usuario;
 	}
 	
 	public void menuPrincipal(User usuario){
+		Boolean flag = true;
+		while(flag)
+		{
 		System.out.println("----------------------------------------");
 		System.out.println("Bienvenido al sistema de POIS");
 		System.out.println("----------------------------------------");
@@ -56,9 +60,10 @@ public class Aplicacion {
           case 3: this.menuModificarPOI(usuario); break;
           case 4: this.menuConsultarPOI(usuario); break;
           case 5: this.menuPrincipal(usuario); break;
-          case 6: teclado.close(); break;
+          case 6: flag = false; break;
           default: System.out.println ("Opcion incorrecta"); break;
-      }
+		}
+		}
 	}
 	
 	public void menuAltaPOI(User usuario){
@@ -95,47 +100,12 @@ public class Aplicacion {
 			case 5: this.menuPrincipal(usuario); break;
 			default: System.out.println ("Opcion incorrecta"); break;
 		}
-		this.menuPrincipal(usuario);
 	}
 
 
-	public void menuBajaPOI(User usuario){
-		
-		
-		System.out.println("---------------------------------------");
-		System.out.println("		BAJA DE UN POI");
-		System.out.println("----------------------------------------");
-		System.out.println();
-		System.out.println("Elija el TIPO DE POI que desea eliminar:");
-		System.out.println(" 1 - CGP");
-		System.out.println(" 2 - BANCO");
-		System.out.println(" 3 - PARADA DE COLECTIVO");
-		System.out.println(" 4 - LOCAL");
-		System.out.println(" 5 - Volver al menu principal");
-		
-		System.out.print(" OPCION -> ");
-		String opcionElegida = teclado.nextLine();
-		String camposPOI=pedirInfo();
-		
-		switch (Integer.parseInt(opcionElegida)) {
-		case 1: POI cgp=crearCGP(camposPOI);
-				usuario.borrarPOI(cgp);
-				break;
-		case 2: POI banco=crearBanco(camposPOI);
-				usuario.borrarPOI(banco);
-				break;
-		case 3: POI parada=crearParada(camposPOI);
-				usuario.borrarPOI(parada);
-				break;
-		case 4: POI local=crearLocal(camposPOI);
-				usuario.borrarPOI(local);
-				break;
-		case 5: this.menuPrincipal(usuario); break;
-		default: System.out.println ("Opcion incorrecta"); break;
-		}	
-		this.menuPrincipal(usuario);
-
-		
+	public void menuBajaPOI(User usuario)
+	{
+		usuario.borrarPOI(null);
 	}
 	public void menuModificarPOI(User usuario){
 		
@@ -143,7 +113,7 @@ public class Aplicacion {
 		System.out.println("		MODIFICACION DE UN POI");
 		System.out.println("----------------------------------------");
 		System.out.println();
-		System.out.println("Elija el TIPO DE POI que desea modificar:");
+		System.out.println("Elija el TIPO DE POI que desea Crear:");
 		System.out.println(" 1 - CGP");
 		System.out.println(" 2 - BANCO");
 		System.out.println(" 3 - PARADA DE COLECTIVO");
@@ -152,40 +122,26 @@ public class Aplicacion {
 		
 		System.out.print(" OPCION -> ");
 		String opcionElegida = teclado.nextLine();
-		System.out.println("Ingrese los datos del POI que desea modificar.");
-		String camposPOI=pedirInfo();
 		String camposPOINuevo;
+		System.out.println("Ingrese los datos del POI nuevo.");
+		camposPOINuevo=pedirInfo();
 		
 		switch (Integer.parseInt(opcionElegida)) {
-		case 1: POI cgp=crearCGP(camposPOI);
-				System.out.println("Ingrese los datos del POI nuevo.");
-				camposPOINuevo=pedirInfo();
-				POI cgp2=crearCGP(camposPOINuevo);
-				usuario.modificarPOI(cgp, cgp2);;
+		case 1: POI cgp2=crearCGP(camposPOINuevo);
+				usuario.modificarPOI(null, cgp2);;
 				break;
-		case 2: POI banco=crearBanco(camposPOI);
-				System.out.println("Ingrese los datos del POI nuevo.");
-				camposPOINuevo=pedirInfo();
-				POI banco2=crearBanco(camposPOINuevo);
-				usuario.modificarPOI(banco, banco2);
+		case 2: POI banco2=crearBanco(camposPOINuevo);
+				usuario.modificarPOI(null, banco2);
 				break;
-		case 3: POI parada=crearParada(camposPOI);
-				System.out.println("Ingrese los datos del POI nuevo.");
-				camposPOINuevo=pedirInfo();
-				POI parada2=crearParada(camposPOINuevo);
-				usuario.modificarPOI(parada, parada2);
+		case 3: POI parada2=crearParada(camposPOINuevo);
+				usuario.modificarPOI(null, parada2);
 				break;
-		case 4: POI local=crearLocal(camposPOI);
-				System.out.println("Ingrese los datos del POI nuevo.");
-				camposPOINuevo=pedirInfo();
-				POI local2=crearLocal(camposPOINuevo);
-				usuario.modificarPOI(local, local2);
+		case 4: POI local2=crearLocal(camposPOINuevo);
+				usuario.modificarPOI(null, local2);
 				break;
 		case 5: this.menuPrincipal(usuario); break;
 		default: System.out.println ("Opcion incorrecta"); break;
 		}	
-		this.menuPrincipal(usuario);
-		
 	}
 	
 	public void menuConsultarPOI(User usuario){
@@ -195,8 +151,6 @@ public class Aplicacion {
 		System.out.println("----------------------------------------");
 		System.out.println();
 		usuario.consultarPOI(null);
-		this.menuPrincipal(usuario);
-		
 	}
 	
 	//*Metodos adicionales*//

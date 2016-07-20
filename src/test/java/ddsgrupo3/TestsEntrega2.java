@@ -14,7 +14,6 @@ import dds.grupo3.DTOs.HorariosServDTO;
 import dds.grupo3.DTOs.ServDTO;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.CGPDAO;
-import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.POIsSistem.CGP;
 import dds.grupo3.POIsSistem.Horario;
 import dds.grupo3.POIsSistem.Local;
@@ -22,7 +21,6 @@ import dds.grupo3.POIsSistem.ParadaColectivo;
 import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
-import dds.grupo3.User.CuentasUsuario;
 import dds.grupo3.User.Rol;
 
 public class TestsEntrega2 {
@@ -318,24 +316,6 @@ public void init() {
 		mapa.agregarPoi(carrousel);
 		mapa.agregarPoi(sucursal);
 		mapa.agregarPoi(sucursal2);
-
-		admin = new Rol();
-		admin.setNombre("admin");
-		List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
-		permisos.add((Funcionalidad) Factory.getObject("Agregar"));
-		permisos.add((Funcionalidad) Factory.getObject("Borrar"));
-		permisos.add((Funcionalidad) Factory.getObject("Modificar"));
-		permisos.add((Funcionalidad) Factory.getObject("Consultar"));
-		admin.setPermisos(permisos);
-
-		standar = new Rol();
-		standar.setNombre("standar");
-		List<Funcionalidad> permisos2 = new ArrayList<Funcionalidad>();
-		permisos2.add((Funcionalidad) Factory.getObject("Consultar"));
-		standar.setPermisos(permisos2);
-		
-		CuentasUsuario.agregarRol(admin);
-		CuentasUsuario.agregarRol(standar);
 	}
 	
 	//-----------------
@@ -363,9 +343,9 @@ public void init() {
 		mapa.buscarYmostrar("Oliver");
 	}
 
-//	@Test // Otro test de prueba de Json
-//	public void testApk() {
-//		Aplicacion aplicacion = new Aplicacion();
-//		aplicacion.ejecutar(mapa);
-//	}
+	@Test // Otro test de prueba de Json
+	public void testApk() {
+		Aplicacion aplicacion = new Aplicacion();
+		aplicacion.ejecutar(mapa);
+	}
 }

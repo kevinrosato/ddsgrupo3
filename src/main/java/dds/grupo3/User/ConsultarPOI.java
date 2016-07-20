@@ -12,14 +12,11 @@ public class ConsultarPOI implements Funcionalidad {
 
 	private AdministradorPOIs mapa;
 
-	public ConsultarPOI()
-	{
-		this.mapa = null;	
-	}
-	
 	@Override
 	public POIGral realizarFuncionConPOI(List<POIGral> listaPois, POIGral poi)
 	{
+		if(listaPois.contains(poi))			return poi;
+		
 		List<POIGral> listaResultante = new ArrayList<POIGral>();
 		Scanner scanner = new Scanner(System.in);
 		String clave = new String();
@@ -36,7 +33,6 @@ public class ConsultarPOI implements Funcionalidad {
 			clave = mostrarPOIs(clave, listaResultante,scanner);
 	
 		}while (!clave.contains("Y"));
-		scanner.close();
 		return listaResultante.get(0);
 	}
 	

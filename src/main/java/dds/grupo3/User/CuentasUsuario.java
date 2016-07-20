@@ -1,17 +1,14 @@
 package dds.grupo3.User;
 
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import dds.grupo3.Interfaces.User;
+import dds.grupo3.Interfaces.creadorRoles;
 import ddsgrupo3.Factory;
 
 public class CuentasUsuario {
 
-	private static List<Rol> roles = new ArrayList<>();
-	
 	public static User	instanciarUsuario(String username, String pass)
 	{
 		if(verificarExistencia(username, pass))
@@ -19,7 +16,7 @@ public class CuentasUsuario {
 			User usuario = (User) Factory.getObject("Usuario");
 			usuario.setNombre(username);
 			usuario.setContrasenia(pass);
-			usuario.setRol(getRol(username.concat("ROL")));
+			usuario.setRol( getRol(username.concat("ROL")));
 			return usuario;
 		}
 		System.out.println("Cuenta no existe");
@@ -34,12 +31,8 @@ public class CuentasUsuario {
 	public static Rol getRol (String name)
 	{
 		String rolname = (String) getString(name);
-		for(Rol i: roles)
-		{
-			System.out.println(i.getNombre());
-			if(i.getNombre().contains(rolname))	return i;
-		}
-		return null;
+		creadorRoles creador = (creadorRoles) Factory.getObject(rolname);
+		return creador.crearRol();
 	}
 	
 	private static Object getString (String name)
@@ -56,10 +49,5 @@ public class CuentasUsuario {
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
 		}	
-	}
-	
-	public static void agregarRol(Rol r)
-	{
-		roles.add(r);
 	}
 }

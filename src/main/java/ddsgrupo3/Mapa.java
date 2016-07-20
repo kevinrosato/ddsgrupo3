@@ -13,7 +13,7 @@ import dds.grupo3.POIsSistem.Ubicacion;
 
 public class Mapa	implements AdministradorPOIs{
 	
-	private List<POIGral> listaPois = new ArrayList<POIGral>();
+	public List<POIGral> listaPois = new ArrayList<POIGral>();
 	private Calendar horaActual;
 	private Ubicacion ubicacionActual;
 	private CGPDAO baseDatosCGP;
@@ -27,7 +27,7 @@ public class Mapa	implements AdministradorPOIs{
 	//----------------------------------------------
 	//METODOS ABCM
 	public POIGral realizarFuncConPoi(Funcionalidad funcionalidad,POIGral poi){
-		return funcionalidad.realizarFuncionConPOI(this.getListaPois(),poi);
+		return funcionalidad.realizarFuncionConPOI(listaPois,poi);
 	}	
 	
 	//----------
@@ -64,6 +64,7 @@ public class Mapa	implements AdministradorPOIs{
 	}
 	public void setBaseDatosCGP(CGPDAO dB) {
 		this.baseDatosCGP = dB;
+		listaPois.addAll(baseDatosCGP.getAll());
 	}
 /*
  * OBSOLETOS

@@ -20,13 +20,13 @@ public class Usuario implements User{
 	}
 	public POIGral borrarPOI(POIGral poi){
 		funcionalidad = (Funcionalidad) Factory.getObject("Borrar");
-		return realizarFunc(funcionalidad, poi);
+		return realizarFunc(funcionalidad, this.consultarPOI(poi));
 	}
 	//VER COMO SERIA PASANDOLE UNA LISTA DE CAMPOS EN VEZ DE UN POIGral NUEVO
 	public POIGral modificarPOI(POIGral poi,POIGral poiNuevo){
 		funcionalidad = (Funcionalidad) Factory.getObject("Modificar");
 		funcionalidad.setParametro((Object) poiNuevo);
-		return realizarFunc(funcionalidad, poi);
+		return realizarFunc(funcionalidad, this.consultarPOI(poi));
 	}
 	public POIGral consultarPOI(POIGral poi){
 		funcionalidad = (Funcionalidad) Factory.getObject("Consultar");
