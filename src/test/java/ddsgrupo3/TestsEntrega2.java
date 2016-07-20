@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import dds.grupo3.DTOs.CGPDAO;
 import dds.grupo3.DTOs.CentroDTO;
+import dds.grupo3.DTOs.DAOCentrosImplementacion;
 import dds.grupo3.DTOs.HorariosServDTO;
 import dds.grupo3.DTOs.ServDTO;
+import dds.grupo3.Interfaces.AdministradorPOIs;
+import dds.grupo3.Interfaces.CGPDAO;
+import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.POIsSistem.CGP;
 import dds.grupo3.POIsSistem.Horario;
 import dds.grupo3.POIsSistem.Local;
@@ -20,6 +22,8 @@ import dds.grupo3.POIsSistem.ParadaColectivo;
 import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
+import dds.grupo3.User.CuentasUsuario;
+import dds.grupo3.User.Rol;
 
 public class TestsEntrega2 {
 	//----------
@@ -27,7 +31,7 @@ public class TestsEntrega2 {
 	//----------
 	Calendar 		calendario;
 	LevenshteinDistance calculador;
-	Mapa 			mapa;
+	AdministradorPOIs 			mapa;
 	SucursalBanco 	sucursal,	sucursal2;
 	Local 			local,		local2,		carrousel;
 	ParadaColectivo parada,		parada2;
@@ -40,10 +44,11 @@ public class TestsEntrega2 {
 	ServDTO			servDTO1,	servDTO2,	servDTO3,	servDTO4,	servDTO5;
 	HorariosServDTO	horServDTO1,horServDTO2,horServDTO3,horServDTO4,horServDTO5;
 	CGPDAO			cgpDAO;
+	Rol				admin, standar;
 	@Before
 public void init() {
-		mapa		= new Mapa();
-
+		mapa		= (AdministradorPOIs) Factory.getObject("AdminPOIs");
+		
 //////// Seteo DTOs
 		
 		cgpDTO1		= new CentroDTO();
@@ -127,12 +132,13 @@ public void init() {
 			servicios3.add(servDTO1);
 		cgpDTO3.setServicios(servicios3);
 		
-		cgpDAO		= new CGPDAO();
+		cgpDAO		= new DAOCentrosImplementacion();
 		List<CentroDTO> coleccionDTO = new ArrayList<CentroDTO>();
 		coleccionDTO.add(cgpDTO1);
 		coleccionDTO.add(cgpDTO2);
 		coleccionDTO.add(cgpDTO3);
-		cgpDAO.setCentros(coleccionDTO);		
+		cgpDAO.setCentros(coleccionDTO);
+
 		mapa.setBaseDatosCGP(cgpDAO);
 		
 	
@@ -312,143 +318,54 @@ public void init() {
 		mapa.agregarPoi(carrousel);
 		mapa.agregarPoi(sucursal);
 		mapa.agregarPoi(sucursal2);
-	}
-	
-	//-----------------
-	//Tests de Cercania
-	//-----------------
-	
-	@Test //Test de cercania con una sucursal. Distancia aproximada 448mts
-	public void pruebaCercaniaSucursal() {
-		Assert.assertTrue(sucursal.estaCercaDe(ubicacionActual));
-	}
-	@Test //Test de cercania con una parada de colectivo. Distancia aproximada 88mts
-	public void pruebaCercaniaParadaColectivo() {
-		Assert.assertTrue(parada.estaCercaDe(ubicacionActual));
-	}
-	@Test //Test de cercania con CGP
-	public void pruebaCercaniaCGP(){	
-		Assert.assertTrue(cgp.estaCercaDe(ubicacionActual));
-	}
-	@Test //Test de cercania con Local. Distancia aproximada 77mts
-	public void pruebaCercaniaLocal() {	
-		Assert.assertTrue(local.estaCercaDe(ubicacionActual));
-	}
-	
-	//-----------------------
-	//Tests de Disponibilidad
-	//-----------------------
-	
-	@Test //Test de rango de horario
-	public void pruebaCalendar() {	
-		Assert.assertTrue(horario.estaEnElRango(calendario));
-	}
-	@Test //Test de disponibilidad de la parada de colectivo
-	public void pruebaDispColectivo() {	
-		Assert.assertTrue(parada.estaDisponible(calendario));
-	}
-	@Test //Test de disponibilidad de CGP con Nombre de Servicio
-	public void pruebaDispCGP() {	
-		Assert.assertFalse(cgp.estaDisponible(calendario,"Rentas"));
-		calendario.set(Calendar.DAY_OF_WEEK, 3);
-		calendario.set(Calendar.HOUR_OF_DAY, 11);
-		calendario.set(Calendar.MINUTE, 59);
-		Assert.assertTrue(cgp.estaDisponible(calendario,"Rentas"));
-	}
-	@Test //Test de disponibilidad de CGP sin Nombre de Servicio
-	public void pruebaDispCGP2() {	
-		calendario.set(Calendar.DAY_OF_WEEK, 7);
-		calendario.set(Calendar.HOUR_OF_DAY, 11);
-		calendario.set(Calendar.MINUTE, 20);
-		Assert.assertTrue(cgp.estaDisponible(calendario));
-	}
-	@Test //Test de disponibilidad de Banco
-	public void pruebaBanco() {	
-		Assert.assertFalse(sucursal.estaDisponible(calendario));
-		calendario.set(Calendar.DAY_OF_WEEK, 2);
-		calendario.set(Calendar.HOUR_OF_DAY, 10);
-		calendario.set(Calendar.MINUTE, 20);
-		Assert.assertTrue(sucursal.estaDisponible(calendario));
-	}
-	@Test //Test de disponibilidad de Local
-	public void pruebaLocal() {	
-		calendario.set(Calendar.DAY_OF_WEEK, 2);
-		calendario.set(Calendar.HOUR_OF_DAY, 10);
-		calendario.set(Calendar.MINUTE, 20);
-		Assert.assertTrue(carrousel.estaDisponible(calendario));
-		calendario.set(Calendar.DAY_OF_WEEK, 3);
-		calendario.set(Calendar.HOUR_OF_DAY, 15);
-		calendario.set(Calendar.MINUTE, 00);
-		Assert.assertFalse(carrousel.estaDisponible(calendario));
+
+		admin = new Rol();
+		admin.setNombre("admin");
+		List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
+		permisos.add((Funcionalidad) Factory.getObject("Agregar"));
+		permisos.add((Funcionalidad) Factory.getObject("Borrar"));
+		permisos.add((Funcionalidad) Factory.getObject("Modificar"));
+		permisos.add((Funcionalidad) Factory.getObject("Consultar"));
+		admin.setPermisos(permisos);
+
+		standar = new Rol();
+		standar.setNombre("standar");
+		List<Funcionalidad> permisos2 = new ArrayList<Funcionalidad>();
+		permisos2.add((Funcionalidad) Factory.getObject("Consultar"));
+		standar.setPermisos(permisos2);
 		
+		CuentasUsuario.agregarRol(admin);
+		CuentasUsuario.agregarRol(standar);
 	}
 	
 	//-----------------
 	//Tests de Busqueda
 	//-----------------
 	
-	@Test //Test de Muestra de las paradas de una linea de colectivos
-	public void pruebaMuestraParadasDeUnaLinea() {
-		mapa.buscarYmostrar("151");
-		mapa.buscarYmostrar("106");
-		mapa.buscarYmostrar("7");
-		System.out.println("");
-	}	
-	@Test //Test de Muestra de los pois etiquetados con una palabra clave
-	public void pruebaMuestraPoisConPalabraClave() {
-		mapa.buscarYmostrar("Rio");
-		System.out.println("");
-	}
-	@Test //Test de Reconocimiento de un Servicio por su nombre
-	public void pruebaReconoceServicio() {
-		Assert.assertTrue(rubroM.tieneLaClave("Muebleria"));
-	}
-	@Test //Test de Reconocimiento de un Local por parte de su nombre
-	public void pruebaReconoceParteNombre() {
-		Assert.assertTrue(local.tieneLaClave("Carlos"));
-	}
-	@Test //Test de Reconocimiento de un Local por su Rubro
-	public void pruebaReconoceLocalxNombreRubro() {
-		Assert.assertTrue(local.tieneLaClave("Muebleria"));
-	}
-	@Test //Test de Reconocimiento de un Local por su Rubro
-	public void pruebaReconoceBancox1Servicio() {		
-		sucursal.setServicio(new Servicio("Deposito"));
-		sucursal.setServicio(new Servicio("Extracciones"));
-		sucursal.setServicio(new Servicio("Prestamos"));
-		Assert.assertTrue(sucursal.tieneLaClave("Prestamo"));
-	}
-	@Test //Test de Muestra de los CGPs con detereminado servicio
-	public void pruebaMuestraCGPconUnServicio() {
-		mapa.buscarYmostrar("Asesoramiento");
-		System.out.println("");
-	}
-	/*@Test //Test de Uso de consola en Mapa
-	public void busquedaLibreDePOIs(){
-		calendario.set(Calendar.DAY_OF_WEEK, 2);
-		calendario.set(Calendar.HOUR_OF_DAY, 10);
-		calendario.set(Calendar.MINUTE, 20);
-		mapa.setHoraActual(calendario);
-//		calculador = new LevenshteinDistance();
-//		calculador.pruebaLeven();
-		mapa.realizarBusqueda();
-		System.out.println("");
-	}	*/
 	@Test //Test de prueba de Json
 	public void pruebaJson() {
 		mapa.buscarYmostrar("Javier Loeschbor");
-		System.out.println("");
 	}
 	@Test // Otro test de prueba de Json
 	public void pruebaJson2() {
 		mapa.buscarYmostrar("Fabian Fantaguzzi");
-		System.out.println("");
 	}
-
 	@Test // Otro test de prueba de Json
-	public void testApk() {
-		Aplicacion aplicacion = new Aplicacion();
-		aplicacion.ejecutarAplicacion(mapa);
+	public void pruebaDTO1Andando() {
+		cgpDTO1.toString();
+	}
+	@Test // Otro test de prueba de Json
+	public void pruebaDTOs() {
+		mapa.buscarYmostrar("Zamora");
+	}
+	@Test // Otro test de prueba de Json
+	public void pruebaDTOs2() {
+		mapa.buscarYmostrar("Oliver");
 	}
 
+//	@Test // Otro test de prueba de Json
+//	public void testApk() {
+//		Aplicacion aplicacion = new Aplicacion();
+//		aplicacion.ejecutar(mapa);
+//	}
 }

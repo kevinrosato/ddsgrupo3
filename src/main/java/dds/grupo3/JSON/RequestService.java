@@ -1,4 +1,4 @@
-package dds.grupo3.POIsSistem;
+package dds.grupo3.JSON;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;

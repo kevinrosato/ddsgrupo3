@@ -1,6 +1,10 @@
-package dds.grupo3.POIsSistem;
+package dds.grupo3.JSON;
 
 import java.util.Calendar;
+
+import dds.grupo3.Interfaces.POI;
+import dds.grupo3.Interfaces.POIGral;
+import dds.grupo3.POIsSistem.Ubicacion;
 
 public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo SucursalBanco generado desde una consulta JSON 
 	//----------
@@ -51,15 +55,13 @@ public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo S
 
 	@Override
 	public Boolean tieneLaClave(String clave) {
-		Boolean servicioTieneClave=false;
-		for (int i=0;i<this.getServicios().length;i++){
-			if (this.getServicios()[i].contains(clave)){
-				servicioTieneClave=true;
-				break;
+		for (String s: this.getServicios())
+		{
+			if (s.contains(clave)){
+				return true;
 			}
 		}
 		return	(this.getBanco().contains(clave))
-				|| servicioTieneClave
 				||	(this.getGerente().contains(clave))
 				||	(this.conocerTipo().contains(clave));
 	}

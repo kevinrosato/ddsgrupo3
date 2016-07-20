@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import dds.grupo3.Interfaces.POI;
+
 public class Local extends POI{
 	
 	private Integer 	codigoPostal = 0;

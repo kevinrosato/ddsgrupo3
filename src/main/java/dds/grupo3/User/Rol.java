@@ -1,11 +1,15 @@
-package ddsgrupo3;
+package dds.grupo3.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import dds.grupo3.Interfaces.Funcionalidad;
+
 public class Rol{
 
-	private List<Funcionalidad> permisos=new ArrayList<Funcionalidad>();
+	private List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
+	private String nombre;
+	
 	
 	public Boolean verificarPermisos(Funcionalidad funcionalidad){
 		Boolean valor=false;
@@ -23,6 +27,11 @@ public class Rol{
 		this.permisos = permisos;
 	}
 
-	
-	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }

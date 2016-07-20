@@ -1,10 +1,11 @@
-package dds.grupo3.POIsSistem;
+package dds.grupo3.DTOs;
 
 import java.util.Calendar;
 
-import dds.grupo3.DTOs.CentroDTO;
-import dds.grupo3.DTOs.HorariosServDTO;
-import dds.grupo3.DTOs.ServDTO;
+import dds.grupo3.Interfaces.POI;
+import dds.grupo3.Interfaces.POIGral;
+import dds.grupo3.POIsSistem.Horario;
+import dds.grupo3.POIsSistem.Ubicacion;
 
 public class Centro extends POI implements POIGral {
 
@@ -19,12 +20,12 @@ public class Centro extends POI implements POIGral {
 	@Override
 	public void mostrarInformacionAvanzada()
 	{
-		this.getInfoDTO().toString();
+		System.out.println(this.getInfoDTO().toString());
 	}
 	@Override
 	public void mostrarInformacion()
 	{
-		this.getInfoDTO().mostrar();
+		System.out.println(this.getInfoDTO().mostrar());
 	}
 	@Override
 	public Boolean estaCercaDe(Ubicacion ubicacion)
@@ -35,7 +36,8 @@ public class Centro extends POI implements POIGral {
 	public Boolean tieneLaClave(String clave)
 	{
 		return (this.getInfoDTO().getDomicilioCompleto().contains(clave)
-				|| this.getInfoDTO().getZonasIncluidas().contains(clave));
+				|| this.getInfoDTO().getZonasIncluidas().contains(clave)
+				|| this.getInfoDTO().getNombreDirector().contains(clave));
 	}
 	@Override
 	public Boolean estaDisponible(Calendar horaActual){

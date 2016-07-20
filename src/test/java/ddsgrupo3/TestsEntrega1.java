@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.POIsSistem.CGP;
 import dds.grupo3.POIsSistem.Horario;
 import dds.grupo3.POIsSistem.Local;
@@ -23,7 +24,7 @@ public class TestsEntrega1 {
 	//----------
 	Calendar 		calendario;
 	LevenshteinDistance calculador;
-	Mapa 			mapa;
+	AdministradorPOIs	mapa;
 	SucursalBanco 	sucursal,	sucursal2;
 	Local 			local,		local2,		carrousel;
 	ParadaColectivo parada,		parada2;
@@ -64,7 +65,6 @@ public class TestsEntrega1 {
 		sucursal.setServicio("Extracciones");
 		sucursal.setServicio("Prestamos");
 
-		
 		sucursal2 = new SucursalBanco("Santander Rio");
 		sucursal2.setAltura(2500);
 		sucursal2.setBarrio("Lugano");
@@ -81,7 +81,7 @@ public class TestsEntrega1 {
 		sucursal2.setServicio("Deposito");
 		sucursal2.setServicio("Extracciones");
 		sucursal2.setServicio("Prestamos");
-		
+
 		local = new Local("Lo de Carlos");
 			rubroM = new Servicio("Muebleria");
 			rubroM.setRadioCercania(78.0);
@@ -97,7 +97,7 @@ public class TestsEntrega1 {
 		local.setProvincia("Buenos Aires");
 		local.setLatitud(1.0007);
 		local.setLongitud(1.00);
-		
+
 		carrousel = new Local("Carrousel");
 			comercial = new Servicio("comercial");
 				horario4 = new Horario();		horario4.setDiaInicio(2);	horario4.setDiaFinal(7);
@@ -108,7 +108,7 @@ public class TestsEntrega1 {
 				lista6.add(horario4);	lista6.add(horario5);
 			comercial.setHorario(lista6);
 		carrousel.setRubro(comercial);
-		
+
 		parada	= new ParadaColectivo();
 		parada.setLatitud(1.0008);
 		parada.setLongitud(1.00);
@@ -121,7 +121,7 @@ public class TestsEntrega1 {
 		parada.setCallesPerpenDer("Figueroa");
 		String[] lista = {"151","106","99"};
 		parada.setLineas(lista);
-		
+
 		parada2	= new ParadaColectivo();
 		parada2.setLatitud(1.0008);
 		parada2.setLongitud(1.00);
@@ -133,7 +133,7 @@ public class TestsEntrega1 {
 		parada2.setCallesPerpenDer("Conde");
 		String[] lista2={"60","120","151"};
 		parada2.setLineas(lista2);
-		
+
 		cgp	= new CGP("Sede Medrano",(byte) 5);
 			servicio1 = new Servicio("Asesoramiento Contable");
 				horario2 = new Horario(); 	horario2.setDiaInicio(7);	horario2.setDiaFinal(7);
@@ -174,7 +174,7 @@ public class TestsEntrega1 {
 		cgp2.setLocalidad("Caballito");
 		cgp2.setPais("Argentina");
 		cgp2.setProvincia("CABA");
-		
+
 		cgp3 = new CGP("Sede Microcentro",(byte) 8);
 		cgp3.setAltura(432);
 		cgp3.setBarrio("Zamore");
@@ -186,10 +186,10 @@ public class TestsEntrega1 {
 		cgp3.setLocalidad("Microcentro");
 		cgp3.setPais("Argentina");
 		cgp3.setProvincia("CABA");
-		
+
 		ubicacionActual = new Ubicacion(1.00, 1.00);
 		ubicacionActual.setComuna(5);
-		
+
 		calendario = Calendar.getInstance();
 		calendario.set(2016,5,19); 
 		calendario.set(Calendar.DAY_OF_WEEK, 3);
@@ -201,7 +201,7 @@ public class TestsEntrega1 {
 		horario.setDiaFinal(3);
 		horario.setHorarioInicio(900);
 		horario.setHorarioCierre(2000);
-				
+
 		mapa.setUbicacionActual(ubicacionActual);
 		mapa.agregarPoi(cgp);
 		mapa.agregarPoi(cgp2);

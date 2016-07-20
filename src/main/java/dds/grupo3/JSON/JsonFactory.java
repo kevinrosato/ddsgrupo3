@@ -1,4 +1,4 @@
-package dds.grupo3.POIsSistem;
+package dds.grupo3.JSON;
 
 
 import java.io.IOException;

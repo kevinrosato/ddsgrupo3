@@ -1,5 +1,7 @@
 package dds.grupo3.POIsSistem;
 
+import dds.grupo3.Interfaces.POI;
+
 public class FabricaDePOIs {
 
 
@@ -46,13 +48,13 @@ public class FabricaDePOIs {
 	}
 	
 	public POI crearCGP(String campos,String camposPOI){
-		camposPOI=camposPOI.trim();
-		campos=campos.trim();
-		this.campos=campos.split(",");
-		this.camposPOI=camposPOI.split(",");
+		camposPOI = camposPOI.trim();
+		campos = campos.trim();
+		this.campos = campos.split(",");
+		this.camposPOI = camposPOI.split(",");
 		//campos= "cp,departamento,piso,unidad,numeroCGP,servicios"
 		//Faltaria ver servicios
-		CGP cgp=new CGP(this.camposPOI[3],Byte.parseByte(this.campos[4]));
+		CGP cgp = new CGP(this.camposPOI[3],Byte.parseByte(this.campos[4]));
 		this.cargarLocal(cgp, this.campos);
 		this.cargarPOI(cgp,this.camposPOI);
 		return cgp;

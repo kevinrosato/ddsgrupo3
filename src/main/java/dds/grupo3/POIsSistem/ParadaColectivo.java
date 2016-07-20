@@ -1,6 +1,8 @@
 package dds.grupo3.POIsSistem;
 
 import java.util.Calendar;
+
+import dds.grupo3.Interfaces.POI;
 public class ParadaColectivo extends POI{
 	private String[] lineas;
 

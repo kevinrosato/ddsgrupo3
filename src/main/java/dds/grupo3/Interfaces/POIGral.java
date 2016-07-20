@@ -1,6 +1,8 @@
-package dds.grupo3.POIsSistem;
+package dds.grupo3.Interfaces;
 
 import java.util.Calendar;
+
+import dds.grupo3.POIsSistem.Ubicacion;
 
 public interface POIGral
 {

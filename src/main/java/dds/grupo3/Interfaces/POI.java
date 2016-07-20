@@ -1,6 +1,8 @@
-package dds.grupo3.POIsSistem;
+package dds.grupo3.Interfaces;
 
 import java.util.Calendar;
+
+import dds.grupo3.POIsSistem.Ubicacion;
 
 public abstract class POI	implements POIGral{
 	private Ubicacion ubicacion = new Ubicacion(0.0,0.0);
@@ -52,7 +54,7 @@ public abstract class POI	implements POIGral{
 	public void mostrarInformacionAvanzada()
 	{
 		this.mostrarInformacion();
-		System.out.println("[Ac� en un futuro se muestra toda la info]");
+		System.out.println("[Aca en un futuro se muestra toda la info]");
 	}
 	public abstract void mostrarInformacion();
 	public abstract String conocerTipo();
