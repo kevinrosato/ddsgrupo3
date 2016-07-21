@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Funcionalidad 
 {
-	public POIGral	realizarFuncionConPOI(List<POIGral> listaPois,POIGral poi);
+	public Object	realizarFuncionConPOI(List<POIGral> listaPois,POIGral poi);
 	public void		setParametro(Object obj);
 }
