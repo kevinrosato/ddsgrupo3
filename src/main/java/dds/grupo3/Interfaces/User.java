@@ -9,7 +9,7 @@ public interface User
 	//VER COMO SERIA PASANDOLE UNA LISTA DE CAMPOS EN VEZ DE UN POIGral NUEVO
 	public POIGral modificarPOI(POIGral poi,POIGral poiNuevo);
 	public POIGral consultarPOI(POIGral poi);
-	public POIGral realizarFunc(Funcionalidad funcionalidad,POIGral poi);	
+	public POIGral realizarFunc(Funcionalidad funcionalidad,Object poi);	
 
 	public String getNombre();
 	public void setNombre(String nombre);

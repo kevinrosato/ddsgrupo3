@@ -2,30 +2,25 @@ package dds.grupo3.User;
 
 import java.util.List;
 
-import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
-import dds.grupo3.Interfaces.User;
-import dds.grupo3.UsoTerminales.BusquedasDAO;
+import dds.grupo3.Interfaces.Reporte;
+import ddsgrupo3.Factory;
 
 public class ReportarPOI implements Funcionalidad {
 
-	private User usuario;
+	private	String dato;
 	
 	@Override
-	public List<BusquedaDTO> realizarFuncionConPOI(List<POIGral> listaPois, POIGral poi)
+	public Object realizarFuncionConPOI(List<POIGral> listaPois, Object tipoReporte)
 	{
-		BusquedasDAO database = new BusquedasDAO									//Valores a cambiar para la prueba
-								("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-								"jdbc:sqlserver://Tec\\TC:1433;databaseName=busquedas",
-								"dds3.POIs","dds3");
-		List<BusquedaDTO> lista = database.buscar_En_Tabla(usuario.getNombre());
-		
-		return lista;		//Esto no está del TODO terminado
+		Reporte rep = (Reporte)	Factory.getObject((String) tipoReporte);
+		rep.crear(dato);
+		return rep;
 	}
 
 	@Override
 	public void setParametro(Object obj) {
-		usuario = (User) obj;
+		dato = (String) obj;
 	}
 }

@@ -8,9 +8,9 @@ import dds.grupo3.Interfaces.POIGral;
 public class BorrarPOI implements Funcionalidad{
 	
 	@Override
-	public POIGral realizarFuncionConPOI(List<POIGral> listaPois, POIGral poi)
+	public Object realizarFuncionConPOI(List<POIGral> listaPois, Object poi)
 	{
-		if(listaPois.remove(poi))	return poi;
+		if(listaPois.remove((POIGral) poi))	return poi;
 		else return null;
 	}
 

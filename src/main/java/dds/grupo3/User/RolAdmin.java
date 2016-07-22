@@ -18,6 +18,7 @@ public class RolAdmin implements creadorRoles
 		permisos.add((Funcionalidad) Factory.getObject("Borrar"));
 		permisos.add((Funcionalidad) Factory.getObject("Modificar"));
 		permisos.add((Funcionalidad) Factory.getObject("Consultar"));
+		permisos.add((Funcionalidad) Factory.getObject("Reportar"));
 		admin.setPermisos(permisos);
 		return admin;
 	}	

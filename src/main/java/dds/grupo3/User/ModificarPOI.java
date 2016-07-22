@@ -10,9 +10,9 @@ public class ModificarPOI implements Funcionalidad{
 	private POIGral poiNuevo;
 	
 	@Override
-	public POIGral realizarFuncionConPOI(List<POIGral> listaPois, POIGral poi)
+	public POIGral realizarFuncionConPOI(List<POIGral> listaPois, Object poi)
 	{
-		listaPois.set(listaPois.indexOf(poi),this.poiNuevo);
+		listaPois.set(listaPois.indexOf((POIGral) poi),this.poiNuevo);
 		return poiNuevo;
 	}
 	@Override

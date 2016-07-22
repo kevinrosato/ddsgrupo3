@@ -7,9 +7,9 @@ import dds.grupo3.Interfaces.POIGral;
 
 public class AgregarPOI implements Funcionalidad {
 	@Override
-	public POIGral realizarFuncionConPOI(List<POIGral> listaPois,POIGral poi)
+	public Object realizarFuncionConPOI(List<POIGral> listaPois,Object poi)
 	{
-		if(listaPois.add(poi))	return poi;
+		if(listaPois.add((POIGral) poi))	return poi;
 		else return null;
 	}
 

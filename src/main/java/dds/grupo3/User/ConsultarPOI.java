@@ -7,16 +7,21 @@ import java.util.Scanner;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
+import dds.grupo3.Interfaces.User;
+import dds.grupo3.UsoTerminales.BusquedasDAO;
+import dds.grupo3.UsoTerminales.Cronometrador;
 
 public class ConsultarPOI implements Funcionalidad {
 
 	private AdministradorPOIs mapa;
 
 	@Override
-	public POIGral realizarFuncionConPOI(List<POIGral> listaPois, POIGral poi)
+	public Object realizarFuncionConPOI(List<POIGral> listaPois, Object user)
 	{
-		if(listaPois.contains(poi))			return poi;
-		
+		BusquedasDAO database = new BusquedasDAO
+				("com.microsoft.sqlserver.jdbc.SQLServerDriver",
+				"jdbc:sqlserver://Tec\\TC:1433;databaseName=busquedas",
+				"dds3.POIs","dds3");
 		List<POIGral> listaResultante = new ArrayList<POIGral>();
 		Scanner scanner = new Scanner(System.in);
 		String clave = new String();
@@ -24,6 +29,7 @@ public class ConsultarPOI implements Funcionalidad {
 		{	
 			System.out.print("Ingrese palabra Clave: ");
 			clave = scanner.nextLine();			
+			Cronometrador.comienzo();
 			if (clave.startsWith("+"))
 			{
 				clave = clave.substring(1);
@@ -31,7 +37,7 @@ public class ConsultarPOI implements Funcionalidad {
 			}
 			else	listaResultante = buscarEn(clave, listaPois);				
 			clave = mostrarPOIs(clave, listaResultante,scanner);
-	
+			database.guardarBusqueda((User) user, clave, listaResultante.size(),Cronometrador.finCuenta());			
 		}while (!clave.contains("Y"));
 		return listaResultante.get(0);
 	}
@@ -75,7 +81,6 @@ public class ConsultarPOI implements Funcionalidad {
 	{
 		String flag = new String();
 		System.out.println("Puntos de Interes con la clave "+palabraClave+":");
-		
 		if(lista.size() == 0)
 		{
 			System.out.println("No se encontraron resultados.");

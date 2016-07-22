@@ -9,11 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Hashtable;
 import java.util.List;
 
 import dds.grupo3.Interfaces.BusquedaDTO;
-import dds.grupo3.Interfaces.TipoReporte;
 import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
@@ -31,11 +29,7 @@ public class BusquedasDAO {
 		fechaS = fechaS.concat("/");
 		fechaS = fechaS.concat(Integer.toString(1 + fecha.get(Calendar.YEAR)));
 		this.agregarATabla(frase,terminal.getNombre(),fechaS,cantResultados,retardo);
-	}	
-	public	Hashtable<Object, Object>	reportar(String tipoReporte){
-		return ((TipoReporte) Factory.getObject(tipoReporte)).reportarEnTabla(this);
 	}
-
 //------------------------ Comienzo de Conexion------------------------------------------------------------------------
 	 public Connection getConexion()
 	{

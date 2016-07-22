@@ -31,10 +31,10 @@ public class Usuario implements User{
 	public POIGral consultarPOI(POIGral poi){
 		funcionalidad = (Funcionalidad) Factory.getObject("Consultar");
 		funcionalidad.setParametro((Object) this.getMapa());
-		return realizarFunc(funcionalidad, poi);
+		return realizarFunc(funcionalidad, this);
 	}
 	
-	public POIGral realizarFunc(Funcionalidad funcionalidad,POIGral poi){
+	public POIGral realizarFunc(Funcionalidad funcionalidad,Object poi){
 		if(rol.verificarPermisos(funcionalidad))
 		{
 			return mapa.realizarFuncConPoi(funcionalidad, poi);
