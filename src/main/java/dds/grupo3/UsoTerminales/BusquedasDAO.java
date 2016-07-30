@@ -20,7 +20,7 @@ public class BusquedasDAO {
 	private Connection conexion = null;
 
 //------------------------ Comienzo de Mensajes------------------------------------------------------------------------
-	public	void	guardarBusqueda(User terminal, String frase, Integer cantResultados,Integer retardo)
+	public	void	guardarBusqueda(User terminal, String frase, Integer cantResultados,Long retardo)
 	{
 		Calendar fecha = new GregorianCalendar();
 		String fechaS = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH));
@@ -62,7 +62,7 @@ public class BusquedasDAO {
 	 
 //------------------------ Comienzo de SQLs------------------------------------------------------------------------
  
-	private Integer agregarATabla(String frase, String terminal, String fecha, Integer cantResultados, Integer retardo) {
+	private Integer agregarATabla(String frase, String terminal, String fecha, Integer cantResultados, Long retardo) {
 		CallableStatement consulta = null;
 		try {
 		    consulta = conexion.prepareCall("{call dbo.st_agregar_busqueda(?,?,?,?,?,?)}");
@@ -71,7 +71,7 @@ public class BusquedasDAO {
 			consulta.setString(3, terminal);
 			consulta.setString(4, fecha);
 			consulta.setInt(5,cantResultados);
-			consulta.setInt(6,retardo);
+			consulta.setLong(6,retardo);
 			consulta.execute();	
 			return consulta.getInt(1);		
 		}

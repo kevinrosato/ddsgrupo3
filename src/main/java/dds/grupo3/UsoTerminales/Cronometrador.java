@@ -2,22 +2,23 @@ package dds.grupo3.UsoTerminales;
 
 public class Cronometrador {
 
-	static	Integer	topeEnMicros;
+	static	Long topeEnMicros;
+	static  Long tiempoComienzo;
+	static  Long tiempoFin;
 
 	static	public	void	comienzo()
 	{
-		
+		tiempoComienzo=System.nanoTime();
 	}
-	static	public	Integer	finCuenta()
+	static	public	Long	finCuenta()
 	{
-		reportarRetraso();
-		return null;
+		Long duracion;
+		tiempoFin=System.nanoTime();
+		duracion= (tiempoFin-tiempoComienzo)/1000000; //pasa de nanosegundos a milisegundos
+		return duracion;
 	}
-	static	private	void	reportarRetraso()
-	{
-		
-	}
-	static	public	void	establecerTope(Integer uSeg)
+	
+	static	public	void	establecerTope(Long uSeg)
 	{
 		topeEnMicros = uSeg;
 	}
