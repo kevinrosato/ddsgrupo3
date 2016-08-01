@@ -22,11 +22,7 @@ public class ReportePorFecha implements Reporte {
 	@Override
 	public void crear(String terminal) {
 		
-		BusquedasDAO database = new BusquedasDAO
-				("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-				"jdbc:sqlserver://Tec\\TC:1433;databaseName=busquedas",
-				"dds3.POIs","dds3");
-		List<BusquedaDTO> lista = database.buscar_En_Tabla(terminal);
+		BusquedasDAO database = new BusquedasDAO();		List<BusquedaDTO> lista = database.buscar_En_Tabla(terminal);
 		
 		Integer auxiliar = 0;
 		for(BusquedaDTO i : lista)
@@ -46,5 +42,4 @@ public class ReportePorFecha implements Reporte {
 	{
 		return tablaReporte.get(key);
 	}
-
 }

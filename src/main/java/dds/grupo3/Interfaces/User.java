@@ -8,8 +8,8 @@ public interface User
 	public POIGral borrarPOI(POIGral poi);
 	//VER COMO SERIA PASANDOLE UNA LISTA DE CAMPOS EN VEZ DE UN POIGral NUEVO
 	public POIGral modificarPOI(POIGral poi,POIGral poiNuevo);
-	public POIGral consultarPOI(POIGral poi);
-	public POIGral realizarFunc(Funcionalidad funcionalidad,Object poi);	
+	public POIGral consultarPOI(String IDTerminal);
+	public Object realizarFunc(Funcionalidad funcionalidad,Object poi);	
 
 	public String getNombre();
 	public void setNombre(String nombre);

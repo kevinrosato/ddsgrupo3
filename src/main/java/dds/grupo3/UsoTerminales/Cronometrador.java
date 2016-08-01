@@ -12,14 +12,22 @@ public class Cronometrador {
 	}
 	static	public	Long	finCuenta()
 	{
-		Long duracion;
 		tiempoFin=System.nanoTime();
-		duracion= (tiempoFin-tiempoComienzo)/1000000; //pasa de nanosegundos a milisegundos
-		return duracion;
+		return (tiempoFin-tiempoComienzo)/1000;
 	}
-	
+	static	public	void	checkRetraso(Integer IDBusqueda)
+	{
+		if (((tiempoFin-tiempoComienzo)/1000) > topeEnMicros)
+		{
+			reportarRetaso(IDBusqueda);
+		}
+	}
 	static	public	void	establecerTope(Long uSeg)
 	{
 		topeEnMicros = uSeg;
+	}
+	static	private	void	reportarRetaso(Integer IDBusqueda)
+	{
+		
 	}
 }

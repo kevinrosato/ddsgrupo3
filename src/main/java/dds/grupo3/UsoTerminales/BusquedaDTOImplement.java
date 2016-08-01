@@ -5,7 +5,7 @@ import dds.grupo3.Interfaces.BusquedaDTO;
 public class BusquedaDTOImplement implements BusquedaDTO {
 
 	private	Integer CantRespuestas;
-	private	Integer	Retardo;
+	private	Long	Retardo;
 	private	String	Terminal;
 	private	String	Parametro;
 	private	String	Fecha;
@@ -14,7 +14,7 @@ public class BusquedaDTOImplement implements BusquedaDTO {
 		CantRespuestas = cantRespuestas;
 	}
 
-	public void setRetardo(Integer retardo) {
+	public void setRetardo(Long retardo) {
 		Retardo = retardo;
 	}
 
@@ -34,7 +34,7 @@ public class BusquedaDTOImplement implements BusquedaDTO {
 		return CantRespuestas;
 	}
 
-	public Integer getRetardo() {
+	public Long getRetardo() {
 		return Retardo;
 	}
 

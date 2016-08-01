@@ -3,6 +3,7 @@ package dds.grupo3.User;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
+import dds.grupo3.Interfaces.Reporte;
 import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
@@ -14,27 +15,35 @@ public class Usuario implements User{
 	private AdministradorPOIs mapa = (AdministradorPOIs) Factory.getObject("AdminPOIs");
 	private Funcionalidad funcionalidad;
 	
+	public Reporte reportePorFecha(String datoDelReporte)
+	{
+		funcionalidad = (Funcionalidad) Factory.getObject("Reportar");
+		funcionalidad.setParametro(datoDelReporte);
+		return (Reporte) realizarFunc(funcionalidad, "fecha");
+	}
+	
+	
 	public POIGral agregarPOI(POIGral poi){
 		funcionalidad = (Funcionalidad) Factory.getObject("Agregar");
-		return realizarFunc(funcionalidad, poi);
+		return (POIGral) realizarFunc(funcionalidad, poi);
 	}
 	public POIGral borrarPOI(POIGral poi){
 		funcionalidad = (Funcionalidad) Factory.getObject("Borrar");
-		return realizarFunc(funcionalidad, this.consultarPOI(poi));
+		return (POIGral) realizarFunc(funcionalidad, poi);
 	}
 	//VER COMO SERIA PASANDOLE UNA LISTA DE CAMPOS EN VEZ DE UN POIGral NUEVO
 	public POIGral modificarPOI(POIGral poi,POIGral poiNuevo){
 		funcionalidad = (Funcionalidad) Factory.getObject("Modificar");
 		funcionalidad.setParametro((Object) poiNuevo);
-		return realizarFunc(funcionalidad, this.consultarPOI(poi));
+		return (POIGral) realizarFunc(funcionalidad, poi);
 	}
-	public POIGral consultarPOI(POIGral poi){
+	public POIGral consultarPOI(String terminalID){
 		funcionalidad = (Funcionalidad) Factory.getObject("Consultar");
 		funcionalidad.setParametro((Object) this.getMapa());
-		return realizarFunc(funcionalidad, this);
+		return (POIGral) realizarFunc(funcionalidad, terminalID);
 	}
 	
-	public POIGral realizarFunc(Funcionalidad funcionalidad,Object poi){
+	public Object realizarFunc(Funcionalidad funcionalidad,Object poi){
 		if(rol.verificarPermisos(funcionalidad))
 		{
 			return mapa.realizarFuncConPoi(funcionalidad, poi);

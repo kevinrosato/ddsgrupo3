@@ -37,7 +37,8 @@ public class ConsultarPOI implements Funcionalidad {
 			}
 			else	listaResultante = buscarEn(clave, listaPois);				
 			clave = mostrarPOIs(clave, listaResultante,scanner);
-			database.guardarBusqueda((User) user, clave, listaResultante.size(),Cronometrador.finCuenta());			
+			Cronometrador.checkRetraso(database.guardarBusqueda
+						((User) user, clave, listaResultante.size(),Cronometrador.finCuenta()));			
 		}while (!clave.contains("Y"));
 		return listaResultante.get(0);
 	}
