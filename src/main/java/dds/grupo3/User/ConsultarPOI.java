@@ -7,21 +7,17 @@ import java.util.Scanner;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
-import dds.grupo3.Interfaces.User;
 import dds.grupo3.UsoTerminales.BusquedasDAO;
 import dds.grupo3.UsoTerminales.Cronometrador;
 
 public class ConsultarPOI implements Funcionalidad {
 
 	private AdministradorPOIs mapa;
-
+	private String resto = new String();
 	@Override
-	public Object realizarFuncionConPOI(List<POIGral> listaPois, Object user)
+	public Object realizarFuncionConPOI(List<POIGral> listaPois, Object terminalID)
 	{
-		BusquedasDAO database = new BusquedasDAO
-				("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-				"jdbc:sqlserver://Tec\\TC:1433;databaseName=busquedas",
-				"dds3.POIs","dds3");
+		BusquedasDAO database = new BusquedasDAO();
 		List<POIGral> listaResultante = new ArrayList<POIGral>();
 		Scanner scanner = new Scanner(System.in);
 		String clave = new String();
@@ -33,12 +29,19 @@ public class ConsultarPOI implements Funcionalidad {
 			if (clave.startsWith("+"))
 			{
 				clave = clave.substring(1);
+				resto = resto.concat(",");
+				resto = resto.concat(clave);
 				listaResultante = buscarEn(clave, listaResultante);	
 			}
-			else	listaResultante = buscarEn(clave, listaPois);				
-			clave = mostrarPOIs(clave, listaResultante,scanner);
+			else
+			{
+				resto = clave;
+				listaResultante = buscarEn(clave, listaPois);				
+			}
+			Long aux =	Cronometrador.finCuenta();
+			clave = mostrarPOIs(resto, listaResultante,scanner);
 			Cronometrador.checkRetraso(database.guardarBusqueda
-						((User) user, clave, listaResultante.size(),Cronometrador.finCuenta()));			
+						((String) terminalID, resto, listaResultante.size(),aux));			
 		}while (!clave.contains("Y"));
 		return listaResultante.get(0);
 	}

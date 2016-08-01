@@ -1,5 +1,6 @@
 package dds.grupo3.UsoTerminales;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -8,37 +9,36 @@ import dds.grupo3.Interfaces.Reporte;
 
 public class ReportePorTerminal implements Reporte {
 
-	private	Hashtable<String, Integer> tablaReporte;
-	private	List<String>	listaStrings;
+	private	Hashtable<String, Integer> tablaReporte = new Hashtable<>();
+	private	List<String>	listaStrings = new ArrayList<>();
 	@Override
 	public void mostrar() {
-		System.out.println("|	Terminal:	|	Respuestas:	|");
+		System.out.println("|Terminal:			|	Respuestas:		|");
 		for(String i: listaStrings)
 		{
-			System.out.println("	"+i+"	|	"+tablaReporte.get(i)+"	|");
+			System.out.println(""+i+"				"+tablaReporte.get(i));
 		}
 	}
 
 	@Override
-	public void crear(String fecha) {		
-		BusquedasDAO database = new BusquedasDAO
-				("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-				"jdbc:sqlserver://Tec\\TC:1433;databaseName=busquedas",
-				"dds3.POIs","dds3");
-		List<BusquedaDTO> lista = database.buscar_En_Tabla(fecha);		
-		Integer auxiliar = 0;
+	public void crear(String fecha) {
+		BusquedasDAO database = new BusquedasDAO();
+		List<BusquedaDTO> lista = database.buscar_Por("Fecha",fecha,"*");
+		Integer aux;
+		System.out.println("DTOs Terminados!!");
 		for(BusquedaDTO i : lista)
 		{
-			for(BusquedaDTO j: lista)
+			if (!tablaReporte.containsKey(i.getTerminal()))
 			{
-				if (j.getTerminal().equals(i.getTerminal()))
-				{
-					auxiliar = auxiliar + j.getCantRespuestas();
-				}
+				System.out.println(i.toString());
+				listaStrings.add(i.getTerminal());
+				tablaReporte.put(i.getTerminal(),i.getCantRespuestas());
 			}
-			listaStrings.add(i.getTerminal());
-			tablaReporte.put(i.getTerminal(),auxiliar);
-			auxiliar = 0;
+			else
+			{
+				aux = tablaReporte.get(i.getTerminal());
+				tablaReporte.put(i.getTerminal(),( aux + i.getCantRespuestas()));
+			}
 		}
 	}
 

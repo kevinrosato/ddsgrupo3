@@ -15,6 +15,7 @@ public class ReportarPOI implements Funcionalidad {
 	public Object realizarFuncionConPOI(List<POIGral> listaPois, Object tipoReporte)
 	{
 		Reporte rep = (Reporte)	Factory.getObject((String) tipoReporte);
+		System.out.println("Se crea bien la clase Reporte por "+tipoReporte);
 		rep.crear(dato);
 		return rep;
 	}

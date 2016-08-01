@@ -15,14 +15,12 @@ public class Usuario implements User{
 	private AdministradorPOIs mapa = (AdministradorPOIs) Factory.getObject("AdminPOIs");
 	private Funcionalidad funcionalidad;
 	
-	public Reporte reportePorFecha(String datoDelReporte)
+	public Reporte reportarSegun(String tipo, String datoDelReporte)
 	{
 		funcionalidad = (Funcionalidad) Factory.getObject("Reportar");
 		funcionalidad.setParametro(datoDelReporte);
-		return (Reporte) realizarFunc(funcionalidad, "fecha");
-	}
-	
-	
+		return (Reporte) realizarFunc(funcionalidad, tipo);
+	}	
 	public POIGral agregarPOI(POIGral poi){
 		funcionalidad = (Funcionalidad) Factory.getObject("Agregar");
 		return (POIGral) realizarFunc(funcionalidad, poi);

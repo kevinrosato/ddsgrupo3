@@ -12,4 +12,5 @@ public interface BusquedaDTO {
 	public String getTerminal();
 	public String getParametro();
 	public String getFecha();
+	public String toString();
 }

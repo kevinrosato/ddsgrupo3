@@ -10,6 +10,7 @@ public interface User
 	public POIGral modificarPOI(POIGral poi,POIGral poiNuevo);
 	public POIGral consultarPOI(String IDTerminal);
 	public Object realizarFunc(Funcionalidad funcionalidad,Object poi);	
+	public Reporte reportarSegun(String tipo, String datoDelReporte);
 
 	public String getNombre();
 	public void setNombre(String nombre);

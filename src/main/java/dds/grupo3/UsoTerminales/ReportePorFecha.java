@@ -1,5 +1,6 @@
 package dds.grupo3.UsoTerminales;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -8,8 +9,26 @@ import dds.grupo3.Interfaces.Reporte;
 
 public class ReportePorFecha implements Reporte {
 
-	private	Hashtable<String, Integer> tablaReporte;
-	private	List<String>	listaStrings;
+	private	Hashtable<String, Integer> tablaReporte = new Hashtable<>();
+	private	List<String>	listaStrings = new ArrayList<>();
+	@Override
+	public void crear(String terminal) {
+		BusquedasDAO database = new BusquedasDAO();
+		List<BusquedaDTO> lista = database.buscar_Por("Terminal",terminal,"*");
+		System.out.println("DTOs Terminados!!");
+		for(BusquedaDTO i : lista)
+		{
+			if (!tablaReporte.containsKey(i.getFecha()))
+			{
+				listaStrings.add(i.getFecha());
+				tablaReporte.put(i.getFecha(),1);
+			}
+			else
+			{
+				tablaReporte.put(i.getFecha(),(tablaReporte.get(i.getFecha()))+1);
+			}
+		}
+	}
 	@Override
 	public void mostrar() {
 		System.out.println("|	Fecha:	|	Busquedas:	|");
@@ -18,25 +37,6 @@ public class ReportePorFecha implements Reporte {
 			System.out.println("	"+i+"	|	"+tablaReporte.get(i)+"	|");
 		}
 	}
-
-	@Override
-	public void crear(String terminal) {
-		
-		BusquedasDAO database = new BusquedasDAO();		List<BusquedaDTO> lista = database.buscar_En_Tabla(terminal);
-		
-		Integer auxiliar = 0;
-		for(BusquedaDTO i : lista)
-		{
-			for(BusquedaDTO j: lista)
-			{
-				if (j.getFecha().equals(i.getFecha()))	auxiliar ++;
-			}
-			listaStrings.add(i.getFecha());
-			tablaReporte.put(i.getFecha(),auxiliar);
-			auxiliar = 0;
-		}
-	}
-
 	@Override
 	public Integer verInfoSegun(String key)
 	{

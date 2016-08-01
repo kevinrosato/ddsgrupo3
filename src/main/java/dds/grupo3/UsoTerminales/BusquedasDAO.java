@@ -12,7 +12,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import dds.grupo3.Interfaces.BusquedaDTO;
-import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
 public class BusquedasDAO {
@@ -20,7 +19,7 @@ public class BusquedasDAO {
 	private Connection conexion = null;
 
 //------------------------ Comienzo de Mensajes------------------------------------------------------------------------
-	public	Integer	guardarBusqueda(User terminal, String frase, Integer cantResultados,Long retardo)
+	public	Integer	guardarBusqueda(String terminal, String frase, Integer cantResultados,Long retardo)
 	{
 		Calendar fecha = new GregorianCalendar();
 		String fechaS = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH));
@@ -28,7 +27,9 @@ public class BusquedasDAO {
 		fechaS = fechaS.concat(Integer.toString(1 + fecha.get(Calendar.MONTH)));
 		fechaS = fechaS.concat("/");
 		fechaS = fechaS.concat(Integer.toString(1 + fecha.get(Calendar.YEAR)));
-		return this.agregarATabla(frase,terminal.getNombre(),fechaS,cantResultados,retardo);
+		System.out.println("Busqueda: "+frase+", "+fechaS+", "
+				+terminal+", "+cantResultados.toString()+", "+retardo.toString());
+		return this.agregarATabla(frase,terminal,fechaS,cantResultados,retardo);
 	}
 //------------------------ Comienzo de Conexion------------------------------------------------------------------------
 	 public Connection getConexion()
@@ -68,46 +69,59 @@ public class BusquedasDAO {
 	 
 //------------------------ Comienzo de SQLs------------------------------------------------------------------------
  
-	private Integer agregarATabla(String frase, String terminal, String fecha, Integer cantResultados, Long retardo) {
+	private Integer agregarATabla(String frase, String fecha, String terminal, Integer cantResultados, Long retardo)
+	{
 		CallableStatement consulta = null;
 		try {
 		    consulta = conexion.prepareCall
-		    		("INSERT INTO dbo.Consultas_Realizadas"
-		    		+ " OUTPUT Inserted.ID "
-		    		+ "VALUES ('?','?','?','?'?");
-			consulta.setString(1, frase);
-			consulta.setString(2, fecha);
-			consulta.setString(3, terminal);
-			consulta.setInt(4,cantResultados);
-			consulta.setLong(5,retardo);
-			consulta.execute();
-			return consulta.getInt(1);		
+		    		("INSERT INTO dbo.Consultas_Realizadas OUTPUT Inserted.ID "
+		    		+ "VALUES ('"+frase+"','"+terminal+"'"
+		    		+ ",'"+fecha+"',"+cantResultados.toString()+","+retardo.toString()+")");
+			consulta.executeQuery();
+			System.out.println();
+			return 0;
 		}
 		catch (Exception e){
 		e.printStackTrace();
 		throw new RuntimeException(e);
 		}
 	}
-	public List<BusquedaDTO> buscar_En_Tabla(String palabraClave){
-	 
+	public List<BusquedaDTO> buscar_Por(String parametro, String clave,String Info){
 		CallableStatement consulta = null;
 		ResultSet resultados = null;
 		List<BusquedaDTO> lista = new ArrayList<>();
 		try {
-		    consulta = conexion.prepareCall("SELECT * FROM dbo.[Tabla Busquedas] WHERE (terminal = '?') OR (fecha = '?')");
-			consulta.setString(1, palabraClave);
-			consulta.setString(2, palabraClave);
-			consulta.execute();
-			resultados = consulta.executeQuery();
-			
+			    consulta = conexion.prepareCall("SELECT "+Info+" FROM dbo.Consultas_Realizadas"
+			    		+ " WHERE ("+parametro+" = '"+clave+"')");
+				consulta.execute();
+		    resultados = consulta.executeQuery();
 			while( resultados.next() ){
 				BusquedaDTO elemento = (BusquedaDTO) Factory.getObject("BusquedaDTO");
 				elemento.setTerminal(resultados.getString("Terminal"));	
 				elemento.setFecha(resultados.getString("Fecha"));
-				elemento.setParametro(resultados.getString("Frase"));
+				elemento.setParametro(resultados.getString("Parametro"));
 				elemento.setCantRespuestas(resultados.getInt("Resultados"));
-				elemento.setRetardo(resultados.getLong("Retardo"));
+				elemento.setRetardo(resultados.getLong("Demora"));
 				lista.add(elemento);			
+			}
+		return lista;
+		} catch (Exception e4) {
+			e4.printStackTrace();
+			throw new RuntimeException(e4);
+		}
+	}
+	public List<String> buscar_Fechas_Por(String parametro, String clave)
+	{
+		CallableStatement consulta = null;
+		ResultSet resultados = null;
+		List<String> lista = new ArrayList<>();
+		try {
+			    consulta = conexion.prepareCall("SELECT Fecha FROM dbo.Consultas_Realizadas"
+			    		+ " WHERE ("+parametro+" = '"+clave+"')");
+				consulta.execute();
+		    resultados = consulta.executeQuery();
+			while( resultados.next() ){
+				lista.add(resultados.getString(1));			
 			}
 		return lista;
 		} catch (Exception e4) {

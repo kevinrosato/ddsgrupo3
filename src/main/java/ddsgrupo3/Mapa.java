@@ -26,8 +26,8 @@ public class Mapa	implements AdministradorPOIs{
 	}
 	//----------------------------------------------
 	//METODOS ABCM
-	public POIGral realizarFuncConPoi(Funcionalidad funcionalidad,Object poi){
-		return (POIGral) funcionalidad.realizarFuncionConPOI(listaPois,poi);
+	public Object realizarFuncConPoi(Funcionalidad funcionalidad,Object poi){
+		return funcionalidad.realizarFuncionConPOI(listaPois,poi);
 	}	
 	
 	//----------

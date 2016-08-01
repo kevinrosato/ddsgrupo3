@@ -10,6 +10,13 @@ public class BusquedaDTOImplement implements BusquedaDTO {
 	private	String	Parametro;
 	private	String	Fecha;
 
+	
+	@Override
+	public String toString() {
+		return "BusquedaDTOImplement [CantRespuestas=" + CantRespuestas + ", Retardo=" + Retardo + ", Terminal="
+				+ Terminal + ", Parametro=" + Parametro + ", Fecha=" + Fecha + "]";
+	}
+
 	public void setCantRespuestas(Integer cantRespuestas) {
 		CantRespuestas = cantRespuestas;
 	}

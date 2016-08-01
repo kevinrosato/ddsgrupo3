@@ -9,7 +9,7 @@ public interface AdministradorPOIs
 	public void buscarYmostrar(String clave);
 	//----------------------------------------------
 	//METODOS ABCM
-	public POIGral realizarFuncConPoi(Funcionalidad funcionalidad,Object poi);
+	public Object realizarFuncConPoi(Funcionalidad funcionalidad,Object poi);
 	//----------
 	//Getters y Setters
 	//----------

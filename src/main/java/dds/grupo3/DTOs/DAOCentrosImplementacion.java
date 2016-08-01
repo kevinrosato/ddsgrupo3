@@ -19,7 +19,7 @@ public class DAOCentrosImplementacion implements CGPDAO{
 			POIGral	centro = new Centro(i);
 			if (clave.equals(null) || centro.tieneLaClave(clave))
 			{
-				try {Thread.sleep(100);}
+				try {Thread.sleep(1);}
 				catch (InterruptedException e)
 				{e.printStackTrace();}
 				
