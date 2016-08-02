@@ -77,4 +77,6 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	@Override
 	public void setParametro(Object obj) {
 	}
+	
+	public abstract void execute();
 }

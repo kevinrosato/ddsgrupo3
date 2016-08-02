@@ -23,6 +23,7 @@ public class AgregarAcciones extends ProcesoAsincronico{
 		this.permisosNuevos=permisosNuevos;
 	}
 	
+	@Override
 	public void execute(){
 		System.out.println("¿Desea deshacer los cambios?(Y/N)");
 		respuesta=scanner.nextLine();
