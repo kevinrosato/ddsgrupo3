@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import dds.grupo3.UsoTerminales.ResultadoDAO;
 
 public abstract class ProcesoAsincronico extends TimerTask implements Funcionalidad {
+	//TODO: Agregar horas de inicio y fin para agregar a BD con fecha no basta
 	//TODO: Archivo de configuracion para mail de usuario y opcion por defecto ante falla
 	ResultadoDAO daoBaseDeDatos= new ResultadoDAO(); //Conexion a base de datos
 	Calendar fechaInicio; //fecha de inicio de ejecucion programada
