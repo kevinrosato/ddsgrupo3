@@ -26,7 +26,7 @@ public class BusquedasDAO {
 		fechaS = fechaS.concat("/");
 		fechaS = fechaS.concat(Integer.toString(1 + fecha.get(Calendar.MONTH)));
 		fechaS = fechaS.concat("/");
-		fechaS = fechaS.concat(Integer.toString(1 + fecha.get(Calendar.YEAR)));
+		fechaS = fechaS.concat(Integer.toString(fecha.get(Calendar.YEAR)));
 		System.out.println("Busqueda: "+frase+", "+fechaS+", "
 				+terminal+", "+cantResultados.toString()+", "+retardo.toString());
 		return this.agregarATabla(frase,terminal,fechaS,cantResultados,retardo);
@@ -72,14 +72,18 @@ public class BusquedasDAO {
 	private Integer agregarATabla(String frase, String fecha, String terminal, Integer cantResultados, Long retardo)
 	{
 		CallableStatement consulta = null;
+		ResultSet resultados = null;
 		try {
 		    consulta = conexion.prepareCall
-		    		("INSERT INTO dbo.Consultas_Realizadas OUTPUT Inserted.ID "
+		    		("INSERT INTO dbo.Consultas_Realizadas"
 		    		+ "VALUES ('"+frase+"','"+terminal+"'"
 		    		+ ",'"+fecha+"',"+cantResultados.toString()+","+retardo.toString()+")");
 			consulta.executeQuery();
-			System.out.println();
-			return 0;
+		    consulta = conexion.prepareCall("SELECT TOP 1 F.ID FROM"
+		    		+((String) Factory.getString("tablaDeBusqeudas"))+
+		    		" F ORDER BY F.ID DESC");
+		    resultados = consulta.executeQuery();
+			return resultados.getInt(1);
 		}
 		catch (Exception e){
 		e.printStackTrace();
@@ -110,51 +114,15 @@ public class BusquedasDAO {
 			throw new RuntimeException(e4);
 		}
 	}
-	public List<String> obetenerStrings(String qry)
-	{
-		CallableStatement consulta = null;
-		ResultSet resultados = null;
-		List<String> lista = new ArrayList<>();
-		try {
-		    consulta = conexion.prepareCall(qry);
-			resultados = consulta.executeQuery();
-			while( resultados.next())
-			{
-				lista.add(resultados.getString(0));
-			}
-			return lista;
-		} catch (Exception e4) {
-			e4.printStackTrace();
-			throw new RuntimeException(e4);
-		}
-	}
-	public Integer obetenerValor(String qry)
+	public ResultSet ejecutar(String qry)
 	{
 		CallableStatement consulta = null;
 		ResultSet resultados = null;
 		try {
 		    consulta = conexion.prepareCall(qry);
+			consulta.execute();
 			resultados = consulta.executeQuery();
-			return resultados.getInt(0);
-		} catch (Exception e4) {
-			e4.printStackTrace();
-			throw new RuntimeException(e4);
-		}
-	}
-	public List<String> buscar_Fechas_Por(String parametro, String clave)
-	{
-		CallableStatement consulta = null;
-		ResultSet resultados = null;
-		List<String> lista = new ArrayList<>();
-		try {
-			    consulta = conexion.prepareCall("SELECT Fecha FROM dbo.Consultas_Realizadas"
-			    		+ " WHERE ("+parametro+" = '"+clave+"')");
-				consulta.execute();
-		    resultados = consulta.executeQuery();
-			while( resultados.next() ){
-				lista.add(resultados.getString(1));			
-			}
-		return lista;
+			return resultados;
 		} catch (Exception e4) {
 			e4.printStackTrace();
 			throw new RuntimeException(e4);

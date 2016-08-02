@@ -26,6 +26,6 @@ public class BorrarPOI implements Funcionalidad{
 
 	@Override
 	public void mostrarOpcion() {
-		System.out.println("--> BORRAR POI");
+		System.out.println("	BORRAR POI");
 	}
 }

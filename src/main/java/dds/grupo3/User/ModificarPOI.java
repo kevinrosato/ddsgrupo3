@@ -36,6 +36,6 @@ public class ModificarPOI implements Funcionalidad{
 	}
 	@Override
 	public void mostrarOpcion() {
-		System.out.println("-->	MODIFICAR POI EXISTENTE");
+		System.out.println("	MODIFICAR POI EXISTENTE");
 	}
 }

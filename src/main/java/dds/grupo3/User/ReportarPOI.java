@@ -7,8 +7,6 @@ import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.Interfaces.Reporte;
 import dds.grupo3.Interfaces.User;
-import dds.grupo3.UsoTerminales.BusquedasDAO;
-import dds.grupo3.UsoTerminales.FabricaReportes;
 import ddsgrupo3.Factory;
 
 public class ReportarPOI implements Funcionalidad {
@@ -18,24 +16,15 @@ public class ReportarPOI implements Funcionalidad {
 	@Override
 	public Object realizarFuncion(List<POIGral> lista, Object parametros)
 	{
-		Reporte rep = (Reporte) Factory.getObject("Reporte");
 		String[] aux = ((String) parametros).split(",");
-		String qry = FabricaReportes.crearQueryVariables(aux);
-		BusquedasDAO database = new BusquedasDAO();
-		List<String> listaRta = database.obetenerStrings(qry);
-		rep.setColumna1(aux[3]);
-		rep.setColumna1(aux[4]);
-		for(String dato : listaRta)
-		{
-			rep.crearFila(dato,database.obetenerValor(FabricaReportes.crearQueryEcuacion(aux,dato)));
-			
-		}
+		Reporte rep = (Reporte) Factory.getObject(aux[0]);
+		rep.crearSegun(aux[1]);
 		return rep;
 	}
 
 	@Override
 	public void setParametro(Object obj) {
-		dato = (String) obj;
+		setDato((String) obj);
 	}
 
 	@Override
@@ -47,31 +36,34 @@ public class ReportarPOI implements Funcionalidad {
 		System.out.println("----------------------------------------");
 		System.out.println();
 		System.out.println("Elija el tipo de Reporte:");
-		System.out.print("Tipo Parametro:");
+		System.out.print("1 - Reporte de Cant Busquedas por Fecha");
+		System.out.print("2 - Reporte de Cada Busqueda por Terminal");
 		String parametros = teclado.nextLine();
-		parametros = parametros.concat(",");
-		System.out.print("Valor:");
-		parametros = parametros.concat(teclado.nextLine());
-		parametros = parametros.concat(",");
-		System.out.print("Parametro Iterador:");
-		parametros = parametros.concat(teclado.nextLine());
-		parametros = parametros.concat(",");
-		usuario.reportarSegun(parametros);
-		System.out.print("Parametro a Mostrar:");
-		parametros = parametros.concat(teclado.nextLine());
-		parametros = parametros.concat(",");
-		usuario.reportarSegun(parametros);
-		System.out.print("Mostrar:");
-		System.out.println(" 1 - Suma");
-		System.out.println(" 2 - Cantidad");
-		System.out.println(" 3 - Valor");
-		parametros = parametros.concat(teclado.nextLine());
-		parametros = parametros.concat(",");
-		return null;
-	}
 
+		if(Integer.parseInt(parametros) ==1)
+		{
+			parametros = "reporte1,";
+			parametros = parametros.concat("x");
+		}
+		else if(Integer.parseInt(parametros) ==2)
+		{
+			parametros = "reporte3,";
+			System.out.print("Valor:");
+			parametros = parametros.concat(teclado.nextLine());
+		}
+		usuario.reportarSegun(parametros).mostrar();
+		return 0;
+	}
 	@Override
 	public void mostrarOpcion() {
-		System.out.println("-->	GENERAR REPORTE");
+		System.out.println("	GENERAR REPORTE");
+	}
+
+	public String getDato() {
+		return dato;
+	}
+
+	public void setDato(String dato) {
+		this.dato = dato;
 	}
 }

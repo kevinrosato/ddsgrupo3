@@ -21,4 +21,20 @@ public class Factory
 			throw new RuntimeException(ex);
 		}
 	}
+	public static Object getString (String name)
+	{
+		try
+		{
+			FileInputStream file = new FileInputStream("Database.properties");
+			Properties propiedades = new Properties();
+			propiedades.load(file);
+			return propiedades.getProperty(name);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}	
+	}
+
 }

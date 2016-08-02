@@ -122,7 +122,6 @@ public class ConsultarPOI implements Funcionalidad {
 
 	@Override
 	public void mostrarOpcion() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("	BUSCAR UN POI");
 	}
 }

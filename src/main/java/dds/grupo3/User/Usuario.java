@@ -18,6 +18,7 @@ public class Usuario implements User{
 	public Integer	mostrarOpciones()
 	{
 		Integer j = 0;
+		System.out.println("canto opciones: "+Integer.toString(this.getRol().getPermisos().size()));
 		for (Funcionalidad i: this.getRol().getPermisos())
 		{
 			j++;

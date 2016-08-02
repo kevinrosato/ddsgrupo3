@@ -59,6 +59,6 @@ public class AgregarPOI implements Funcionalidad {
 	}
 	@Override
 	public void mostrarOpcion() {
-		System.out.println("--> AGREGAR NUEVO POI");
+		System.out.println("	AGREGAR NUEVO POI");
 	}
 }

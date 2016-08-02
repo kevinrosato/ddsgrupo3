@@ -10,9 +10,11 @@ public class Aplicacion {
 	private	Scanner teclado = new Scanner(System.in);	
 	public void ejecutar(AdministradorPOIs mapa, String terminal_ID)
 	{
+		while(true){
 		User usuario = this.menuLogin();
 		usuario.setMapa(mapa);
 		menuPrincipal(usuario,terminal_ID);
+		}
 	}
 	public User menuLogin(){
 		User usuario = null;
@@ -42,12 +44,14 @@ public class Aplicacion {
 			System.out.println("----------------------------------------");
 			System.out.println("Ingrese la opcion deseada:");
 			Integer ultimaOpcion = usuario.mostrarOpciones();
+			ultimaOpcion ++;
 			System.out.println(ultimaOpcion.toString()+"->	Desconectar");
 			System.out.print("OPCION DESEADA:");
 			String opcionElegida = teclado.nextLine();
-			if(usuario.getRol().getPermisos().size() <= Integer.parseInt(opcionElegida))
+			System.out.println(opcionElegida);
+			if(Integer.parseInt(opcionElegida) < ultimaOpcion)
 			{
-				Funcionalidad f = usuario.getRol().getPermisos().get(Integer.parseInt(opcionElegida));			
+				Funcionalidad f = usuario.getRol().getPermisos().get(Integer.parseInt(opcionElegida)-1);			
 				f.desplegarConsola(usuario,terminal_ID);				
 			}
 			else if (Integer.parseInt(opcionElegida) == ultimaOpcion){

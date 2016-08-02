@@ -329,6 +329,11 @@ public void init() {
 	//-----------------
 	
 	@Test //Test de Base de datos
+	public void testApk() {
+		Aplicacion aplicacion = new Aplicacion();
+		aplicacion.ejecutar(mapa, "Terminal_de_Prueba");
+		}
+	@Test //Test de Base de datos
 	public void unaBusqueda() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
@@ -338,12 +343,12 @@ public void init() {
 	public void generarReporteDeTerminales() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
-		usuario.reportarSegun("terminal","1/8/2017").mostrar();;
+		usuario.reportarSegun("reporte1,x").mostrar();;
 		}
 	@Test //Test de Base de datos
 	public void generarDeFechas() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
-		usuario.reportarSegun("fecha","Palermo_1").mostrar();;
+		usuario.reportarSegun("reporte3,x").mostrar();;
 		}
 }

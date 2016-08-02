@@ -346,6 +346,6 @@ public void init() {
 	@Test // Otro test de prueba de Json
 	public void testApk() {
 		Aplicacion aplicacion = new Aplicacion();
-		aplicacion.ejecutar(mapa);
+		aplicacion.ejecutar(mapa, "Terminal_de_Prueba");
 	}
 }
