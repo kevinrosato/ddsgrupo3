@@ -7,6 +7,7 @@ import java.util.Scanner;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
+import dds.grupo3.Interfaces.User;
 import dds.grupo3.UsoTerminales.BusquedasDAO;
 import dds.grupo3.UsoTerminales.Cronometrador;
 
@@ -15,7 +16,7 @@ public class ConsultarPOI implements Funcionalidad {
 	private AdministradorPOIs mapa;
 	private String resto = new String();
 	@Override
-	public Object realizarFuncionConPOI(List<POIGral> listaPois, Object terminalID)
+	public Object realizarFuncion(List<POIGral> listaPois, Object terminalID)
 	{
 		BusquedasDAO database = new BusquedasDAO();
 		List<POIGral> listaResultante = new ArrayList<POIGral>();
@@ -107,5 +108,21 @@ public class ConsultarPOI implements Funcionalidad {
 	@Override
 	public void setParametro(Object obj) {
 		mapa = (AdministradorPOIs) obj;
+	}
+
+	@Override
+	public Integer desplegarConsola(User usuario, String terminal_ID) {
+			System.out.println("---------------------------------------");
+			System.out.println("		CONSULTA DE UN POI");
+			System.out.println("----------------------------------------");
+			System.out.println();
+			usuario.consultarPOI(terminal_ID);
+		return 0;
+	}
+
+	@Override
+	public void mostrarOpcion() {
+		// TODO Auto-generated method stub
+		
 	}
 }

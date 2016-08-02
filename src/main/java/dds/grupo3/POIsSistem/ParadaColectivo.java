@@ -11,7 +11,7 @@ public class ParadaColectivo extends POI{
 	//----------
 	
 	public String conocerTipo(){
-		return "Parada De Colectivos";
+		return "Parada";
 	}
 	
 	public Boolean estaCercaDe(Ubicacion lugar)

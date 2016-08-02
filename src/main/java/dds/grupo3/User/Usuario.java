@@ -15,12 +15,22 @@ public class Usuario implements User{
 	private AdministradorPOIs mapa = (AdministradorPOIs) Factory.getObject("AdminPOIs");
 	private Funcionalidad funcionalidad;
 	
-	public Reporte reportarSegun(String tipo, String datoDelReporte)
+	public Integer	mostrarOpciones()
 	{
-		funcionalidad = (Funcionalidad) Factory.getObject("Reportar");
-		funcionalidad.setParametro(datoDelReporte);
-		return (Reporte) realizarFunc(funcionalidad, tipo);
+		Integer j = 0;
+		for (Funcionalidad i: this.getRol().getPermisos())
+		{
+			j++;
+			System.out.print(j.toString()+"->	");
+			i.mostrarOpcion();
+		}
+		return j;
 	}	
+	@Override
+	public Reporte reportarSegun(String parametros) {
+		funcionalidad = (Funcionalidad) Factory.getObject("Reportar");
+		return (Reporte) realizarFunc(funcionalidad, (Object) parametros);
+	}
 	public POIGral agregarPOI(POIGral poi){
 		funcionalidad = (Funcionalidad) Factory.getObject("Agregar");
 		return (POIGral) realizarFunc(funcionalidad, poi);

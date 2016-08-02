@@ -110,6 +110,37 @@ public class BusquedasDAO {
 			throw new RuntimeException(e4);
 		}
 	}
+	public List<String> obetenerStrings(String qry)
+	{
+		CallableStatement consulta = null;
+		ResultSet resultados = null;
+		List<String> lista = new ArrayList<>();
+		try {
+		    consulta = conexion.prepareCall(qry);
+			resultados = consulta.executeQuery();
+			while( resultados.next())
+			{
+				lista.add(resultados.getString(0));
+			}
+			return lista;
+		} catch (Exception e4) {
+			e4.printStackTrace();
+			throw new RuntimeException(e4);
+		}
+	}
+	public Integer obetenerValor(String qry)
+	{
+		CallableStatement consulta = null;
+		ResultSet resultados = null;
+		try {
+		    consulta = conexion.prepareCall(qry);
+			resultados = consulta.executeQuery();
+			return resultados.getInt(0);
+		} catch (Exception e4) {
+			e4.printStackTrace();
+			throw new RuntimeException(e4);
+		}
+	}
 	public List<String> buscar_Fechas_Por(String parametro, String clave)
 	{
 		CallableStatement consulta = null;

@@ -29,7 +29,7 @@ public class Local extends POI{
 	//----------
 	
 	public String conocerTipo(){
-		return "Local Comercial";
+		return "Local";
 	}
 	
 	public Boolean estaCercaComoPOI(Ubicacion lugar){

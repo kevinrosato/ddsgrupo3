@@ -19,7 +19,7 @@ public class CGP extends Local{
 	//----------
 		
 	public String conocerTipo(){
-		return "Centro De Gestion y Participacion (CGP)";
+		return "CGP";
 	}
 	
 	@Override

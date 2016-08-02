@@ -4,13 +4,14 @@ import dds.grupo3.User.Rol;
 
 public interface User
 {
+	public Integer mostrarOpciones();
 	public POIGral agregarPOI(POIGral poi);
 	public POIGral borrarPOI(POIGral poi);
 	//VER COMO SERIA PASANDOLE UNA LISTA DE CAMPOS EN VEZ DE UN POIGral NUEVO
 	public POIGral modificarPOI(POIGral poi,POIGral poiNuevo);
 	public POIGral consultarPOI(String IDTerminal);
 	public Object realizarFunc(Funcionalidad funcionalidad,Object poi);	
-	public Reporte reportarSegun(String tipo, String datoDelReporte);
+	public Reporte reportarSegun(String parametros);
 
 	public String getNombre();
 	public void setNombre(String nombre);

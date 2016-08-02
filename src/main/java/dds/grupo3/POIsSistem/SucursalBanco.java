@@ -17,7 +17,7 @@ public class SucursalBanco extends Local{
 	//----------	
 	
 	public String conocerTipo(){
-		return "Sucursal De Banco";
+		return "Sucursal";
 	}
 
 	public	Boolean	tieneLaClave(String clave){

@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface Funcionalidad 
 {
-	public Object	realizarFuncionConPOI(List<POIGral> listaPois,Object poi);
+	public Integer	desplegarConsola(User usuario, String terminal_ID);
+	public void		mostrarOpcion();
+	public Object	realizarFuncion(List<POIGral> listaPois,Object poi);
 	public void		setParametro(Object obj);
 }

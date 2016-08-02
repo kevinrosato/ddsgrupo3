@@ -332,7 +332,7 @@ public void init() {
 	public void unaBusqueda() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
-		usuario.consultarPOI("Palermo_1");
+		usuario.consultarPOI("Medrano_314");
 		}
 	@Test //Test de Base de datos
 	public void generarReporteDeTerminales() {
