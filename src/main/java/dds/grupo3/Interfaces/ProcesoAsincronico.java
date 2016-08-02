@@ -28,13 +28,13 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 			file = new FileInputStream("ProcesoAsincronico.properties");
 			Properties propiedades = new Properties();
 			propiedades.load(file);
-			pedirInfo();
 			mail = propiedades.getProperty("mailDefault");
 			errorDefault= Integer.parseInt(propiedades.getProperty("accionErrorDefault"));
 			errorReintento= Integer.parseInt(propiedades.getProperty("errorReintento"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		pedirInfo();
 		fechaInicio= this.setFecha();
 		setTask();
 		Timer timer= new Timer(true);

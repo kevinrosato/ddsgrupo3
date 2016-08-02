@@ -25,8 +25,10 @@ public class AgregarAcciones extends ProcesoAsincronico{
 		if(respuesta.equals("N")){
 			try {
 				escribirArchivo();
+				this.resultadoOK();
 			} catch (IOException e) {
 				e.printStackTrace();
+				this.resultadoError(e.toString());
 			}
 		}
 	}
@@ -59,7 +61,7 @@ public class AgregarAcciones extends ProcesoAsincronico{
 		System.out.println();
 		System.out.println("Ingrese permisos que desea agregar:");
 		this.permisosNuevos = teclado.nextLine();
-		System.out.println("Se agregaron correctamente los permisos. ¿Desea deshacer los cambios?(Y/N)");
+		System.out.println("Se agregaron correctamente los permisos a la lista. ¿Desea deshacer los cambios?(Y/N)");
 		this.respuesta=teclado.nextLine();
 		System.out.println();
 		teclado.close();

@@ -21,8 +21,14 @@ public class ProcesoMultiple extends ProcesoAsincronico{
 	}
 	@Override
 	public void run(){
-		for(ProcesoAsincronico i:procesos){
-			i.desplegarConsola(usuario, terminal_ID, teclado);
+		try{
+			for(ProcesoAsincronico i:procesos){
+				i.desplegarConsola(usuario, terminal_ID, teclado);
+			}
+			this.resultadoOK();
+		}
+		catch(Exception e){
+			this.resultadoError(e.toString());
 		}
 	}
 
