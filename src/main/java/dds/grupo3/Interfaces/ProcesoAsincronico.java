@@ -8,8 +8,6 @@ import java.util.Properties;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import dds.grupo3.FabricaPOIs.FabricaDePOIs;
 import dds.grupo3.UsoTerminales.ResultadoDAO;
 
 public abstract class ProcesoAsincronico extends TimerTask implements Funcionalidad {
@@ -18,37 +16,47 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	String proceso;
 	String resultado; 
 	String error ="";
-	TimerTask task;
 	String mail="";
+	public TimerTask task;
 	Integer errorDefault=0; //0= mail, 1= reintento, cualquier otro valor= no hace nada particular
 	Integer errorReintento=0;
 	Integer cantReintentosActuales=0;
-
-	public Object	realizarFuncion(List<POIGral> listaPois,Object fecha){
+	
+	public Object	realizarFuncion(List<POIGral> listaPois,Object poi){
 		FileInputStream file;
 		try {
 			file = new FileInputStream("ProcesoAsincronico.properties");
-		Properties propiedades = new Properties();
+			Properties propiedades = new Properties();
 			propiedades.load(file);
-		
-		mail = propiedades.getProperty("mailDefault");
-		errorDefault= Integer.parseInt(propiedades.getProperty("accionErrorDefault"));
-		errorReintento= Integer.parseInt(propiedades.getProperty("errorReintento"));
+			pedirInfo();
+			mail = propiedades.getProperty("mailDefault");
+			errorDefault= Integer.parseInt(propiedades.getProperty("accionErrorDefault"));
+			errorReintento= Integer.parseInt(propiedades.getProperty("errorReintento"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		fechaInicio= (Calendar)fecha;
+		fechaInicio= this.setFecha();
 		setTask();
 		Timer timer= new Timer(true);
 		timer.schedule(task,fechaInicio.getTime()); //ejecuta el "run" a la hora de fechaInicio
 		return (null);
 	}
-	public void setTask(){
-		//task= new ProcesoAsincronico(); //pisar esto y poner la clase correspondiente del proceso
+	public abstract void pedirInfo();
+	public Calendar setFecha(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Ingrese fecha de inicio de ejecucio (hh:mm)");
+		Calendar horaDeInicio= Calendar.getInstance();
+		String auxiliar[]= scanner.nextLine().split(":");
+		scanner.close();
+		horaDeInicio.set(Calendar.HOUR_OF_DAY, Integer.parseInt(auxiliar[0]));
+		horaDeInicio.set(Calendar.MINUTE, Integer.parseInt(auxiliar[1]));
+		return (horaDeInicio);
 	}
-	public void setProceso(){ //pisar esto y poner el tipo correspondiente ej "Actualizar Comercios"
-		proceso="Por Defecto";
-	}
+	public abstract void setTask();//task= new ProcesoAsincronico(); usar inicializar
+								//pisar esto y poner la clase correspondiente del proceso
+	public abstract String setProceso(); //proceso="algo "
+						//pisar esto y poner el tipo correspondiente ej "Actualizar Comercios"
+//	public abstract void inicializar();
 	
 	@Override
 	public void run(){
@@ -60,7 +68,6 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Boolean ejecucionCorrecta=true;
@@ -95,7 +102,7 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 		publicarResultado();
 	}
 	public void publicarResultado(){
-		setProceso();
+		proceso= setProceso();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
 		String fechaS= dateFormat.format(fechaInicio.getTime());
 		String fechaFin= dateFormat.format((Calendar.getInstance()).getTime());
@@ -106,17 +113,12 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 		System.out.println("Error "+ error);*/
 		daoBaseDeDatos.agregarABaseDeDatos(fechaS, fechaFin, proceso, resultado, error); 
 	}
-
 	@Override
 	public void setParametro(Object obj) {
 	}
 	@Override
-	public void mostrarOpcion() { //Pisar en cada implementacion
-	}
+	public abstract void mostrarOpcion();
 	
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado){	 //pisar en cada implementacion que necesite 
-		
-		return 0;
-	}
+	public abstract Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado);
 }

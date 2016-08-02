@@ -12,10 +12,13 @@ import dds.grupo3.Interfaces.User;
 
 
 public class AgregarAcciones extends ProcesoAsincronico{
-    //TODO: Nicole, pone la ejecucion en paralelo en un override del run
-	//TODO: Ademas hace override de realizarfuncionconpoi para pedir que permisos cambiar mediante scanner
 	private String permisosNuevos="";
 	private String respuesta;
+	
+	public AgregarAcciones(String permiso, String respuesta){
+		this.permisosNuevos=permiso;
+		this.respuesta=respuesta;
+	}
 	
 	@Override
 	public void run(){
@@ -23,7 +26,6 @@ public class AgregarAcciones extends ProcesoAsincronico{
 			try {
 				escribirArchivo();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -39,6 +41,18 @@ public class AgregarAcciones extends ProcesoAsincronico{
 
 	@Override
 	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
+		usuario.agregarAcciones(terminal_ID);
+		return null;
+	}
+
+	@Override
+	public void mostrarOpcion() {
+		System.out.println("-->	AGREGAR ACCIONES A USUARIOS");
+	}
+
+	@Override
+	public void pedirInfo() {
+		Scanner teclado = new Scanner(System.in);
 		System.out.println("---------------------------------------");
 		System.out.println("		AGREGAR ACCIONES");
 		System.out.println("----------------------------------------");
@@ -47,15 +61,15 @@ public class AgregarAcciones extends ProcesoAsincronico{
 		this.permisosNuevos = teclado.nextLine();
 		System.out.println("Se agregaron correctamente los permisos. ¿Desea deshacer los cambios?(Y/N)");
 		this.respuesta=teclado.nextLine();
-		usuario.agregarAcciones(terminal_ID);
 		System.out.println();
-		return null;
+		teclado.close();
 	}
-
 	@Override
-	public void mostrarOpcion() {
-		// TODO Auto-generated method stub
-		System.out.println("-->	AGREGAR ACCIONES A USUARIOS");
+	public void setTask() {
+		this.task= new AgregarAcciones(permisosNuevos,respuesta);
 	}
-
+	@Override
+	public String setProceso() {
+		return "Agregar Acciones a Usuarios";
+	}
 }

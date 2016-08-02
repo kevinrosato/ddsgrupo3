@@ -9,13 +9,16 @@ import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
 public class ProcesoMultiple extends ProcesoAsincronico{
-	//TODO: Implementacion real
 	private List<ProcesoAsincronico> procesos= new ArrayList<ProcesoAsincronico>();
 	String procesoMultiple;
 	User usuario;
 	String terminal_ID;
 	Scanner teclado;
-	
+	public ProcesoMultiple(List<ProcesoAsincronico> procesos, String terminal_ID, User usuario){
+		this.usuario=usuario;
+		this.terminal_ID=terminal_ID;
+		this.procesos=procesos;
+	}
 	@Override
 	public void run(){
 		for(ProcesoAsincronico i:procesos){
@@ -28,7 +31,6 @@ public class ProcesoMultiple extends ProcesoAsincronico{
 		this.usuario=usuario;
 		this.terminal_ID=terminal_ID;
 		this.teclado=teclado;
-		Factory factory = null;
 		System.out.println("---------------------------------------");
 		System.out.println("		PROCESO MULTIPLE");
 		System.out.println("----------------------------------------");
@@ -36,7 +38,7 @@ public class ProcesoMultiple extends ProcesoAsincronico{
 		System.out.println("Ingrese lista de procesos:");
 		this.procesoMultiple = teclado.nextLine();
 		for(String i: procesoMultiple.split(",")){
-			procesos.add((ProcesoAsincronico) factory.getObject(i));
+			procesos.add((ProcesoAsincronico) Factory.getObject(i));
 		}
 		usuario.procesoMultiple(terminal_ID);
 		System.out.println();
@@ -45,7 +47,33 @@ public class ProcesoMultiple extends ProcesoAsincronico{
 
 	@Override
 	public void mostrarOpcion() {
-		// TODO Auto-generated method stub
 		System.out.println("-->	DISPARAR PROCESO MULTIPLE");
+	}
+
+	@Override
+	public void pedirInfo() {
+		teclado=new Scanner(System.in);
+		System.out.println("---------------------------------------");
+		System.out.println("		PROCESO MULTIPLE");
+		System.out.println("----------------------------------------");
+		System.out.println();
+		System.out.println("Ingrese lista de procesos:");
+		this.procesoMultiple = teclado.nextLine();
+		for(String i: procesoMultiple.split(",")){
+			procesos.add((ProcesoAsincronico) Factory.getObject(i));
+		}
+		System.out.println();
+		
+	}
+
+	@Override
+	public void setTask() {
+		this.task= new ProcesoMultiple(procesos,terminal_ID,usuario);
+		
+	}
+
+	@Override
+	public String setProceso() {
+		return "Proceso Multiple";
 	}
 }

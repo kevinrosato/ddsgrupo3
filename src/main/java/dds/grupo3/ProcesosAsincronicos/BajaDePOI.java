@@ -32,4 +32,19 @@ public class BajaDePOI extends ProcesoAsincronico{
 		// TODO Auto-generated method stub
 		System.out.println("-->	BAJA DE POIS");
 	}
+	@Override
+	public void pedirInfo() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setTask() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String setProceso() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
