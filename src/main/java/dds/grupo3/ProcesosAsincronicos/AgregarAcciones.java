@@ -13,21 +13,12 @@ import dds.grupo3.Interfaces.User;
 
 public class AgregarAcciones extends ProcesoAsincronico{
     //TODO: Nicole, pone la ejecucion en paralelo en un override del run
-	//fijate la clase ProcesoAsincronico cualquier cosa avisa si no se entiende
-	//en el run no pongas inputs ya que corren en paralelo, no deberia haber scanner o input del usuario
 	//TODO: Ademas hace override de realizarfuncionconpoi para pedir que permisos cambiar mediante scanner
 	private String permisosNuevos="";
-	private Scanner scanner=new Scanner(System.in);
 	private String respuesta;
 	
-	public AgregarAcciones(String permisosNuevos){
-		this.permisosNuevos=permisosNuevos;
-	}
-	
 	@Override
-	public void execute(){
-		System.out.println("¿Desea deshacer los cambios?(Y/N)");
-		respuesta=scanner.nextLine();
+	public void run(){
 		if(respuesta.equals("N")){
 			try {
 				escribirArchivo();
@@ -47,14 +38,24 @@ public class AgregarAcciones extends ProcesoAsincronico{
 	}
 
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID) {
-		// TODO Auto-generated method stub
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
+		System.out.println("---------------------------------------");
+		System.out.println("		AGREGAR ACCIONES");
+		System.out.println("----------------------------------------");
+		System.out.println();
+		System.out.println("Ingrese permisos que desea agregar:");
+		this.permisosNuevos = teclado.nextLine();
+		System.out.println("Se agregaron correctamente los permisos. ¿Desea deshacer los cambios?(Y/N)");
+		this.respuesta=teclado.nextLine();
+		usuario.agregarAcciones(terminal_ID);
+		System.out.println();
 		return null;
 	}
 
 	@Override
 	public void mostrarOpcion() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("-->	AGREGAR ACCIONES A USUARIOS");
 	}
+
 }

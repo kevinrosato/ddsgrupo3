@@ -1,6 +1,7 @@
 package dds.grupo3.User;
 
 import java.util.List;
+import java.util.Scanner;
 
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
@@ -19,7 +20,7 @@ public class BorrarPOI implements Funcionalidad{
 	public void setParametro(Object obj){}
 
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID) {
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
 		usuario.borrarPOI(usuario.consultarPOI(terminal_ID));
 		return 0;
 	}

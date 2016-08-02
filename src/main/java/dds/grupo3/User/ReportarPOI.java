@@ -39,9 +39,7 @@ public class ReportarPOI implements Funcionalidad {
 	}
 
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID) {
-		@SuppressWarnings("resource")
-		Scanner teclado = new Scanner(System.in);
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
 		System.out.println("---------------------------------------");
 		System.out.println("		OPCIONES DE REPORTE");
 		System.out.println("----------------------------------------");

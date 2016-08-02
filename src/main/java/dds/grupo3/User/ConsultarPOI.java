@@ -111,7 +111,7 @@ public class ConsultarPOI implements Funcionalidad {
 	}
 
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID) {
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
 			System.out.println("---------------------------------------");
 			System.out.println("		CONSULTA DE UN POI");
 			System.out.println("----------------------------------------");

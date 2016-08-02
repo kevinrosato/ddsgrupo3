@@ -48,7 +48,7 @@ public class Aplicacion {
 			if(usuario.getRol().getPermisos().size() <= Integer.parseInt(opcionElegida))
 			{
 				Funcionalidad f = usuario.getRol().getPermisos().get(Integer.parseInt(opcionElegida));			
-				f.desplegarConsola(usuario,terminal_ID);				
+				f.desplegarConsola(usuario,terminal_ID,teclado);				
 			}
 			else if (Integer.parseInt(opcionElegida) == ultimaOpcion){
 				flag = false;

@@ -1,6 +1,7 @@
 package dds.grupo3.User;
 
 import java.util.List;
+import java.util.Scanner;
 
 import dds.grupo3.FabricaPOIs.FabricaDePOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
@@ -24,7 +25,7 @@ public class ModificarPOI implements Funcionalidad{
 		poiNuevo = (POIGral) obj;
 	}
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID) {
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
 		System.out.println("---------------------------------------");
 		System.out.println("		MODIFICACION DE UN POI");
 		System.out.println("----------------------------------------");

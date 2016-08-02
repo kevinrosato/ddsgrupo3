@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import dds.grupo3.FabricaPOIs.FabricaDePOIs;
 import dds.grupo3.UsoTerminales.ResultadoDAO;
 
 public abstract class ProcesoAsincronico extends TimerTask implements Funcionalidad {
@@ -110,14 +112,11 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	}
 	@Override
 	public void mostrarOpcion() { //Pisar en cada implementacion
-		System.out.println("-->	NOMBREDEPROCESOASINCRONICO");
 	}
 	
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID){	 //pisar en cada implementacion que necesite 
-																		//consola
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado){	 //pisar en cada implementacion que necesite 
 		
 		return 0;
 	}
-	public abstract void execute();
 }
