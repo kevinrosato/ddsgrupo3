@@ -93,7 +93,7 @@ public class ConsultarPOI implements Funcionalidad {
 		else if(lista.size() == 1)
 		{
 			lista.get(0).mostrarInformacionAvanzada();
-			System.out.print("¿POI Indicado? [Y/N]");
+			System.out.print("ï¿½POI Indicado? [Y/N]");
 			flag = scanner.nextLine();
 		}
 		else
