@@ -1,4 +1,4 @@
-package procesosAsincronicos;
+package dds.grupo3.ProcesosAsincronicos;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import dds.grupo3.Interfaces.ProcesoAsincronico;
+import dds.grupo3.Interfaces.User;
 
 
 public class AgregarAcciones extends ProcesoAsincronico{
@@ -43,5 +44,17 @@ public class AgregarAcciones extends ProcesoAsincronico{
 			newLines.add(linea+","+permisosNuevos);
 		}
 		Files.write(Paths.get("Rol.properties"), newLines, StandardCharsets.UTF_8);
+	}
+
+	@Override
+	public Integer desplegarConsola(User usuario, String terminal_ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void mostrarOpcion() {
+		// TODO Auto-generated method stub
+		
 	}
 }

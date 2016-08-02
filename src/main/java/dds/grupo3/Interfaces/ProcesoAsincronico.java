@@ -17,7 +17,7 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	String error ="";
 	TimerTask task;
 
-	public Object	realizarFuncionConPOI(List<POIGral> listaPois,Object fecha){
+	public Object	realizarFuncion(List<POIGral> listaPois,Object fecha){
 		fechaInicio= (Calendar)fecha;
 		setProceso();
 		setTask();
