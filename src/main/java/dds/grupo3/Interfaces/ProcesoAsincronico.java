@@ -23,6 +23,7 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	Integer errorDefault=0; //0= mail, 1= reintento, cualquier otro valor= no hace nada particular
 	Integer errorReintento=0;
 	Integer cantReintentosActuales=0;
+	public String terminalID;
 	public User usuario;
 	
 	public Object	realizarFuncion(List<POIGral> listaPois,Object usuario){
@@ -119,6 +120,7 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	}
 	@Override
 	public void setParametro(Object obj) {
+		terminalID=(String)obj;
 	}
 	@Override
 	public abstract void mostrarOpcion();

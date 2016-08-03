@@ -78,6 +78,7 @@ public class BajaDePOI extends ProcesoAsincronico{
 	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
 		usuario.bajaDePOI(terminal_ID);
 		return null;
+		//
 	}
 	@Override
 	public void mostrarOpcion() {
