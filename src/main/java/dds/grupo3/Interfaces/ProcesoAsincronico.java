@@ -11,6 +11,7 @@ import java.util.TimerTask;
 
 import dds.grupo3.User.Usuario;
 import dds.grupo3.UsoTerminales.ResultadoDAO;
+import ddsgrupo3.Mailbox;
 
 public abstract class ProcesoAsincronico extends TimerTask implements Funcionalidad {
 	Calendar fechaInicio; //fecha de inicio de ejecucion programada
@@ -92,7 +93,8 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	public void resultadoError(String error){
 		switch (errorDefault){
 		case 0:
-			//TODO:enviar mail
+			Mailbox.enviarMail(mail, "Hubo un error", "Ocurrio un error en el sistema de POIs."+
+		                                              "Este es un mensaje generado automaticamente.");
 			break;
 		case 1:
 			if (cantReintentosActuales>=errorReintento){
