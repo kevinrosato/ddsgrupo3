@@ -20,9 +20,11 @@ public class CuentasUsuario {
 		return null;	
 	}
 	
-	public static Boolean requierePass(String username) {
-		return !((String) Factory.getString(username)).equals("null");}
-
+	public static Boolean requierePass(String username)
+	{
+		return !((String) Factory.getString(username)).equals("null");
+	}
+		
 	private static boolean verificarExistencia(String username, String pass)
 	{	
 		return pass.contains((String) Factory.getString(username));

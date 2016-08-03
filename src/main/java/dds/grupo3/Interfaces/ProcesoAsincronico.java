@@ -8,32 +8,37 @@ import java.util.Properties;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import dds.grupo3.User.Usuario;
 import dds.grupo3.UsoTerminales.ResultadoDAO;
 
 public abstract class ProcesoAsincronico extends TimerTask implements Funcionalidad {
 	Calendar fechaInicio; //fecha de inicio de ejecucion programada
-	String proceso;
-	String resultado; 
-	String error ="";
-	String mail="";
+	public String proceso;
+	public String resultado; 
+	public String error ="";
+	public String mail="";
 	public TimerTask task;
-	Integer errorDefault=0; //0= mail, 1= reintento, cualquier otro valor= no hace nada particular
-	Integer errorReintento=0;
-	Integer cantReintentosActuales=0;
+	public Integer errorDefault=0; //0= mail, 1= reintento, cualquier otro valor= no hace nada particular
+	public Integer errorReintento=0;
+	public Integer cantReintentosActuales=0;
+	public String terminalID;
+	public User usuario;
 	
-	public Object	realizarFuncion(List<POIGral> listaPois,Object poi){
+	public Object	realizarFuncion(List<POIGral> listaPois,Object usuario){
 		FileInputStream file;
+		this.usuario=(Usuario) usuario;
 		try {
 			file = new FileInputStream("ProcesoAsincronico.properties");
 			Properties propiedades = new Properties();
 			propiedades.load(file);
-			pedirInfo();
 			mail = propiedades.getProperty("mailDefault");
 			errorDefault= Integer.parseInt(propiedades.getProperty("accionErrorDefault"));
 			errorReintento= Integer.parseInt(propiedades.getProperty("errorReintento"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		pedirInfo();
 		fechaInicio= this.setFecha();
 		setTask();
 		Timer timer= new Timer(true);
@@ -41,12 +46,13 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 		return (null);
 	}
 	public abstract void pedirInfo();
-	public Calendar setFecha(){
+	private Calendar setFecha(){
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Ingrese fecha de inicio de ejecucio (hh:mm)");
 		Calendar horaDeInicio= Calendar.getInstance();
 		String auxiliar[]= scanner.nextLine().split(":");
-		scanner.close();
+//		scanner.close();
 		horaDeInicio.set(Calendar.HOUR_OF_DAY, Integer.parseInt(auxiliar[0]));
 		horaDeInicio.set(Calendar.MINUTE, Integer.parseInt(auxiliar[1]));
 		return (horaDeInicio);
@@ -114,6 +120,7 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	}
 	@Override
 	public void setParametro(Object obj) {
+		terminalID=(String)obj;
 	}
 	@Override
 	public abstract void mostrarOpcion();

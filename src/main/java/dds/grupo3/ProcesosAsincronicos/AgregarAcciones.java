@@ -14,21 +14,18 @@ import dds.grupo3.Interfaces.User;
 
 public class AgregarAcciones extends ProcesoAsincronico implements Funcionalidad{
 
-	private String permisosNuevos="";
-	private String respuesta ="";
-	
-	public AgregarAcciones(String permiso, String respuesta){
-		this.permisosNuevos = permiso;
-		this.respuesta = respuesta;
-	}
+	public String permisosNuevos="";
+	public String respuesta ="";
 	
 	@Override
 	public void run(){
 		if(respuesta.equals("N")){
 			try {
 				escribirArchivo();
+				this.resultadoOK();
 			} catch (IOException e) {
 				e.printStackTrace();
+				this.resultadoError(e.toString());
 			}
 		}
 	}
@@ -54,6 +51,7 @@ public class AgregarAcciones extends ProcesoAsincronico implements Funcionalidad
 
 	@Override
 	public void pedirInfo() {
+		@SuppressWarnings("resource")
 		Scanner teclado = new Scanner(System.in);
 		System.out.println("---------------------------------------");
 		System.out.println("		AGREGAR ACCIONES");
@@ -61,14 +59,16 @@ public class AgregarAcciones extends ProcesoAsincronico implements Funcionalidad
 		System.out.println();
 		System.out.println("Ingrese permisos que desea agregar:");
 		this.permisosNuevos = teclado.nextLine();
-		System.out.println("Se agregaron correctamente los permisos. ¿Desea deshacer los cambios?(Y/N)");
+		System.out.println("Se agregaron correctamente los permisos a la lista. ¿Desea deshacer los cambios?(Y/N)");
 		this.respuesta=teclado.nextLine();
 		System.out.println();
-		teclado.close();
 	}
 	@Override
 	public void setTask() {
-		this.task= new AgregarAcciones(permisosNuevos,respuesta);
+		AgregarAcciones a = new AgregarAcciones();
+		a.permisosNuevos = permisosNuevos;
+		a.respuesta = respuesta;
+		this.task = new AgregarAcciones();
 	}
 	@Override
 	public String setProceso() {
