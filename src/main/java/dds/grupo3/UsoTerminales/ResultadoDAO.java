@@ -14,6 +14,7 @@ public class ResultadoDAO {
 
 	public static void agregarABaseDeDatos(String fechaIni, String fechaFin, String proceso, String Resultado, String Error)
 	{
+		System.out.println("Agregando a la Base de Datos un Resultado");
 		CallableStatement consulta = null;
 		try {
 		    consulta = conexion.prepareCall("INSERT INTO "
