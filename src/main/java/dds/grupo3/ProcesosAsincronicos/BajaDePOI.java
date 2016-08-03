@@ -76,9 +76,9 @@ public class BajaDePOI extends ProcesoAsincronico{
 	}
 	@Override
 	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
-		mapa=usuario.getMapa();
 		usuario.bajaDePOI(terminal_ID);
 		return null;
+		//
 	}
 	@Override
 	public void mostrarOpcion() {
@@ -86,6 +86,7 @@ public class BajaDePOI extends ProcesoAsincronico{
 	}
 	@Override
 	public void pedirInfo() {
+		mapa=usuario.getMapa();
 		System.out.println("---------------------------------------");
 		System.out.println("		BAJA DE POIS");
 		System.out.println("----------------------------------------");
