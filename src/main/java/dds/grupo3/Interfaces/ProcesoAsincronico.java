@@ -113,11 +113,11 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
 		String fechaS= dateFormat.format(fechaInicio.getTime());
 		String fechaFin= dateFormat.format((Calendar.getInstance()).getTime());
-		System.out.println("Inicio "+fechaS); //Para testeo
+		/*System.out.println("Inicio "+fechaS); //Para testeo
 		System.out.println("Fin "+fechaFin);
 		System.out.println("Proceso "+ proceso);
 		System.out.println("Resultado "+ resultado);
-		System.out.println("Error "+ error);
+		System.out.println("Error "+ error);*/
 		ResultadoDAO.agregarABaseDeDatos(fechaS, fechaFin, proceso, resultado, error); 
 	}
 	@Override

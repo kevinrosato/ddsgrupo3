@@ -364,7 +364,7 @@ public void init() {
 		ActualizacionLocalComercial actualizacion= new ActualizacionLocalComercial ();
 		actualizacion.desplegarConsola(usuario, "", null);
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(100000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -377,7 +377,7 @@ public void init() {
 		BajaDePOI baja= new BajaDePOI();
 		baja.desplegarConsola(usuario, "", null);
 		try {
-			Thread.sleep(12000);
+			Thread.sleep(120000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -388,10 +388,22 @@ public void init() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
 		AgregarAcciones agregarAcc=new AgregarAcciones();
-		ProcesoMultiple d;
 		agregarAcc.desplegarConsola(usuario, "", null);
 		try {
 			Thread.sleep(100000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test //Test de Proceso Combinado
+	public void procesoMultiple() {
+		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
+		usuario.setMapa(mapa);
+		ProcesoMultiple procesoMultipl=new ProcesoMultiple();
+		procesoMultipl.desplegarConsola(usuario, "", null);
+		try {
+			Thread.sleep(1000000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
