@@ -118,7 +118,7 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 		System.out.println("Proceso "+ proceso);
 		System.out.println("Resultado "+ resultado);
 		System.out.println("Error "+ error);
-		//ResultadoDAO.agregarABaseDeDatos(fechaS, fechaFin, proceso, resultado, error); 
+		ResultadoDAO.agregarABaseDeDatos(fechaS, fechaFin, proceso, resultado, error); 
 	}
 	@Override
 	public void setParametro(Object obj) {
