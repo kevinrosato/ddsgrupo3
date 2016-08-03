@@ -11,12 +11,11 @@ import ddsgrupo3.Factory;
 public class ProcesoMultiple extends ProcesoAsincronico{
 	private List<ProcesoAsincronico> procesos= new ArrayList<ProcesoAsincronico>();
 	String procesoMultiple;
-	User usuario;
 	String terminal_ID;
 	Scanner teclado;
 	public ProcesoMultiple(List<ProcesoAsincronico> procesos, String terminal_ID, User usuario){
 		this.usuario=usuario;
-		this.terminal_ID=terminal_ID;
+		this.terminal_ID=""; //TODO:No se por ahora como implementar esto bien
 		this.procesos=procesos;
 	}
 	@Override
@@ -34,20 +33,10 @@ public class ProcesoMultiple extends ProcesoAsincronico{
 
 	@Override
 	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
-		this.usuario=usuario;
-		this.terminal_ID=terminal_ID;
-		this.teclado=teclado;
-		System.out.println("---------------------------------------");
-		System.out.println("		PROCESO MULTIPLE");
-		System.out.println("----------------------------------------");
-		System.out.println();
-		System.out.println("Ingrese lista de procesos:");
-		this.procesoMultiple = teclado.nextLine();
 		for(String i: procesoMultiple.split(",")){
 			procesos.add((ProcesoAsincronico) Factory.getObject(i));
 		}
 		usuario.procesoMultiple(terminal_ID);
-		System.out.println();
 		return null;
 	}
 

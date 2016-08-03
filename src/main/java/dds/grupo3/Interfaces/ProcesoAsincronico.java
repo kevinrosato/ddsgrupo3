@@ -8,6 +8,8 @@ import java.util.Properties;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import dds.grupo3.User.Usuario;
 import dds.grupo3.UsoTerminales.ResultadoDAO;
 
 public abstract class ProcesoAsincronico extends TimerTask implements Funcionalidad {
@@ -21,9 +23,11 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	Integer errorDefault=0; //0= mail, 1= reintento, cualquier otro valor= no hace nada particular
 	Integer errorReintento=0;
 	Integer cantReintentosActuales=0;
+	public User usuario;
 	
-	public Object	realizarFuncion(List<POIGral> listaPois,Object poi){
+	public Object	realizarFuncion(List<POIGral> listaPois,Object usuario){
 		FileInputStream file;
+		this.usuario=(Usuario) usuario;
 		try {
 			file = new FileInputStream("ProcesoAsincronico.properties");
 			Properties propiedades = new Properties();
