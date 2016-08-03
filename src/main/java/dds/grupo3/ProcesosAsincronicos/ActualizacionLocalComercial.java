@@ -5,8 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TimerTask;
 
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.ProcesoAsincronico;
@@ -16,11 +18,7 @@ import dds.grupo3.POIsSistem.Local;
 public class ActualizacionLocalComercial extends ProcesoAsincronico{
 	private String nombreLocal;
 	private String palabrasClaves;
-	
-	public ActualizacionLocalComercial(User usuario){
-		this.usuario=usuario;
-	}
-	
+
 	@Override
 	public void run(){
 		AdministradorPOIs mapa=usuario.getMapa();
@@ -58,7 +56,7 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 			this.resultadoOK();
 		}
 		catch(Exception e){
-			this.resultadoError(e.toString());
+			e.printStackTrace();
 		}
 	}
 	
@@ -102,7 +100,11 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 
 	@Override
 	public void setTask() {
-		task = new ActualizacionLocalComercial(usuario);
+		ActualizacionLocalComercial auxiliar= new ActualizacionLocalComercial();
+		auxiliar.usuario=usuario;
+		auxiliar.fechaInicio=Calendar.getInstance();
+		task = (TimerTask) auxiliar;
+		
 	}
 
 	@Override

@@ -4,8 +4,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TimerTask;
 
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.ProcesoAsincronico;
@@ -59,7 +61,7 @@ public class AgregarAcciones extends ProcesoAsincronico implements Funcionalidad
 		System.out.println();
 		System.out.println("Ingrese permisos que desea agregar:");
 		this.permisosNuevos = teclado.nextLine();
-		System.out.println("Se agregaron correctamente los permisos a la lista. ¿Desea deshacer los cambios?(Y/N)");
+		System.out.println("Se agregaron correctamente los permisos a la lista. ï¿½Desea deshacer los cambios?(Y/N)");
 		this.respuesta=teclado.nextLine();
 		System.out.println();
 	}
@@ -68,7 +70,8 @@ public class AgregarAcciones extends ProcesoAsincronico implements Funcionalidad
 		AgregarAcciones a = new AgregarAcciones();
 		a.permisosNuevos = permisosNuevos;
 		a.respuesta = respuesta;
-		this.task = new AgregarAcciones();
+		a.fechaInicio=Calendar.getInstance();
+		this.task = (TimerTask) a;
 	}
 	@Override
 	public String setProceso() {

@@ -1,7 +1,6 @@
 package dds.grupo3.UsoTerminales;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Properties;
 
 import ddsgrupo3.Mailbox;

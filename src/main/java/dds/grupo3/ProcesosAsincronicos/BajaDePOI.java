@@ -1,9 +1,11 @@
 package dds.grupo3.ProcesosAsincronicos;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
+import java.util.TimerTask;
 
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.POIGral;
@@ -17,13 +19,10 @@ public class BajaDePOI extends ProcesoAsincronico{
 	private AdministradorPOIs mapa=new Mapa();
 	Boolean error=false;
 	
-	public BajaDePOI(AdministradorPOIs mapa){
-		this.mapa=mapa;
-	}
-	
 	@Override
 	public void run(){
 		error=false;
+		listaPois= new ArrayList<POIGral>();
 		listaPois=llenarListaPOI();
 		if (!error){
 			try{
@@ -94,7 +93,10 @@ public class BajaDePOI extends ProcesoAsincronico{
 	}
 	@Override
 	public void setTask() {
-		task= new BajaDePOI(mapa);
+		BajaDePOI a= new BajaDePOI();
+		a.mapa=mapa;
+		a.fechaInicio=Calendar.getInstance();
+		task= (TimerTask) a;
 	}
 	@Override
 	public String setProceso() {

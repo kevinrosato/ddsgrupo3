@@ -22,6 +22,10 @@ import dds.grupo3.POIsSistem.ParadaColectivo;
 import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
+import dds.grupo3.ProcesosAsincronicos.ActualizacionLocalComercial;
+import dds.grupo3.ProcesosAsincronicos.AgregarAcciones;
+import dds.grupo3.ProcesosAsincronicos.BajaDePOI;
+import dds.grupo3.ProcesosAsincronicos.ProcesoMultiple;
 import dds.grupo3.User.CuentasUsuario;
 import dds.grupo3.User.Rol;
 import dds.grupo3.UsoTerminales.Cronometrador;
@@ -352,4 +356,46 @@ public void init() {
 		usuario.setMapa(mapa);
 		usuario.reportarSegun("reporte3,x").mostrar();;
 		}
+	
+	@Test //Test de ActualizacionLocalComercial
+	public void actualizacionComercial() {
+		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
+		usuario.setMapa(mapa);
+		ActualizacionLocalComercial actualizacion= new ActualizacionLocalComercial ();
+		actualizacion.desplegarConsola(usuario, "", null);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test //Test de BajaDePOI
+	public void bajaDePOI() {
+		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
+		usuario.setMapa(mapa);
+		BajaDePOI baja= new BajaDePOI();
+		baja.desplegarConsola(usuario, "", null);
+		try {
+			Thread.sleep(12000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	@Test //Test de AltaAccion
+	public void agregarAccion() {
+		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
+		usuario.setMapa(mapa);
+		AgregarAcciones agregarAcc=new AgregarAcciones();
+		ProcesoMultiple d;
+		agregarAcc.desplegarConsola(usuario, "", null);
+		try {
+			Thread.sleep(100000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
+	
