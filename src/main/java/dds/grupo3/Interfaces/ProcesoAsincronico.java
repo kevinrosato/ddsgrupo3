@@ -11,6 +11,7 @@ import java.util.TimerTask;
 
 import dds.grupo3.User.Usuario;
 import dds.grupo3.UsoTerminales.ResultadoDAO;
+import ddsgrupo3.Mailbox;
 
 public abstract class ProcesoAsincronico extends TimerTask implements Funcionalidad {
 	ResultadoDAO daoBaseDeDatos= new ResultadoDAO(); //Conexion a base de datos
@@ -92,7 +93,8 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	public void resultadoError(String error){
 		switch (errorDefault){
 		case 0:
-			//TODO:enviar mail
+			Mailbox.enviarMail(mail, "Hubo un error", "Ocurrio un error en el sistema de POIs."+
+		                                              "Este es un mensaje generado automaticamente.");
 			break;
 		case 1:
 			if (cantReintentosActuales>=errorReintento){
