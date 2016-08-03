@@ -1,6 +1,11 @@
 package dds.grupo3.ProcesosAsincronicos;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import dds.grupo3.Interfaces.AdministradorPOIs;
@@ -12,7 +17,7 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 	private User usuario;
 	private String nombreLocal;
 	private String palabrasClaves;
-	File archivo=new File("LocalesComerciales.properties");
+	
 	//TODO:Falta que levante el archivo y lo haga sucesivamente
 	@Override
 	public void run(){
@@ -20,22 +25,36 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 		Boolean tienePOI=false;
 		Local localModificado = null;
 		Integer indice=0;
+		List<String> actualizaciones=new ArrayList<String>();
+		
+		try {
+			actualizaciones=leerArchivo();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		try{
-			for(int i=0;i<mapa.getListaPois().size();i++){
-				if(mapa.getListaPois().get(i).tieneLaClave(nombreLocal)){
-					tienePOI=true;
-					localModificado=(Local) mapa.getListaPois().get(i);
-					indice=i;
+			for(int j=0;j<actualizaciones.size();j++){
+				String[] lista=actualizaciones.get(j).split(";");
+				this.nombreLocal=lista[0];
+				this.palabrasClaves=lista[1];
+				for(int i=0;i<mapa.getListaPois().size();i++){
+					if(mapa.getListaPois().get(i).tieneLaClave(nombreLocal)){
+						tienePOI=true;
+						localModificado=(Local) mapa.getListaPois().get(i);
+						indice=i;
+					}
 				}
-			}
-			if(tienePOI){
-				localModificado.setPalabrasClaves(palabrasClaves);
-				usuario.modificarPOI(mapa.getListaPois().get(indice), localModificado);
-			}
-			else{
-				localModificado.setNombre(nombreLocal);
-				localModificado.setPalabrasClaves(palabrasClaves);
-				usuario.agregarPOI(localModificado);
+				if(tienePOI){
+					localModificado.setPalabrasClaves(palabrasClaves);
+					usuario.modificarPOI(mapa.getListaPois().get(indice), localModificado);
+				}
+				else{
+					localModificado.setNombre(nombreLocal);
+					localModificado.setPalabrasClaves(palabrasClaves);
+					usuario.agregarPOI(localModificado);
+				}
 			}
 			this.resultadoOK();
 		}
@@ -43,6 +62,25 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 			this.resultadoError(e.toString());
 		}
 				
+	}
+	
+	public List<String> leerArchivo() throws IOException{
+		String linea=""; 
+		List<String> actualizaciones=new ArrayList<String>();
+		try {
+			FileReader fr = new FileReader("LocalesComerciales.txt");
+			BufferedReader br = new BufferedReader(fr);
+	 	    actualizaciones.add(br.readLine());
+		    while(linea!=null){
+		    	linea=br.readLine();
+		 	    if(linea!=null){actualizaciones.add(linea);}
+		    }
+			br.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return actualizaciones;  
 	}
 	
 
