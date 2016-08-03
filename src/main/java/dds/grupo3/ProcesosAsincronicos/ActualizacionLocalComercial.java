@@ -18,6 +18,10 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 	private String nombreLocal;
 	private String palabrasClaves;
 	
+	public ActualizacionLocalComercial(User usuario){
+		this.usuario=usuario;
+	}
+	
 	//TODO:Falta que levante el archivo y lo haga sucesivamente
 	@Override
 	public void run(){
@@ -107,7 +111,7 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 
 	@Override
 	public void setTask() {
-		task = new ActualizacionLocalComercial();
+		task = new ActualizacionLocalComercial(usuario);
 		
 	}
 
