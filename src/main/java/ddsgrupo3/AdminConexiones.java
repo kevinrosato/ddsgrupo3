@@ -6,13 +6,16 @@ import java.sql.SQLException;
 
 public class AdminConexiones {
 
-	public static Connection conectarA(String driver, String url, String user, String pass)
+	private Connection conexion;
+	
+	
+	public AdminConexiones(String driver, String url, String user, String pass)
 	{
 		 try
 		{
 			//LEVANTO EL DRIVER
-			Class.forName(driver);
-			return DriverManager.getConnection(url,user,pass);
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			setConexion(DriverManager.getConnection(url,user,pass));
 		}
 		catch(Exception ex1)
 		{		
@@ -29,4 +32,10 @@ public class AdminConexiones {
 			e.printStackTrace();
 		}
 	 }
+	public Connection getConexion() {
+		return conexion;
+	}
+	public void setConexion(Connection conexion) {
+		this.conexion = conexion;
+	}
 }

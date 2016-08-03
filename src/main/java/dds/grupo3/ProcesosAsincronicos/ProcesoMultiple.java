@@ -1,8 +1,10 @@
 package dds.grupo3.ProcesosAsincronicos;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TimerTask;
 
 import dds.grupo3.Interfaces.ProcesoAsincronico;
 import dds.grupo3.Interfaces.User;
@@ -12,11 +14,6 @@ public class ProcesoMultiple extends ProcesoAsincronico{
 	private List<ProcesoAsincronico> procesos= new ArrayList<ProcesoAsincronico>();
 	String procesoMultiple;
 	Scanner teclado;
-	public ProcesoMultiple(List<ProcesoAsincronico> procesos, String terminal_ID, User usuario){
-		this.usuario=usuario;
-		this.terminalID=terminal_ID;
-		this.procesos=procesos;
-	}
 	@Override
 	public void run(){
 		try{
@@ -59,7 +56,12 @@ public class ProcesoMultiple extends ProcesoAsincronico{
 
 	@Override
 	public void setTask() {
-		this.task= new ProcesoMultiple(procesos,terminalID,usuario);
+		ProcesoMultiple a= new ProcesoMultiple();
+		a.usuario=usuario;
+		a.terminalID=terminalID;
+		a.procesos=procesos;
+		a.fechaInicio=Calendar.getInstance();
+		this.task= (TimerTask) a;
 		
 	}
 

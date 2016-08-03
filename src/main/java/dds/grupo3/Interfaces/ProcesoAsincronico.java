@@ -14,7 +14,7 @@ import dds.grupo3.UsoTerminales.ResultadoDAO;
 import ddsgrupo3.Mailbox;
 
 public abstract class ProcesoAsincronico extends TimerTask implements Funcionalidad {
-	Calendar fechaInicio; //fecha de inicio de ejecucion programada
+	public Calendar fechaInicio; //fecha de inicio de ejecucion programada
 	public String proceso;
 	public String resultado; 
 	public String error ="";
@@ -27,18 +27,7 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	public User usuario;
 	
 	public Object	realizarFuncion(List<POIGral> listaPois,Object usuario){
-		FileInputStream file;
 		this.usuario=(Usuario) usuario;
-		try {
-			file = new FileInputStream("ProcesoAsincronico.properties");
-			Properties propiedades = new Properties();
-			propiedades.load(file);
-			mail = propiedades.getProperty("mailDefault");
-			errorDefault= Integer.parseInt(propiedades.getProperty("accionErrorDefault"));
-			errorReintento= Integer.parseInt(propiedades.getProperty("errorReintento"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		pedirInfo();
 		fechaInicio= this.setFecha();
 		setTask();
@@ -91,6 +80,17 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 	}
 	
 	public void resultadoError(String error){
+		FileInputStream file;
+		try {
+			file = new FileInputStream("ProcesoAsincronico.properties");
+			Properties propiedades = new Properties();
+			propiedades.load(file);
+			mail = propiedades.getProperty("mailDefault");
+			errorDefault= Integer.parseInt(propiedades.getProperty("accionErrorDefault"));
+			errorReintento= Integer.parseInt(propiedades.getProperty("errorReintento"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		switch (errorDefault){
 		case 0:
 			Mailbox.enviarMail(mail, "Hubo un error", "Ocurrio un error en el sistema de POIs."+
@@ -113,11 +113,11 @@ public abstract class ProcesoAsincronico extends TimerTask implements Funcionali
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
 		String fechaS= dateFormat.format(fechaInicio.getTime());
 		String fechaFin= dateFormat.format((Calendar.getInstance()).getTime());
-		/*System.out.println("Inicio "+fechaS); //Para testeo
+		System.out.println("Inicio "+fechaS); //Para testeo
 		System.out.println("Fin "+fechaFin);
 		System.out.println("Proceso "+ proceso);
 		System.out.println("Resultado "+ resultado);
-		System.out.println("Error "+ error);*/
+		System.out.println("Error "+ error);
 		ResultadoDAO.agregarABaseDeDatos(fechaS, fechaFin, proceso, resultado, error); 
 	}
 	@Override

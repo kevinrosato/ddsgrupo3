@@ -1,26 +1,25 @@
 package dds.grupo3.UsoTerminales;
 
 import java.sql.CallableStatement;
-import java.sql.Connection;
-
 import ddsgrupo3.AdminConexiones;
 import ddsgrupo3.Factory;
 
-public class ResultadoDAO {	
-	private static Connection conexion = AdminConexiones.conectarA(
+public class ResultadoDAO {
+	
+	private static AdminConexiones admin = new AdminConexiones(
 			"com.microsoft.sqlserver.jdbc.SQLServerDriver",
-	 		((String) Factory.getString("urlBaseDeDatos")),
+			((String) Factory.getString("urlBaseDeDatos")),
 			"dds3.POIs","dds3");
-
+	
 	public static void agregarABaseDeDatos(String fechaIni, String fechaFin, String proceso, String Resultado, String Error)
 	{
 		System.out.println("Agregando a la Base de Datos un Resultado");
 		CallableStatement consulta = null;
 		try {
-		    consulta = conexion.prepareCall("INSERT INTO "
+		    consulta = admin.getConexion().prepareCall("INSERT INTO "
  				+((String) Factory.getString("tablaDeResultados"))+
 		    	" VALUES ('"+fechaIni+"','"+fechaFin+"'"
-		    	+",'"+proceso+"',"+Resultado+","+Error+")");
+		    	+",'"+proceso+"','"+Resultado+"','"+Error+"')");
 			consulta.execute();
 		}
 		catch (Exception e){

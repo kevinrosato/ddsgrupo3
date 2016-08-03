@@ -1,8 +1,6 @@
 package dds.grupo3.UsoTerminales;
 
 import java.sql.CallableStatement;
-import java.sql.Connection;
-
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -12,8 +10,7 @@ import ddsgrupo3.Factory;
 
 public class BusquedasDAO {
 	
-	private static Connection conexion = AdminConexiones.conectarA(
-			"com.microsoft.sqlserver.jdbc.SQLServerDriver",
+	private static AdminConexiones admin = new AdminConexiones("com.microsoft.sqlserver.jdbc.SQLServerDriver",
 			((String) Factory.getString("urlBaseDeDatos")),
 			"dds3.POIs","dds3");
 	
@@ -36,7 +33,7 @@ public class BusquedasDAO {
 		ResultSet resultados = null;
 		Integer auxiliar = null;
 		try {
-		    consulta = conexion.prepareCall("INSERT INTO "
+		    consulta = admin.getConexion().prepareCall("INSERT INTO "
  				+((String) Factory.getString("tablaDeBusqeudas"))+
 		    	" VALUES ('"+frase+"','"+terminal+"'"
 		    	+",'"+fecha+"',"+cantResultados.toString()+","+retardo.toString()+")");
@@ -44,7 +41,7 @@ public class BusquedasDAO {
 			
 			consulta = null;
 			
-		    consulta = conexion.prepareCall("SELECT TOP 1 F.ID FROM "
+		    consulta = admin.getConexion().prepareCall("SELECT TOP 1 F.ID FROM "
 		    		+((String) Factory.getString("tablaDeBusqeudas"))+
 		    		" F ORDER BY F.ID DESC");
 			consulta.execute();
@@ -62,7 +59,7 @@ public class BusquedasDAO {
 		CallableStatement consulta = null;
 		ResultSet resultados = null;
 		try {
-		    consulta = conexion.prepareCall(qry);
+		    consulta = admin.getConexion().prepareCall(qry);
 			consulta.execute();
 			resultados = consulta.executeQuery();
 			return resultados;
