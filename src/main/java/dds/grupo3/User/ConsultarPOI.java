@@ -18,7 +18,6 @@ public class ConsultarPOI implements Funcionalidad {
 	@Override
 	public Object realizarFuncion(List<POIGral> listaPois, Object terminalID)
 	{
-		BusquedasDAO database = new BusquedasDAO();
 		List<POIGral> listaResultante = new ArrayList<POIGral>();
 		Scanner scanner = new Scanner(System.in);
 		String clave = new String();
@@ -27,6 +26,12 @@ public class ConsultarPOI implements Funcionalidad {
 			System.out.print("Ingrese palabra Clave: ");
 			clave = scanner.nextLine();			
 			Cronometrador.comienzo();
+			if (clave.startsWith("-"))
+			{
+				clave = clave.substring(1);
+				resto = resto.replace(clave,"");
+				listaResultante = buscarEn(clave, listaResultante);	
+			}
 			if (clave.startsWith("+"))
 			{
 				clave = clave.substring(1);
@@ -41,7 +46,7 @@ public class ConsultarPOI implements Funcionalidad {
 			}
 			Long aux =	Cronometrador.finCuenta();
 			clave = mostrarPOIs(resto, listaResultante,scanner);
-			Cronometrador.checkRetraso(database.guardarBusqueda
+			Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda
 						((String) terminalID, resto, listaResultante.size(),aux));			
 		}while (!clave.contains("Y"));
 		return listaResultante.get(0);
@@ -111,7 +116,7 @@ public class ConsultarPOI implements Funcionalidad {
 	}
 
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID) {
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
 			System.out.println("---------------------------------------");
 			System.out.println("		CONSULTA DE UN POI");
 			System.out.println("----------------------------------------");

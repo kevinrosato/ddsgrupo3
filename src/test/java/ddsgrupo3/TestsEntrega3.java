@@ -319,6 +319,7 @@ public void init() {
 		mapa.agregarPoi(carrousel);
 		mapa.agregarPoi(sucursal);
 		mapa.agregarPoi(sucursal2);
+		mapa.setHoraActual(Calendar.getInstance());
 		Integer aux = 10;
 		Cronometrador.establecerTope(aux.longValue());
 		
@@ -331,7 +332,7 @@ public void init() {
 	@Test //Test de Base de datos
 	public void testApk() {
 		Aplicacion aplicacion = new Aplicacion();
-		aplicacion.ejecutar(mapa, "Terminal_de_Prueba");
+		aplicacion.ejecutar(mapa, "Constitucion_01");
 		}
 	@Test //Test de Base de datos
 	public void unaBusqueda() {

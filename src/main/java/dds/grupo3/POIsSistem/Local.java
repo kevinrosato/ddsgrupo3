@@ -15,6 +15,7 @@ public class Local extends POI{
 	private Servicio 	rubro = new Servicio(""); 
 	//local no va a usar "servicios", solo sus subclases
 	private List<Servicio> servicios = new ArrayList<Servicio>();
+	private String palabrasClaves;
 	
 	//----------
 	//Constructor
@@ -115,5 +116,13 @@ public class Local extends POI{
 	{
 		Servicio servicio = new Servicio(nameServicio);
 		this.getServicios().add(servicio);
+	}
+
+	public String getPalabrasClaves() {
+		return palabrasClaves;
+	}
+
+	public void setPalabrasClaves(String palabrasClaves) {
+		this.palabrasClaves = palabrasClaves;
 	}
 }

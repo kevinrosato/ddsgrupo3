@@ -28,9 +28,13 @@ public class Aplicacion {
 		{
 			System.out.println("INGRESE USUARIO:");
 			nomUsuario = teclado.nextLine();
-			System.out.println("INGRESE CONTRASENIA:");
-			password = teclado.nextLine();
-			usuario = CuentasUsuario.instanciarUsuario(nomUsuario, password);				
+			if(CuentasUsuario.requierePass(nomUsuario))
+			{
+				System.out.println("INGRESE CONTRASENIA:");
+				password = teclado.nextLine();
+			}
+			else	password = "null";
+			usuario = CuentasUsuario.instanciarUsuario(nomUsuario,password);				
 		}
 		return usuario;
 	}
@@ -39,6 +43,7 @@ public class Aplicacion {
 		Boolean flag = true;
 		while(flag)
 		{
+			System.out.flush();
 			System.out.println("----------------------------------------");
 			System.out.println("	Bienvenido al sistema de POIS");
 			System.out.println("----------------------------------------");
@@ -51,8 +56,8 @@ public class Aplicacion {
 			System.out.println(opcionElegida);
 			if(Integer.parseInt(opcionElegida) < ultimaOpcion)
 			{
-				Funcionalidad f = usuario.getRol().getPermisos().get(Integer.parseInt(opcionElegida)-1);			
-				f.desplegarConsola(usuario,terminal_ID);				
+				Funcionalidad f = usuario.getRol().getPermisos().get(Integer.parseInt(opcionElegida)-1);
+				f.desplegarConsola(usuario,terminal_ID,teclado);				
 			}
 			else if (Integer.parseInt(opcionElegida) == ultimaOpcion){
 				flag = false;

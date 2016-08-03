@@ -10,6 +10,11 @@ public interface User
 	//VER COMO SERIA PASANDOLE UNA LISTA DE CAMPOS EN VEZ DE UN POIGral NUEVO
 	public POIGral modificarPOI(POIGral poi,POIGral poiNuevo);
 	public POIGral consultarPOI(String IDTerminal);
+	public POIGral actualizarLocalComercial(String terminalID);
+	public POIGral bajaDePOI(String terminalID);
+	public POIGral agregarAcciones(String terminalID);
+	public POIGral procesoMultiple(String terminalID);
+	
 	public Object realizarFunc(Funcionalidad funcionalidad,Object poi);	
 	public Reporte reportarSegun(String parametros);
 

@@ -52,6 +52,27 @@ public class Usuario implements User{
 		return (POIGral) realizarFunc(funcionalidad, terminalID);
 	}
 	
+	public POIGral agregarAcciones(String terminalID){
+		funcionalidad = (Funcionalidad) Factory.getObject("AgregarAcciones");
+		funcionalidad.setParametro((Object) this.getMapa());
+		return (POIGral) realizarFunc(funcionalidad, terminalID);
+	}
+	public POIGral procesoMultiple(String terminalID){
+		funcionalidad = (Funcionalidad) Factory.getObject("ProcesoMultiple");
+		funcionalidad.setParametro((Object) this.getMapa());
+		return (POIGral) realizarFunc(funcionalidad, terminalID);
+	}
+	public POIGral actualizarLocalComercial(String terminalID){
+		funcionalidad = (Funcionalidad) Factory.getObject("ActualizarLocalComercial");
+		funcionalidad.setParametro((Object) this.getMapa());
+		return (POIGral) realizarFunc(funcionalidad, terminalID);
+	}
+	public POIGral bajaDePOI(String terminalID){
+		funcionalidad = (Funcionalidad) Factory.getObject("BajaDePOI");
+		funcionalidad.setParametro((Object) this.getMapa());
+		return (POIGral) realizarFunc(funcionalidad, terminalID);
+	}
+	
 	public Object realizarFunc(Funcionalidad funcionalidad,Object poi){
 		if(rol.verificarPermisos(funcionalidad))
 		{

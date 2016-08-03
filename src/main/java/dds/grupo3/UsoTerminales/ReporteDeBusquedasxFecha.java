@@ -15,21 +15,22 @@ public class ReporteDeBusquedasxFecha implements Reporte {
 	private	List<String>	listaStrings = new ArrayList<>();
 	@Override
 	public void mostrar() {
-		System.out.println("|Fecha:			||Cantidad de Consultas:	|");
+		System.out.println("_____________________________________________");
+		System.out.println("|Fecha:		||Cantidad de Consultas:	|");
 		for(String i: listaStrings)
 		{
 			System.out.println(""+i+"				"+tablaReporte.get(i).toString());
 		}
+		System.out.println("_____________________________________________");
 	}
 
 	@Override
 	public void crearSegun(String valor)
 	{
-		BusquedasDAO database = new BusquedasDAO();
 		String	qry	=	"SELECT DISTINCT Fecha,COUNT(*) FROM "
 		+((String) Factory.getString("tablaDeBusqeudas"))+
 						" GROUP BY Fecha";
-		ResultSet resultados = database.ejecutar(qry);
+		ResultSet resultados = BusquedasDAO.ejecutar(qry);
 		try {
 			while(resultados.next())
 			{

@@ -23,11 +23,10 @@ public class ReporteDeRespuestasUnitxTerminal implements Reporte {
 	@Override
 	public void crearSegun(String valor) {
 		valorDeReporte = valor;
-		BusquedasDAO database = new BusquedasDAO();
 		String	qry	=	"SELECT Resultados FROM "
 		+((String) Factory.getString("tablaDeBusqeudas"))+
 						" WHERE Terminal='"+valor+"'";
-		ResultSet resultados = database.ejecutar(qry);
+		ResultSet resultados = BusquedasDAO.ejecutar(qry);
 		try {
 			while(resultados.next())
 			{

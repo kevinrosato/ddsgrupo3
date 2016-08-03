@@ -22,7 +22,7 @@ public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo S
 	//----------------------
 	@Override
 	public Boolean estaDisponible(Calendar horario) {
-		Integer diaSolicitado= horario.get(Calendar.DAY_OF_WEEK);
+		Integer diaSolicitado = horario.get(Calendar.DAY_OF_WEEK);
 		Integer horaSolicitada= horario.get(Calendar.HOUR_OF_DAY)*100+horario.get(Calendar.MINUTE);
 		return((diaSolicitado>=2)&&(diaSolicitado<=6) && horaSolicitada>=1000 && horaSolicitada<=1500);
 	}

@@ -18,19 +18,20 @@ public class ReporteDeRespuestasxTerminal implements Reporte {
 	public void mostrar() {
 		for(String i: listaStrings)
 		{
+			System.out.println("__________________________________________");
 			listaRepo.get(i).mostrar();
 			System.out.println("Total:		"+tablaReporte.get(i));
 		}
+		System.out.println("__________________________________________");
 	}
 
 	@Override
 	public void crearSegun(String valor)
 	{
-		BusquedasDAO database = new BusquedasDAO();
 		String	qry	=	"SELECT DISTINCT Terminal, Sum(Resultados) FROM "
 				+((String) Factory.getString("tablaDeBusqeudas"))+
 				" GROUP BY Terminal";
-		ResultSet resultados = database.ejecutar(qry);
+		ResultSet resultados = BusquedasDAO.ejecutar(qry);
 		try {
 			while(resultados.next())
 			{

@@ -19,6 +19,7 @@ public class RolAdmin implements creadorRoles
 		admin.setNombre("admin");
 		permisosArchivo=(String) getString(admin.getNombre());	
 		String listaPermisos[]=permisosArchivo.split(",");
+		System.out.println(listaPermisos.toString());
 		List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
 		for(String i:listaPermisos){
 			permisos.add((Funcionalidad) Factory.getObject(i));

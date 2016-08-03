@@ -19,9 +19,8 @@ public class AgregarPOI implements Funcionalidad {
 	@Override
 	public void setParametro(Object obj){}
 
-	@SuppressWarnings("resource")
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID){		
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado){		
 		System.out.println("---------------------------------------");
 		System.out.println("		ALTA DE UN POI");
 		System.out.println("----------------------------------------");
@@ -29,7 +28,6 @@ public class AgregarPOI implements Funcionalidad {
 			System.out.println("Ingrese datos del POI de la siguiente manera:");
 			System.out.println("comuna,lat,long,nombre,calle,altura,callesPerpenIzq,callesPerpenDer,barrio,localidad,provincia,pais");
 			System.out.println("Deje en blanco los campos que no use.");
-			Scanner teclado = new Scanner(System.in);
 			String camposPOI = teclado.nextLine();
 		System.out.println(camposPOI);
 		System.out.println();

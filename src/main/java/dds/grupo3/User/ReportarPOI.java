@@ -28,16 +28,14 @@ public class ReportarPOI implements Funcionalidad {
 	}
 
 	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID) {
-		@SuppressWarnings("resource")
-		Scanner teclado = new Scanner(System.in);
+	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
 		System.out.println("---------------------------------------");
 		System.out.println("		OPCIONES DE REPORTE");
 		System.out.println("----------------------------------------");
 		System.out.println();
 		System.out.println("Elija el tipo de Reporte:");
-		System.out.print("1 - Reporte de Cant Busquedas por Fecha");
-		System.out.print("2 - Reporte de Cada Busqueda por Terminal");
+		System.out.println("1 - Reporte de Cant Busquedas por Fecha");
+		System.out.println("2 - Reporte de Cada Busqueda por Terminal");
 		String parametros = teclado.nextLine();
 
 		if(Integer.parseInt(parametros) ==1)
@@ -48,8 +46,7 @@ public class ReportarPOI implements Funcionalidad {
 		else if(Integer.parseInt(parametros) ==2)
 		{
 			parametros = "reporte3,";
-			System.out.print("Valor:");
-			parametros = parametros.concat(teclado.nextLine());
+			parametros = parametros.concat("x");
 		}
 		usuario.reportarSegun(parametros).mostrar();
 		return 0;

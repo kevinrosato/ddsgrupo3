@@ -12,7 +12,6 @@ public class Cronometrador {
 	}
 	static	public	Long	finCuenta()
 	{
-		System.out.print("Ecuacion: "+tiempoComienzo+"ns -");
 		tiempoFin=System.nanoTime();
 		Long aux = (tiempoFin-tiempoComienzo)/1000;
 		return aux;	

@@ -6,7 +6,7 @@ import ddsgrupo3.Factory;
 
 public class CuentasUsuario {
 
-	public static User	instanciarUsuario(String username, String pass)
+	public static User	instanciarUsuario(String username,String pass)
 	{
 		if(verificarExistencia(username, pass))
 		{		
@@ -20,6 +20,9 @@ public class CuentasUsuario {
 		return null;	
 	}
 	
+	public static Boolean requierePass(String username) {
+		return !((String) Factory.getString(username)).equals("null");}
+
 	private static boolean verificarExistencia(String username, String pass)
 	{	
 		return pass.contains((String) Factory.getString(username));
