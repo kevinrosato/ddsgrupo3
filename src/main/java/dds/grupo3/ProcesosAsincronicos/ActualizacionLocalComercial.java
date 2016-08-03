@@ -14,7 +14,6 @@ import dds.grupo3.Interfaces.User;
 import dds.grupo3.POIsSistem.Local;
 
 public class ActualizacionLocalComercial extends ProcesoAsincronico{
-	private User usuario;
 	private String nombreLocal;
 	private String palabrasClaves;
 	
@@ -22,7 +21,6 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 		this.usuario=usuario;
 	}
 	
-	//TODO:Falta que levante el archivo y lo haga sucesivamente
 	@Override
 	public void run(){
 		AdministradorPOIs mapa=usuario.getMapa();
@@ -30,14 +28,11 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 		Local localModificado = null;
 		Integer indice=0;
 		List<String> actualizaciones=new ArrayList<String>();
-		
 		try {
 			actualizaciones=leerArchivo();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 		try{
 			for(int j=0;j<actualizaciones.size();j++){
 				String[] lista=actualizaciones.get(j).split(";");
@@ -65,7 +60,6 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 		catch(Exception e){
 			this.resultadoError(e.toString());
 		}
-				
 	}
 	
 	public List<String> leerArchivo() throws IOException{
@@ -81,12 +75,10 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 		    }
 			br.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return actualizaciones;  
 	}
-	
 
 	@Override
 	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
@@ -108,13 +100,10 @@ public class ActualizacionLocalComercial extends ProcesoAsincronico{
 		System.out.println();
 	}
 
-
 	@Override
 	public void setTask() {
 		task = new ActualizacionLocalComercial(usuario);
-		
 	}
-
 
 	@Override
 	public String setProceso() {
