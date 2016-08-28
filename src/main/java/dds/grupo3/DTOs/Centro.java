@@ -22,11 +22,11 @@ public class Centro extends POI implements POIGral {
 	{
 		System.out.println(this.getInfoDTO().toString());
 	}
-	@Override
-	public void mostrarInformacion()
-	{
-		System.out.println(this.getInfoDTO().mostrar());
-	}
+//	@Override
+//	public void mostrarInformacion()
+//	{
+//		System.out.println(this.getInfoDTO().mostrar());
+//	}
 	@Override
 	public Boolean estaCercaDe(Ubicacion ubicacion)
 	{

@@ -7,7 +7,7 @@ import dds.grupo3.POIsSistem.Ubicacion;
 public interface POIGral
 {
 	void	mostrarInformacionAvanzada();
-	void	mostrarInformacion();
+	String[]	mostrarInformacion();
 	Boolean	estaCercaDe(Ubicacion ubicacion);
 	Boolean	tieneLaClave(String clave);
 	Boolean	estaDisponible(Calendar horaActual);
