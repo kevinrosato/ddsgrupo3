@@ -51,25 +51,9 @@ public class Usuario implements User{
 		funcionalidad.setParametro((Object) this.getMapa());
 		return (POIGral) realizarFunc(funcionalidad, terminalID);
 	}
-	
-	public POIGral agregarAcciones(String terminalID){
-		funcionalidad = (Funcionalidad) Factory.getObject("AgregarAcciones");
-		funcionalidad.setParametro(terminalID);
-		return (POIGral) realizarFunc(funcionalidad, this);
-	}
-	public POIGral procesoMultiple(String terminalID){
-		funcionalidad = (Funcionalidad) Factory.getObject("ProcesoMultiple");
-		funcionalidad.setParametro(terminalID);
-		return (POIGral) realizarFunc(funcionalidad, this);
-	}
-	public POIGral actualizarLocalComercial(String terminalID){
-		funcionalidad = (Funcionalidad) Factory.getObject("ActualizarLocalComercial");
-		funcionalidad.setParametro(terminalID);
-		return (POIGral) realizarFunc(funcionalidad, this);
-	}
-	public POIGral bajaDePOI(String terminalID){
+	public POIGral dispararProcesoAsincronico(String parametros){
 		funcionalidad = (Funcionalidad) Factory.getObject("BajaDePOI");
-		funcionalidad.setParametro(terminalID);
+		funcionalidad.setParametro(parametros);
 		return (POIGral) realizarFunc(funcionalidad, this);
 	}
 	

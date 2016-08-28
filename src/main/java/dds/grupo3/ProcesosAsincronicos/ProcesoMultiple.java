@@ -6,39 +6,33 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.TimerTask;
 
+import dds.grupo3.Interfaces.CommandProcesos;
 import dds.grupo3.Interfaces.ProcesoAsincronico;
 import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
-public class ProcesoMultiple extends ProcesoAsincronico{
+public class ProcesoMultiple extends TimerTask implements CommandProcesos{
 	private List<ProcesoAsincronico> procesos= new ArrayList<ProcesoAsincronico>();
 	String procesoMultiple;
 	Scanner teclado;
+	private User usuario;
+	private String terminalID;
+	private Calendar fechaInicio;
+	
 	@Override
 	public void run(){
+		ResultadosProcesos resultado=new ResultadosProcesos(this,this.fechaInicio);
 		try{
 			for(ProcesoAsincronico i:procesos){
-				i.desplegarConsola(usuario, terminalID, teclado);
+				i.realizarFuncion(usuario.getMapa().getListaPois(),usuario);
 			}
-			this.resultadoOK();
+			resultado.resultadoOK();
 		}
 		catch(Exception e){
-			this.resultadoError(e.toString());
+			resultado.resultadoError(e.toString());
 		}
 	}
 
-	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
-		usuario.procesoMultiple(terminal_ID);
-		return null;
-	}
-
-	@Override
-	public void mostrarOpcion() {
-		System.out.println("-->	DISPARAR PROCESO MULTIPLE");
-	}
-
-	@Override
 	public void pedirInfo() {
 		teclado=new Scanner(System.in);
 		System.out.println("---------------------------------------");
@@ -54,18 +48,17 @@ public class ProcesoMultiple extends ProcesoAsincronico{
 		
 	}
 
-	@Override
-	public void setTask() {
+	public void setTask(TimerTask task,Calendar fechaInicio,User usuario,String terminalID) {
 		ProcesoMultiple a= new ProcesoMultiple();
 		a.usuario=usuario;
 		a.terminalID=terminalID;
-		a.procesos=procesos;
-		a.fechaInicio=Calendar.getInstance();
-		this.task= (TimerTask) a;
+		a.procesos=this.procesos;
+		fechaInicio=Calendar.getInstance();
+		a.fechaInicio=fechaInicio;
+		task= (TimerTask) a;
 		
 	}
 
-	@Override
 	public String setProceso() {
 		return "Proceso Multiple";
 	}

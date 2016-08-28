@@ -4,39 +4,42 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
-import java.util.Scanner;
 import java.util.TimerTask;
 
 import dds.grupo3.Interfaces.AdministradorPOIs;
+import dds.grupo3.Interfaces.CommandProcesos;
 import dds.grupo3.Interfaces.POIGral;
-import dds.grupo3.Interfaces.ProcesoAsincronico;
 import dds.grupo3.Interfaces.User;
 import dds.grupo3.User.BorrarPOI;
 import ddsgrupo3.Mapa;
 
-public class BajaDePOI extends ProcesoAsincronico{
+public class BajaDePOI extends TimerTask implements CommandProcesos{
 	private List<POIGral> listaPois;
 	private AdministradorPOIs mapa=new Mapa();
 	Boolean error=false;
+	User usuario;
+	private Calendar fechaInicio;
 	
 	@Override
 	public void run(){
+		ResultadosProcesos resultado=new ResultadosProcesos(this,this.fechaInicio);
 		error=false;
 		listaPois= new ArrayList<POIGral>();
-		listaPois=llenarListaPOI();
+		listaPois=llenarListaPOI(resultado);
 		if (!error){
 			try{
 				for(POIGral poi:listaPois){
 					mapa.realizarFuncConPoi(new BorrarPOI(), poi);
 				}
-				this.resultadoOK();
+				resultado.resultadoOK();
 			}
 			catch(Exception e){
-				this.resultadoError(e.toString());
+				resultado.resultadoError(e.toString());
 			}
 		}
 	}
-	public List<POIGral>  llenarListaPOI(){
+	
+	public List<POIGral>  llenarListaPOI(ResultadosProcesos resultado){
 		//Este proceso simula una respuesta a un servidor usando un archivo
 		try {
 			FileInputStream file;
@@ -60,7 +63,7 @@ public class BajaDePOI extends ProcesoAsincronico{
 		} catch (Exception e) {
 			e.printStackTrace();
 			error=true;
-			this.resultadoError(e.toString());
+			resultado.resultadoError(e.toString());
 		}
 		return listaPois;
 	}
@@ -73,17 +76,7 @@ public class BajaDePOI extends ProcesoAsincronico{
 		resultado.set(Calendar.DAY_OF_MONTH, Integer.parseInt(fechaVector[0]));
 		return resultado;
 	}
-	@Override
-	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
-		usuario.bajaDePOI(terminal_ID);
-		return null;
-		//
-	}
-	@Override
-	public void mostrarOpcion() {
-		System.out.println("-->	BAJA DE POIS");
-	}
-	@Override
+	
 	public void pedirInfo() {
 		mapa=usuario.getMapa();
 		System.out.println("---------------------------------------");
@@ -91,14 +84,15 @@ public class BajaDePOI extends ProcesoAsincronico{
 		System.out.println("----------------------------------------");
 		System.out.println();
 	}
-	@Override
-	public void setTask() {
+	
+	public void setTask(TimerTask task,Calendar fechaInicio,User usuario,String terminalID) {
 		BajaDePOI a= new BajaDePOI();
 		a.mapa=mapa;
-		a.fechaInicio=Calendar.getInstance();
+		fechaInicio=Calendar.getInstance();
+		a.fechaInicio=fechaInicio;
 		task= (TimerTask) a;
 	}
-	@Override
+	
 	public String setProceso() {
 		return "Baja de POI";
 	}
