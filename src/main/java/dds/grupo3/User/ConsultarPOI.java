@@ -4,52 +4,72 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import dds.grupo3.Control.Inicializacion;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.Interfaces.User;
 import dds.grupo3.UsoTerminales.BusquedasDAO;
 import dds.grupo3.UsoTerminales.Cronometrador;
+import ddsgrupo3.Mapa;
 
 public class ConsultarPOI implements Funcionalidad {
 
 	private AdministradorPOIs mapa;
 	private String resto = new String();
+	private String nombre1;
+	private String nombre2;
+	private List<POIGral> listaResultante = new ArrayList<POIGral>();
+	private List<String> claves=new ArrayList<String>(); 
 	@Override
 	public Object realizarFuncion(List<POIGral> listaPois, Object terminalID)
 	{
-		List<POIGral> listaResultante = new ArrayList<POIGral>();
-		Scanner scanner = new Scanner(System.in);
-		String clave = new String();
-		do
-		{	
-			System.out.print("Ingrese palabra Clave: ");
-			clave = scanner.nextLine();			
-			Cronometrador.comienzo();
+		claves.add(0,nombre1);
+		claves.add(1, nombre2);
+
+//		Cronometrador.comienzo();
+		for(String clave:claves){
+			if(!clave.isEmpty()){
 			if (clave.startsWith("-"))
 			{
 				clave = clave.substring(1);
 				resto = resto.replace(clave,"");
-				listaResultante = buscarEn(clave, listaResultante);	
+				listaResultante.addAll(buscarEn(clave, listaPois));	
 			}
 			if (clave.startsWith("+"))
 			{
 				clave = clave.substring(1);
 				resto = resto.concat(",");
 				resto = resto.concat(clave);
-				listaResultante = buscarEn(clave, listaResultante);	
+				listaResultante.addAll(buscarEn(clave, listaPois));	
 			}
 			else
 			{
 				resto = clave;
-				listaResultante = buscarEn(clave, listaPois);				
+				listaResultante.addAll(buscarEn(clave, listaPois));				
 			}
-			Long aux =	Cronometrador.finCuenta();
-			clave = mostrarPOIs(resto, listaResultante,scanner);
-			Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda
-						((String) terminalID, resto, listaResultante.size(),aux));			
-		}while (!clave.contains("Y"));
-		return listaResultante.get(0);
+			}
+		}
+//		Long aux =	Cronometrador.finCuenta();
+//		clave2 = mostrarPOIs(resto, listaResultante,scanner);
+//		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));	
+		return listaResultante;
+	}
+	
+	public static void main(String[] args) {
+		AdministradorPOIs mapa=Inicializacion.init();
+		ConsultarPOI consulta=new ConsultarPOI();
+		consulta.setNombre1("Medrano");
+		consulta.setNombre2("Carrousel");
+		@SuppressWarnings("unchecked")
+		List<POIGral> resultados=(List<POIGral>) consulta.realizarFuncion(mapa.getListaPois(),"0");
+		if(resultados.isEmpty()){System.out.println("no hay resultados");}
+		else{
+		for(POIGral resultado:resultados){
+			String[] info=resultado.mostrarInformacion();
+			System.out.println("nom: "+info[0]+" direc: "+info[1]);
+		}
+		}
 	}
 	
 	public	List<POIGral>	buscarEn(String palabraClave, List<POIGral> lista)
@@ -128,5 +148,21 @@ public class ConsultarPOI implements Funcionalidad {
 	@Override
 	public void mostrarOpcion() {
 		System.out.println("	BUSCAR UN POI");
+	}
+	
+	public String getNombre1() {
+		return nombre1;
+	}
+
+	public void setNombre1(String nombre1) {
+		this.nombre1 = nombre1;
+	}
+
+	public String getNombre2() {
+		return nombre2;
+	}
+
+	public void setNombre2(String nombre2) {
+		this.nombre2 = nombre2;
 	}
 }

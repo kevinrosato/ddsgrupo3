@@ -63,13 +63,13 @@ public class Local extends POI{
 		return valorVerdad;
 	}
 	
-	@Override
+//	@Override
 //	protected void mostrarInformacionServicios(){
 //		System.out.println(""+this.conocerTipo()+": "+this.getNombre()+",\n servicios:"+this.getServicios().);
 //	}
-	public void mostrarInformacion(){
-		System.out.println("Local "+this.getNombre());
-	}
+//	public void mostrarInformacion(){
+//		System.out.println("Local "+this.getNombre());
+//	}
 	
 	//----------
 	//Getters y Setters

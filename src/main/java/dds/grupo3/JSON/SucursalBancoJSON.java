@@ -26,11 +26,11 @@ public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo S
 		Integer horaSolicitada= horario.get(Calendar.HOUR_OF_DAY)*100+horario.get(Calendar.MINUTE);
 		return((diaSolicitado>=2)&&(diaSolicitado<=6) && horaSolicitada>=1000 && horaSolicitada<=1500);
 	}
-	@Override
-	public void mostrarInformacion() {
-		System.out.println(this.getBanco());
-		
-	}
+//	@Override
+//	public void mostrarInformacion() {
+//		System.out.println(this.getBanco());
+//		
+//	}
 	@Override
 	public String conocerTipo() {
 		return "Sucursal De Banco";

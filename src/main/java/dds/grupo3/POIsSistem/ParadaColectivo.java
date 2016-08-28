@@ -34,10 +34,10 @@ public class ParadaColectivo extends POI{
 		}
 		return valorDeVerdad;
 	}	
-	@Override
-	public void mostrarInformacion(){
-		System.out.println("Parada en la calle "+super.getCalle()+", entre las calles "+super.getCallesPerpenDer()+" y "+super.getCallesPerpenIzq());
-	}
+//	@Override
+//	public void mostrarInformacion(){
+//		System.out.println("Parada en la calle "+super.getCalle()+", entre las calles "+super.getCallesPerpenDer()+" y "+super.getCallesPerpenIzq());
+//	}
 	
 	public Boolean estaDisponible (Calendar horario){
 		return (true);

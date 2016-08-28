@@ -25,9 +25,9 @@ public class SucursalBanco extends Local{
 				||	(super.serviciosTienenLaClave(clave));
 	}
 	
-	public void mostrarInformacion(){
-		System.out.println("Banco "+this.getNombre());
-	}
+//	public void mostrarInformacion(){
+//		System.out.println("Banco "+this.getNombre());
+//	}
 	
 	public Boolean estaCercaDe(Ubicacion lugar){
 		return this.estaCercaDePorDefecto(lugar);

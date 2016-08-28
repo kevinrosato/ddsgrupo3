@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Busqueda</title>
 	   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,45 +14,53 @@
     <link href="css/mdb.min.css" rel="stylesheet">
 
 </head>
+<body>
 
 	<div class="container">
            <h2 class="card-header">Busqueda</h2>
      </div>
 
-
-     <div class="col-sm-9">
+	<form action="/busqueda" method="get">
+    	 <div class="col-sm-9">
      			<p> </p>
      			<b><h4>Criterio de busqueda</h4></b>
 				<p class="card-text">NOMBRE </p>
 				<input class="col-sm-4" type="text" name="nombre1" placeholder="ingrese el nombre a buscar o agregar">
 				<input class="col-sm-4" type="text" name="nombre2" placeholder="ingrese el nombre a buscar o agregar">
-	 </div>
-     <div align="center" class="container">
+	 	</div>
+     	<div align="center" class="container">
 			<div class="row">
 				<div class="col-sm-12">
-				<button class="btn btn-primary"> AGREGAR  </button>
-		   		<button class="btn btn-info">BUSCAR</button>
+				<input type="submit" value="AGREGAR" id="agregar" name="agregar" />
+				<input type="submit" value="BUSCAR" id="buscar" name="buscar" />
+				<!--
+				<button class="btn btn-primary" name="AGREGAR"> AGREGAR  </button>
+		   		<button class="btn btn-info" name "BUSCAR">BUSCAR</button>
+		   		-->
 				</div>
 			</div>
-	</div>
+		</div>
+	</form>
 	
 	<div class="col-sm-9">
 	<p class="card-text">RESULTADOS </p>
 	</div>
 	
-    <table class="table table-striped table-hover">
-		<tr>
+	
+    <table class="table table-striped table-hover"> 
+      <tr>
 			<th>Nombre</th>
 			<th>Direccion</th>
 
-		</tr>
-		<tr>
-			<td>JPeres Cotillon</td>
-			<td>Rivadavia 1234</td>
-		</tr>
-
-	</table>
-<body>
+	  </tr>
+	 {{#each resultados}}
+      <tr>
+        <th>{{nombre}}</th>
+        <th>{{direccion}}</th>
+      </tr>
+	 {{/each}}
+      
+      </table>
 
 </body>
 </html>

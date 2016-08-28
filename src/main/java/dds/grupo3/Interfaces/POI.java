@@ -56,7 +56,12 @@ public abstract class POI	implements POIGral{
 		this.mostrarInformacion();
 		System.out.println("[Aca en un futuro se muestra toda la info]");
 	}
-	public abstract void mostrarInformacion();
+	public String[] mostrarInformacion(){
+		String[] informacion=new String[2];
+		informacion[0]=nombre;
+		informacion[1]=calle+" "+altura;
+		return informacion;
+	};
 	public abstract String conocerTipo();
 	//----------------
 	//Getters y Setters
