@@ -3,9 +3,7 @@ package dds.grupo3.Control;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
-import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.User.ConsultarPOI;
 import dds.grupo3.User.Usuario;

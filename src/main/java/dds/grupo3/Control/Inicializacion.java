@@ -4,14 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import org.junit.Before;
-
-import dds.grupo3.DTOs.CentroDTO;
-import dds.grupo3.DTOs.DAOCentrosImplementacion;
-import dds.grupo3.DTOs.HorariosServDTO;
-import dds.grupo3.DTOs.ServDTO;
 import dds.grupo3.Interfaces.AdministradorPOIs;
-import dds.grupo3.Interfaces.CGPDAO;
 import dds.grupo3.POIsSistem.CGP;
 import dds.grupo3.POIsSistem.Horario;
 import dds.grupo3.POIsSistem.Local;
@@ -19,11 +12,7 @@ import dds.grupo3.POIsSistem.ParadaColectivo;
 import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
-import dds.grupo3.User.Rol;
-import dds.grupo3.UsoTerminales.Cronometrador;
 import ddsgrupo3.Factory;
-import ddsgrupo3.LevenshteinDistance;
-import ddsgrupo3.Mapa;
 
 public class Inicializacion {
 
@@ -38,7 +27,7 @@ public class Inicializacion {
 //				LevenshteinDistance calculador;
 				AdministradorPOIs 			mapa;
 				SucursalBanco 	sucursal,	sucursal2;
-				Local 			local,		local2,		carrousel;
+				Local 			local,		carrousel;
 				ParadaColectivo parada,		parada2;
 				CGP 			cgp, 		cgp2, 		cgp3;
 				Servicio 		rubroM,		servicio1,	servicio2,	servicio3,	comercial;

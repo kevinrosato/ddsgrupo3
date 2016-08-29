@@ -16,6 +16,7 @@ public class ProcesoMultiple extends TimerTask implements CommandProcesos{
 	String procesoMultiple;
 	Scanner teclado;
 	private User usuario;
+	@SuppressWarnings("unused")
 	private String terminalID;
 	private Calendar fechaInicio;
 	
