@@ -63,14 +63,21 @@ public class Local extends POI{
 		return valorVerdad;
 	}
 	//metodo de cgp y banco
-	public String mostrarInfo(){
-		return "Direccion: "+this.getCalle()+" "+this.getAltura()+" Zona: "+this.getBarrio();
+	public List<String> mostrarInfo(){
+		List<String> informacion=new ArrayList<String>();
+		informacion.add("Direccion="+this.getCalle()+" "+this.getAltura());
+		informacion.add("Zona="+this.getBarrio());
+		return informacion;
 	}
 	
 	
 	@Override
-	public String mostrarInformacionAvanzada() {
-		return "Direccion: "+this.getCalle()+" "+this.getAltura()+ "\n Nombre: "+this.getNombre()+"\n Rubro: "+this.getRubro().getNombre();
+	public List<String> mostrarInformacionAvanzada() {
+		List<String> informacion=new ArrayList<String>();
+		informacion.add("Direccion="+this.getCalle()+" "+this.getAltura());
+		informacion.add("Nombre="+this.getNombre());
+		informacion.add("Rubro="+this.getRubro().getNombre());
+		return informacion;
 	}
 	
 //	@Override

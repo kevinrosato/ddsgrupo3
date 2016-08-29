@@ -1,12 +1,13 @@
 package dds.grupo3.Interfaces;
 
 import java.util.Calendar;
+import java.util.List;
 
 import dds.grupo3.POIsSistem.Ubicacion;
 
 public interface POIGral
 {
-	String	mostrarInformacionAvanzada();
+	List<String>	mostrarInformacionAvanzada();
 	String[]	mostrarInformacion();
 	Boolean	estaCercaDe(Ubicacion ubicacion);
 	Boolean	tieneLaClave(String clave);

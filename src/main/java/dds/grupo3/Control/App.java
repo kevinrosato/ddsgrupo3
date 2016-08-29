@@ -32,5 +32,13 @@ public class App {
 		 
 		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,usuario),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res, busqueda.getResultadosAnteriores()),engine);
+		Spark.get("/webapp/css/bootstrap.min.css", (req, res) -> {
+			HashMap viewModel = new HashMap();
+			return new ModelAndView(viewModel,"../../../../webapp/css/bootstrap.min.css");
+		},engine);
+		Spark.get("/webapp/css/mdb.min.css", (req, res) -> {
+			HashMap viewModel = new HashMap();
+			return new ModelAndView(viewModel,"../../../../webapp/css/mdb.min.css");
+		},engine);
 	}
 }

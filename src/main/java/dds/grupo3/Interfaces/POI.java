@@ -1,6 +1,7 @@
 package dds.grupo3.Interfaces;
 
 import java.util.Calendar;
+import java.util.List;
 
 import dds.grupo3.POIsSistem.Ubicacion;
 
@@ -52,7 +53,7 @@ public abstract class POI	implements POIGral{
 	{
 		return this.ubicacion.seEncuentraAMenosDe(posicion, dist);
 	}
-	public abstract String mostrarInformacionAvanzada();
+	public abstract List<String> mostrarInformacionAvanzada();
 	
 	public String[] mostrarInformacion(){
 		String[] informacion=new String[2];

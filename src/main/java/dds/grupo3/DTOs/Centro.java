@@ -1,6 +1,8 @@
 package dds.grupo3.DTOs;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
@@ -18,9 +20,15 @@ public class Centro extends POI implements POIGral {
 	}
 //	mensajes
 	@Override
-	public String mostrarInformacionAvanzada()
+	public List<String> mostrarInformacionAvanzada()
 	{
-		return this.getInfoDTO().toString();
+		List<String> informacion=new ArrayList<String>();
+		informacion.add("numComuna="+this.getInfoDTO().getNumComuna());
+		informacion.add("zonasIncluidas="+this.getInfoDTO().getZonasIncluidas());
+		informacion.add("nombreDirector="+this.getInfoDTO().getNombreDirector());
+		informacion.add("domicilioCompleto="+this.getInfoDTO().getDomicilioCompleto());
+		informacion.add("servicios="+this.getInfoDTO().getServicios().toString());
+		return informacion;
 	}
 //	@Override
 //	public void mostrarInformacion()
