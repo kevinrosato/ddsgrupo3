@@ -1,5 +1,6 @@
 package dds.grupo3.POIsSistem;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -34,13 +35,16 @@ public class CGP extends Local{
 	}
 	
 	@Override
-	public String mostrarInformacionAvanzada() {
+	public List<String> mostrarInformacionAvanzada() {
+		List<String> informacion=new ArrayList<String>();
+		informacion.addAll(super.mostrarInfo());
 		String servicios="";
 		for(Servicio s:this.getServicios()){
 			if(!servicios.equals("")){servicios=servicios+", "+s.toString();}
 			else {servicios=s.toString();}
 		}
-		return super.mostrarInfo()+" Servicios: "+servicios;
+		informacion.add("Servicios="+servicios);
+		return informacion;
 	}
 	
 	// Disponibilidad para CGP

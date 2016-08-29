@@ -286,10 +286,12 @@ public class Inicializacion {
 			cgp2.setProvincia("CABA");
 			
 			cgp3 = new CGP("Sede Microcentro",(byte) 8);
+			cgp3.setServicio(servicio3);
+			cgp3.setImagen("/TP DISEÑO/src/main/resources/templates/comuna.jpg");
 			cgp3.setAltura(432);
 			cgp3.setBarrio("Zamore");
 			cgp3.setCalle("Cielo");
-			cgp3.setCallesPerpenDer("Espa�a");
+			cgp3.setCallesPerpenDer("Espania");
 			cgp3.setCallesPerpenIzq("Boedo");
 			cgp3.setCodigoPostal(3524);
 			cgp3.setComuna(4);

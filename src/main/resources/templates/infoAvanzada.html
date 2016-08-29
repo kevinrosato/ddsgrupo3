@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-  		<h2>Informacion del POI</h2>
+  	<title>Informacion del POI</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../../webapp/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../../webapp/css/mdb.min.css" rel="stylesheet">
   </head>
   <body>
+	 <div class="container">
+           <h2 class="card-header">Informacion del POI</h2>
+     </div>  
+  
      <div class="container">
      
-       <img src={{imagen}}>
-       <p>{{informacionAvanzada}}</p>
+       <div align="center" class="container"> 
+         <p><img src="{{imagen}}" ></p>
+         <!--
+         <p><img src="../../webapp/comuna.jpg" ></p>
+         -->
+       </div>
+       <table class="table table-striped table-hover">
+              <tr>
+			     <th>Campo</th>
+			     <th>Informacion</th>
+			  </tr>
+			  {{#each infoAvanzada}}
+			  <tr>
+			     <th>{{campo}}</th>
+			     <th>{{informacion}}</th>
+			  </tr>
+			  {{/each}}
+       </table>
      
      </div>
      <a href="/busqueda">Volver atras </a>

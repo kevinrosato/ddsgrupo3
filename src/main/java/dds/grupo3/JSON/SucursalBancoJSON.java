@@ -1,6 +1,8 @@
 package dds.grupo3.JSON;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
@@ -38,13 +40,18 @@ public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo S
 	}
 
 	@Override
-	public String mostrarInformacionAvanzada() {
+	public List<String> mostrarInformacionAvanzada() {
+		List<String> informacion=new ArrayList<String>();
+		informacion.add("Banco="+this.getBanco());
+		informacion.add("Gerente="+ this.getGerente());
+		informacion.add("Sucursal="+this.getSucursal());
 		String servicios="";
-		for(String s:this.getServicios()){
-			if(!servicios.equals("")){servicios=servicios+", "+s;}
-			else {servicios=s;}
+		for(int i=0;i<this.getServicios().length;i++){
+			if(!servicios.equals("")){servicios=servicios+", "+this.getServicios()[i];}
+			else {servicios=this.getServicios()[i];}
 		}
-		return " Banco= "+this.getBanco()+" "+ "\n Gerente= "+ this.getGerente()+"\n Sucursal="+this.getSucursal()+"\n Servicios="+servicios;
+		informacion.add("Servicios="+servicios);
+		return informacion;
 	}
 
 	@Override
