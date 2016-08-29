@@ -21,6 +21,9 @@ public class Horario {
 				(horaSolicitada>=this.horarioInicio)&& (horaSolicitada<=this.horarioCierre));
 	}
 	
+	public String toString(){
+		return "Fecha: "+this.getDiaInicio()+"Hora: "+this.getHorarioInicio()+"-"+this.getHorarioCierre();
+	}
 	
 	//Metodo Obsoleto
 //	

@@ -6,11 +6,12 @@ import dds.grupo3.POIsSistem.Ubicacion;
 
 public interface POIGral
 {
-	void	mostrarInformacionAvanzada();
+	String	mostrarInformacionAvanzada();
 	String[]	mostrarInformacion();
 	Boolean	estaCercaDe(Ubicacion ubicacion);
 	Boolean	tieneLaClave(String clave);
 	Boolean	estaDisponible(Calendar horaActual);
 	Boolean	esValido();
 	String	conocerTipo();
+	String getImagen();
 }

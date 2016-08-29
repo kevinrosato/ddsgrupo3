@@ -33,10 +33,15 @@ public class CGP extends Local{
 				||	(super.serviciosTienenLaClave(clave));
 	}
 	
-//	@Override
-//	public void mostrarInformacion() {
-//		System.out.println("CGP N�"+this.getNumeroCGP()+", "+this.getNombre());
-//	}
+	@Override
+	public String mostrarInformacionAvanzada() {
+		String servicios="";
+		for(Servicio s:this.getServicios()){
+			if(!servicios.equals("")){servicios=servicios+", "+s.toString();}
+			else {servicios=s.toString();}
+		}
+		return super.mostrarInfo()+" Servicios: "+servicios;
+	}
 	
 	// Disponibilidad para CGP
 	public Boolean estaDisponible (Calendar horario, String nombreServicio){

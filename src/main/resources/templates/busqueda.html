@@ -54,10 +54,12 @@
 
 	  </tr>
 	 {{#each resultados}}
-      <tr>
-        <th>{{nombre}}</th>
-        <th>{{direccion}}</th>
-      </tr>
+	 <form action="/infoAvanzada" method="get">
+      	 <tr>
+         		<th><a href="/infoAvanzada?value_key={{nombre}}">{{nombre}}<a></th>
+        		<th>{{direccion}}</th>
+     	 </tr>
+     </form>	
 	 {{/each}}
       
       </table>

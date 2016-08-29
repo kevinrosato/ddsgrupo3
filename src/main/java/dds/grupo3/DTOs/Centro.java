@@ -18,9 +18,9 @@ public class Centro extends POI implements POIGral {
 	}
 //	mensajes
 	@Override
-	public void mostrarInformacionAvanzada()
+	public String mostrarInformacionAvanzada()
 	{
-		System.out.println(this.getInfoDTO().toString());
+		return this.getInfoDTO().toString();
 	}
 //	@Override
 //	public void mostrarInformacion()

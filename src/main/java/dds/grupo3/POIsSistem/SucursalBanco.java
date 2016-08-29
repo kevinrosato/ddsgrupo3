@@ -48,7 +48,15 @@ public class SucursalBanco extends Local{
 		return this.getServicios().stream().anyMatch(unServicio->unServicio.atendesEnEsteHorario(horario));
 	}
 	
-	
+	@Override
+	public String mostrarInformacionAvanzada(){
+		String servicios="";
+		for(Servicio s:this.getServicios()){
+			if(!servicios.equals("")){servicios=servicios+", "+s.getNombre();}
+			else {servicios=s.getNombre();}
+		}
+		return super.mostrarInfo()+" Servicios: "+servicios;
+	}
 	//----------
 	//Getters y Setters
 	//----------
