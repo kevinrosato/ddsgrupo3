@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
+import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.Ubicacion;
 
 public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo SucursalBanco generado desde una consulta JSON 
@@ -37,15 +38,13 @@ public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo S
 	}
 
 	@Override
-	public void mostrarInformacionAvanzada() {
-		System.out.printf(" Banco= "+this.getBanco()+" "
-						+ "\n Gerente= "+ this.getGerente()
-						+"\n Sucursal="+this.getSucursal()
-						+"\n Servicios=");
-		for(int i=0;i<this.getServicios().length;i++){
-			System.out.printf(this.getServicios()[i]+", ");
+	public String mostrarInformacionAvanzada() {
+		String servicios="";
+		for(String s:this.getServicios()){
+			if(!servicios.equals("")){servicios=servicios+", "+s;}
+			else {servicios=s;}
 		}
-		System.out.printf("\n\n");
+		return " Banco= "+this.getBanco()+" "+ "\n Gerente= "+ this.getGerente()+"\n Sucursal="+this.getSucursal()+"\n Servicios="+servicios;
 	}
 
 	@Override

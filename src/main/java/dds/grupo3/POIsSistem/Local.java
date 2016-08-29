@@ -62,6 +62,16 @@ public class Local extends POI{
 		{	if(i.tieneLaClave(clave))	valorVerdad = true;		}
 		return valorVerdad;
 	}
+	//metodo de cgp y banco
+	public String mostrarInfo(){
+		return "Direccion: "+this.getCalle()+" "+this.getAltura()+" Zona: "+this.getBarrio();
+	}
+	
+	
+	@Override
+	public String mostrarInformacionAvanzada() {
+		return "Direccion: "+this.getCalle()+" "+this.getAltura()+ "\n Nombre: "+this.getNombre()+"\n Rubro: "+this.getRubro().getNombre();
+	}
 	
 //	@Override
 //	protected void mostrarInformacionServicios(){
@@ -125,4 +135,5 @@ public class Local extends POI{
 	public void setPalabrasClaves(String palabrasClaves) {
 		this.palabrasClaves = palabrasClaves;
 	}
+
 }

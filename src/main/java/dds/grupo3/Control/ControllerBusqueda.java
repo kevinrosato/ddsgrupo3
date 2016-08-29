@@ -14,21 +14,24 @@ import spark.Response;
 public class ControllerBusqueda {
 
 	private static String terminalID="0";
+	private List<POIGral> resultadosAnteriores=new ArrayList<POIGral>();
 	
-	public static ModelAndView show( Request request, Response response,Usuario usuario,List<POIGral> resultadosAnteriores) {
+	public ModelAndView show( Request request, Response response,Usuario usuario) {
 	
 		HashMap<String, Object> viewModel = new HashMap<>();
 		if(!request.queryParams().isEmpty()){
 			String nombre1=request.queryParams("nombre1");
 			String nombre2=request.queryParams("nombre2");
 			String[] agregar=request.queryParamsValues("agregar");
+			List<ResultadoBusqueda> resultados=new ArrayList<ResultadoBusqueda>();
 			if((agregar==null) || (resultadosAnteriores.isEmpty())){
 				//Hizo click en buscar->los resultados anteriores en realidad es todo el mapa
 				//Hizo click en agregar pero no hay resulados anteriores
-				resultadosAnteriores=usuario.getMapa().getListaPois();
+				resultados=obtenerBusquedas(usuario.getMapa().getListaPois(),nombre1,nombre2); 
 			}
-			List<ResultadoBusqueda> resultados=new ArrayList<ResultadoBusqueda>();
-			resultados=obtenerBusquedas(resultadosAnteriores,nombre1,nombre2); 
+			else{
+				resultados=obtenerBusquedas(resultadosAnteriores,nombre1,nombre2); 
+			}
 			viewModel.put("resultados", resultados);
 			return new ModelAndView(viewModel,"busqueda.html");
 		}
@@ -37,7 +40,15 @@ public class ControllerBusqueda {
 		}
 	}
 	
-	private static List<ResultadoBusqueda> obtenerBusquedas(List<POIGral> listaPois,String nombre1,String nombre2){
+	public List<POIGral> getResultadosAnteriores() {
+		return resultadosAnteriores;
+	}
+
+	public void setResultadosAnteriores(List<POIGral> resultadosAnteriores) {
+		this.resultadosAnteriores = resultadosAnteriores;
+	}
+
+	private List<ResultadoBusqueda> obtenerBusquedas(List<POIGral> listaPois,String nombre1,String nombre2){
 		ConsultarPOI consulta=new ConsultarPOI();
 		consulta.setNombre1(nombre1);
 		consulta.setNombre2(nombre2);
@@ -49,8 +60,8 @@ public class ControllerBusqueda {
 			 ResultadoBusqueda resultado=new ResultadoBusqueda(info[0],info[1]);
 			 resultados.add(resultado);
 		}
-		listaPois.clear();
-		listaPois.addAll(poisEncontrados);
+		this.resultadosAnteriores.clear();
+		this.resultadosAnteriores.addAll(poisEncontrados);
 		return resultados;
 	}
 }

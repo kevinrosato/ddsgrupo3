@@ -15,6 +15,7 @@ public abstract class POI	implements POIGral{
 	private String provincia = "";
 	private String pais = "";
 	private Integer altura = 0;
+	private String imagen="";
 	
 	//----------
 	//Metodos
@@ -51,11 +52,8 @@ public abstract class POI	implements POIGral{
 	{
 		return this.ubicacion.seEncuentraAMenosDe(posicion, dist);
 	}
-	public void mostrarInformacionAvanzada()
-	{
-		this.mostrarInformacion();
-		System.out.println("[Aca en un futuro se muestra toda la info]");
-	}
+	public abstract String mostrarInformacionAvanzada();
+	
 	public String[] mostrarInformacion(){
 		String[] informacion=new String[2];
 		informacion[0]=nombre;
@@ -141,4 +139,12 @@ public abstract class POI	implements POIGral{
 	public void setPais(String pais) {
 		this.pais = pais;
 	}    
+	
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	
+	public String getImagen() {
+		return imagen;
+	}
 }

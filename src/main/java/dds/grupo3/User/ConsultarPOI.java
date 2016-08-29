@@ -53,22 +53,6 @@ public class ConsultarPOI implements Funcionalidad {
 		return listaResultante;
 	}
 	
-	public static void main(String[] args) {
-		AdministradorPOIs mapa=Inicializacion.init();
-		ConsultarPOI consulta=new ConsultarPOI();
-		consulta.setNombre1("Medrano");
-		consulta.setNombre2("Carrousel");
-		@SuppressWarnings("unchecked")
-		List<POIGral> resultados=(List<POIGral>) consulta.realizarFuncion(mapa.getListaPois(),"0");
-		if(resultados.isEmpty()){System.out.println("no hay resultados");}
-		else{
-		for(POIGral resultado:resultados){
-			String[] info=resultado.mostrarInformacion();
-			System.out.println("nom: "+info[0]+" direc: "+info[1]);
-		}
-		}
-	}
-	
 	public	List<POIGral>	buscarEn(String palabraClave, List<POIGral> lista)
 	{	
 		palabraClave = palabraClave.trim();
