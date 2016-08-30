@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import dds.grupo3.Interfaces.POIGral;
-import dds.grupo3.User.Usuario;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

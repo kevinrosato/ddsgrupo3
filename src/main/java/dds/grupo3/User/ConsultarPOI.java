@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dds.grupo3.Control.Inicializacion;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.Interfaces.User;
+import dds.grupo3.UsoTerminales.BusquedasDAO;
+import dds.grupo3.UsoTerminales.Cronometrador;
 
 public class ConsultarPOI implements Funcionalidad {
 
@@ -24,7 +25,7 @@ public class ConsultarPOI implements Funcionalidad {
 		claves.add(0,nombre1);
 		claves.add(1, nombre2);
 
-//		Cronometrador.comienzo();
+		Cronometrador.comienzo();
 		for(String clave:claves){
 			if(!clave.isEmpty()){
 			if (clave.startsWith("-"))
@@ -47,9 +48,8 @@ public class ConsultarPOI implements Funcionalidad {
 			}
 			}
 		}
-//		Long aux =	Cronometrador.finCuenta();
-//		clave2 = mostrarPOIs(resto, listaResultante,scanner);
-//		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));	
+		Long aux =	Cronometrador.finCuenta();
+		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));	
 		return listaResultante;
 	}
 	

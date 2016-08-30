@@ -6,7 +6,6 @@ import java.util.List;
 
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
-import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.Ubicacion;
 
 public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo SucursalBanco generado desde una consulta JSON 

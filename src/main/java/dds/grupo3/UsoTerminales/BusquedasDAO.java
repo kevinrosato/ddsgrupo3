@@ -19,9 +19,9 @@ public class BusquedasDAO {
 	{
 		Calendar fecha = new GregorianCalendar();
 		String fechaS = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH));
-		fechaS = fechaS.concat("/");
+		fechaS = fechaS.concat("-");
 		fechaS = fechaS.concat(Integer.toString(1 + fecha.get(Calendar.MONTH)));
-		fechaS = fechaS.concat("/");
+		fechaS = fechaS.concat("-");
 		fechaS = fechaS.concat(Integer.toString(fecha.get(Calendar.YEAR)));
 		return	agregarATabla(frase,terminal,fechaS,cantResultados,retardo);
 	}
@@ -36,7 +36,7 @@ public class BusquedasDAO {
 		    consulta = admin.getConexion().prepareCall("INSERT INTO "
  				+((String) Factory.getString("tablaDeBusqeudas"))+
 		    	" VALUES ('"+frase+"','"+terminal+"'"
-		    	+",'"+fecha+"',"+cantResultados.toString()+","+retardo.toString()+")");
+		    	+","+cantResultados.toString()+","+retardo.toString()+",'"+fecha+"')");
 			consulta.execute();
 			
 			consulta = null;
