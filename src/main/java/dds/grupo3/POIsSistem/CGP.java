@@ -40,7 +40,7 @@ public class CGP extends Local{
 		informacion.addAll(super.mostrarInfo());
 		String servicios="";
 		for(Servicio s:this.getServicios()){
-			if(!servicios.equals("")){servicios=servicios+", "+s.toString();}
+			if(!servicios.equals("")){servicios=servicios+"-"+s.toString();}
 			else {servicios=s.toString();}
 		}
 		informacion.add("Servicios="+servicios);
