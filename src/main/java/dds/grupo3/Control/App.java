@@ -25,6 +25,7 @@ public class App {
 		ControllerInfoAvanzada informacion=new ControllerInfoAvanzada();
 		ControllerAccionConsulta consulta= new ControllerAccionConsulta();
 		ControllerLogin login = new ControllerLogin();
+		ControllerMenu menu = new ControllerMenu();
 		
 		Spark.staticFileLocation("/templates");
 		
@@ -36,8 +37,9 @@ public class App {
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res, busqueda.getResultadosAnteriores()),engine);
 		Spark.get("/acciones",(req,res)->consulta.show(req, res, usuario), engine);
 		
-		Spark.get("/login", (request, response) -> login.show(request, response,usuario), engine);
-		
+		Spark.get("/login", (req, res) -> login.show(req, res,usuario), engine);
+		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res), engine);
+
 		
 
 	}
