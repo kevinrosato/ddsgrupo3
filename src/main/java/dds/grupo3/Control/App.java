@@ -29,9 +29,11 @@ public class App {
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 		ControllerBusqueda busqueda=new ControllerBusqueda();
 		ControllerInfoAvanzada informacion=new ControllerInfoAvanzada();
+		ControllerAccionConsulta consulta= new ControllerAccionConsulta();
 		 
 		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,usuario),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res, busqueda.getResultadosAnteriores()),engine);
+		Spark.get("/acciones",(req,res)->consulta.show(req, res, usuario), engine);
 		Spark.get("/webapp/css/bootstrap.min.css", (req, res) -> {
 			HashMap viewModel = new HashMap();
 			return new ModelAndView(viewModel,"../../../../webapp/css/bootstrap.min.css");
