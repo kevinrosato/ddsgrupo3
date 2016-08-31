@@ -36,6 +36,7 @@ public class App {
 		Spark.get("/historial", (req, res) -> historial.show(req, res),engine);
 		Spark.get("/acciones",(req,res)->consulta.show(req, res, usuario), engine);
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario), engine);
+		Spark.post("/login", (req, res) -> login.show(req, res,usuario), engine);
 		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res), engine);
 	}
 }
