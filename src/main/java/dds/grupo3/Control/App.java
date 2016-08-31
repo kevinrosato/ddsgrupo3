@@ -1,13 +1,10 @@
 package dds.grupo3.Control;
 
-import java.util.HashMap;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.User.Usuario;
-import spark.ModelAndView;
 import spark.Spark;
-import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class App {
 

@@ -27,6 +27,7 @@ public class BusquedasDAO {
 		fechaS = fechaS.concat(Integer.toString(fecha.get(Calendar.DAY_OF_MONTH)));
 		fechaS = fechaS.concat("-");
 		fechaS = fechaS.concat(Integer.toString(fecha.get(Calendar.YEAR)));
+		
 		String fecha2 = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH));
 		fecha2 = fecha2.concat("/");
 		fecha2 = fecha2.concat(Integer.toString(1 + fecha.get(Calendar.MONTH)));
