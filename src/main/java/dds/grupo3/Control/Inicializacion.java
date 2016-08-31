@@ -287,7 +287,7 @@ public class Inicializacion {
 			
 			cgp3 = new CGP("Sede Microcentro",(byte) 8);
 			cgp3.setServicio(servicio3);
-			cgp3.setImagen("/TP DISEÑO/src/main/resources/templates/comuna.jpg");
+			cgp3.setImagen("comuna.jpg");
 			cgp3.setAltura(432);
 			cgp3.setBarrio("Zamore");
 			cgp3.setCalle("Cielo");
