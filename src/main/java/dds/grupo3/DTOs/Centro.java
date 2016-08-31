@@ -30,11 +30,14 @@ public class Centro extends POI implements POIGral {
 		informacion.add("servicios="+this.getInfoDTO().getServicios().toString());
 		return informacion;
 	}
-//	@Override
-//	public void mostrarInformacion()
-//	{
-//		System.out.println(this.getInfoDTO().mostrar());
-//	}
+	@Override
+	public String[] mostrarInformacion()
+	{
+		String[] info=new String[2];
+		info[0]=this.getInfoDTO().getNombreDirector();
+		info[1]=this.getInfoDTO().getDomicilioCompleto();
+		return info;
+	}
 	@Override
 	public Boolean estaCercaDe(Ubicacion ubicacion)
 	{
