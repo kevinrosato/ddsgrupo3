@@ -12,6 +12,7 @@ import dds.grupo3.POIsSistem.ParadaColectivo;
 import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
+import dds.grupo3.UsoTerminales.Cronometrador;
 import ddsgrupo3.Factory;
 
 public class Inicializacion {
@@ -317,8 +318,8 @@ public class Inicializacion {
 			mapa.agregarPoi(sucursal);
 			mapa.agregarPoi(sucursal2);
 			mapa.setHoraActual(Calendar.getInstance());
-//			Integer aux = 10;
-//			Cronometrador.establecerTope(aux.longValue());
+			Integer aux = 10;
+			Cronometrador.establecerTope(aux.longValue());
 			return mapa;
 	}
 }

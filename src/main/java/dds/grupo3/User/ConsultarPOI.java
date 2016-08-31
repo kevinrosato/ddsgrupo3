@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import dds.grupo3.Control.Inicializacion;
+import dds.grupo3.Control.ResultadoBusqueda;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
@@ -52,7 +54,24 @@ public class ConsultarPOI implements Funcionalidad {
 		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));	
 		return listaResultante;
 	}
-	
+
+	public static void main(String[] args) {
+		AdministradorPOIs mapa=Inicializacion.init();
+		Usuario usuario=new Usuario();
+		usuario.setMapa(mapa);
+		usuario.setNombre("nicolas");
+		usuario.setContrasenia("1234");
+		ConsultarPOI consulta=new ConsultarPOI();
+		consulta.setNombre1("a");
+		consulta.setNombre2("b");
+		List<POIGral> poisEncontrados=new ArrayList<POIGral>();
+		poisEncontrados=(List<POIGral>) consulta.realizarFuncion(usuario.getMapa().getListaPois(),"testeo");
+		for(POIGral poi:poisEncontrados){
+			 String[] info=poi.mostrarInformacion();
+			 System.out.println(info[0]);
+			 System.out.println(info[1]);
+		}
+	}
 	public	List<POIGral>	buscarEn(String palabraClave, List<POIGral> lista)
 	{	
 		palabraClave = palabraClave.trim();
