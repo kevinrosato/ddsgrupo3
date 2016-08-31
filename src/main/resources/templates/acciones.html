@@ -21,36 +21,40 @@
      </div>
  
 	  
-     <select name="Opcion" class="form-control">
+	
+	
+	</div>
+	<form action="/acciones" method="get">
+	<select name="log" class="form-control">
         <option value=1>Seleccionar opcion</option>
         <option value=2>Generar Log</option>
-        <option value=2>Otros</option>
+        <option value=3>Otros</option>
      </select>
-	  
-	
-	<table class="table table-striped table-hover"> 
+     <table class="table table-striped table-hover"> 
 	  <tr>
 			<th><h3>Acciones</h3><th>
 	  </tr>
       <tr>
-			<th><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="opcion1" name="opcion1">Totalizar por fecha<label></th>
+			<th><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="true" name="totalFecha">Totalizar por fecha<label></th>
 	  </tr>
 	  <tr>
-			<th><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="opcion2" name="opcion2">Totalizar por usuario<label></th>
+			<th><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="true" name="totalUsuario">Totalizar por usuario<label></th>
 	  </tr>
 	</table> 
-	
-	</div>
+	  
 		<div align="center" class="container">
 			<div class="row">
 				<div class="col-sm-9">
-					<button class="btn btn-primary"> OK </button>
-		   			<button class="btn btn-info">CANCELAR</button>
+				    
+					<input type="submit" class="btn btn-primary" value="GUARDAR ACCION" />
+					</form>
+					
+				
 				</div>
 			</div>
 		</div>
 	</div> 
-	</form>
 
+				<button class="btn btn-primary" onClick=" window.location.href='/menuPrincipal' "> VOLVER A MENU PRINCIPAL </button>
 </body>
 </html>

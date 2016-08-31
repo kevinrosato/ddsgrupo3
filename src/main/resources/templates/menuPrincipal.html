@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	
+	<title>Menu Principal</title>
 	 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -12,52 +13,36 @@
     <!-- Material Design Bootstrap -->
     <link href="mdb.min.css" rel="stylesheet">
 </head>
-
 <body>
-<h4 align="center">LOGIN DEL SISTEMA DE POIS</h4>
+<b><h4 align="center">Bienvenido al sistemas de POIs</h4></b>
 
-<form action="/login" method="GET" >
 	<div class="card">
 
 	<div class="card-block">
 		
 
 		<div class="container">
-	            <h4 class="card-header">Login del usuario</h4>
+	            <h4 class="card-header">ELIJA LA OPCION DESEADA</h4>
 	    </div>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-7">
-					<p class="card-text">USUARIO </p>
-					<input class="col-sm-3" type="text" name="usuario" placeholder="ingrese su usuario">
-				</div>
-				
-				
+	<div class="container">
+			<div class="col-sm-7">
+				<button class="btn btn-primary" onClick=" window.location.href='/busqueda'"> BUSQUEDA DE POIS </button>
+			</div>
+			<div class="col-sm-9">
+				 <button class="btn btn-primary" onClick=" window.location.href='/acciones' "> CONFIGURAR ACCIONES </button>
 
-				<div class="col-sm-9">
-					 <p class="card-text">PASSWORD </p>
-					<input type="text" name="password" placeholder="ingrese su contrasenia" >
-				</div>
-		</div>
+			</div>
+			
+			<div class="col-sm-9">
+				 <button class="btn btn-primary" onClick=" window.location.href='/historial' "> HISTORIAL DE BUSQUEDAS </button>
 
-				
-		</div>
-			<div align="center" class="container">
-				<div class="row">
-					<div class="col-sm-9">
-					<button class="btn btn-primary" onClick=" window.location.href='/menuPrincipal'"> INGRESAR </button>
-					<input type="submit" class="btn btn-primary" value="CANCELAR" id="cancelar" name="cancelar" />
-
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
-</form>
+
+	</div>
 		
-
-
-    <!-- SCRIPTS -->
+	   <!-- SCRIPTS -->
           <!-- JQuery -->
           <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
           <!-- Bootstrap tooltips -->
