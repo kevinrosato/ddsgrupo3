@@ -36,7 +36,7 @@ public class Mapa	implements AdministradorPOIs{
 
 	public List<POIGral> getListaPois() {
 		List<POIGral>	listaAux = new ArrayList<>();
-		listaAux.addAll(baseDatosCGP.getAll());
+//		listaAux.addAll(baseDatosCGP.getAll());
 		listaAux.addAll(this.listaPois);
 		return listaAux;
 	}

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<title>Pantalla de Inicio</title>
 	 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
+    <link href="mdb.min.css" rel="stylesheet">
 </head>
 
 <body>
 <p></p>
 <b><h4 align="center">Bienvenido al sistemas de POIs</h4></b>
 
-<form method="GET" >
+
 	<div class="card">
 
 	<div class="card-block">
@@ -27,20 +27,23 @@
 	            <h4 class="card-header">Indique como desea ingresar</h4>
 	    </div>
 		<div class="container">
-			<div class="row">
+		     <form action="/busqueda" method="GET" >
 				<div class="col-sm-7">
-					<button class="btn btn-primary"> TRANSEUNTE </button>
+					<button class="btn btn-primary" onClick=" window.location.href='/busqueda'"> TRANSEUNTE </button>
 				</div>
+			 </form>
 				
-				
-
+			 <form action="/login" method="GET" >
 				<div class="col-sm-9">
-					 <button class="btn btn-primary" onClick=" window.location.href='login.html' "> ADMINISTRADOR </button>
+					 <button class="btn btn-primary" onClick=" window.location.href='/login' "> ADMINISTRADOR </button>
+
 				</div>
+			 </form>	
+				
+			</div>
 		</div>
 
 	</div>
-</form>
 		
 
 

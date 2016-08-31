@@ -9,9 +9,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
-    <link href="../../webapp/css/bootstrap.min.css" rel="stylesheet" rel="import">
+    <link href="bootstrap.min.css" rel="stylesheet" rel="import">
     <!-- Material Design Bootstrap -->
-    <link href="../../webapp/css/mdb.min.css" rel="stylesheet" rel="import">
+    <link href="mdb.min.css" rel="stylesheet" rel="import">
 
 </head>
 <body>
@@ -21,15 +21,15 @@
      </div>
 
 	<form action="/historial" method="get">
-    	 <div class="col-sm-9">
+    	 <div class="col-sm-7">
      			<p> </p>
      			<b><h4> Filtros:</h4></b>
 				<p class="card-text">Usuario	</p>
 				<input class="col-sm-4" type="text" name="paramU" placeholder="Ingrese el nombre del usuario">
 				<p class="card-text">Fecha desde	</p>
-				<input class="col-sm-4" type="text" name="paramF1">
+				<input class="col-sm-2" type="text" name="paramF1">
 				<p class="card-text">Fecha hasta	</p>
-				<input class="col-sm-4" type="text" name="paramF2">
+				<input class="col-sm-2" type="text" name="paramF2">
 	 	</div>
      	<div align="center" class="container">
 			<div class="row">
@@ -62,7 +62,6 @@
 			<th>{{Retardo}}</th>
      </tr>
     {{/each}}
-    
     </table>
 </body>
 </html>

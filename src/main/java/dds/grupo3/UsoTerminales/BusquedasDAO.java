@@ -22,9 +22,9 @@ public class BusquedasDAO {
 	public	static	Integer	guardarBusqueda(String terminal, String frase, Integer cantResultados,Long retardo)
 	{
 		Calendar fecha = new GregorianCalendar();
-		String fechaS = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH));
+		String fechaS = Integer.toString(1 + fecha.get(Calendar.MONTH));
 		fechaS = fechaS.concat("-");
-		fechaS = fechaS.concat(Integer.toString(1 + fecha.get(Calendar.MONTH)));
+		fechaS = fechaS.concat(Integer.toString(fecha.get(Calendar.DAY_OF_MONTH)));
 		fechaS = fechaS.concat("-");
 		fechaS = fechaS.concat(Integer.toString(fecha.get(Calendar.YEAR)));
 		String fecha2 = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH));
@@ -32,11 +32,11 @@ public class BusquedasDAO {
 		fecha2 = fecha2.concat(Integer.toString(1 + fecha.get(Calendar.MONTH)));
 		fecha2 = fecha2.concat("/");
 		fecha2 = fecha2.concat(Integer.toString(fecha.get(Calendar.YEAR)));
-		return	agregarATabla(frase,terminal,fechaS,fecha2,cantResultados,retardo);
+		return	agregarATabla(frase,fecha2,terminal,cantResultados,retardo,fechaS);
 	}
 //------------------------ Comienzo de SQLs------------------------------------------------------------------------
  
-	private	static	Integer agregarATabla(String frase, String fecha,String fechaFalsa, String terminal, Integer cantResultados, Long retardo)
+	private	static	Integer agregarATabla(String frase, String fechaFalsa,String terminal,Integer cantResultados, Long retardo,String fecha)
 	{
 		CallableStatement consulta = null;
 		ResultSet resultados = null;
@@ -44,9 +44,9 @@ public class BusquedasDAO {
 		try {
 		    consulta = admin.getConexion().prepareCall("INSERT INTO "
  				+((String) Factory.getString("tablaDeBusqeudas"))+
-		    	" VALUES ('"+frase+"','"+terminal+"'"
-		    	+","+cantResultados.toString()+","+retardo.toString()+",'"+fechaFalsa+"','"+fecha+"')");
-			consulta.execute();
+		    	" VALUES ('"+frase+"','"+fechaFalsa+"','"+terminal+"'"
+		    	+","+cantResultados.toString()+","+retardo.toString()+",'"+fecha+"')");
+		    consulta.execute();
 			
 			consulta = null;
 			
@@ -101,35 +101,6 @@ public class BusquedasDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-//				BusquedaDTO dto1 = (BusquedaDTO) Factory.getObject("Busqueda");
-//				dto1.setParametro("Medrano");
-//				dto1.setTerminal("Terminal1");
-//				dto1.setCantRespuestas(5);
-//				dto1.setRetardo(1);
-//				dto1.setFecha("1-1-16");
-//				BusquedaDTO dto2 = (BusquedaDTO) Factory.getObject("Busqueda");
-//				dto2.setParametro("Cordoba");
-//				dto2.setTerminal("Terminal2");
-//				dto2.setCantRespuestas(6);
-//				dto2.setRetardo(2);
-//				dto2.setFecha("2-2-16");
-//				BusquedaDTO dto3 = (BusquedaDTO) Factory.getObject("Busqueda");
-//				dto3.setParametro("PMadero");
-//				dto3.setTerminal("Terminal3");
-//				dto3.setCantRespuestas(7);
-//				dto3.setRetardo(3);
-//				dto3.setFecha("3-3-16");
-//				BusquedaDTO dto4 = (BusquedaDTO) Factory.getObject("Busqueda");
-//				dto4.setParametro("Zoo");
-//				dto4.setTerminal("Terminal4");
-//				dto4.setCantRespuestas(8);
-//				dto4.setRetardo(4);
-//				dto4.setFecha("4-4-16");
-//				lista.add(dto1);
-//				lista.add(dto2);
-//				lista.add(dto3);
-//				lista.add(dto4);
-//
 		return lista;
 	}
 }

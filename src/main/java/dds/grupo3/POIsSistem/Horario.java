@@ -22,7 +22,7 @@ public class Horario {
 	}
 	
 	public String toString(){
-		return "Fecha: "+this.getDiaInicio()+"Hora: "+this.getHorarioInicio()+"-"+this.getHorarioCierre();
+		return ", Fecha: "+this.getDiaInicio()+", Hora: "+this.getHorarioInicio()+"-"+this.getHorarioCierre();
 	}
 	
 	//Metodo Obsoleto

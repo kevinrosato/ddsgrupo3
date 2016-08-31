@@ -7,13 +7,14 @@ import java.util.List;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.User.ConsultarPOI;
 import dds.grupo3.User.Usuario;
+import ddsgrupo3.Factory;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
 public class ControllerBusqueda {
 
-	private static String terminalID="0";
+	private static String terminalID= (String) Factory.getString("IDterminal");
 	private List<POIGral> resultadosAnteriores=new ArrayList<POIGral>();
 	
 	public ModelAndView show( Request request, Response response,Usuario usuario) {
