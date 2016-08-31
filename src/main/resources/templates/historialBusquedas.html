@@ -20,7 +20,7 @@
            <h2 class="card-header">Historial de Busquedas Realizadas</h2>
      </div>
 
-	<form action="/historialBusq" method="get">
+	<form action="/historial" method="get">
     	 <div class="col-sm-9">
      			<p> </p>
      			<b><h4> Filtros:</h4></b>
@@ -53,21 +53,16 @@
 			<th>Resultados</th>
 			<th>Retardo</th>
 	  </tr>
-<!-- 	 {{#each resultados}}
-	 <form action="/infoAvanzada" method="get">
-      	 <tr>
-         		<th><a href="/infoAvanzada?value_key={{nombre}}">{{nombre}}<a></th>
-        		<th>{{direccion}}</th>
-         		<th><a href="/infoAvanzada?value_key={{nombre}}">{{nombre}}<a></th>
-        		<th>{{direccion}}</th>
-         		<th><a href="/infoAvanzada?value_key={{nombre}}">{{nombre}}<a></th>
-        		<th>{{direccion}}</th>
-         		<th><a href="/infoAvanzada?value_key={{nombre}}">{{nombre}}<a></th>
-        		<th>{{direccion}}</th>
-     	 </tr>
-     </form>	
-	 {{/each}}
-      
- -->      </table>
+ 	 {{#each resultados}}
+ 	 <tr>
+			<th>{{Fecha}}<a></th>
+			<th>{{Terminal}}</th>
+			<th>{{Parametro}}<a></th>
+			<th>{{CantRespuestas}}</th>
+			<th>{{Retardo}}</th>
+     </tr>
+    {{/each}}
+    
+    </table>
 </body>
 </html>
