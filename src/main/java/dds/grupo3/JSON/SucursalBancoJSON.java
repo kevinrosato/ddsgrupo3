@@ -53,6 +53,14 @@ public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo S
 		informacion.add("Servicios="+servicios);
 		return informacion;
 	}
+	
+	@Override
+	public String[] mostrarInformacion(){
+		String[] info=new String[2];
+		info[0]=banco;
+		info[1]=sucursal;
+		return info;
+	}
 
 	@Override
 	public Boolean estaCercaDe(Ubicacion ubicacion) {

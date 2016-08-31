@@ -220,6 +220,8 @@ public class Inicializacion {
 			carrousel.setRubro(comercial);
 			
 			parada	= new ParadaColectivo();
+			parada.setNombre("Parada 1");
+			parada.setImagen("parada.jpg");
 			parada.setLatitud(1.0008);
 			parada.setLongitud(1.00);
 			parada.setLocalidad("Medrano");
@@ -233,6 +235,7 @@ public class Inicializacion {
 			parada.setLineas(lista);
 			
 			parada2	= new ParadaColectivo();
+			parada2.setNombre("Parada 2");
 			parada2.setLatitud(1.0008);
 			parada2.setLongitud(1.00);
 			parada2.setPais("Aregentina");
@@ -244,7 +247,7 @@ public class Inicializacion {
 			String[] lista2={"60","120","151"};
 			parada2.setLineas(lista2);
 			
-			cgp	= new CGP("Sede Medrano",(byte) 5);
+			cgp	= new CGP("CGP 5, Sede Medrano",(byte) 5);
 				servicio1 = new Servicio("Asesoramiento Contable");
 					horario2 = new Horario(); 	horario2.setDiaInicio(7);	horario2.setDiaFinal(7);
 					horario2.setHorarioInicio(1100);	horario2.setHorarioCierre(1200);
@@ -271,7 +274,7 @@ public class Inicializacion {
 			cgp.setPais("Argentina");
 			cgp.setProvincia("CABA");
 
-			cgp2 = new CGP("Sede Caballito",(byte) 6);
+			cgp2 = new CGP("CGP 1, Sede Caballito",(byte) 6);
 				servicio3 = new Servicio("Asesoramiento Legal");
 			cgp2.setServicio(servicio3);
 			cgp2.setAltura(1234);
@@ -285,7 +288,7 @@ public class Inicializacion {
 			cgp2.setPais("Argentina");
 			cgp2.setProvincia("CABA");
 			
-			cgp3 = new CGP("Sede Microcentro",(byte) 8);
+			cgp3 = new CGP("CGP 4, Sede Microcentro",(byte) 8);
 			cgp3.setServicio(servicio3);
 			cgp3.setImagen("comuna.jpg");
 			cgp3.setAltura(432);

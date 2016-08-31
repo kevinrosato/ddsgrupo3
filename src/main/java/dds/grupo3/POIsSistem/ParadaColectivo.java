@@ -39,7 +39,12 @@ public class ParadaColectivo extends POI{
 	@Override
 	public List<String> mostrarInformacionAvanzada(){
 		List<String> informacion=new ArrayList<String>();
-		informacion.add("Lineas de colectivo="+lineas.toString());
+		String lineas="";
+		for(int i=0;i<this.getLineas().length;i++){
+			if(lineas!=""){lineas=lineas+"-"+this.getLineas()[i];}
+			else{lineas=this.getLineas()[i];}
+		}
+		informacion.add("Lineas de colectivo="+lineas);
 		return informacion;
 	}
 	

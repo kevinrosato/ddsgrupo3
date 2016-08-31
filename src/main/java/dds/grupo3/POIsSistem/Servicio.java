@@ -37,10 +37,10 @@ public class Servicio {
 	public String toString(){
 		String horario="";
 		for(Horario h:this.horario){
-			if(!horario.equals("")){horario=horario+", "+h.toString();}
+			if(!horario.equals("")){horario=horario+"-"+h.toString();}
 			else {horario=h.toString();}
 		}
-		return "Nombre servicio: "+this.getNombre()+" Horarios de atencion: "+ horario;
+		return "Nombre servicio: "+this.getNombre()+", Horarios de atencion: "+ horario+".";
 	}
 	//----------
 	//Getters y Setters
