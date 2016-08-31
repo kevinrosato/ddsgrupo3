@@ -16,7 +16,6 @@
 <body>
 <h4 align="center">LOGIN DEL SISTEMA DE POIS</h4>
 
-<form action="/login" method="GET" >
 	<div class="card">
 
 	<div class="card-block">
@@ -25,6 +24,7 @@
 		<div class="container">
 	            <h4 class="card-header">Login del usuario</h4>
 	    </div>
+	    <form action="/login" method="post">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-7">
@@ -36,7 +36,7 @@
 
 				<div class="col-sm-9">
 					 <p class="card-text">PASSWORD </p>
-					<input type="text" name="password" placeholder="ingrese su contrasenia" >
+					<input type="password" name="password" placeholder="ingrese su contrasenia" >
 				</div>
 		</div>
 
@@ -45,15 +45,15 @@
 			<div align="center" class="container">
 				<div class="row">
 					<div class="col-sm-9">
-					<button class="btn btn-primary" onClick=" window.location.href='/menuPrincipal'"> INGRESAR </button>
-					<input type="submit" class="btn btn-primary" value="CANCELAR" id="cancelar" name="cancelar" />
-
+					<input type="submit" class="btn btn-primary" value="INGRESAR"/>
+					</form>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 	</div>
-</form>
+	<button class="btn btn-primary" onClick=" window.location.href='/pantallaInicio'"> VOLVER </button>
 		
 
 
