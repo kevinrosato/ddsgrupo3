@@ -34,6 +34,7 @@ public class ControllerLogin {
 					//String[] ingresar=request.queryParamsValues("ingresar");
 			return new ModelAndView(viewModel, "menuPrincipal.html");
 			}
+		viewModel.put("error", "usted ha ingresado un usuario o password");
 		return new ModelAndView(viewModel, "login.html");
 	}
 
