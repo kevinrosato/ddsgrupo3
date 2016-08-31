@@ -23,6 +23,7 @@ public class App {
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 		ControllerBusqueda busqueda=new ControllerBusqueda();
 		ControllerInfoAvanzada informacion=new ControllerInfoAvanzada();
+		ControllerAccionConsulta consulta= new ControllerAccionConsulta();
 		ControllerLogin login = new ControllerLogin();
 		
 		Spark.staticFileLocation("/templates");
@@ -33,7 +34,8 @@ public class App {
 			
 		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,usuario),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res, busqueda.getResultadosAnteriores()),engine);
-
+		Spark.get("/acciones",(req,res)->consulta.show(req, res, usuario), engine);
+		
 		Spark.get("/login", (request, response) -> login.show(request, response,usuario), engine);
 		
 		
