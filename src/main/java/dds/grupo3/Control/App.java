@@ -26,12 +26,10 @@ public class App {
 		ControllerAccionConsulta consulta= new ControllerAccionConsulta();
 		ControllerLogin login = new ControllerLogin();
 		ControllerMenu menu = new ControllerMenu();
-		
+		ControllerPantallaInicio inicio = new ControllerPantallaInicio();
 		Spark.staticFileLocation("/templates");
 		
-		Spark.get("/pantallaInicio", (req, res) ->{
-			return new ModelAndView(new HashMap(),"pantallaInicio.html");
-		},engine);
+		Spark.get("/pantallaInicio", (req, res) ->inicio.show(req, res, usuario),engine);
 			
 		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,usuario),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res, busqueda.getResultadosAnteriores()),engine);
