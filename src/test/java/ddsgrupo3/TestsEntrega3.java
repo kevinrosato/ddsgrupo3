@@ -362,7 +362,7 @@ public void init() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
 		ActualizacionLocalComercial actualizacion= new ActualizacionLocalComercial ();
-		actualizacion.desplegarConsola(usuario, "", null);
+		//actualizacion.desplegarConsola(usuario, "", null);
 		try {
 			Thread.sleep(100000);
 		} catch (InterruptedException e) {
@@ -375,7 +375,7 @@ public void init() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
 		BajaDePOI baja= new BajaDePOI();
-		baja.desplegarConsola(usuario, "", null);
+		//baja.desplegarConsola(usuario, "", null);
 		try {
 			Thread.sleep(120000);
 		} catch (InterruptedException e) {
@@ -388,7 +388,7 @@ public void init() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
 		AgregarAcciones agregarAcc=new AgregarAcciones();
-		agregarAcc.desplegarConsola(usuario, "", null);
+		//agregarAcc.desplegarConsola(usuario, "", null);
 		try {
 			Thread.sleep(100000);
 		} catch (InterruptedException e) {
@@ -401,7 +401,7 @@ public void init() {
 		User usuario = CuentasUsuario.instanciarUsuario("Federico","38636837");				
 		usuario.setMapa(mapa);
 		ProcesoMultiple procesoMultipl=new ProcesoMultiple();
-		procesoMultipl.desplegarConsola(usuario, "", null);
+		//procesoMultipl.desplegarConsola(usuario, "", null);
 		try {
 			Thread.sleep(1000000);
 		} catch (InterruptedException e) {
