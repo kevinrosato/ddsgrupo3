@@ -44,7 +44,7 @@ public class ControllerHistorialBusquedas {
 		if (!username.isEmpty())
 		{
 			where=" WHERE ";
-			parametro1 = "Terminal='"+username+"'";
+			parametro1 = "Terminal like '%"+username+"%'";
 		}
 		if (!nombre1.isEmpty())
 		{
