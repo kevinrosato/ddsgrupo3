@@ -5,6 +5,10 @@ import java.util.HashMap;
 
 
 
+
+
+import dds.grupo3.Interfaces.User;
+import dds.grupo3.User.CuentasUsuario;
 import dds.grupo3.User.Usuario;
 //import pokemon.model.Usuario;
 //import pokemon.repositories.UsuarioRepositorio;
@@ -16,32 +20,21 @@ public class ControllerLogin {
 
 	public ModelAndView show(Request request, Response response, Usuario user) {
 		HashMap<String, Object> viewModel = new HashMap<>();
-				
-		//viewModel.put("usuario", usuario.getUsuario());
-		
 		// obtengo los datos ingresados en el formulario del login
-		/*if(!request.queryParams().isEmpty()){
-
-		String usuario=request.queryParams("usuario");
+		if(request.queryParams().isEmpty()) return new ModelAndView(viewModel,"login.html");
+		String username=request.queryParams("usuario");
+		if (username==null) username="";
 		String password=request.queryParams("password");
-		
-		
-		
-		}
-		//if(usuario.equals(user.getNombre()) && password.equals(user.getContrasenia())  ){
-			
-			//String[] ingresar=request.queryParamsValues("ingresar");
-			
-			
-			
-			//return new ModelAndView(viewModel, "login.html");
-		//}else{
-			
-		*/	return new ModelAndView(viewModel, "login.html");
-
-		//}
-		
-
+		if (password==null) password="";
+		//Boolean usuarioCorrecto = esUsuarioCorrecto(usuario, password);
+		//System.out.println("El usuario ingresado en el LOGIN es: "+ usuario);
+		//System.out.println("password ingresado en el LOGIN es: "+ password);
+		//User  usuario = CuentasUsuario.instanciarUsuario(username, password);
+		if(username.contains("nicolas") & password.contains("1234")){
+					//String[] ingresar=request.queryParamsValues("ingresar");
+			return new ModelAndView(viewModel, "menuPrincipal.html");
+			}
+		return new ModelAndView(viewModel, "login.html");
 	}
 
 }
