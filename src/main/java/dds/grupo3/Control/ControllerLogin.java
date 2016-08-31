@@ -9,7 +9,11 @@ import java.util.HashMap;
 
 import dds.grupo3.Interfaces.User;
 import dds.grupo3.User.CuentasUsuario;
+import dds.grupo3.User.Rol;
+import dds.grupo3.User.RolAdmin;
+import dds.grupo3.User.RolTerminal;
 import dds.grupo3.User.Usuario;
+import ddsgrupo3.Factory;
 //import pokemon.model.Usuario;
 //import pokemon.repositories.UsuarioRepositorio;
 import spark.ModelAndView;
@@ -32,10 +36,13 @@ public class ControllerLogin {
 		//User  usuario = CuentasUsuario.instanciarUsuario(username, password);
 		if(username.contains("nicolas") & password.contains("1234")){
 					//String[] ingresar=request.queryParamsValues("ingresar");
-			return new ModelAndView(viewModel, "menuPrincipal.html");
-			}
-		viewModel.put("error", "usted ha ingresado un usuario o password");
-		return new ModelAndView(viewModel, "login.html");
+			user.setRol(new RolAdmin().crearRol());
+			return new ModelAndView(viewModel, "redirectLoginAMenu.html");
+		}
+		else{
+			viewModel.put("error", "usted ha ingresado un usuario o password");
+			return new ModelAndView(viewModel, "login.html");
+		}
 	}
 
 }

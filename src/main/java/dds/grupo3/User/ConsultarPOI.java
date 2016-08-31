@@ -15,6 +15,8 @@ public class ConsultarPOI implements Funcionalidad {
 
 	private AdministradorPOIs mapa;
 	private String resto = new String();
+	private String archivo="/busqueda";
+	
 	private String nombre1;
 	private String nombre2;
 	private List<POIGral> listaResultante = new ArrayList<POIGral>();
@@ -127,8 +129,8 @@ public class ConsultarPOI implements Funcionalidad {
 	}
 
 	@Override
-	public void mostrarOpcion() {
-		System.out.println("	BUSCAR UN POI");
+	public String mostrarOpcion() {
+		return "BUSCAR UN POI";
 	}
 	
 	public String getNombre1() {
@@ -145,5 +147,13 @@ public class ConsultarPOI implements Funcionalidad {
 
 	public void setNombre2(String nombre2) {
 		this.nombre2 = nombre2;
+	}
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
 	}
 }

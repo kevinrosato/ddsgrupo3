@@ -25,18 +25,11 @@
 	            <h4 class="card-header">ELIJA LA OPCION DESEADA</h4>
 	    </div>
 	<div class="container">
+			{{#each opcionesMenu}}
 			<div class="col-sm-7">
-				<button class="btn btn-primary" onClick=" window.location.href='/busqueda'"> BUSQUEDA DE POIS </button>
+				<button class="btn btn-primary" onClick=" window.location.href='{{archivo}}'"> {{titulo}} </button>
 			</div>
-			<div class="col-sm-9">
-				 <button class="btn btn-primary" onClick=" window.location.href='/acciones' "> CONFIGURAR ACCIONES </button>
-
-			</div>
-			
-			<div class="col-sm-9">
-				 <button class="btn btn-primary" onClick=" window.location.href='/historial' "> HISTORIAL DE BUSQUEDAS </button>
-
-			</div>
+			{{/each}}
 		</div>
 	</div>
 

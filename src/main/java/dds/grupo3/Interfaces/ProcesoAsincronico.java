@@ -13,6 +13,7 @@ public abstract class ProcesoAsincronico implements Funcionalidad {
 	public TimerTask task;
 	public String terminalID;
 	private CommandProcesos command;
+	private String archivo="";
 	
 	public Object	realizarFuncion(List<POIGral> listaPois,Object usuario){
 		command.pedirInfo();
@@ -63,8 +64,8 @@ public abstract class ProcesoAsincronico implements Funcionalidad {
 		setCommand((CommandProcesos) Factory.getObject(parametros[1]));
 	}
 	@Override
-	public void mostrarOpcion(){
-		System.out.println("	DISPARAR PROCESO ASINCRONICO");
+	public String mostrarOpcion(){
+		return "DISPARAR PROCESO ASINCRONICO";
 	};	
 	
 	@Override
@@ -103,5 +104,11 @@ public abstract class ProcesoAsincronico implements Funcionalidad {
 	}
 	public void setCommand(CommandProcesos command) {
 		this.command = command;
+	}
+	public String getArchivo() {
+		return archivo;
+	}
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
 	}
 }

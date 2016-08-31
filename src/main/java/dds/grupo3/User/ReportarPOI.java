@@ -12,6 +12,7 @@ import ddsgrupo3.Factory;
 public class ReportarPOI implements Funcionalidad {
 
 	private	String dato;
+	private String archivo="";
 	
 	@Override
 	public Object realizarFuncion(List<POIGral> lista, Object parametros)
@@ -52,8 +53,8 @@ public class ReportarPOI implements Funcionalidad {
 		return 0;
 	}
 	@Override
-	public void mostrarOpcion() {
-		System.out.println("	GENERAR REPORTE");
+	public String mostrarOpcion() {
+		return "GENERAR REPORTE";
 	}
 
 	public String getDato() {
@@ -62,5 +63,13 @@ public class ReportarPOI implements Funcionalidad {
 
 	public void setDato(String dato) {
 		this.dato = dato;
+	}
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
 	}
 }

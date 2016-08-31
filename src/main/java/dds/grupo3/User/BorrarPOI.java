@@ -9,6 +9,8 @@ import dds.grupo3.Interfaces.User;
 
 public class BorrarPOI implements Funcionalidad{
 	
+	private String archivo="";
+	
 	@Override
 	public Object realizarFuncion(List<POIGral> listaPois, Object poi)
 	{
@@ -26,7 +28,15 @@ public class BorrarPOI implements Funcionalidad{
 	}
 
 	@Override
-	public void mostrarOpcion() {
-		System.out.println("	BORRAR POI");
+	public String mostrarOpcion() {
+		return "BORRAR POI";
+	}
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
 	}
 }
