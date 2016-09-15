@@ -19,8 +19,6 @@ public class App {
 		AdministradorPOIs mapa=Inicializacion.init();
 		Usuario usuario=new Usuario();
 		usuario.setMapa(mapa);
-		usuario.setNombre("nicolas");
-		usuario.setContrasenia("1234");
 		usuario.setRol(new RolTerminal().crearRol());
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 		ControllerBusqueda busqueda=new ControllerBusqueda();

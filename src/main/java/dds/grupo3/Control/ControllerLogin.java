@@ -1,11 +1,10 @@
 package dds.grupo3.Control;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
-
-
-
-
-
+import java.util.Properties;
 
 import dds.grupo3.Interfaces.User;
 import dds.grupo3.User.CuentasUsuario;
@@ -34,15 +33,38 @@ public class ControllerLogin {
 		//System.out.println("El usuario ingresado en el LOGIN es: "+ usuario);
 		//System.out.println("password ingresado en el LOGIN es: "+ password);
 		//User  usuario = CuentasUsuario.instanciarUsuario(username, password);
-		if(username.contains("nicolas") & password.contains("1234")){
+		if(this.verificarDatosLogueo(username, password)){
 					//String[] ingresar=request.queryParamsValues("ingresar");
+			user.setNombre(username);
+			user.setContrasenia(password);
 			user.setRol(new RolAdmin().crearRol());
 			return new ModelAndView(viewModel, "redirectLoginAMenu.html");
 		}
 		else{
-			viewModel.put("error", "usted ha ingresado un usuario o password");
+			viewModel.put("error", "Usted ha ingresado un usuario o password incorrecto");
 			return new ModelAndView(viewModel, "login.html");
 		}
+	}
+	
+	private Boolean verificarDatosLogueo(String username,String password){
+		FileInputStream file;
+		Boolean b=false;
+		try {
+			file = new FileInputStream("Database.properties");
+			Properties propiedades = new Properties();
+			propiedades.load(file);
+			String contrasenia=propiedades.getProperty(username);
+			if(contrasenia!=null){
+				if(contrasenia.equals(password)){
+					b=true;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return b;
 	}
 
 }

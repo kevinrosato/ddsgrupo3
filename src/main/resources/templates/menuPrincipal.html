@@ -14,25 +14,29 @@
     <link href="mdb.min.css" rel="stylesheet">
 </head>
 <body>
-<b><h4 align="center">Bienvenido al sistemas de POIs</h4></b>
-
+<p></p>
+<b><h3 align="center">Menu Principal</h3></b>
+<p></p>
 	<div class="card">
 
 	<div class="card-block">
 		
 
 		<div class="container">
-	            <h4 class="card-header">ELIJA LA OPCION DESEADA</h4>
+	            <h4 class="card-header">Elija la opcion deseada</h4>
 	    </div>
-	<div class="container">
+		<div class="container">
 			{{#each opcionesMenu}}
 			<div class="col-sm-7">
 				<button class="btn btn-primary" onClick=" window.location.href='{{archivo}}'"> {{titulo}} </button>
 			</div>
-			{{/each}}
+			{{/each}}	
+			<div class="col-sm-7">
+			<a href="/pantallaInicio"> Volver a la pantalla de inicio</a>
+			</div>
 		</div>
 	</div>
-
+	
 	</div>
 		
 	   <!-- SCRIPTS -->

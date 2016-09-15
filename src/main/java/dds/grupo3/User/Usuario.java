@@ -9,11 +9,18 @@ import ddsgrupo3.Factory;
 
 public class Usuario implements User{
 
-	private String nombre="";
-	private String contrasenia="";
-	private Rol rol = new Rol();
-	private AdministradorPOIs mapa = (AdministradorPOIs) Factory.getObject("AdminPOIs");
+	private String nombre;
+	private String contrasenia;
+	private Rol rol;
+	private AdministradorPOIs mapa;
 	private Funcionalidad funcionalidad;
+	
+	public Usuario(){
+		this.setNombre("");
+		this.setContrasenia("");
+		this.setRol(new Rol());
+		this.setMapa((AdministradorPOIs) Factory.getObject("AdminPOIs"));
+	}
 	
 	public Integer	mostrarOpciones()
 	{
