@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import dds.grupo3.Interfaces.POI;
+
 public class ParadaColectivo extends POI{
 	private String[] lineas;
 

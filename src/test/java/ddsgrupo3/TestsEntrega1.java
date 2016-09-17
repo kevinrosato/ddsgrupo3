@@ -82,7 +82,8 @@ public class TestsEntrega1 {
 		sucursal2.setServicio("Extracciones");
 		sucursal2.setServicio("Prestamos");
 
-		local = new Local("Lo de Carlos");
+		local = new Local();
+		local.setNombre("Lo de Carlos");
 			rubroM = new Servicio("Muebleria");
 			rubroM.setRadioCercania(78.0);
 		local.setRubro(rubroM);
@@ -98,7 +99,8 @@ public class TestsEntrega1 {
 		local.setLatitud(1.0007);
 		local.setLongitud(1.00);
 
-		carrousel = new Local("Carrousel");
+		carrousel = new Local();
+		carrousel.setNombre("Carrousel");
 			comercial = new Servicio("comercial");
 				horario4 = new Horario();		horario4.setDiaInicio(2);	horario4.setDiaFinal(7);
 				horario4.setHorarioInicio(1000);	horario4.setHorarioCierre(1300);

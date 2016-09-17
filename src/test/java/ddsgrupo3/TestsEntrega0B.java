@@ -31,7 +31,7 @@ public class TestsEntrega0B {
 		poi2.setLatitud(40.9);
 		poi2.setLongitud(42.12);
 		parada= new ParadaColectivo();
-		local= new Local("");
+		local= new Local();
 		cgp = new CGP("",(byte) 0);
 		sucursal= new SucursalBanco ("");
 		parada = new ParadaColectivo();

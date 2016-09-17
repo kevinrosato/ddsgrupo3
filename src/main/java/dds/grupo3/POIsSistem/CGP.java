@@ -12,7 +12,6 @@ public class CGP extends Local{
 	//----------
 	public CGP (String name,Byte numeroCGP)
 	{
-		super(name);
 		this.setNumeroCGP(numeroCGP);
 	}
 	//----------

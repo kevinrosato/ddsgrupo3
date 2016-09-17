@@ -11,7 +11,6 @@ public class SucursalBanco extends Local{
 	//----------
 	public SucursalBanco(String name)
 	{
-		super(name);
 	}
 	//----------
 	//Metodos

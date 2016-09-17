@@ -1,30 +1,55 @@
 package dds.grupo3.POIsSistem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import dds.grupo3.Interfaces.POI;
 
-public class Local extends POI{
+@Entity
+@Table(name="Local")
+@PrimaryKeyJoinColumn(name="id")
+public class Local extends POI implements Serializable{
 	
-	private Integer 	codigoPostal = 0;
-	private Byte 		departamento = 0;
-	private Byte 		piso = 0;
-	private Byte 		unidad = 0; 
+	
+	@Column(name="codigoPostal")
+	private Integer 	codigoPostal;
+	@Column(name="departamento")
+	private Byte 		departamento;
+	@Column(name="piso")
+	private Byte 		piso;
+	@Column(name="unidad")
+	private Byte 		unidad;
+	@Transient
 	private Servicio 	rubro = new Servicio(""); 
 	//local no va a usar "servicios", solo sus subclases
+	@Transient
 	private List<Servicio> servicios = new ArrayList<Servicio>();
-	private String palabrasClaves="";
+	@Column(name="palabrasClaves")
+	private String palabrasClaves;
 	
 	//----------
 	//Constructor
-	//----------
+	//----------		
+	
+	public Local() {
 		
-	public Local (String name)
-	{
-		this.setNombre(name);
+		this.codigoPostal = 0;
+		this.departamento = 0;
+		this.piso = 0;
+		this.unidad = 0;
+		this.palabrasClaves = "";
 	}
+
+
 	//----------
 	//Metodos
 	//----------
