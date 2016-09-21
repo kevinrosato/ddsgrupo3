@@ -13,7 +13,7 @@ public class FabricaParadas implements FabricaEspecifica {
 		Scanner teclado = new Scanner(System.in);
 		System.out.println("Ingrese las lineas de colectivo:");
 		String lineas = teclado.nextLine();
-		((ParadaColectivo) poi).setLineas(lineas.trim().split(","));
+		((ParadaColectivo) poi).setLineas(lineas);
 		return poi;
 	}
 }

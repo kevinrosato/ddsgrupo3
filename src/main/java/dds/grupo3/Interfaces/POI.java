@@ -3,6 +3,8 @@ package dds.grupo3.Interfaces;
 import java.util.Calendar;
 import java.util.List;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Set;
@@ -16,10 +18,12 @@ import dds.grupo3.POIsSistem.Ubicacion;
 public abstract class POI	implements POIGral,Serializable{
 	
 	@Id
-    @Column(name="id")
-    private int id;
+	@GeneratedValue(strategy = IDENTITY)
+    @Column(name="poi_id")
+    private int poi_id;
 	
-	@Transient
+	@OneToOne(cascade=CascadeType.ALL)
+    @PrimaryKeyJoinColumn
 	private Ubicacion ubicacion;
 	
 	@Column(name="nombre")
@@ -50,7 +54,7 @@ public abstract class POI	implements POIGral,Serializable{
 	
 	public POI() {
 		super();
-		this.id = 0;
+		this.poi_id = 0;
 		this.ubicacion = new Ubicacion(0.0,0.0);
 		this.nombre = "";
 		this.barrio = "";
@@ -197,11 +201,11 @@ public abstract class POI	implements POIGral,Serializable{
 		return imagen;
 	}
 
-	public int getId() {
-		return id;
+	public int getPoi_id() {
+		return poi_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPoi_id(int id) {
+		this.poi_id = id;
 	}
 }

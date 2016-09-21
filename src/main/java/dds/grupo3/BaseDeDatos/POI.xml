@@ -2,8 +2,9 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
   <class name="dds.grupo3.Interface.POI" table="POI" >
-  	<id column="id" name="id" type="integer"/>
+  	<id column="poi_id" name="poi_id" type="integer"/>
     <property name="nombre" />
+    <property name="ubicacion" />
     <property name="barrio" />
     <property name="calle" />
     <property name="callesPerpenIzq" />
@@ -14,13 +15,25 @@
     <property name="altura" />
     <property name="imagen" />
     
-    <joined-subclass name="dds.grupo3.Interface.Local" extends="POI">
-				<key column="id" />
+    <joined-subclass name="dds.grupo3.POIsSistem.Local" extends="POI">
+				<key column="poi_id" />
 				<property name="codigoPostal" />
    				<property name="departamento" />
     			<property name="piso" />
     			<property name="unidad" />
+    			<property name="servicios" />
     			<property name="palabrasClaves" />
+    			<joined-subclass name="dds.grupo3.POIsSistem.CGP" extends="Local">
+    				<key column="poi_id" />
+					<property name="numeroCGP" />
+    			</joined-subclass>
+    			<joined-subclass name="dds.grupo3.POIsSistem.SucursalBanco" extends="Local">
+    				<key column="poi_id" />
+    			</joined-subclass>
+	</joined-subclass>
+	<joined-subclass name="dds.grupo3.POIsSistem.ParadaColectivo" extends="POI">
+				<key column="poi_id" />
+				<property name="lineas" />
 	</joined-subclass>
   </class>
 </hibernate-mapping>

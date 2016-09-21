@@ -1,9 +1,22 @@
 package dds.grupo3.POIsSistem;
 
+import javax.persistence.*;
+import static javax.persistence.GenerationType.IDENTITY;
+
+@Entity
+@Table(name = "Ubicacion")
 public class Ubicacion {
-	private Double latitud=0.0;
-	private Double longitud=0.0;
-	private Integer comuna=0;
+	
+	@Id 
+	@GeneratedValue(strategy = IDENTITY)
+    @Column(name="ubicacion_id")
+    private int ubicacion_id;
+	@Column(name="latitud")
+	private Double latitud;
+	@Column(name="longitud")
+	private Double longitud;
+	@Column(name="comuna")
+	private Integer comuna;
 	
 	//----------
 	//Constructor
@@ -13,6 +26,7 @@ public class Ubicacion {
 	{
 		this.setLatitud(latitud);
 		this.setLongitud(longitud);
+		this.comuna=0;
 	}
 	//----------
 	//Metodos

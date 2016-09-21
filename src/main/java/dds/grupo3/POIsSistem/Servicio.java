@@ -1,13 +1,29 @@
 package dds.grupo3.POIsSistem;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Servicio")
 public class Servicio {
-	private List <Horario> horario = new ArrayList<Horario>();
-	private String nombre = "";
-	private Double radioCercania = 0.0;
+	
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+    @Column(name="servicio_id")
+    private int servicio_id;
+	@OneToMany (mappedBy="servicio",cascade= CascadeType.ALL)
+	private List <Horario> horario;
+	@Column(name="nombre")
+	private String nombre;
+	@Column(name="radioCercania")
+	private Double radioCercania;
+	
+	//para los rubros de los locales
 	
 	//----------
 	//Constructor
@@ -15,7 +31,11 @@ public class Servicio {
 	
 	public Servicio(String name)
 	{
-	this.setNombre(name);
+		this.setServicio_id(0);
+		this.setNombre(name);
+		this.setHorario(new ArrayList<Horario>());
+		this.setRadioCercania(0.0);
+	
 	}
 
 	//----------
@@ -63,6 +83,14 @@ public class Servicio {
 	}
 	public void setRadioCercania(Double radioCercania) {
 		this.radioCercania = radioCercania;
+	}
+
+	public int getServicio_id() {
+		return servicio_id;
+	}
+
+	public void setServicio_id(int servicio_id) {
+		this.servicio_id = servicio_id;
 	}
 
 

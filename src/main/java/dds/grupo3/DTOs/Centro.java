@@ -56,7 +56,7 @@ public class Centro extends POI implements POIGral {
 		{
 			for (HorariosServDTO j: i.getHorarios())
 			{
-				Horario horario = new Horario();
+				Horario horario = new Horario(null);
 				horario.setDiaInicio((j.getDia() % 7)+1); //Parseado porque los DTO empiezan 1=Lunes y los nuestros 1=Domingo
 				horario.setDiaFinal((j.getDia() % 7)+1);
 				horario.setHorarioInicio(j.getHoraInicio()*100 + j.getMinInicio());

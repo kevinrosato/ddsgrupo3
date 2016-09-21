@@ -4,13 +4,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import dds.grupo3.Interfaces.POI;
 
+@Entity
+@Table(name="ParadaColectivo")
+@PrimaryKeyJoinColumn(name="poi_id")
 public class ParadaColectivo extends POI{
-	private String[] lineas;
+	
+	@Column(name="lineas")
+	private String lineas;
 
 	//----------
 	//Metodos
@@ -32,23 +40,12 @@ public class ParadaColectivo extends POI{
 	}
 	
 	public	Boolean	contieneLaLinea(String clave){
-		Boolean valorDeVerdad=false;
-		for(int i=0; i<lineas.length; i++){
-			if(lineas[i].equals(clave)){
-				valorDeVerdad=true;
-			}
-		}
-		return valorDeVerdad;
+		return lineas.contains(clave);
 	}	
 	@Override
 	public List<String> mostrarInformacionAvanzada(){
 		List<String> informacion=new ArrayList<String>();
-		String lineas="";
-		for(int i=0;i<this.getLineas().length;i++){
-			if(lineas!=""){lineas=lineas+"-"+this.getLineas()[i];}
-			else{lineas=this.getLineas()[i];}
-		}
-		informacion.add("Lineas de colectivo="+lineas);
+		informacion.add("Lineas de colectivo="+this.lineas);
 		return informacion;
 	}
 	
@@ -59,10 +56,10 @@ public class ParadaColectivo extends POI{
 	//Getters y Setters
 	//----------
 
-	public String[] getLineas() {
+	public String getLineas() {
 		return lineas;
 	}
-	public void setLineas(String[] lineas) {
+	public void setLineas(String lineas) {
 		this.lineas=lineas;
 	}
 }

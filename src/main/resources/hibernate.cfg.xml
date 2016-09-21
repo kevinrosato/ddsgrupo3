@@ -11,6 +11,9 @@
     <property name="hibernate.hbm2ddl.auto">create</property>
     
     <mapping resource="dds.grupo3.BaseDeDatos.POI.xml"/>
+    <mapping resource="dds.grupo3.BaseDeDatos.Servicio.xml"/>
+    <mapping resource="dds.grupo3.BaseDeDatos.Horario.xml"/>
+    <mapping resource="dds.grupo3.BaseDeDatos.Ubicacion.xml"/>
 	
   </session-factory>
 </hibernate-configuration>

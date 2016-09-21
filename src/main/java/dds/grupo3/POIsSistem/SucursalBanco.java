@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="SucursalBanco")
+@PrimaryKeyJoinColumn(name="poi_id")
 public class SucursalBanco extends Local{
 	
 	//----------

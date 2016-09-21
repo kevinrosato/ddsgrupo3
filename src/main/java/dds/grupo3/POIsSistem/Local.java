@@ -5,9 +5,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -16,9 +23,9 @@ import dds.grupo3.Interfaces.POI;
 
 @Entity
 @Table(name="Local")
-@PrimaryKeyJoinColumn(name="id")
+@PrimaryKeyJoinColumn(name="poi_id")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Local extends POI implements Serializable{
-	
 	
 	@Column(name="codigoPostal")
 	private Integer 	codigoPostal;
@@ -29,10 +36,14 @@ public class Local extends POI implements Serializable{
 	@Column(name="unidad")
 	private Byte 		unidad;
 	@Transient
-	private Servicio 	rubro = new Servicio(""); 
+	private Servicio 	rubro; 
+	
 	//local no va a usar "servicios", solo sus subclases
-	@Transient
-	private List<Servicio> servicios = new ArrayList<Servicio>();
+	@ManyToMany(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+	@JoinTable(name = "LocalxServicio", joinColumns = {@JoinColumn(name = "poi_id", nullable = false, updatable = false)},
+	inverseJoinColumns = { @JoinColumn(name = "servicio_id",nullable = false, updatable = false) })
+	private List<Servicio> servicios;
+	
 	@Column(name="palabrasClaves")
 	private String palabrasClaves;
 	
@@ -41,12 +52,13 @@ public class Local extends POI implements Serializable{
 	//----------		
 	
 	public Local() {
-		
+		this.servicios= new ArrayList<Servicio>();
 		this.codigoPostal = 0;
 		this.departamento = 0;
 		this.piso = 0;
 		this.unidad = 0;
 		this.palabrasClaves = "";
+		this.setRubro(null);
 	}
 
 
