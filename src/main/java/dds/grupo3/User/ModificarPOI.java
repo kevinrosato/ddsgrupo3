@@ -12,6 +12,7 @@ import dds.grupo3.Interfaces.User;
 public class ModificarPOI implements Funcionalidad{
 
 	private POIGral poiNuevo;
+	private String archivo;
 	
 	@Override
 	public POIGral realizarFuncion(List<POIGral> listaPois, Object poi)
@@ -36,7 +37,13 @@ public class ModificarPOI implements Funcionalidad{
 		return 0;
 	}
 	@Override
-	public void mostrarOpcion() {
-		System.out.println("	MODIFICAR POI EXISTENTE");
+	public String mostrarOpcion() {
+		return "MODIFICAR POI EXISTENTE";
+	}
+	public String getArchivo() {
+		return archivo;
+	}
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
 	}
 }

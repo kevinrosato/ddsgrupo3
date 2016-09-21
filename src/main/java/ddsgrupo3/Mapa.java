@@ -20,10 +20,10 @@ public class Mapa	implements AdministradorPOIs{
 	//----------
 	//Metodos
 	//----------
-//	public Mapa(){
+	public Mapa(){
 //		SucursalBancoJSONFactory factoryJson= new SucursalBancoJSONFactory();
 //		listaPois.addAll(factoryJson.generarPoi());
-//	}
+	}
 	//----------------------------------------------
 	//METODOS ABCM
 	public Object realizarFuncConPoi(Funcionalidad funcionalidad,Object poi){

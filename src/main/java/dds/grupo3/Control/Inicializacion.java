@@ -139,7 +139,7 @@ public class Inicializacion {
 	//////////Fin Seteo DTOs		
 			sucursal 	= new SucursalBanco("Galicia Microcentro");
 					servicio3 = new Servicio("Transferencia");
-						horario3 = new Horario();
+						horario3 = new Horario(servicio3);
 						horario3.setDiaInicio(2);
 						horario3.setDiaFinal(6);
 						horario3.setHorarioInicio(1000);
@@ -182,7 +182,8 @@ public class Inicializacion {
 			sucursal2.setServicio("Extracciones");
 			sucursal2.setServicio("Prestamos");
 			
-			local = new Local("Lo de Carlos");
+			local = new Local();
+			local.setNombre("Lo de Carlos");
 				rubroM = new Servicio("Muebleria");
 				rubroM.setRadioCercania(78.0);
 			local.setRubro(rubroM);
@@ -198,11 +199,12 @@ public class Inicializacion {
 			local.setLatitud(1.0007);
 			local.setLongitud(1.00);
 			
-			carrousel = new Local("Carrousel");
+			carrousel = new Local();
+			carrousel.setNombre("Carrousel");
 				comercial = new Servicio("comercial");
-					horario4 = new Horario();		horario4.setDiaInicio(2);	horario4.setDiaFinal(7);
+					horario4 = new Horario(comercial);		horario4.setDiaInicio(2);	horario4.setDiaFinal(7);
 					horario4.setHorarioInicio(1000);	horario4.setHorarioCierre(1300);
-					horario5 = new Horario(); 		horario5.setDiaInicio(2);	horario5.setDiaFinal(7);
+					horario5 = new Horario(comercial); 		horario5.setDiaInicio(2);	horario5.setDiaFinal(7);
 					horario5.setHorarioInicio(1700);	horario5.setHorarioCierre(2030);
 					List<Horario> lista6 = new ArrayList<Horario>();
 					lista6.add(horario4);	lista6.add(horario5);
@@ -221,8 +223,7 @@ public class Inicializacion {
 			parada.setCalle("Cordoba");
 			parada.setCallesPerpenIzq("Medrano");
 			parada.setCallesPerpenDer("Figueroa");
-			String[] lista = {"151","106","99"};
-			parada.setLineas(lista);
+			parada.setLineas("151,106,99");
 			
 			parada2	= new ParadaColectivo();
 			parada2.setNombre("Parada 2");
@@ -234,18 +235,17 @@ public class Inicializacion {
 			parada2.setCalle("Arenal");
 			parada2.setCallesPerpenIzq("Freire");
 			parada2.setCallesPerpenDer("Conde");
-			String[] lista2={"60","120","151"};
-			parada2.setLineas(lista2);
+			parada2.setLineas("60,120,151");
 			
 			cgp	= new CGP("CGP 5, Sede Medrano",(byte) 5);
 				servicio1 = new Servicio("Asesoramiento Contable");
-					horario2 = new Horario(); 	horario2.setDiaInicio(7);	horario2.setDiaFinal(7);
+					horario2 = new Horario(servicio1); 	horario2.setDiaInicio(7);	horario2.setDiaFinal(7);
 					horario2.setHorarioInicio(1100);	horario2.setHorarioCierre(1200);
 					List<Horario> lista3 = new ArrayList<Horario>();
 					lista3.add(horario2);
 				servicio1.setHorario(lista3);
 				servicio2 = new Servicio("Rentas");
-					horario1 = new Horario();		horario1.setDiaInicio(2);	horario1.setDiaFinal(6);
+					horario1 = new Horario(servicio1);		horario1.setDiaInicio(2);	horario1.setDiaFinal(6);
 					horario1.setHorarioInicio(1000);	horario1.setHorarioCierre(1500);
 					List<Horario> lista4 = new ArrayList<Horario>();
 					lista4.add(horario1);
@@ -301,7 +301,7 @@ public class Inicializacion {
 //			calendario.set(Calendar.HOUR_OF_DAY, 19);
 //			calendario.set(Calendar.MINUTE, 59);
 
-			horario = new Horario();
+			horario = new Horario(null);
 			horario.setDiaInicio(3);
 			horario.setDiaFinal(3);
 			horario.setHorarioInicio(900);

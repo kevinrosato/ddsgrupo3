@@ -3,20 +3,71 @@ package dds.grupo3.Interfaces;
 import java.util.Calendar;
 import java.util.List;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Set;
+
+
 import dds.grupo3.POIsSistem.Ubicacion;
 
-public abstract class POI	implements POIGral{
-	private Ubicacion ubicacion = new Ubicacion(0.0,0.0);
-	private String nombre = "";
-	private String barrio = "";
-	private String calle = "";
-	private String callesPerpenIzq = "";
-	private String callesPerpenDer = "";
-	private String localidad = "";
-	private String provincia = "";
-	private String pais = "";
-	private Integer altura = 0;
-	private String imagen="";
+@Entity
+@Table(name="POI")
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class POI	implements POIGral,Serializable{
+	
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+    @Column(name="poi_id")
+    private int poi_id;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+	private Ubicacion ubicacion;
+	
+	@Column(name="nombre")
+	private String nombre;
+	@Column(name="barrio")
+	private String barrio;
+	@Column(name="calle")
+	private String calle;
+	@Column(name="callesPerpenIzq")
+	private String callesPerpenIzq;
+	@Column(name="callesPerpenDer")
+	private String callesPerpenDer;
+	@Column(name="localidad")
+	private String localidad;
+	@Column(name="provincia")
+	private String provincia;
+	@Column(name="pais")
+	private String pais;
+	@Column(name="altura")
+	private Integer altura;
+	@Column(name="imagen")
+	private String imagen;
+	
+
+	//----------
+	//Constructor
+	//----------
+	
+	public POI() {
+		super();
+		this.poi_id = 0;
+		this.ubicacion = new Ubicacion(0.0,0.0);
+		this.nombre = "";
+		this.barrio = "";
+		this.calle = "";
+		this.callesPerpenIzq = "";
+		this.callesPerpenDer = "";
+		this.localidad = "";
+		this.provincia = "";
+		this.pais = "";
+		this.altura = 0;
+		this.imagen = "";
+	}
+
 	
 	//----------
 	//Metodos
@@ -86,6 +137,7 @@ public abstract class POI	implements POIGral{
 	public void setLatitud(Double latitud) {
 		this.ubicacion.setLatitud(latitud);
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -147,5 +199,13 @@ public abstract class POI	implements POIGral{
 	
 	public String getImagen() {
 		return imagen;
+	}
+
+	public int getPoi_id() {
+		return poi_id;
+	}
+
+	public void setPoi_id(int id) {
+		this.poi_id = id;
 	}
 }

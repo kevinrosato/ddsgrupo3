@@ -3,7 +3,14 @@ package dds.grupo3.Control;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import dds.grupo3.Interfaces.AdministradorPOIs;
+import dds.grupo3.User.Rol;
+import dds.grupo3.User.RolTerminal;
 import dds.grupo3.User.Usuario;
+<<<<<<< HEAD
+=======
+import ddsgrupo3.Factory;
+import spark.ModelAndView;
+>>>>>>> 6e9d75696b7b8979fdb7bca15491ec20846bb6d7
 import spark.Spark;
 
 public class App {
@@ -13,9 +20,7 @@ public class App {
 		AdministradorPOIs mapa=Inicializacion.init();
 		Usuario usuario=new Usuario();
 		usuario.setMapa(mapa);
-		usuario.setNombre("nicolas");
-		usuario.setContrasenia("1234");
-		//usuario.setRol("admin");
+		usuario.setRol(new RolTerminal().crearRol());
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 		ControllerBusqueda busqueda=new ControllerBusqueda();
 		ControllerInfoAvanzada informacion=new ControllerInfoAvanzada();
@@ -34,6 +39,6 @@ public class App {
 		Spark.get("/acciones",(req,res)->consulta.show(req, res, usuario), engine);
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario), engine);
 		Spark.post("/login", (req, res) -> login.show(req, res,usuario), engine);
-		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res), engine);
+		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario), engine);
 	}
 }

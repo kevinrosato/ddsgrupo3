@@ -1,30 +1,67 @@
 package dds.grupo3.POIsSistem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import dds.grupo3.Interfaces.POI;
 
-public class Local extends POI{
+@Entity
+@Table(name="Local")
+@PrimaryKeyJoinColumn(name="poi_id")
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Local extends POI implements Serializable{
 	
-	private Integer 	codigoPostal = 0;
-	private Byte 		departamento = 0;
-	private Byte 		piso = 0;
-	private Byte 		unidad = 0; 
-	private Servicio 	rubro = new Servicio(""); 
+	@Column(name="codigoPostal")
+	private Integer 	codigoPostal;
+	@Column(name="departamento")
+	private Byte 		departamento;
+	@Column(name="piso")
+	private Byte 		piso;
+	@Column(name="unidad")
+	private Byte 		unidad;
+	@Transient
+	private Servicio 	rubro; 
+	
 	//local no va a usar "servicios", solo sus subclases
-	private List<Servicio> servicios = new ArrayList<Servicio>();
-	private String palabrasClaves="";
+	@ManyToMany(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+	@JoinTable(name = "LocalxServicio", joinColumns = {@JoinColumn(name = "poi_id", nullable = false, updatable = false)},
+	inverseJoinColumns = { @JoinColumn(name = "servicio_id",nullable = false, updatable = false) })
+	private List<Servicio> servicios;
+	
+	@Column(name="palabrasClaves")
+	private String palabrasClaves;
 	
 	//----------
 	//Constructor
-	//----------
-		
-	public Local (String name)
-	{
-		this.setNombre(name);
+	//----------		
+	
+	public Local() {
+		this.servicios= new ArrayList<Servicio>();
+		this.codigoPostal = 0;
+		this.departamento = 0;
+		this.piso = 0;
+		this.unidad = 0;
+		this.palabrasClaves = "";
+		this.setRubro(null);
 	}
+
+
 	//----------
 	//Metodos
 	//----------

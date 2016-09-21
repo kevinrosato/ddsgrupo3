@@ -1,13 +1,49 @@
 package dds.grupo3.POIsSistem;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Calendar;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Horario")
 public class Horario {
+	
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+    @Column(name="horario_id")
+    private int horario_id;
+	
+	@ManyToOne
+	@JoinColumn(name = "servicio_id", nullable = false)
+	private Servicio servicio;
+	
+	@Column(name="diaInicio")
 	private Integer diaInicio; //Formato 1 es Domingo, 2 Lunes,...,7 Sabado
+	@Column(name="diaFinal")
 	private Integer diaFinal;  //En el caso que no sea un rango (lunes a viernes) y un solo dia (lunes) ambos campos 
 	                           //reciben el mismo valor
+	@Column(name="horarioInicio")
 	private Integer horarioInicio;  //Formato hhmm (HoraHoraMinutoMinuto)
+	@Column(name="horarioCierre")
 	private Integer horarioCierre;
+	
+	public Horario(Servicio servicio){
+		this.horario_id=0;
+		this.servicio=servicio;
+		this.horarioCierre=0;
+		this.horarioInicio=0;
+		this.diaFinal=0;
+		this.diaInicio=0;
+	}
 	
 	//----------
 	//Metodos
@@ -78,6 +114,14 @@ public class Horario {
 	}
 	public void setHorarioCierre(Integer horarioCierre) {
 		this.horarioCierre = horarioCierre;
+	}
+
+	public int getHorario_id() {
+		return horario_id;
+	}
+
+	public void setHorario_id(int horario_id) {
+		this.horario_id = horario_id;
 	}
 	
 }

@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CGP")
+@PrimaryKeyJoinColumn(name="poi_id")
 public class CGP extends Local{
+	@Column(name="numeroCGP")
 	private Byte numeroCGP;
 	
 	//----------
@@ -12,7 +21,6 @@ public class CGP extends Local{
 	//----------
 	public CGP (String name,Byte numeroCGP)
 	{
-		super(name);
 		this.setNumeroCGP(numeroCGP);
 	}
 	//----------

@@ -6,7 +6,8 @@ import java.util.Scanner;
 public interface Funcionalidad 
 {
 	public Integer	desplegarConsola(User usuario, String terminal_ID,Scanner teclado);
-	public void		mostrarOpcion();
+	public String		mostrarOpcion();
 	public Object	realizarFuncion(List<POIGral> listaPois,Object poi);
 	public void		setParametro(Object obj);
+	public String getArchivo();
 }
