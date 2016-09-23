@@ -8,7 +8,7 @@ import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.POIsSistem.Ubicacion;
 
-public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo SucursalBanco generado desde una consulta JSON 
+public class SucursalBancoJSON  implements POIGral { //POI del tipo SucursalBanco generado desde una consulta JSON 
 	//----------
 	//Parametros
 	//----------
@@ -133,5 +133,10 @@ public class SucursalBancoJSON extends POI implements POIGral { //POI del tipo S
 	
 	public void setServicios(String[] servicios) {
 		this.servicios = servicios;
+	}
+	@Override
+	public String getImagen() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

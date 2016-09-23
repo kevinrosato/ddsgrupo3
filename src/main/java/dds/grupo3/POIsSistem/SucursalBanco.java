@@ -1,5 +1,6 @@
 package dds.grupo3.POIsSistem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="SucursalBanco")
 @PrimaryKeyJoinColumn(name="poi_id")
-public class SucursalBanco extends Local{
+public class SucursalBanco extends Local implements Serializable{
 	
 	//----------
 	//Constructor

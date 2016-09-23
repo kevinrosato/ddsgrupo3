@@ -1,5 +1,6 @@
 package dds.grupo3.POIsSistem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -15,7 +16,7 @@ import dds.grupo3.Interfaces.POI;
 @Entity
 @Table(name="ParadaColectivo")
 @PrimaryKeyJoinColumn(name="poi_id")
-public class ParadaColectivo extends POI{
+public class ParadaColectivo extends POI implements Serializable{
 	
 	@Column(name="lineas")
 	private String lineas;

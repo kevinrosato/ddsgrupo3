@@ -4,6 +4,8 @@ package dds.grupo3.BaseDeDatos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -52,27 +54,14 @@ public class CreadorDePoisBDD {
         	session.getTransaction().commit();
         }	
         
-//        session.beginTransaction();
-//        session.save(poi2);
-//        session.getTransaction().commit();
         
-     
-        
-        
-//        POIejemplo poi2=(POIejemplo)session.get(POIejemplo.class,1);//Recupera el profesor de la bd
-//        System.out.println(poi2.getNombre());
-//        System.out.println(poi2.getBarrio());     
-//        
-//        poi2.setNombre("Emilio");
-//        
-//        session.beginTransaction();
-//        session.update(poi2);//actualiza el registro del profesor en la bd
-//        session.getTransaction().commit();        
-//
-//        session.beginTransaction();
-//        session.delete(poi2);//elimina el profesor de la bd
-//        session.getTransaction().commit(); 
-//        
+        List<String> claves=new ArrayList<String>();
+        claves.add("Avellaneda");
+        List<POI> pois=QuerysPois.realizarBusqueda(session,claves);
+        for(POI res:pois){
+        	System.out.println(res.getNombre());
+        	System.out.println(res.conocerTipo());
+        }
         
         session.close();
         sessionFactory.close();

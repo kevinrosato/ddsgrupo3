@@ -3,9 +3,11 @@ package dds.grupo3.POIsSistem;
 import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "Ubicacion")
-public class Ubicacion {
+public class Ubicacion implements Serializable{
 	
 	@Id 
 	@GeneratedValue(strategy = IDENTITY)

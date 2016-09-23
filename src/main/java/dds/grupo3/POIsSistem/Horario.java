@@ -2,6 +2,7 @@ package dds.grupo3.POIsSistem;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Horario")
-public class Horario {
+public class Horario implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
