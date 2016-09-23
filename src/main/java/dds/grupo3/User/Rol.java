@@ -1,13 +1,28 @@
 package dds.grupo3.User;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.*;
+
 import dds.grupo3.Interfaces.Funcionalidad;
 
-public class Rol{
 
+@Entity
+@Table(name="Rol")
+public class Rol implements Serializable{
+
+	@Id
+	@GeneratedValue(strategy = IDENTITY) // que es lo que haces strategy= IDENTITY?
+    @Column(name="rol_id")
+	private int rol_id;
+	
 	private List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
+	
+	@Column(name="nombre")
 	private String nombre;
 	
 	

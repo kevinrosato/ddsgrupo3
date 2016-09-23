@@ -1,5 +1,11 @@
 package dds.grupo3.User;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
@@ -7,12 +13,32 @@ import dds.grupo3.Interfaces.Reporte;
 import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
-public class Usuario implements User{
+@Entity
+@Table(name="Usuarios")
+@Inheritance(strategy=InheritanceType.JOINED)
 
+public class Usuario implements User,Serializable{
+	
+	@Id
+	@GeneratedValue(strategy = IDENTITY) // que es lo que haces strategy= IDENTITY?
+    @Column(name="usuario_id")
+	private int usuario_id;
+	
+	@Column(name="nombre")
 	private String nombre;
+	
+	@Column(name="contrasenia")
 	private String contrasenia;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@Column(name="rol")
 	private Rol rol;
+	
+	@Column(name="mapa") // deberia ir esta columna???
 	private AdministradorPOIs mapa;
+	
+	//@OneToOne
+	//@Column(name="funcionalidad")
 	private Funcionalidad funcionalidad;
 	
 	public Usuario(){

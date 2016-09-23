@@ -7,9 +7,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
-
-
 import dds.grupo3.POIsSistem.Ubicacion;
 
 @Entity
