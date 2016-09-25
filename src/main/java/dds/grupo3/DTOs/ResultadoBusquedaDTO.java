@@ -5,15 +5,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import dds.grupo3.Interfaces.BusquedaDTO;
@@ -27,11 +29,14 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name="busqueda_id")
+    private int busqueda_id;
 
-	@OneToMany (mappedBy="pois",cascade= CascadeType.ALL)
-	private List<POI> listaPOIs;
+	@ManyToMany(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
+	@JoinTable	(name = "POIsxBusqueda",
+				joinColumns = {@JoinColumn(name = "busqueda_id", nullable = false, updatable = false)},
+				inverseJoinColumns = { @JoinColumn(name = "poi_id",nullable = false, updatable = false) })
+	private List<POI> POIs;
 
 	@Column(name="Respuestas")
 	private	Integer	Respuestas;
@@ -49,10 +54,10 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 	Respuestas = cantRespuestas;
 	}
 	public List<POI> getListaPOIs() {
-		return listaPOIs;
+		return POIs;
 	}
 	public void setListaPOIs(List<POI> listaPOIs) {
-		this.listaPOIs = listaPOIs;
+		this.POIs = listaPOIs;
 	}
 	public Integer getRespuestas() {
 		return Respuestas;

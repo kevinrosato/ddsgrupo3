@@ -1,5 +1,6 @@
 package dds.grupo3.POIsSistem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="CGP")
 @PrimaryKeyJoinColumn(name="poi_id")
-public class CGP extends Local{
+public class CGP extends Local implements Serializable{
 	@Column(name="numeroCGP")
 	private Byte numeroCGP;
 	
@@ -23,6 +24,7 @@ public class CGP extends Local{
 	public CGP (String name,Byte numeroCGP)
 	{
 		this.setNumeroCGP(numeroCGP);
+		this.setNombre(name);
 	}
 	//----------
 	//Metodos

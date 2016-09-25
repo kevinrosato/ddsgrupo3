@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dds.grupo3.Control.Inicializacion;
-import dds.grupo3.Control.ResultadoBusqueda;
+import dds.grupo3.BaseDeDatos.Inicializacion;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
@@ -57,6 +56,7 @@ public class ConsultarPOI implements Funcionalidad {
 		return listaResultante;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		AdministradorPOIs mapa=Inicializacion.init();
 		Usuario usuario=new Usuario();
