@@ -23,6 +23,7 @@ public class CGP extends Local implements Serializable{
 	public CGP (String name,Byte numeroCGP)
 	{
 		this.setNumeroCGP(numeroCGP);
+		this.setNombre(name);
 	}
 	//----------
 	//Metodos

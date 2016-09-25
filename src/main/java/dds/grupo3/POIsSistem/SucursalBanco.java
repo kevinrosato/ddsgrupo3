@@ -19,6 +19,7 @@ public class SucursalBanco extends Local implements Serializable{
 	//----------
 	public SucursalBanco(String name)
 	{
+		this.setNombre(name);
 	}
 	//----------
 	//Metodos

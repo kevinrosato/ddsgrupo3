@@ -24,6 +24,7 @@ public class QuerysPois {
 		return listaResultante;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private static List<POI> realizarQuery(String hql,Session session){
 	     Query query= session.createQuery(hql);
 	     return (List<POI>)query.getResultList();

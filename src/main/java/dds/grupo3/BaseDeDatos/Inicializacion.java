@@ -1,4 +1,4 @@
-package dds.grupo3.Control;
+package dds.grupo3.BaseDeDatos;
 
 import java.util.ArrayList;
 import java.util.Calendar;
