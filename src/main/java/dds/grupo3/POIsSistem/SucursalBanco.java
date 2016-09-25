@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="SucursalBanco")
 @PrimaryKeyJoinColumn(name="poi_id")

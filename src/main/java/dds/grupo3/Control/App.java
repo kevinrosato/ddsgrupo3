@@ -6,11 +6,8 @@ import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.User.Rol;
 import dds.grupo3.User.RolTerminal;
 import dds.grupo3.User.Usuario;
-<<<<<<< HEAD
-=======
 import ddsgrupo3.Factory;
 import spark.ModelAndView;
->>>>>>> 6e9d75696b7b8979fdb7bca15491ec20846bb6d7
 import spark.Spark;
 
 public class App {

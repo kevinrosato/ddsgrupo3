@@ -9,7 +9,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
@@ -21,6 +20,7 @@ import javax.persistence.Transient;
 
 import dds.grupo3.Interfaces.POI;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="Local")
 @PrimaryKeyJoinColumn(name="poi_id")

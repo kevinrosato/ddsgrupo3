@@ -7,16 +7,15 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
-
 
 import dds.grupo3.POIsSistem.Ubicacion;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="POI")
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class POI	implements POIGral,Serializable{
-	
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
     @Column(name="poi_id")

@@ -9,6 +9,7 @@ import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.POIsSistem.Horario;
 import dds.grupo3.POIsSistem.Ubicacion;
 
+@SuppressWarnings("serial")
 public class Centro extends POI implements POIGral {
 
 	CentroDTO	infoDTO;

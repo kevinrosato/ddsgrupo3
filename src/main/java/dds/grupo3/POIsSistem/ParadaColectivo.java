@@ -5,13 +5,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import dds.grupo3.Interfaces.POI;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="ParadaColectivo")
 @PrimaryKeyJoinColumn(name="poi_id")

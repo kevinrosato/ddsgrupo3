@@ -11,6 +11,7 @@ import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.JSON.SucursalBancoJSONFactory;
 import dds.grupo3.POIsSistem.Ubicacion;
 
+@SuppressWarnings("unused")
 public class Mapa	implements AdministradorPOIs{
 	
 	public List<POIGral> listaPois = new ArrayList<POIGral>();
