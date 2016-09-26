@@ -3,7 +3,7 @@
 <hibernate-configuration> 
   <session-factory>
     <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-    <property name="connection.url">jdbc:sqlserver://Tec;instanceName=TC:1433;databaseName=DiseñoGP3;user=dds3.POIs;password=dds3;</property>
+    <property name="connection.url">jdbc:sqlserver://TEC;databaseName=DiseñoGP3;user=dds3.POIs;password=dds3;</property>
     
     <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
     <property name="hibernate.show_sql">true</property>
