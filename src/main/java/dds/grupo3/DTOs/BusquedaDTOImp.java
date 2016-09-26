@@ -1,7 +1,9 @@
 package dds.grupo3.DTOs;
 
+import java.sql.Date;
 import java.util.List;
 import dds.grupo3.Interfaces.BusquedaDTO;
+import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
 
 public class BusquedaDTOImp implements BusquedaDTO {
@@ -12,7 +14,7 @@ public class BusquedaDTOImp implements BusquedaDTO {
 	private	Integer	Retardo;
 	private	String	Terminal;
 	private	String	Parametro;
-	private	String	Fecha;
+	private	Date	Fecha;
 
 	@Override
 	public void setCantRespuestas(Integer cantRespuestas) {
@@ -43,7 +45,7 @@ public class BusquedaDTOImp implements BusquedaDTO {
 	Parametro = parametro;
 	}
 	@Override
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 	Fecha = fecha;
 	}
 	@Override
@@ -64,6 +66,16 @@ public class BusquedaDTOImp implements BusquedaDTO {
 	}
 	@Override
 	public String getFecha() {
-		return Fecha;
+		return Fecha.toString();
+	}
+	@Override
+	public void setPOIs(List<POI> fecha) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public List<POI> getPOIs() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

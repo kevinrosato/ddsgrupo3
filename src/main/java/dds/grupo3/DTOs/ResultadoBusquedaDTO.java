@@ -78,9 +78,7 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 	Parametro = parametro;
 	}
 	@Override
-	public void setFecha(String fecha) {	
-	}
-	public void setFechas(Date fecha) {	
+	public void setFecha(Date fecha) {	
 	Fecha = fecha;
 	}
 	@Override
@@ -102,5 +100,13 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 	@Override
 	public String getFecha() {
 		return Fecha.toString();
+	}
+	@Override
+	public void setPOIs(List<POI> pois) {
+	POIs = pois;
+	}
+	@Override
+	public List<POI> getPOIs() {
+	return POIs;
 	}
 }

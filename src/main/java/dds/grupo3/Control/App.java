@@ -25,9 +25,11 @@ import spark.Spark;
 
 public class App {
 
+	private static Session session;
+
 	public static void main(String[] args) {
 
-		Session session=iniciarSesionBDD();
+		session=iniciarSesionBDD();
 		
 		AdministradorPOIs mapa=Inicializacion.init();
 		Usuario usuario=new Usuario();
@@ -47,7 +49,7 @@ public class App {
 		Spark.get("/pantallaInicio", (req, res) ->inicio.show(req, res, usuario),engine);
 		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,session),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res, busqueda.getResultadosAnteriores()),engine);
-		Spark.get("/historial", (req, res) -> historial.show(req, res),engine);
+		Spark.get("/historial", (req, res) -> historial.show(req, res,session),engine);
 		Spark.get("/acciones",(req,res)->consulta.show(req, res, usuario), engine);
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario), engine);
 		Spark.post("/login", (req, res) -> login.show(req, res,usuario), engine);

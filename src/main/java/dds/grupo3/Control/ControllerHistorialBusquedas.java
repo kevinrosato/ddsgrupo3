@@ -3,6 +3,8 @@ package dds.grupo3.Control;
 import java.util.HashMap;
 import java.util.List;
 
+import org.hibernate.Session;
+
 import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.UsoTerminales.BusquedasDAO;
 import ddsgrupo3.Factory;
@@ -20,7 +22,7 @@ public class ControllerHistorialBusquedas {
 	public void setListaHistorial(List<BusquedaDTO> listaHistorial) {
 		this.listaHistorial = listaHistorial;
 	}
-	public ModelAndView show( Request request, Response response) {
+	public ModelAndView show( Request request, Response response, Session session) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		if(!request.queryParams().isEmpty()){
 			String username=request.queryParams("paramU");

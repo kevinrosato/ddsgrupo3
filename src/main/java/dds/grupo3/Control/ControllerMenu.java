@@ -6,7 +6,6 @@ import java.util.List;
 
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.User;
-import dds.grupo3.User.Usuario;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;

@@ -15,13 +15,12 @@ public class ControllerInfoAvanzada {
 	POIGral poi;
 	
 	public ModelAndView show( Request request, Response response,List<POI> resultadosAnteriores) {
-		HashMap viewModel = new HashMap();
+		HashMap<String, Object> viewModel = new HashMap<String, Object>();
 		String key=request.queryParams("value_key");
 		int idPoi=Integer.parseInt(key);
 		List<InformacionPoi> informacionPois=new ArrayList<InformacionPoi>();
 		List<String> infoRecibida=new ArrayList<String>();
 		String imagen="";
-		String infoAvanzada="";
 		for(POI poi:resultadosAnteriores){
 			if(poi.getPoi_id()==idPoi){
 				imagen=poi.getImagen();

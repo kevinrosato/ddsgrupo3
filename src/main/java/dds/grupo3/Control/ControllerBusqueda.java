@@ -6,9 +6,8 @@ import java.util.List;
 
 import dds.grupo3.BaseDeDatos.QuerysPois;
 import dds.grupo3.Interfaces.POI;
-import dds.grupo3.Interfaces.POIGral;
-import dds.grupo3.User.ConsultarPOI;
-import dds.grupo3.User.Usuario;
+import dds.grupo3.UsoTerminales.BusquedasHAO;
+import dds.grupo3.UsoTerminales.Cronometrador;
 import ddsgrupo3.Factory;
 import spark.ModelAndView;
 import spark.Request;
@@ -58,10 +57,14 @@ public class ControllerBusqueda {
 		claves.add(nombre1);
 		claves.add(nombre2);
 		List<POI> poisEncontrados=new ArrayList<POI>();
+		Cronometrador.comienzo();
 		poisEncontrados=QuerysPois.realizarBusqueda(session,claves);
+		Long aux =	Cronometrador.finCuenta();
+		Cronometrador.checkRetraso(BusquedasHAO.guardarBusqueda
+				((String) terminalID, nombre1, nombre2, listaPois,aux.intValue(),session));	
 		if(!listaPois.isEmpty()){
 			poisEncontrados.retainAll(listaPois);
-			System.out.println("hola");
+			System.out.println("lista vacía");
 		}
 		List<ResultadoBusqueda> resultados=new ArrayList<ResultadoBusqueda>();
 		for(POI poi:poisEncontrados){

@@ -6,15 +6,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
 
-import dds.grupo3.Interfaces.User;
-import dds.grupo3.User.CuentasUsuario;
-import dds.grupo3.User.Rol;
 import dds.grupo3.User.RolAdmin;
-import dds.grupo3.User.RolTerminal;
 import dds.grupo3.User.Usuario;
-import ddsgrupo3.Factory;
-//import pokemon.model.Usuario;
-//import pokemon.repositories.UsuarioRepositorio;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
