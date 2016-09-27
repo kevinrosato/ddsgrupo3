@@ -13,6 +13,7 @@ public class QuerysPois {
 
 	public static List<POI> realizarBusqueda(Session session,List<String> claves){
 		List<POI> listaResultante=new ArrayList<POI>();
+		System.out.println("Buscando");
 		for(String clave:claves){
 			if(!clave.isEmpty()){
 				listaResultante.addAll(realizarQuery(buscarParadas(clave),session));
@@ -26,6 +27,7 @@ public class QuerysPois {
 	@SuppressWarnings("unchecked")
 	private static List<POI> realizarQuery(String hql,Session session){
 	     Query query= session.createQuery(hql);
+	     System.out.println("Flag1");
 	     return (List<POI>)query.getResultList();
 	}
 	

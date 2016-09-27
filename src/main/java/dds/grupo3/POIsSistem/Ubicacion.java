@@ -5,6 +5,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "Ubicacion")
 public class Ubicacion implements Serializable{

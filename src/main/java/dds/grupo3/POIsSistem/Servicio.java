@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "Servicio")
 public class Servicio implements Serializable{

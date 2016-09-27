@@ -23,7 +23,7 @@ import dds.grupo3.Interfaces.POI;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="POI")
+@Table(name="Busquedas")
 @Inheritance(strategy=InheritanceType.JOINED)
 public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 
@@ -33,9 +33,8 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
     private int busqueda_id;
 
 	@ManyToMany(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
-	@JoinTable	(name = "POIsxBusqueda",
-				joinColumns = {@JoinColumn(name = "busqueda_id", nullable = false, updatable = false)},
-				inverseJoinColumns = { @JoinColumn(name = "poi_id",nullable = false, updatable = false) })
+	@JoinTable	(name = "POIsxBusqueda",joinColumns = {@JoinColumn(name = "busqueda_id", nullable = false, updatable = false)},
+	inverseJoinColumns = { @JoinColumn(name = "poi_id",nullable = false, updatable = false) })
 	private List<POI> POIs;
 
 	@Column(name="Respuestas")
@@ -58,12 +57,6 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 	}
 	public void setListaPOIs(List<POI> listaPOIs) {
 		this.POIs = listaPOIs;
-	}
-	public Integer getRespuestas() {
-		return Respuestas;
-	}
-	public void setRespuestas(Integer respuestas) {
-		Respuestas = respuestas;
 	}
 	@Override
 	public void setRetardo(Integer l) {

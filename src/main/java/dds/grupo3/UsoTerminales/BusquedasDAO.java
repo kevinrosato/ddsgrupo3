@@ -92,10 +92,10 @@ public class BusquedasDAO {
 				dto.setCantRespuestas(r.getInt(5));
 				dto.setRetardo(r.getInt(6));
 				if (r.getDate(7)==null){
-					dto.setFecha(r.getString(3));
+					dto.setFecha(r.getDate(3));
 				}
 				else{
-					dto.setFecha(r.getDate(7).toString());
+					dto.setFecha(r.getDate(7));
 				}
 				lista.add(dto);
 			}

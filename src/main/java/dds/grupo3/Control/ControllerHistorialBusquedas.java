@@ -6,7 +6,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import dds.grupo3.Interfaces.BusquedaDTO;
-import dds.grupo3.UsoTerminales.BusquedasDAO;
+import dds.grupo3.UsoTerminales.BusquedasHAO;
 import ddsgrupo3.Factory;
 import spark.ModelAndView;
 import spark.Request;
@@ -29,7 +29,7 @@ public class ControllerHistorialBusquedas {
 			String fechaI=request.queryParams("paramF1");
 			String fechaF=request.queryParams("paramF2");
 
-			listaHistorial = obtenerBusquedas(username,fechaI,fechaF); 
+			listaHistorial = obtenerBusquedas(username,fechaI,fechaF,session); 
 			viewModel.put("resultados", listaHistorial);
 			return new ModelAndView(viewModel,"historialBusquedas.html");
 		}
@@ -37,11 +37,11 @@ public class ControllerHistorialBusquedas {
 			return new ModelAndView(viewModel, "historialBusquedas.html");
 		}
 	}
-	private List<BusquedaDTO> obtenerBusquedas(String username,String nombre1,String nombre2){
+	private List<BusquedaDTO> obtenerBusquedas(String username,String nombre1,String nombre2,Session session){
 		String parametro1 = "";
 		String parametro2 = "";
 		String parametro3 = "";
-		String	qry	=	"SELECT * FROM	"+((String) Factory.getString("tablaDeBusqeudas"));
+		String	qry	=	"FROM	"+((String) Factory.getString("tablaDeBusqeudas"));
 		String where = "";
 		if (!username.isEmpty())
 		{
@@ -75,7 +75,7 @@ public class ControllerHistorialBusquedas {
 		}
 		qry	=	qry.concat(where).concat(parametro1).concat(parametro2).concat(parametro3);
 		System.out.println(qry);
-		this.setListaHistorial(BusquedasDAO.crearDTOsDe(qry));
+		this.setListaHistorial(BusquedasHAO.crearDTOsDe(qry, session));
 		return this.getListaHistorial();
 	}
 }

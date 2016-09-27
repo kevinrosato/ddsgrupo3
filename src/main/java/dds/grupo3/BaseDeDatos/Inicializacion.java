@@ -150,7 +150,7 @@ public class Inicializacion {
 			sucursal.setBarrio("Microcentro");
 			sucursal.setCalle("Espada");
 			sucursal.setCallesPerpenDer("Escudo");
-			sucursal.setCallesPerpenIzq("Pe�a");
+			sucursal.setCallesPerpenIzq("Casco");
 			sucursal.setCodigoPostal(2524);
 			sucursal.setComuna(1);
 			sucursal.setLocalidad("Microcentro");
@@ -316,7 +316,7 @@ public class Inicializacion {
 			mapa.agregarPoi(sucursal);
 			mapa.agregarPoi(sucursal2);
 			mapa.setHoraActual(Calendar.getInstance());
-			Integer aux = 10;
+			Integer aux = 100;
 			Cronometrador.establecerTope(aux.longValue());
 			return mapa;
 	}

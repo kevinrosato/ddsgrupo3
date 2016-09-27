@@ -9,8 +9,7 @@ import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
-import dds.grupo3.BaseDeDatos.Inicializacion;
-import dds.grupo3.Interfaces.AdministradorPOIs;
+import dds.grupo3.DTOs.ResultadoBusquedaDTO;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.POIsSistem.CGP;
 import dds.grupo3.POIsSistem.Horario;
@@ -21,6 +20,7 @@ import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
 import dds.grupo3.User.RolTerminal;
 import dds.grupo3.User.Usuario;
+import dds.grupo3.UsoTerminales.Cronometrador;
 import spark.Spark;
 
 public class App {
@@ -31,19 +31,23 @@ public class App {
 
 		session=iniciarSesionBDD();
 		
-		AdministradorPOIs mapa=Inicializacion.init();
+//		AdministradorPOIs mapa=Inicializacion.init();
+		Integer aux = 100;
+		Cronometrador.establecerTope(aux.longValue());
 		Usuario usuario=new Usuario();
-		usuario.setMapa(mapa);
+//		usuario.setMapa(mapa);
 		usuario.setRol(new RolTerminal().crearRol());
+
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
+
 		ControllerBusqueda busqueda=new ControllerBusqueda();
 		ControllerInfoAvanzada informacion=new ControllerInfoAvanzada();
 		ControllerHistorialBusquedas historial= new ControllerHistorialBusquedas();
-
 		ControllerAccionConsulta consulta= new ControllerAccionConsulta();
 		ControllerLogin login = new ControllerLogin();
 		ControllerMenu menu = new ControllerMenu();
 		ControllerPantallaInicio inicio = new ControllerPantallaInicio();
+
 		Spark.staticFileLocation("/templates");
 		
 		Spark.get("/pantallaInicio", (req, res) ->inicio.show(req, res, usuario),engine);
@@ -64,6 +68,7 @@ public class App {
 		
         Configuration configuration=new Configuration();
         configuration.configure();
+        //TODO esto lo sacan de comentario para crear las tablas o si las quieren vaciar
         configuration.addAnnotatedClass(POI.class);
         configuration.addAnnotatedClass(Local.class);
         configuration.addAnnotatedClass(ParadaColectivo.class);
@@ -72,17 +77,18 @@ public class App {
         configuration.addAnnotatedClass(SucursalBanco.class);
         configuration.addAnnotatedClass(Horario.class);
         configuration.addAnnotatedClass(Ubicacion.class);
-        configuration.addAnnotatedClass(ResultadoBusqueda.class);
+        configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
         
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        
+        ServiceRegistry serviceRegistry = 
+      		new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         Session session= sessionFactory.openSession();
         CreadorDePoisBDD.inicializar(session);
         return session;
 	}
 	
-//	private static void cerrarSesion (Session session){
-//		session.close();
-//	}
+	public static void cerrarSesion (Session session){
+		session.close();
+	}
 }

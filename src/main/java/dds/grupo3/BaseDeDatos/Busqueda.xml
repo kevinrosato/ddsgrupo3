@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
   <class name="dds.grupo3.DTOs.ResultadoBusquedaDTO" table="Busquedas" >
-  	<id column="id" name="id" type="integer"/>
+  	<id column="busqueda_id" name="busqueda_id" type="integer"/>
 
     <property name="POIs" />
     <property name="Respuestas" />

@@ -7,6 +7,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import dds.grupo3.DTOs.ResultadoBusquedaDTO;
 import dds.grupo3.POIsSistem.Ubicacion;
 
 @SuppressWarnings("serial")
@@ -44,7 +46,6 @@ public abstract class POI	implements POIGral,Serializable{
 	private Integer altura;
 	@Column(name="imagen")
 	private String imagen;
-	
 
 	//----------
 	//Constructor

@@ -23,44 +23,11 @@ import ddsgrupo3.Mapa;
 public class CreadorDePoisBDD {
 
    public static void inicializar(Session session) {
-//	   public static void main(String[] args) {
-//        SessionFactory sessionFactory;
-//           
-//        Configuration configuration=new Configuration();
-//        configuration.configure();
-//        configuration.addAnnotatedClass(POI.class);
-//        configuration.addAnnotatedClass(Local.class);
-//        configuration.addAnnotatedClass(ParadaColectivo.class);
-//        configuration.addAnnotatedClass(Servicio.class);
-//        configuration.addAnnotatedClass(CGP.class);
-//        configuration.addAnnotatedClass(SucursalBanco.class);
-//        configuration.addAnnotatedClass(Horario.class);
-//        configuration.addAnnotatedClass(Ubicacion.class);
-//        
-//        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-//        
-//        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        
         Mapa mapa=(Mapa) Inicializacion.init();
-        
-//        Session session=sessionFactory.openSession();
- 
         for(POIGral poi:mapa.getListaPois()){
         	session.beginTransaction();
         	session.save(poi);
         	session.getTransaction().commit();
         }	
-        
-        
-//        List<String> claves=new ArrayList<String>();
-//        claves.add("Avellaneda");
-//        List<POI> pois=QuerysPois.realizarBusqueda(session,claves);
-//        for(POI res:pois){
-//        	System.out.println(res.getNombre());
-//        	System.out.println(res.conocerTipo());
-//        }
-        
-//        session.close();
-//        sessionFactory.close();
-    }
-}
+   }
+ }

@@ -10,11 +10,11 @@
     
     <property name="hibernate.hbm2ddl.auto">create</property>
     
-    <mapping class="dds.grupo3.Interfaces.POI"/>
-    <mapping class="dds.grupo3.POIsSistema.Servicio"/>
-    <mapping class="dds.grupo3.POIsSistema.Horario"/>
-    <mapping class="dds.grupo3.DTOs.ResultadoBusquedaDTO"/>
-    <mapping class="dds.grupo3.POIsSistema.Ubicacion"/>
+    <mapping resource="dds.grupo3.BaseDeDatos.POI.xml"/>
+    <mapping resource="dds.grupo3.BaseDeDatos.Servicio.xml"/>
+    <mapping resource="dds.grupo3.BaseDeDatos.Horario.xml"/>
+    <mapping resource="dds.grupo3.BaseDeDatos.Busqueda.xml"/>
+    <mapping resource="dds.grupo3.BaseDeDatos.Ubicacion.xml"/>
 	
   </session-factory>
 </hibernate-configuration>
