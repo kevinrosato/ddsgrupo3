@@ -1,6 +1,5 @@
 package dds.grupo3.User;
 
-import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 
@@ -13,16 +12,16 @@ import dds.grupo3.Interfaces.Reporte;
 import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
+@SuppressWarnings("serial")
 @Entity
-@Table(name="Usuarios")
+@Table(name="Usuario")
 @Inheritance(strategy=InheritanceType.JOINED)
 
 public class Usuario implements User,Serializable{
 	
 	@Id
-	@GeneratedValue(strategy = IDENTITY) // que es lo que haces strategy= IDENTITY?
-    @Column(name="usuario_id")
-	private int usuario_id;
+	@Column(name="username")
+	private String username;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -31,14 +30,11 @@ public class Usuario implements User,Serializable{
 	private String contrasenia;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@Column(name="rol")
+    @PrimaryKeyJoinColumn
 	private Rol rol;
 	
-	@Column(name="mapa") // deberia ir esta columna???
 	private AdministradorPOIs mapa;
 	
-	//@OneToOne
-	//@Column(name="funcionalidad")
 	private Funcionalidad funcionalidad;
 	
 	public Usuario(){

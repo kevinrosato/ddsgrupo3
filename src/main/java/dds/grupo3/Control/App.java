@@ -18,6 +18,7 @@ import dds.grupo3.POIsSistem.ParadaColectivo;
 import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
+import dds.grupo3.User.Rol;
 import dds.grupo3.User.RolTerminal;
 import dds.grupo3.User.Usuario;
 import dds.grupo3.UsoTerminales.Cronometrador;
@@ -78,6 +79,8 @@ public class App {
         configuration.addAnnotatedClass(Horario.class);
         configuration.addAnnotatedClass(Ubicacion.class);
         configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
+        configuration.addAnnotatedClass(Usuario.class);
+        configuration.addAnnotatedClass(Rol.class);
         
         ServiceRegistry serviceRegistry = 
       		new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

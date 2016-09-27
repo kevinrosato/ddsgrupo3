@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="dds.grupo3.User.Usuario" table="Usuario" >
+  	<id column="username" name="username" type=""/>
+  	<property name="nombre" />
+    <property name="contrasenia" />    
+    <set name="rol" table="Rol" inverse="true" lazy="true" fetch="select">
+        <key><column name="usuario" not-null="true" /></key>
+        <one-to-many class="dds.grupo3.User.Rol" />
+    </set>
+  </class>
+</hibernate-mapping>

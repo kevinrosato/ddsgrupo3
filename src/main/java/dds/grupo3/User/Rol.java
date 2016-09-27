@@ -10,16 +10,17 @@ import javax.persistence.*;
 
 import dds.grupo3.Interfaces.Funcionalidad;
 
-
+@SuppressWarnings("serial")
 @Entity
 @Table(name="Rol")
 public class Rol implements Serializable{
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY) // que es lo que haces strategy= IDENTITY?
-    @Column(name="rol_id")
+	@GeneratedValue(strategy = IDENTITY) 
+	@Column(name="rol_id")
 	private int rol_id;
-	
+
+	//@OneToMany(mappedBy="rol",cascade=CascadeType.ALL)
 	private List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
 	
 	@Column(name="nombre")
