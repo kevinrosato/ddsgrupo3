@@ -3,7 +3,7 @@
 <hibernate-configuration> 
   <session-factory>
     <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-    <property name="connection.url">jdbc:sqlserver://TEC;databaseName=EjemploDiseño;user=dds3.POIs;password=dds3;</property>
+    <property name="connection.url">jdbc:sqlserver://localhost;databaseName=Ejemplo;user=ej;password=12345;</property>
     
     <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
     <property name="hibernate.show_sql">true</property>
@@ -11,10 +11,10 @@
     <property name="hibernate.hbm2ddl.auto">create</property>
     
     <mapping class="dds.grupo3.Interfaces.POI"/>
-    <mapping class="dds.grupo3.POIsSistema.Servicio"/>
-    <mapping class="dds.grupo3.POIsSistema.Horario"/>
+    <mapping class="dds.grupo3.POIsSistem.Servicio"/>
+    <mapping class="dds.grupo3.POIsSistem.Horario"/>
     <mapping class="dds.grupo3.DTOs.ResultadoBusquedaDTO"/>
-    <mapping class="dds.grupo3.POIsSistema.Ubicacion"/>
+    <mapping class="dds.grupo3.POIsSistem.Ubicacion"/>
 	
   </session-factory>
 </hibernate-configuration>

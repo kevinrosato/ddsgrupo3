@@ -1,6 +1,9 @@
 package dds.grupo3.Control;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -9,6 +12,7 @@ import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
+import dds.grupo3.BaseDeDatos.QuerysPois;
 import dds.grupo3.DTOs.ResultadoBusquedaDTO;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.POIsSistem.CGP;
@@ -79,8 +83,8 @@ public class App {
         configuration.addAnnotatedClass(Horario.class);
         configuration.addAnnotatedClass(Ubicacion.class);
         configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
-        configuration.addAnnotatedClass(Usuario.class);
-        configuration.addAnnotatedClass(Rol.class);
+//        configuration.addAnnotatedClass(Usuario.class);
+//        configuration.addAnnotatedClass(Rol.class);
         
         ServiceRegistry serviceRegistry = 
       		new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();

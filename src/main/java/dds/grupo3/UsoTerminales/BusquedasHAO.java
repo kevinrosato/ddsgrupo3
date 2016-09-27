@@ -46,7 +46,7 @@ public class BusquedasHAO {
 	{
 		AdminConexiones admin = new AdminConexiones("com.microsoft.sqlserver.jdbc.SQLServerDriver",
 				((String) Factory.getString("urlBaseDeDatos")),
-				"dds3.POIs","dds3");
+				"ej","12345");
 		CallableStatement consulta = null;
 		ResultSet resultados = null;
 		Integer auxiliar = null;
