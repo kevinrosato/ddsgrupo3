@@ -23,6 +23,10 @@ public class BusquedasHAO {
 //------------------------ Comienzo de Mensajes------------------------------------------------------------------------
 	public	static	Integer	guardarBusqueda(String terminalID,String param1, List<POI> pois, Integer retardo, Session session)
 	{
+		for(POI i:pois)
+		{
+			System.out.println(i.toString());
+		}
 		session.beginTransaction();
 		ResultadoBusquedaDTO busqueda = (ResultadoBusquedaDTO) Factory.getObject("Busqueda");
 		Calendar fecha = new GregorianCalendar();

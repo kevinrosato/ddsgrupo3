@@ -33,8 +33,10 @@ public class Usuario implements User,Serializable{
     @PrimaryKeyJoinColumn
 	private Rol rol;
 	
+	@Transient
 	private AdministradorPOIs mapa;
 	
+	@Transient
 	private Funcionalidad funcionalidad;
 	
 	public Usuario(){

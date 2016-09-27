@@ -21,6 +21,7 @@ public class Rol implements Serializable{
 	private int rol_id;
 
 	//@OneToMany(mappedBy="rol",cascade=CascadeType.ALL)
+	@Transient
 	private List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
 	
 	@Column(name="nombre")
