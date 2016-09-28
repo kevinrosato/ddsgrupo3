@@ -16,6 +16,7 @@ public class QuerysPois {
 				listaResultante.addAll(realizarQuery(buscarParadas(clave),session));
 				listaResultante.addAll(realizarQuery(buscarLocales(clave),session));
 				listaResultante.addAll(realizarQuery(buscarCGPs(clave),session));
+				listaResultante.addAll(realizarQuery(buscarBancos(clave),session));
 			}
 		}
 		System.out.println("Encontrados");
@@ -32,9 +33,13 @@ public class QuerysPois {
 	//VER DE SACAR LA PERSISTENCIA DE LOS BANCOS!
 	private static String buscarLocales(String clave){
 		return "FROM Local l WHERE ((SELECT count(*) FROM CGP c WHERE l.poi_id=c.poi_id)=0) AND"//Verifica que no sea CGP
-				+"(SELECT count(*) FROM POI p WHERE (p.poi_id=l.poi_id) AND"
+				+"((SELECT count(*) FROM POI p WHERE (p.poi_id=l.poi_id) AND"
 				+ "("+obtenerStringLocal(clave)+")"
-			    + ")>0";
+			    + ")>0 OR ("+buscarEnElRubro(clave)+")>0)";
+	}
+	
+	private static String buscarEnElRubro(String clave){
+		return "SELECT count(*) FROM Servicio rubro WHERE (l.rubro=rubro.servicio_id) AND (rubro.nombre LIKE '%"+clave+"%')";
 	}
 	private static String buscarParadas(String clave){
 		return "FROM ParadaColectivo c WHERE "
@@ -47,7 +52,17 @@ public class QuerysPois {
 				+ "((SELECT count(*) FROM POI p,Local l WHERE (p.poi_id=c.poi_id) AND (l.poi_id=c.poi_id) AND"
 				+ "(c.numeroCGP LIKE '%"+clave+"%' OR "+obtenerStringLocal(clave)+")"
 				+ ")>0) OR "
-				+ "((SELECT count(*) FROM Servicio s join c.servicios WHERE (s.nombre LIKE '%"+clave+"%'))>0)";
+				+ "(("+buscarEnLosServicios(clave,"c")+")>0)";
+	}
+	private static String buscarBancos(String clave){
+		return "FROM SucursalBanco suc WHERE"
+				+ "((SELECT count(*) FROM POI p,Local l WHERE (p.poi_id=suc.poi_id) AND (l.poi_id=suc.poi_id) AND"
+				+ "("+obtenerStringLocal(clave)+")"
+				+ ")>0) OR "
+				+ "(("+buscarEnLosServicios(clave,"suc")+")>0)";
+	}
+	private static String buscarEnLosServicios(String clave,String alias){
+		return  "SELECT count(distinct s) FROM Servicio s join s.locales sc WHERE (sc.id="+alias+".poi_id) AND (s.nombre LIKE '%"+clave+"%')";
 	}
 	
 	private static String obtenerStringLocal(String clave){

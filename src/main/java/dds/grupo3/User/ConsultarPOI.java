@@ -9,7 +9,6 @@ import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.Interfaces.User;
-import dds.grupo3.UsoTerminales.BusquedasDAO;
 import dds.grupo3.UsoTerminales.Cronometrador;
 
 public class ConsultarPOI implements Funcionalidad {

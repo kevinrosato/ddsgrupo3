@@ -14,9 +14,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import dds.grupo3.Interfaces.POI;
 
@@ -35,13 +35,14 @@ public class Local extends POI implements Serializable{
 	private Byte 		piso;
 	@Column(name="unidad")
 	private Byte 		unidad;
-	@Transient
+	@ManyToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name = "servicio_id")
 	private Servicio 	rubro; 
 	
 	//local no va a usar "servicios", solo sus subclases
 	@ManyToMany(fetch = FetchType.LAZY,cascade= CascadeType.ALL)
-	@JoinTable(name = "LocalxServicio", joinColumns = {@JoinColumn(name = "poi_id", nullable = false, updatable = false)},
-	inverseJoinColumns = { @JoinColumn(name = "servicio_id",nullable = false, updatable = false) })
+	@JoinTable(name = "LocalxServicio", joinColumns = {@JoinColumn(name = "poi_id")},
+	inverseJoinColumns = { @JoinColumn(name = "servicio_id") })
 	private List<Servicio> servicios;
 	
 	@Column(name="palabrasClaves")
@@ -58,7 +59,7 @@ public class Local extends POI implements Serializable{
 		this.piso = 0;
 		this.unidad = 0;
 		this.palabrasClaves = "";
-		this.setRubro(null);
+		this.rubro=new Servicio("");
 	}
 
 

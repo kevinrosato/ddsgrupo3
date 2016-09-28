@@ -24,6 +24,10 @@ public class Servicio implements Serializable{
 	private String nombre;
 	@Column(name="radioCercania")
 	private Double radioCercania;
+	@ManyToMany (mappedBy="servicios") //CGP Y BANCOS
+	private List <Local> locales;
+	@OneToMany (mappedBy="rubro",cascade= CascadeType.ALL)//LOCALES
+	private List <Local> localesConRubro;
 	
 	//para los rubros de los locales
 	

@@ -1,5 +1,6 @@
 package dds.grupo3.Control;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -21,7 +22,6 @@ public class App {
 	public static void main(String[] args) {
 
 		session=iniciarSesionBDD();
-		
 //		AdministradorPOIs mapa=Inicializacion.init();
 		Integer aux = 100;
 		Cronometrador.establecerTope(aux.longValue());
