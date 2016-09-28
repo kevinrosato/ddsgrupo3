@@ -78,4 +78,9 @@ public class BusquedaDTOImp implements BusquedaDTO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

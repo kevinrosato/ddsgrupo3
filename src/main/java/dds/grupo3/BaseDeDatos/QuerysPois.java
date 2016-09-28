@@ -27,7 +27,6 @@ public class QuerysPois {
 	@SuppressWarnings("unchecked")
 	private static List<POI> realizarQuery(String hql,Session session){
 	     Query query= session.createQuery(hql);
-	     System.out.println("Flag1");
 	     return (List<POI>)query.getResultList();
 	}
 	

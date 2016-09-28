@@ -54,7 +54,7 @@ public abstract class POI	implements POIGral,Serializable{
 	public POI() {
 		super();
 		this.poi_id = 0;
-		this.ubicacion = new Ubicacion(0.0,0.0);
+		this.ubicacion = new Ubicacion();
 		this.nombre = "";
 		this.barrio = "";
 		this.calle = "";

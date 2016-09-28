@@ -52,7 +52,7 @@ public class ConsultarPOI implements Funcionalidad {
 			}
 		}
 		Long aux =	Cronometrador.finCuenta();
-		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));	
+//		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));	
 		return listaResultante;
 	}
 

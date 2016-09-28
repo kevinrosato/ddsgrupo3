@@ -102,4 +102,8 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 	public List<POI> getPOIs() {
 	return POIs;
 	}
+	@Override
+	public Integer getId() {
+		return busqueda_id;
+	}
 }

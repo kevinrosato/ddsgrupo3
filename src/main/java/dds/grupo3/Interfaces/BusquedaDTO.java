@@ -11,6 +11,7 @@ public interface BusquedaDTO {
 	public void setParametro(String parametro);
 	public void setFecha(Date fecha);
 	public void setPOIs(List<POI> fecha);
+	public Integer getId();
 	public Integer getCantRespuestas();
 	public Integer getRetardo();
 	public String getTerminal();

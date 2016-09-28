@@ -60,10 +60,9 @@ public class ControllerBusqueda {
 		Cronometrador.comienzo();
 		poisEncontrados=QuerysPois.realizarBusqueda(session,claves);
 		Long aux =	Cronometrador.finCuenta();
-		Cronometrador.checkRetraso(BusquedasHAO.guardarBusqueda((String) terminalID, nombre1, listaPois,aux.intValue(),session));	
+		Cronometrador.checkRetraso(BusquedasHAO.guardarBusqueda((String) terminalID, nombre1, poisEncontrados,aux.intValue(),session));	
 		if(!listaPois.isEmpty()){
 			poisEncontrados.retainAll(listaPois);
-			System.out.println("lista vacía");
 		}
 		List<ResultadoBusqueda> resultados=new ArrayList<ResultadoBusqueda>();
 		for(POI poi:poisEncontrados){

@@ -24,12 +24,18 @@ public class Ubicacion implements Serializable{
 	//----------
 	//Constructor
 	//----------
-		
-	public Ubicacion(Double latitud, Double longitud)
+	
+	public Ubicacion()
 	{
-		this.setLatitud(latitud);
-		this.setLongitud(longitud);
+		latitud = 0.0;
+		longitud = 0.0;
 		this.comuna=0;
+	}
+	public Ubicacion(Double lat, Double lon)
+	{
+		latitud = lat;
+		longitud = lon;
+		comuna=0;
 	}
 	//----------
 	//Metodos

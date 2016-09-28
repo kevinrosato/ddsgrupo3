@@ -87,7 +87,7 @@ public class App {
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         Session session= sessionFactory.openSession();
-        CreadorDePoisBDD.inicializar(session);
+//        CreadorDePoisBDD.inicializar(session);
         return session;
 	}
 	
