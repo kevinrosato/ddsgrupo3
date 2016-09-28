@@ -48,6 +48,15 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 	@Column(name="Fecha")
 	private	Date Fecha;
 
+	public ResultadoBusquedaDTO() {
+	    busqueda_id = 0;
+	    POIs = null;
+		Respuestas = 0;
+		Retardo = 0;
+		Terminal = "";
+		Parametro = "";
+		Fecha = null;
+	}
 	@Override
 	public void setCantRespuestas(Integer cantRespuestas) {
 	Respuestas = cantRespuestas;

@@ -26,6 +26,11 @@ public class CGP extends Local implements Serializable{
 		this.setNumeroCGP(numeroCGP);
 		this.setNombre(name);
 	}
+	public CGP ()
+	{
+		this.setNumeroCGP((byte) 0);
+		this.setNombre("");
+	}
 	//----------
 	//Metodos
 	//----------

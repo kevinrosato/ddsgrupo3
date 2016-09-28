@@ -19,6 +19,7 @@ public class BusquedasHAO {
 //------------------------ Comienzo de Mensajes------------------------------------------------------------------------
 	public	static	BusquedaDTO	guardarBusqueda(String terminalID,String param1, List<POI> pois, Integer retardo, Session session)
 	{
+		System.out.println("Grabando Busqueda");
 		session.beginTransaction();
 		ResultadoBusquedaDTO busqueda = (ResultadoBusquedaDTO) Factory.getObject("Busqueda");
 		Calendar fecha = new GregorianCalendar();
@@ -32,14 +33,15 @@ public class BusquedasHAO {
 
 		session.save(busqueda);
 		session.getTransaction().commit();
+		System.out.println("Guardado");
     	return	busqueda;
 	}
-//------------------------ Comienzo de SQLs------------------------------------------------------------------------
- 	
 	@SuppressWarnings("unchecked")
 	public static	List<BusquedaDTO>	crearDTOsDe(String qry,Session session)
-	{		
+	{	
+		System.out.println("Buscando: "+qry);
 		Query query= session.createQuery(qry);
+		System.out.println("Flag");
 		return (List<BusquedaDTO>) query.getResultList();
 	}
 }

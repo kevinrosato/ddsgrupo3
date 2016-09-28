@@ -39,6 +39,14 @@ public class Servicio implements Serializable{
 		this.setRadioCercania(0.0);
 	
 	}
+	public Servicio()
+	{
+		this.setServicio_id(0);
+		this.setNombre("");
+		this.setHorario(new ArrayList<Horario>());
+		this.setRadioCercania(0.0);
+	
+	}
 
 	//----------
 	//Metodos

@@ -25,7 +25,7 @@ public class Cronometrador {
 	}
 	static	public	void	checkRetraso(BusquedaDTO Busqueda)
 	{
-		if (((tiempoFin-tiempoComienzo)/1000) > topeEnMicros)
+		if (((tiempoFin-tiempoComienzo)/1000000) > topeEnMicros)
 		{
 			reportarRetraso(Busqueda);
 		}

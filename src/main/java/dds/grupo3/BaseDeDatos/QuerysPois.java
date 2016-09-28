@@ -2,11 +2,8 @@ package dds.grupo3.BaseDeDatos;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Query;
-
 import org.hibernate.Session;
-
 import dds.grupo3.Interfaces.POI;
 
 public class QuerysPois {
@@ -21,11 +18,13 @@ public class QuerysPois {
 				listaResultante.addAll(realizarQuery(buscarCGPs(clave),session));
 			}
 		}
+		System.out.println("Encontrados");
 		return listaResultante;
 	}
 	
 	@SuppressWarnings("unchecked")
 	private static List<POI> realizarQuery(String hql,Session session){
+		System.out.println("Buscando:"+hql);
 	     Query query= session.createQuery(hql);
 	     return (List<POI>)query.getResultList();
 	}
@@ -45,9 +44,10 @@ public class QuerysPois {
 	}
 	private static String buscarCGPs(String clave){
 		return "FROM CGP c WHERE "
-				+ "(SELECT count(*) FROM POI p,Local l WHERE (p.poi_id=c.poi_id) AND (l.poi_id=c.poi_id) AND"
+				+ "((SELECT count(*) FROM POI p,Local l WHERE (p.poi_id=c.poi_id) AND (l.poi_id=c.poi_id) AND"
 				+ "(c.numeroCGP LIKE '%"+clave+"%' OR "+obtenerStringLocal(clave)+")"
-				+ ")>0";
+				+ ")>0) OR "
+				+ "((SELECT count(*) FROM Servicio s join c.servicios WHERE (s.nombre LIKE '%"+clave+"%'))>0)";
 	}
 	
 	private static String obtenerStringLocal(String clave){

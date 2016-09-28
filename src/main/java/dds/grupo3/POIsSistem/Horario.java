@@ -45,6 +45,14 @@ public class Horario implements Serializable{
 		this.diaFinal=0;
 		this.diaInicio=0;
 	}
+	public Horario(){
+		this.horario_id=0;
+		this.servicio=null;
+		this.horarioCierre=0;
+		this.horarioInicio=0;
+		this.diaFinal=0;
+		this.diaInicio=0;
+	}
 	
 	//----------
 	//Metodos

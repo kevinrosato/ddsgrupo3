@@ -41,22 +41,22 @@ public class ControllerHistorialBusquedas {
 		String parametro1 = "";
 		String parametro2 = "";
 		String parametro3 = "";
-		String	qry	=	"FROM	"+((String) Factory.getString("tablaDeBusqeudas"));
+		String	qry	="FROM "+((String) Factory.getString("tablaDeBusqeudas")+" B");
 		String where = "";
 		if (!username.isEmpty())
 		{
 			where=" WHERE ";
-			parametro1 = "Terminal like '%"+username+"%'";
+			parametro1 = "B.Terminal like '%"+username+"%'";
 		}
 		if (!nombre1.isEmpty())
 		{
 			where=" WHERE ";	
-			parametro2 = "FechaD>='"+nombre1+"'";
+			parametro2 = "B.FechaD>='"+nombre1+"'";
 		}
 		if (!nombre2.isEmpty())
 		{
 			where=" WHERE ";
-			parametro3 = "FechaD<='".concat(nombre2).concat("'");
+			parametro3 = "B.FechaD<='".concat(nombre2).concat("'");
 		}
 		
 		if(!username.isEmpty())
@@ -74,7 +74,6 @@ public class ControllerHistorialBusquedas {
 			}
 		}
 		qry	=	qry.concat(where).concat(parametro1).concat(parametro2).concat(parametro3);
-		System.out.println(qry);
 		this.setListaHistorial(BusquedasHAO.crearDTOsDe(qry, session));
 		return this.getListaHistorial();
 	}

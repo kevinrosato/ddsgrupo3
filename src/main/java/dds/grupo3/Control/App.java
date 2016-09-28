@@ -1,6 +1,5 @@
 package dds.grupo3.Control;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -8,19 +7,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
-import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
 import dds.grupo3.DTOs.ResultadoBusquedaDTO;
-import dds.grupo3.Interfaces.POI;
-import dds.grupo3.POIsSistem.CGP;
-import dds.grupo3.POIsSistem.Horario;
-import dds.grupo3.POIsSistem.Local;
-import dds.grupo3.POIsSistem.ParadaColectivo;
-import dds.grupo3.POIsSistem.Servicio;
-import dds.grupo3.POIsSistem.SucursalBanco;
-import dds.grupo3.POIsSistem.Ubicacion;
-import dds.grupo3.User.Rol;
-import dds.grupo3.User.RolTerminal;
-import dds.grupo3.User.Usuario;
+import dds.grupo3.Interfaces.*;
+import dds.grupo3.POIsSistem.*;
+import dds.grupo3.User.*;
 import dds.grupo3.UsoTerminales.Cronometrador;
 import spark.Spark;
 

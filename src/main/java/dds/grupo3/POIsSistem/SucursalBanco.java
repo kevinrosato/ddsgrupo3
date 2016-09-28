@@ -22,6 +22,10 @@ public class SucursalBanco extends Local implements Serializable{
 	{
 		this.setNombre(name);
 	}
+	public SucursalBanco()
+	{
+		this.setNombre("");
+	}
 	//----------
 	//Metodos
 	//----------	
