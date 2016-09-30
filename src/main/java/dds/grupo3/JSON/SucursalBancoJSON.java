@@ -11,7 +11,7 @@ public class SucursalBancoJSON  implements POIGral { //POI del tipo SucursalBanc
 	//----------
 	//Parametros
 	//----------
-	
+	private int json_id;
 	private String banco;
 	private Double x;
 	private Double y;
@@ -137,5 +137,16 @@ public class SucursalBancoJSON  implements POIGral { //POI del tipo SucursalBanc
 	public String getImagen() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public String get_id_vista() {
+		// TODO Auto-generated method stub
+		return "J"+Integer.toString(this.getJson_id());
+	}
+	public int getJson_id() {
+		return json_id;
+	}
+	public void setJson_id(int json_id) {
+		this.json_id = json_id;
 	}
 }

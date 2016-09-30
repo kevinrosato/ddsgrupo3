@@ -26,7 +26,7 @@ public class CreadorDePoisBDD {
         Mapa mapa=(Mapa) Inicializacion.init();
         for(POIGral poi:mapa.getListaPois()){
         	session.beginTransaction();
-        	session.save(poi);
+        	session.saveOrUpdate(poi);
         	session.getTransaction().commit();
         }	
    }

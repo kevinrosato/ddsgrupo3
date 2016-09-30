@@ -207,4 +207,7 @@ public abstract class POI	implements POIGral,Serializable{
 	public void setPoi_id(int id) {
 		this.poi_id = id;
 	}
+	public String get_id_vista() {
+		return Integer.toString(this.getPoi_id());
+	}
 }

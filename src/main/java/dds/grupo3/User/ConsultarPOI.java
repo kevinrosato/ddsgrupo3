@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import dds.grupo3.BaseDeDatos.Inicializacion;
+import dds.grupo3.BaseDeDatos.QuerysPois;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
@@ -17,17 +18,13 @@ public class ConsultarPOI implements Funcionalidad {
 	private String resto = new String();
 	private String archivo="/busqueda";
 	
-	private String nombre1;
-	private String nombre2;
 	private List<POIGral> listaResultante = new ArrayList<POIGral>();
 	private List<String> claves=new ArrayList<String>(); 
 	@Override
-	public Object realizarFuncion(List<POIGral> listaPois, Object terminalID)
+	public Object realizarFuncion(List<POIGral> listaPois, Object poi)
 	{
-		claves.add(0,nombre1);
-		claves.add(1, nombre2);
-
-		Cronometrador.comienzo();
+//
+//		Cronometrador.comienzo();
 		for(String clave:claves){
 			if(!clave.isEmpty()){
 			if (clave.startsWith("-"))
@@ -50,28 +47,10 @@ public class ConsultarPOI implements Funcionalidad {
 			}
 			}
 		}
-		Long aux =	Cronometrador.finCuenta();
-//		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));	
+//		Long aux =	Cronometrador.finCuenta();
+//		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));
+		
 		return listaResultante;
-	}
-
-	@SuppressWarnings("unchecked")
-	public static void main(String[] args) {
-		AdministradorPOIs mapa=Inicializacion.init();
-		Usuario usuario=new Usuario();
-		usuario.setMapa(mapa);
-		usuario.setNombre("nicolas");
-		usuario.setContrasenia("1234");
-		ConsultarPOI consulta=new ConsultarPOI();
-		consulta.setNombre1("a");
-		consulta.setNombre2("b");
-		List<POIGral> poisEncontrados=new ArrayList<POIGral>();
-		poisEncontrados=(List<POIGral>) consulta.realizarFuncion(usuario.getMapa().getListaPois(),"testeo");
-		for(POIGral poi:poisEncontrados){
-			 String[] info=poi.mostrarInformacion();
-			 System.out.println(info[0]);
-			 System.out.println(info[1]);
-		}
 	}
 	public	List<POIGral>	buscarEn(String palabraClave, List<POIGral> lista)
 	{	
@@ -151,21 +130,7 @@ public class ConsultarPOI implements Funcionalidad {
 		return "BUSCAR UN POI";
 	}
 	
-	public String getNombre1() {
-		return nombre1;
-	}
-
-	public void setNombre1(String nombre1) {
-		this.nombre1 = nombre1;
-	}
-
-	public String getNombre2() {
-		return nombre2;
-	}
-
-	public void setNombre2(String nombre2) {
-		this.nombre2 = nombre2;
-	}
+	
 
 	public String getArchivo() {
 		return archivo;
@@ -173,5 +138,11 @@ public class ConsultarPOI implements Funcionalidad {
 
 	public void setArchivo(String archivo) {
 		this.archivo = archivo;
+	}
+	public List<String> getClaves() {
+		return claves;
+	}
+	public void setClaves(List<String> claves) {
+		this.claves = claves;
 	}
 }

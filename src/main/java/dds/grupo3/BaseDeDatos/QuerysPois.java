@@ -5,11 +5,12 @@ import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import dds.grupo3.Interfaces.POI;
+import dds.grupo3.Interfaces.POIGral;
 
 public class QuerysPois {
 
-	public static List<POI> realizarBusqueda(Session session,List<String> claves){
-		List<POI> listaResultante=new ArrayList<POI>();
+	public static List<POIGral> realizarBusqueda(Session session,List<String> claves){
+		List<POIGral> listaResultante=new ArrayList<POIGral>();
 		System.out.println("Buscando");
 		for(String clave:claves){
 			if(!clave.isEmpty()){
@@ -24,15 +25,16 @@ public class QuerysPois {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static List<POI> realizarQuery(String hql,Session session){
+	private static List<POIGral> realizarQuery(String hql,Session session){
 		System.out.println("Buscando:"+hql);
 	     Query query= session.createQuery(hql);
-	     return (List<POI>)query.getResultList();
+	     return (List<POIGral>)query.getResultList();
 	}
 	
 	//VER DE SACAR LA PERSISTENCIA DE LOS BANCOS!
 	private static String buscarLocales(String clave){
 		return "FROM Local l WHERE ((SELECT count(*) FROM CGP c WHERE l.poi_id=c.poi_id)=0) AND"//Verifica que no sea CGP
+				+"((SELECT count(*) FROM SucursalBanco banco WHERE l.poi_id=banco.poi_id)=0) AND"//Verifica que no sea banco
 				+"((SELECT count(*) FROM POI p WHERE (p.poi_id=l.poi_id) AND"
 				+ "("+obtenerStringLocal(clave)+")"
 			    + ")>0 OR ("+buscarEnElRubro(clave)+")>0)";

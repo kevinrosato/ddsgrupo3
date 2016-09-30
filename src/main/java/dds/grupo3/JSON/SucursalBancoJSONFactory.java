@@ -21,6 +21,7 @@ public class SucursalBancoJSONFactory { //Genera objetos del tipo SucursalBancoJ
 	        JSONArray jsonArray = new JSONArray(response.getEntity(String.class));
 	            for (int i = 0; i < jsonArray.length(); i++) {
 	            	SucursalBancoJSON sucursalBanco= new SucursalBancoJSON();
+	            	sucursalBanco.setJson_id(i);
 	                sucursalBanco=jsonFactory.fromJson(jsonArray.getJSONObject(i).toString(),SucursalBancoJSON.class);
 	                listaPois.add(sucursalBanco);
 	            }

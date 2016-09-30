@@ -15,4 +15,5 @@ public interface POIGral
 	Boolean	esValido();
 	String	conocerTipo();
 	String getImagen();
+	String get_id_vista();
 }

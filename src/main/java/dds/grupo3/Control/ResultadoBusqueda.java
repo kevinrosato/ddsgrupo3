@@ -2,11 +2,11 @@ package dds.grupo3.Control;
 
 public class ResultadoBusqueda {
 
-	private int id;
+	private String id;
 	private String nombre;
 	private String direccion;
 	
-	public ResultadoBusqueda(String nombre,String direccion,int id){
+	public ResultadoBusqueda(String nombre,String direccion,String id){
 		this.nombre=nombre;
 		this.direccion=direccion;
 		this.setId(id);
@@ -25,11 +25,11 @@ public class ResultadoBusqueda {
 		this.direccion = direccion;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 			
