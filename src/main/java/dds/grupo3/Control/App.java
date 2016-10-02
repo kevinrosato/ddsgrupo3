@@ -49,8 +49,6 @@ public class App {
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario), engine);
 		Spark.post("/login", (req, res) -> login.show(req, res,usuario), engine);
 		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario), engine);
-		
-		
 		//cerrarSesion(session);
 	}
 	
