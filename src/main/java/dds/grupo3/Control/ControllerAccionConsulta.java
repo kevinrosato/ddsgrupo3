@@ -5,10 +5,9 @@ import java.util.HashMap;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-import dds.grupo3.User.Usuario;
 
 public class ControllerAccionConsulta {
-	public ModelAndView show( Request request, Response response,Usuario usuario) {
+	public ModelAndView show( Request request, Response response) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		//System.out.println(request.session().attribute("log"));
 		//System.out.println(request.session().attribute("totalFecha"));

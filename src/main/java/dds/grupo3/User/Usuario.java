@@ -42,7 +42,7 @@ public class Usuario implements User,Serializable{
 	public Usuario(){
 		this.setNombre("");
 		this.setContrasenia("");
-		this.setRol(new Rol());
+		this.setRol(new RolAdmin().crearRol());
 		this.setMapa((AdministradorPOIs) Factory.getObject("AdminPOIs"));
 	}
 	

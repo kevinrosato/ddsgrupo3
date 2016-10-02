@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
-import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
 
 public class QuerysPois {

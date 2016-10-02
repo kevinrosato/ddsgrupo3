@@ -1,12 +1,13 @@
 package dds.grupo3.User;
 
 import dds.grupo3.Interfaces.User;
+import dds.grupo3.Interfaces.UserCounts;
 import dds.grupo3.Interfaces.creadorRoles;
 import ddsgrupo3.Factory;
 
-public class CuentasUsuario {
+public class CuentasUsuario implements UserCounts{
 
-	public static User	instanciarUsuario(String username,String pass)
+	public User	instanciarUsuario(String username,String pass)
 	{
 		if(verificarExistencia(username, pass))
 		{		
@@ -20,17 +21,17 @@ public class CuentasUsuario {
 		return null;	
 	}
 	
-	public static Boolean requierePass(String username)
+	public Boolean requierePass(String username)
 	{
 		return !((String) Factory.getString(username)).equals("null");
 	}
 		
-	private static boolean verificarExistencia(String username, String pass)
+	private boolean verificarExistencia(String username, String pass)
 	{	
 		return pass.contains((String) Factory.getString(username));
 	}
 
-	public static Rol getRol (String name)
+	public Rol getRol (String name)
 	{
 		String rolname = (String) Factory.getString(name);
 		creadorRoles creador = (creadorRoles) Factory.getObject(rolname);

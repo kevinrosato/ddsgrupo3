@@ -19,7 +19,7 @@ public class BusquedasDAO {
 			"dds3.POIs","dds3");
 	
 //------------------------ Comienzo de Mensajes------------------------------------------------------------------------
-	public	static	Integer	guardarBusqueda(String terminal, String frase, Integer cantResultados,Long retardo)
+	public	static	BusquedaDTO	guardarBusqueda(String terminal, String frase, Integer cantResultados,Long retardo)
 	{
 		Calendar fecha = new GregorianCalendar();
 		String fechaS = Integer.toString(1 + fecha.get(Calendar.MONTH));
@@ -37,11 +37,12 @@ public class BusquedasDAO {
 	}
 //------------------------ Comienzo de SQLs------------------------------------------------------------------------
  
-	private	static	Integer agregarATabla(String frase, String fechaFalsa,String terminal,Integer cantResultados, Long retardo,String fecha)
+	private	static	BusquedaDTO agregarATabla(String frase, String fechaFalsa,String terminal,Integer cantResultados, Long retardo,String fecha)
 	{
 		CallableStatement consulta = null;
+		@SuppressWarnings("unused")
 		ResultSet resultados = null;
-		Integer auxiliar = null;
+		BusquedaDTO auxiliar = null;
 		try {
 		    consulta = admin.getConexion().prepareCall("INSERT INTO "
  				+((String) Factory.getString("tablaDeBusqeudas"))+
@@ -51,12 +52,12 @@ public class BusquedasDAO {
 			
 			consulta = null;
 			
-		    consulta = admin.getConexion().prepareCall("SELECT TOP 1 F.ID FROM "
+		    consulta = admin.getConexion().prepareCall("SELECT TOP 1 * FROM "
 		    		+((String) Factory.getString("tablaDeBusqeudas"))+
 		    		" F ORDER BY F.ID DESC");
 			consulta.execute();
 		    resultados = consulta.executeQuery();
-		    while(resultados.next())	auxiliar = resultados.getInt(1); 
+//		    while(resultados.next())	auxiliar = resultados.getInt(1); 
 		    return auxiliar;
 		}
 		catch (Exception e){

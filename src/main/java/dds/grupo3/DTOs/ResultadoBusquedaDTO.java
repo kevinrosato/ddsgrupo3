@@ -20,7 +20,6 @@ import javax.persistence.Table;
 
 import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.Interfaces.POI;
-import dds.grupo3.Interfaces.POIGral;
 
 @SuppressWarnings("serial")
 @Entity

@@ -2,9 +2,7 @@ package dds.grupo3.Control;
 
 import java.util.HashMap;
 import java.util.List;
-
 import org.hibernate.Session;
-
 import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.UsoTerminales.BusquedasHAO;
 import ddsgrupo3.Factory;

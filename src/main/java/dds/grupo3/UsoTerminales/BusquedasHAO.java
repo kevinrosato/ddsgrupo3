@@ -1,14 +1,11 @@
 package dds.grupo3.UsoTerminales;
 
+import java.util.List;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
-
 import javax.persistence.Query;
-
 import org.hibernate.Session;
-
 import dds.grupo3.DTOs.ResultadoBusquedaDTO;
 import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.Interfaces.POI;
@@ -36,12 +33,13 @@ public class BusquedasHAO {
 		System.out.println("Guardado");
     	return	busqueda;
 	}
-	@SuppressWarnings("unchecked")
 	public static	List<BusquedaDTO>	crearDTOsDe(String qry,Session session)
 	{	
 		System.out.println("Buscando: "+qry);
-		Query query= session.createQuery(qry);
+		Query query = session.createQuery(qry);
 		System.out.println("Flag");
-		return (List<BusquedaDTO>) query.getResultList();
+		List<BusquedaDTO> lista = query.getResultList();
+		System.out.println(lista.toString());
+		return lista;
 	}
 }
