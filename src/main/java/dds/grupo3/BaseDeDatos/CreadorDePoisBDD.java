@@ -23,10 +23,12 @@ import ddsgrupo3.Mapa;
 public class CreadorDePoisBDD {
 
    public static void inicializar(Session session) {
-        Mapa mapa=(Mapa) Inicializacion.init();
+        Mapa mapa=new Mapa();
+        mapa.getListaPois().clear();
+        mapa=(Mapa) Inicializacion.init();
         for(POIGral poi:mapa.getListaPois()){
         	session.beginTransaction();
-        	session.saveOrUpdate(poi);
+        	session.save(poi);
         	session.getTransaction().commit();
         }	
    }
