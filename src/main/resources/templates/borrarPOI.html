@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Baja de POI</title>
+	   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap.min.css" rel="stylesheet" rel="import">
+    <!-- Material Design Bootstrap -->
+    <link href="mdb.min.css" rel="stylesheet" rel="import">
+
+</head>
+<body>
+
+	<div class="container">
+           <h2 class="card-header">Baja de POI</h2>
+     </div>
+
+	<form action="/busqueda" method="get">
+    	 <div class="col-sm-9">
+     			<p> </p>
+     			<b><h4>Criterio de busqueda</h4></b>
+				<p class="card-text">NOMBRE </p>
+				<input class="col-sm-4" type="text" name="nombre1" placeholder="ingrese el nombre a buscar o agregar">
+	 	</div>
+     	<div align="center" class="container">
+			<div class="row">
+				<div class="col-sm-12">
+				<input type="submit" class="btn btn-primary" value="AGREGAR" id="agregar" name="agregar" />
+				<input type="submit" class="btn btn-primary" value="BUSCAR" id="buscar" name="buscar" />
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	<div class="col-sm-9">
+	<p class="card-text">SELECCIONE EL POI QUE DESEA ELIMINAR: </p>
+	</div>
+	
+	
+    <table class="table table-striped table-hover"> 
+      <tr>
+			<th>Nombre</th>
+			<th>Direccion</th>
+
+	  </tr>
+	 {{#each resultados}}
+	 <form action="/infoAvanzada" method="get">
+      	 <tr>
+         		<th><a href="/infoAvanzada?value_key={{id}}">{{nombre}}<a></th>
+        		<th>{{direccion}}</th>
+     	 </tr>
+     </form>	
+	 {{/each}}
+      
+      </table>
+      
+      	<div align="center" class="container">
+			<div class="row">
+				    
+					<button class="btn btn-primary" onClick=" window.location.href='/menuPrincipal' "> VOLVER A MENU PRINCIPAL </button>
+					
+				
+			</div>
+		</div>
+
+</body>
+</html>

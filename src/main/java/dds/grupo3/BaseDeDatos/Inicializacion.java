@@ -40,7 +40,7 @@ public class Inicializacion {
 //				Rol				admin, standar;
 		
 			mapa		= (AdministradorPOIs) Factory.getObject("AdminPOIs");
-			
+			mapa.getListaPois().clear();
 	//////// Seteo DTOs
 			
 //			cgpDTO1		= new CentroDTO();

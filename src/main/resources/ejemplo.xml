@@ -15,6 +15,7 @@
     <mapping resource="dds.grupo3.BaseDeDatos.Horario.xml"/>
     <mapping resource="dds.grupo3.BaseDeDatos.Busqueda.xml"/>
     <mapping resource="dds.grupo3.BaseDeDatos.Ubicacion.xml"/>
+    <mapping class="dds.grupo3.User.Rol"/>
 	
   </session-factory>
 </hibernate-configuration>

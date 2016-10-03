@@ -22,8 +22,8 @@ public class Mapa	implements AdministradorPOIs{
 	//Metodos
 	//----------
 	public Mapa(){
-		SucursalBancoJSONFactory factoryJson= new SucursalBancoJSONFactory();
-		listaPois.addAll(factoryJson.generarPoi());
+//		SucursalBancoJSONFactory factoryJson= new SucursalBancoJSONFactory();
+//		listaPois.addAll(factoryJson.generarPoi());
 	}
 	//----------------------------------------------
 	//METODOS ABCM

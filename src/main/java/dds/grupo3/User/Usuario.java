@@ -12,11 +12,9 @@ import dds.grupo3.Interfaces.Reporte;
 import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
-@SuppressWarnings("serial")
+
 @Entity
 @Table(name="Usuario")
-@Inheritance(strategy=InheritanceType.JOINED)
-
 public class Usuario implements User,Serializable{
 	
 	@Id
@@ -29,8 +27,9 @@ public class Usuario implements User,Serializable{
 	@Column(name="contrasenia")
 	private String contrasenia;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-    @PrimaryKeyJoinColumn
+//	@ManyToOne
+//	@JoinColumn(name = "rol_id", nullable = false)
+	@Transient
 	private Rol rol;
 	
 	@Transient
@@ -124,5 +123,13 @@ public class Usuario implements User,Serializable{
 	}
 	public void setMapa(AdministradorPOIs mapa) {
 		this.mapa = mapa;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }
