@@ -7,7 +7,6 @@
     
     <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
     <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.hbm2ddl.auto">create</property>
     
     <mapping class="dds.grupo3.Interfaces.POI"/>
     <mapping class="dds.grupo3.POIsSistem.Servicio"/>
@@ -15,7 +14,7 @@
     <mapping class="dds.grupo3.DTOs.ResultadoBusquedaDTO"/>
     <mapping class="dds.grupo3.POIsSistema.Ubicacion"/>
     <mapping class="dds.grupo3.User.Usuario"/>
-    
+    <mapping class="dds.grupo3.User.Rol"/>
 	
   </session-factory>
 </hibernate-configuration>

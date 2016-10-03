@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import dds.grupo3.DTOs.ResultadoBusquedaDTO;
-import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.UsoTerminales.BusquedasHAO;
 import ddsgrupo3.Factory;
 import spark.ModelAndView;
@@ -41,7 +40,7 @@ public class ControllerHistorialBusquedas {
 		String parametro1 = "";
 		String parametro2 = "";
 		String parametro3 = "";
-		String	qry	="FROM "+((String) Factory.getString("tablaDeBusqeudas")+"");
+		String	qry	="FROM dbo.Busquedas";
 		String where = "";
 		if (!username.isEmpty())
 		{

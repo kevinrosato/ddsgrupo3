@@ -60,6 +60,7 @@ public class TestsEntrega4 {
         configuration.addAnnotatedClass(Horario.class);
         configuration.addAnnotatedClass(Ubicacion.class);
         configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
+        configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
         configuration.addAnnotatedClass(Usuario.class);
         configuration.addAnnotatedClass(Rol.class);
         
@@ -78,7 +79,7 @@ public class TestsEntrega4 {
 	public void testApk() {
 	ControllerHistorialBusquedas control = new ControllerHistorialBusquedas();
 	
-	List<ResultadoBusquedaDTO> lista = control.obtenerBusquedas("FEDERICO","","", session);
+	List<ResultadoBusquedaDTO> lista = control.obtenerBusquedas("Test","","", session);
 	System.out.println(lista.toString());
 	}
 }

@@ -20,9 +20,9 @@ public class Rol implements Serializable{
 	@Column(name="rol_id")
 	private int rol_id;
 
-	//@OneToMany(mappedBy="rol",cascade=CascadeType.ALL)
-	@Transient
-	private List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
+	@ElementCollection
+	@CollectionTable(name = "permiso",joinColumns=@JoinColumn(name="rol_id"))
+	private List<String> permisos = new ArrayList<String>();
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -30,17 +30,17 @@ public class Rol implements Serializable{
 	
 	public Boolean verificarPermisos(Funcionalidad funcionalidad){
 		Boolean valor=false;
-		for(Funcionalidad i:permisos){
-			if(i.getClass()==funcionalidad.getClass()) valor=true; 
+		for(String i:permisos){
+			if(i==funcionalidad.getClass().getName()) valor=true; 
 		}
 		return valor;
 	}
 
-	public List<Funcionalidad> getPermisos() {
+	public List<String> getPermisos() {
 		return permisos;
 	}
 
-	public void setPermisos(List<Funcionalidad> permisos) {
+	public void setPermisos(List<String> permisos) {
 		this.permisos = permisos;
 	}
 

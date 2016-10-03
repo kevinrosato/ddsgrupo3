@@ -17,12 +17,8 @@ public class RolTerminal implements creadorRoles
 	public Rol crearRol() {
 		Rol rol = new Rol();
 		rol.setNombre("terminal");
-		permisosArchivo=(String) getString(rol.getNombre());	
-		String listaPermisos[]=permisosArchivo.split(",");
-		List<Funcionalidad> permisos = new ArrayList<Funcionalidad>();
-		for(String i:listaPermisos){
-			permisos.add((Funcionalidad) Factory.getObject(i));
-		}
+		List<String> permisos=new ArrayList<String>();
+		permisos.add("ConsultarPOI");
 		rol.setPermisos(permisos);
 		return rol;
 	}	

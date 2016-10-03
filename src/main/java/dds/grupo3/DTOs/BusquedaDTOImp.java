@@ -4,11 +4,10 @@ import java.sql.Date;
 import java.util.List;
 import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.Interfaces.POI;
-import dds.grupo3.Interfaces.POIGral;
 
 public class BusquedaDTOImp implements BusquedaDTO {
 
-	private List<POIGral> listaPOIs;
+	private List<POI> listaPOIs;
 
 	private	Integer	Respuestas;
 	private	Integer	Retardo;
@@ -19,12 +18,6 @@ public class BusquedaDTOImp implements BusquedaDTO {
 	@Override
 	public void setCantRespuestas(Integer cantRespuestas) {
 	Respuestas = cantRespuestas;
-	}
-	public List<POIGral> getListaPOIs() {
-		return listaPOIs;
-	}
-	public void setListaPOIs(List<POIGral> listaPOIs) {
-		this.listaPOIs = listaPOIs;
 	}
 	public Integer getRespuestas() {
 		return Respuestas;
@@ -69,18 +62,15 @@ public class BusquedaDTOImp implements BusquedaDTO {
 		return Fecha.toString();
 	}
 	@Override
-	public void setPOIs(List<POI> fecha) {
-		// TODO Auto-generated method stub
-		
+	public Integer getId() {
+		return 0;
+	}
+	@Override
+	public void setPOIs(List<POI> lista) {
+		listaPOIs = lista;
 	}
 	@Override
 	public List<POI> getPOIs() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Integer getId() {
-		// TODO Auto-generated method stub
-		return null;
+		return listaPOIs;
 	}
 }

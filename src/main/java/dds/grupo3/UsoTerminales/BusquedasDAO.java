@@ -19,7 +19,7 @@ public class BusquedasDAO {
 			"dds3.POIs","dds3");
 	
 //------------------------ Comienzo de Mensajes------------------------------------------------------------------------
-	public	static	BusquedaDTO	guardarBusqueda(String terminal, String frase, Integer cantResultados,Long retardo)
+	public	static	BusquedaDTO	guardarBusqueda(String terminal, String frase, Integer cantResultados,Integer retardo)
 	{
 		Calendar fecha = new GregorianCalendar();
 		String fechaS = Integer.toString(1 + fecha.get(Calendar.MONTH));
@@ -37,7 +37,7 @@ public class BusquedasDAO {
 	}
 //------------------------ Comienzo de SQLs------------------------------------------------------------------------
  
-	private	static	BusquedaDTO agregarATabla(String frase, String fechaFalsa,String terminal,Integer cantResultados, Long retardo,String fecha)
+	private	static	BusquedaDTO agregarATabla(String frase, String fechaFalsa,String terminal,Integer cantResultados, Integer retardo,String fecha)
 	{
 		CallableStatement consulta = null;
 		@SuppressWarnings("unused")

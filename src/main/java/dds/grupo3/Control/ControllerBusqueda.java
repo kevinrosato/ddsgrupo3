@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import dds.grupo3.BaseDeDatos.QuerysPois;
-import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.User.ConsultarPOI;
@@ -80,15 +79,21 @@ public class ControllerBusqueda {
 	@SuppressWarnings("unchecked")
 	private List<POIGral> buscarEnVariosLados(Session session, List<String> claves){
 		//busca en BDD de pois
-		List<POIGral> busquedas=new ArrayList<POIGral>();
 		Cronometrador.comienzo();
-		busquedas.addAll(QuerysPois.realizarBusqueda(session,claves));
+		List<POIGral> busquedas=new ArrayList<POIGral>();
+		List<POI> poisSistema = QuerysPois.realizarBusqueda(session,claves);
+		busquedas.addAll(poisSistema);
 		//busca bancos JSON
 		Mapa mapa=new Mapa();
 		ConsultarPOI consulta = new ConsultarPOI();
 		consulta.setClaves(claves);
 		busquedas.addAll((List<POIGral>) mapa.realizarFuncConPoi(consulta, null));
 		//busca CGP DAOs
+
+		
+		Cronometrador.checkRetraso(
+				BusquedasHAO.guardarBusqueda(
+						terminalID, claves.toString(),poisSistema,Cronometrador.finCuenta(), session));
 		return busquedas;
 	}
 }

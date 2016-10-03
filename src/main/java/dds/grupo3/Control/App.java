@@ -1,6 +1,5 @@
 package dds.grupo3.Control;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -8,9 +7,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
-import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
-import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
-import dds.grupo3.BaseDeDatos.QueryUsuario;
+//import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
+//import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
 import dds.grupo3.DTOs.ResultadoBusquedaDTO;
 import dds.grupo3.Interfaces.*;
 import dds.grupo3.POIsSistem.*;
@@ -45,22 +43,13 @@ public class App {
 		Spark.staticFileLocation("/templates");
 		
 		Spark.get("/pantallaInicio", (req, res) ->inicio.show(req, res),engine);
-		Spark.get("/login", (req, res) -> login.show(req, res,session), engine);
-		Spark.post("/login", (req, res) -> login.show(req, res,session), engine);
-		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario), engine);
 		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,session),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res, busqueda.getResultadosAnteriores()),engine);
 		Spark.get("/historial", (req, res) -> historial.show(req, res,session),engine);
-<<<<<<< HEAD
 		Spark.get("/acciones",(req,res)->consulta.show(req, res), engine);
-=======
-		Spark.get("/acciones",(req,res)->consulta.show(req, res, usuario), engine);
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario,session), engine);
 		Spark.post("/login", (req, res) -> login.show(req, res,usuario,session), engine);
-		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario), engine);
-		
-		
->>>>>>> 81cc08404763d6a46e7183e97054b13936950f97
+		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario,session), engine);
 		//cerrarSesion(session);
 	}
 	
@@ -80,15 +69,15 @@ public class App {
         configuration.addAnnotatedClass(Ubicacion.class);
         configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
         configuration.addAnnotatedClass(Usuario.class);
-        //configuration.addAnnotatedClass(Rol.class);
+        configuration.addAnnotatedClass(Rol.class);
         
         ServiceRegistry serviceRegistry = 
       		new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         Session session= sessionFactory.openSession();
-        CreadorDePoisBDD.inicializar(session);
-        CreadorDeUsuariosBDD.inicializar(session);
+//        CreadorDePoisBDD.inicializar(session);
+//        CreadorDeUsuariosBDD.inicializar(session);
         return session;
 	}
 	

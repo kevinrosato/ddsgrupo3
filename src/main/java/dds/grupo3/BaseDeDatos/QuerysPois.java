@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import org.hibernate.Session;
-import dds.grupo3.Interfaces.POIGral;
+import dds.grupo3.Interfaces.POI;
 
 public class QuerysPois {
 
-	public static List<POIGral> realizarBusqueda(Session session,List<String> claves){
-		List<POIGral> listaResultante=new ArrayList<POIGral>();
+	public static List<POI> realizarBusqueda(Session session,List<String> claves){
+		List<POI> listaResultante=new ArrayList<POI>();
 		System.out.println("Buscando");
 		for(String clave:claves){
 			if(!clave.isEmpty()){
@@ -24,10 +24,10 @@ public class QuerysPois {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static List<POIGral> realizarQuery(String hql,Session session){
+	private static List<POI> realizarQuery(String hql,Session session){
 		System.out.println("Buscando:"+hql);
 	     Query query= session.createQuery(hql);
-	     return (List<POIGral>)query.getResultList();
+	     return (List<POI>)query.getResultList();
 	}
 	
 	//VER DE SACAR LA PERSISTENCIA DE LOS BANCOS!

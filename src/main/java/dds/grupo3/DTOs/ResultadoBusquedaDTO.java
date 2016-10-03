@@ -26,11 +26,6 @@ import dds.grupo3.Interfaces.POI;
 @Inheritance(strategy=InheritanceType.JOINED)
 public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8445723971364305142L;
-
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
     @Column(name="busqueda_id")
@@ -64,12 +59,6 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 	@Override
 	public void setCantRespuestas(Integer cantRespuestas) {
 	Respuestas = cantRespuestas;
-	}
-	public List<POI> getListaPOIs() {
-		return POIs;
-	}
-	public void setListaPOIs(List<POI> listaPOIs) {
-		this.POIs = listaPOIs;
 	}
 	@Override
 	public void setRetardo(Integer l) {

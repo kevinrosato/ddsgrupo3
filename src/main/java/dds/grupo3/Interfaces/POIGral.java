@@ -14,6 +14,6 @@ public interface POIGral
 	Boolean	estaDisponible(Calendar horaActual);
 	Boolean	esValido();
 	String	conocerTipo();
-	String getImagen();
-	String get_id_vista();
+	String	getImagen();
+	String	get_id_vista();
 }

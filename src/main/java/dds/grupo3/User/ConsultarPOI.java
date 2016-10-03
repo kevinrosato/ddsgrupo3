@@ -8,22 +8,18 @@ import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.Interfaces.User;
-import dds.grupo3.UsoTerminales.BusquedasDAO;
-import dds.grupo3.UsoTerminales.Cronometrador;
 
 public class ConsultarPOI implements Funcionalidad {
 
 	private AdministradorPOIs mapa;
 	private String resto = new String();
 	private String archivo="/busqueda";
-	private	String terminalID = "";
 	private List<POIGral> listaResultante = new ArrayList<POIGral>();
 	private List<String> claves=new ArrayList<String>(); 
 	@Override
 	public Object realizarFuncion(List<POIGral> listaPois, Object poi)
 	{
 
-		Cronometrador.comienzo();
 		for(String clave:claves){
 			if(!clave.isEmpty()){
 			if (clave.startsWith("-"))
@@ -46,8 +42,6 @@ public class ConsultarPOI implements Funcionalidad {
 			}
 			}
 		}
-		Long aux =	Cronometrador.finCuenta();
-		Cronometrador.checkRetraso(BusquedasDAO.guardarBusqueda((String) terminalID, resto, listaResultante.size(),aux));
 		
 		return listaResultante;
 	}

@@ -17,11 +17,10 @@ public class Cronometrador {
 	{
 		tiempoComienzo=System.nanoTime();
 	}
-	static	public	Long	finCuenta()
+	static	public	Integer	finCuenta()
 	{
 		tiempoFin=System.nanoTime();
-		Long aux = (tiempoFin-tiempoComienzo)/1000;
-		return aux;	
+		return (int) ((tiempoFin-tiempoComienzo)/1000);
 	}
 	static	public	void	checkRetraso(BusquedaDTO Busqueda)
 	{
