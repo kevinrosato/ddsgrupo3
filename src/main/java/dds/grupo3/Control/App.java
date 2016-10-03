@@ -42,7 +42,7 @@ public class App {
 
 		Spark.staticFileLocation("/templates");
 		
-		Spark.get("/pantallaInicio", (req, res) ->inicio.show(req, res),engine);
+		Spark.get("/pantallaInicio", (req, res) ->inicio.show(req, res,usuario),engine);
 		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,session),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res, busqueda.getResultadosAnteriores()),engine);
 		Spark.get("/historial", (req, res) -> historial.show(req, res,session),engine);
@@ -50,6 +50,7 @@ public class App {
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario,session), engine);
 		Spark.post("/login", (req, res) -> login.show(req, res,usuario,session), engine);
 		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario,session), engine);
+		Spark.get("/altaPoi", (req, res) ->ControllerAltaPOI.show(req, res, usuario),engine);
 		//cerrarSesion(session);
 	}
 	

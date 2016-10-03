@@ -25,4 +25,5 @@ public interface User
 	public void setMapa(AdministradorPOIs mapa);
 	
 	public String getUsername();
+	public void setUsername(String string);
 }
