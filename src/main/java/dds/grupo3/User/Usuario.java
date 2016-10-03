@@ -13,6 +13,7 @@ import dds.grupo3.Interfaces.User;
 import ddsgrupo3.Factory;
 
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="Usuario")
 public class Usuario implements User,Serializable{

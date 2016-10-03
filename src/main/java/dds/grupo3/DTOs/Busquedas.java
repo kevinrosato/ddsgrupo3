@@ -21,10 +21,11 @@ import javax.persistence.Table;
 import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.Interfaces.POI;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "Busquedas")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
+public class Busquedas implements BusquedaDTO,Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -47,7 +48,7 @@ public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
 	@Column(name="Fecha")
 	private	Date Fecha;
 
-	public ResultadoBusquedaDTO() {
+	public Busquedas() {
 	    busqueda_id = 0;
 	    POIs = null;
 		Respuestas = 0;

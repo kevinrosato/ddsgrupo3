@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dds.grupo3.Control.ControllerHistorialBusquedas;
-import dds.grupo3.DTOs.ResultadoBusquedaDTO;
+import dds.grupo3.DTOs.Busquedas;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.POIsSistem.CGP;
 import dds.grupo3.POIsSistem.Horario;
@@ -59,8 +59,8 @@ public class TestsEntrega4 {
         configuration.addAnnotatedClass(SucursalBanco.class);
         configuration.addAnnotatedClass(Horario.class);
         configuration.addAnnotatedClass(Ubicacion.class);
-        configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
-        configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
+        configuration.addAnnotatedClass(Busquedas.class);
+        configuration.addAnnotatedClass(Busquedas.class);
         configuration.addAnnotatedClass(Usuario.class);
         configuration.addAnnotatedClass(Rol.class);
         
@@ -79,7 +79,7 @@ public class TestsEntrega4 {
 	public void testApk() {
 	ControllerHistorialBusquedas control = new ControllerHistorialBusquedas();
 	
-	List<ResultadoBusquedaDTO> lista = control.obtenerBusquedas("Test","","", session);
+	List<Busquedas> lista = control.obtenerBusquedas("Test","","", session);
 	System.out.println(lista.toString());
 	}
 }

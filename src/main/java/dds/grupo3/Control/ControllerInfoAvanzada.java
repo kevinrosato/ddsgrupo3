@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
 import spark.ModelAndView;
 import spark.Request;

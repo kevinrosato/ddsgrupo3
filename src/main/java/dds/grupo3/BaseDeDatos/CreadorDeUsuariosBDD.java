@@ -1,18 +1,10 @@
 package dds.grupo3.BaseDeDatos;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-
 import org.hibernate.Session;
-
-import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.User.Rol;
 import dds.grupo3.User.Usuario;
-import ddsgrupo3.Mapa;
 
 public class CreadorDeUsuariosBDD {
 	public static void inicializar(Session session) {

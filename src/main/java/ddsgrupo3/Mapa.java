@@ -8,7 +8,6 @@ import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.CGPDAO;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
-import dds.grupo3.JSON.SucursalBancoJSONFactory;
 import dds.grupo3.POIsSistem.Ubicacion;
 
 public class Mapa	implements AdministradorPOIs{

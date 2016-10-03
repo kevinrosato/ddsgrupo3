@@ -9,7 +9,7 @@ import org.hibernate.service.ServiceRegistry;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 //import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
 //import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
-import dds.grupo3.DTOs.ResultadoBusquedaDTO;
+import dds.grupo3.DTOs.Busquedas;
 import dds.grupo3.Interfaces.*;
 import dds.grupo3.POIsSistem.*;
 import dds.grupo3.User.*;
@@ -67,7 +67,7 @@ public class App {
         configuration.addAnnotatedClass(SucursalBanco.class);
         configuration.addAnnotatedClass(Horario.class);
         configuration.addAnnotatedClass(Ubicacion.class);
-        configuration.addAnnotatedClass(ResultadoBusquedaDTO.class);
+        configuration.addAnnotatedClass(Busquedas.class);
         configuration.addAnnotatedClass(Usuario.class);
         configuration.addAnnotatedClass(Rol.class);
         

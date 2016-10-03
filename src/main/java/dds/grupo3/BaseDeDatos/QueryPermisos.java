@@ -2,17 +2,13 @@ package dds.grupo3.BaseDeDatos;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Query;
-
 import org.hibernate.Session;
-
-import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.Interfaces.User;
 import dds.grupo3.User.Rol;
-import dds.grupo3.User.Usuario;
 
 public class QueryPermisos {
+	@SuppressWarnings("unchecked")
 	public static List<String> realizarBusqueda(Session session,User usuario){
 		Query query= session.createQuery("FROM Rol r "
 				+ " WHERE (SELECT count(*) FROM Usuario u WHERE (u.username LIKE '"+usuario.getUsername()+"') AND (r.rol_id=u.rol))>0");
