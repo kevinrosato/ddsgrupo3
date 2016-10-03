@@ -21,11 +21,15 @@ import javax.persistence.Table;
 import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.Interfaces.POI;
 
-@SuppressWarnings("serial")
 @Entity
-@Table(name="Busquedas")
+@Table(name = "Busquedas")
 @Inheritance(strategy=InheritanceType.JOINED)
 public class ResultadoBusquedaDTO implements BusquedaDTO,Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8445723971364305142L;
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

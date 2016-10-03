@@ -3,6 +3,8 @@ package dds.grupo3.Control;
 import java.util.HashMap;
 import java.util.List;
 import org.hibernate.Session;
+
+import dds.grupo3.DTOs.ResultadoBusquedaDTO;
 import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.UsoTerminales.BusquedasHAO;
 import ddsgrupo3.Factory;
@@ -12,22 +14,22 @@ import spark.Response;
 
 public class ControllerHistorialBusquedas {
 
-	List<BusquedaDTO> listaHistorial;
+	List<ResultadoBusquedaDTO> listaHistorial;
 	
-	public List<BusquedaDTO> getListaHistorial() {
+	public List<ResultadoBusquedaDTO> getListaHistorial() {
 		return listaHistorial;
 	}
-	public void setListaHistorial(List<BusquedaDTO> listaHistorial) {
+	public void setListaHistorial(List<ResultadoBusquedaDTO> listaHistorial) {
 		this.listaHistorial = listaHistorial;
 	}
 	public ModelAndView show( Request request, Response response, Session session) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		if(!request.queryParams().isEmpty()){
-			String username=request.queryParams("paramU");
+			String param=request.queryParams("paramU");
 			String fechaI=request.queryParams("paramF1");
 			String fechaF=request.queryParams("paramF2");
 
-			listaHistorial = obtenerBusquedas(username,fechaI,fechaF,session); 
+			listaHistorial = obtenerBusquedas(param,fechaI,fechaF,session); 
 			viewModel.put("resultados", listaHistorial);
 			return new ModelAndView(viewModel,"historialBusquedas.html");
 		}
@@ -35,26 +37,26 @@ public class ControllerHistorialBusquedas {
 			return new ModelAndView(viewModel, "historialBusquedas.html");
 		}
 	}
-	private List<BusquedaDTO> obtenerBusquedas(String username,String nombre1,String nombre2,Session session){
+	public List<ResultadoBusquedaDTO> obtenerBusquedas(String username,String nombre1,String nombre2,Session session){
 		String parametro1 = "";
 		String parametro2 = "";
 		String parametro3 = "";
-		String	qry	="FROM "+((String) Factory.getString("tablaDeBusqeudas")+" B");
+		String	qry	="FROM "+((String) Factory.getString("tablaDeBusqeudas")+"");
 		String where = "";
 		if (!username.isEmpty())
 		{
 			where=" WHERE ";
-			parametro1 = "B.Terminal like '%"+username+"%'";
+			parametro1 = "Terminal like '%"+username+"%'";
 		}
 		if (!nombre1.isEmpty())
 		{
 			where=" WHERE ";	
-			parametro2 = "B.FechaD>='"+nombre1+"'";
+			parametro2 = "FechaD>='"+nombre1+"'";
 		}
 		if (!nombre2.isEmpty())
 		{
 			where=" WHERE ";
-			parametro3 = "B.FechaD<='".concat(nombre2).concat("'");
+			parametro3 = "FechaD<='".concat(nombre2).concat("'");
 		}
 		
 		if(!username.isEmpty())

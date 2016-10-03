@@ -7,14 +7,13 @@ import java.util.GregorianCalendar;
 import javax.persistence.Query;
 import org.hibernate.Session;
 import dds.grupo3.DTOs.ResultadoBusquedaDTO;
-import dds.grupo3.Interfaces.BusquedaDTO;
 import dds.grupo3.Interfaces.POI;
 import ddsgrupo3.Factory;
 
 public class BusquedasHAO {
 		
 //------------------------ Comienzo de Mensajes------------------------------------------------------------------------
-	public	static	BusquedaDTO	guardarBusqueda(String terminalID,String param1, List<POI> pois, Integer retardo, Session session)
+	public	static	ResultadoBusquedaDTO	guardarBusqueda(String terminalID,String param1, List<POI> pois, Integer retardo, Session session)
 	{
 		System.out.println("Grabando Busqueda");
 		session.beginTransaction();
@@ -33,12 +32,13 @@ public class BusquedasHAO {
 		System.out.println("Guardado");
     	return	busqueda;
 	}
-	public static	List<BusquedaDTO>	crearDTOsDe(String qry,Session session)
+	public static	List<ResultadoBusquedaDTO>	crearDTOsDe(String qry,Session session)
 	{	
 		System.out.println("Buscando: "+qry);
 		Query query = session.createQuery(qry);
 		System.out.println("Flag");
-		List<BusquedaDTO> lista = query.getResultList();
+		@SuppressWarnings("unchecked")
+		List<ResultadoBusquedaDTO> lista = query.getResultList();
 		System.out.println(lista.toString());
 		return lista;
 	}

@@ -40,6 +40,7 @@ public class ControllerBusqueda {
 			else{
 				resultados=obtenerBusquedas(resultadosAnteriores,nombre1,nombre2,session); 
 			}
+			
 			viewModel.put("resultados", resultados);
 			return new ModelAndView(viewModel,"busqueda.html");
 		}
@@ -47,7 +48,7 @@ public class ControllerBusqueda {
 			return new ModelAndView(viewModel, "busqueda.html");
 		}
 	}
-	
+
 	public List<POIGral> getResultadosAnteriores() {
 		return resultadosAnteriores;
 	}
@@ -57,14 +58,11 @@ public class ControllerBusqueda {
 	}
 
 	private List<ResultadoBusqueda> obtenerBusquedas(List<POIGral> listaPois,String nombre1,String nombre2,Session session){
-		List<String> claves=new ArrayList<String>();
+		List<String> claves = new ArrayList<String>();
 		claves.add(nombre1);
 		claves.add(nombre2);
 		List<POIGral> poisEncontrados=new ArrayList<POIGral>();
-		Cronometrador.comienzo();
 		poisEncontrados=this.buscarEnVariosLados(session, claves);
-		Long aux =	Cronometrador.finCuenta();
-//		Cronometrador.checkRetraso(BusquedasHAO.guardarBusqueda((String) terminalID, nombre1, poisEncontrados,aux.intValue(),session));	
 		if(!listaPois.isEmpty()){
 			poisEncontrados.retainAll(listaPois);
 		}
@@ -83,10 +81,11 @@ public class ControllerBusqueda {
 	private List<POIGral> buscarEnVariosLados(Session session, List<String> claves){
 		//busca en BDD de pois
 		List<POIGral> busquedas=new ArrayList<POIGral>();
+		Cronometrador.comienzo();
 		busquedas.addAll(QuerysPois.realizarBusqueda(session,claves));
 		//busca bancos JSON
 		Mapa mapa=new Mapa();
-		ConsultarPOI consulta=new ConsultarPOI();
+		ConsultarPOI consulta = new ConsultarPOI();
 		consulta.setClaves(claves);
 		busquedas.addAll((List<POIGral>) mapa.realizarFuncConPoi(consulta, null));
 		//busca CGP DAOs
