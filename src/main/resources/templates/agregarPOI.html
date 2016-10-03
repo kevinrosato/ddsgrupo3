@@ -18,8 +18,16 @@
 
 	<div class="container">
            <h2 class="card-header">Alta de POI</h2>
-     </div>
-
+    </div>
+     
+    <h5> Seleccione el tipo de POI: </h5>
+    <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = '/altaPoi?value_key='+this.options[this.selectedIndex].value);">
+     		<option value=1>Seleccionar</option>
+ 		 	<option value=2>Local</option>
+  			<option value=3>CGP</option>
+  			<option value=4>Banco</option>
+  			<option value=5>Parada de Colectivo</option>
+	</select>
 	<form>
   		<div class="form-group">
     		<label for="nombrePoi" class="col-sm-2 control-label"><h5>Nombre:</h5></label>

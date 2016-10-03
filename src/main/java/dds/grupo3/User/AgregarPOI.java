@@ -10,7 +10,7 @@ import dds.grupo3.Interfaces.User;
 
 public class AgregarPOI implements Funcionalidad {
 	
-	private String archivo="";
+	private String archivo="/altaPoi";
 	
 	@Override
 	public Object realizarFuncion(List<POIGral> listaPois,Object poi)
