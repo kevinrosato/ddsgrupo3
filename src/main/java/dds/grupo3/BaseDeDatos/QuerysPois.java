@@ -10,7 +10,6 @@ public class QuerysPois {
 
 	public static List<POI> realizarBusqueda(Session session,List<String> claves){
 		List<POI> listaResultante=new ArrayList<POI>();
-		System.out.println("Buscando");
 		for(String clave:claves){
 			if(!clave.isEmpty()){
 				listaResultante.addAll(realizarQuery(buscarParadas(clave),session));
@@ -19,10 +18,19 @@ public class QuerysPois {
 				listaResultante.addAll(realizarQuery(buscarBancos(clave),session));
 			}
 		}
-		System.out.println("Encontrados");
 		return listaResultante;
 	}
-	
+	public	static POI	buscarPOI(Session session, String ID)
+	{
+		List<POI> listaResultante=new ArrayList<POI>();
+		if(!ID.isEmpty()){
+			listaResultante.addAll(realizarQuery("FROM Local L WHERE L.poi_id ="+ID,session));
+			listaResultante.addAll(realizarQuery("FROM ParadaColectivo p WHERE p.poi_id ="+ID,session));
+			listaResultante.addAll(realizarQuery("FROM CGP c WHERE c.poi_id ="+ID,session));
+			listaResultante.addAll(realizarQuery("FROM SucursalBanco suc WHERE suc.poi_id ="+ID,session));
+		}
+		return listaResultante.get(0);
+	}
 	@SuppressWarnings("unchecked")
 	private static List<POI> realizarQuery(String hql,Session session){
 		System.out.println("Buscando:"+hql);
