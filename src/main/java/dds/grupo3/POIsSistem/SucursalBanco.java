@@ -29,6 +29,7 @@ public class SucursalBanco extends Local implements Serializable{
 	//----------
 	//Metodos
 	//----------	
+
 	
 	public String conocerTipo(){
 		return "Sucursal";

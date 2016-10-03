@@ -1,5 +1,6 @@
 package dds.grupo3.Interfaces;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -32,6 +33,8 @@ public abstract class POI	implements POIGral,Serializable{
 	private String barrio;
 	@Column(name="calle")
 	private String calle;
+	@Column(name="altura")
+	private Integer altura;
 	@Column(name="callesPerpenIzq")
 	private String callesPerpenIzq;
 	@Column(name="callesPerpenDer")
@@ -42,8 +45,6 @@ public abstract class POI	implements POIGral,Serializable{
 	private String provincia;
 	@Column(name="pais")
 	private String pais;
-	@Column(name="altura")
-	private Integer altura;
 	@Column(name="imagen")
 	private String imagen;
 
@@ -112,6 +113,20 @@ public abstract class POI	implements POIGral,Serializable{
 		return informacion;
 	};
 	public abstract String conocerTipo();
+	
+	public List<String> mostrarNombresCampos(){
+		List<String> lista=new ArrayList<String>();
+		lista.add("Nombre:");
+		lista.add("Barrio:");
+		lista.add("Calle:");
+		lista.add("Altura:");
+		lista.add("Calle perpendicular izquierda:");
+		lista.add("Calle perpendicular derecha:");
+		lista.add("Localidad:");
+		lista.add("Provincia:");
+		lista.add("Pais:");
+		return lista;
+	}
 	//----------------
 	//Getters y Setters
 	//----------------

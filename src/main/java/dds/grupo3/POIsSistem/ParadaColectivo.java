@@ -25,6 +25,13 @@ public class ParadaColectivo extends POI implements Serializable{
 	//Metodos
 	//----------
 	
+	public List<String> mostrarNombresCampos(){
+		List<String> lista=new ArrayList<String>();
+		lista.addAll(super.mostrarNombresCampos());
+		lista.add("Lineas:");
+		return lista;
+	}
+	
 	public String conocerTipo(){
 		return "Parada";
 	}

@@ -67,6 +67,17 @@ public class Local extends POI implements Serializable{
 	//Metodos
 	//----------
 	
+	public List<String> mostrarNombresCampos(){
+		List<String> lista=new ArrayList<String>();
+		lista.addAll(super.mostrarNombresCampos());
+		lista.add("Codigo Postal:");
+		lista.add("Departamento:");
+		lista.add("Piso:");
+		lista.add("Unidad:");
+		//falta RUBRO
+		return lista;
+	}
+	
 	public String conocerTipo(){
 		return "Local";
 	}
