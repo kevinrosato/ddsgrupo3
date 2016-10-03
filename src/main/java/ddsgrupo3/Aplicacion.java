@@ -54,17 +54,17 @@ public class Aplicacion {
 			System.out.print("OPCION DESEADA:");
 			String opcionElegida = teclado.nextLine();
 			System.out.println(opcionElegida);
-			if(Integer.parseInt(opcionElegida) < ultimaOpcion)
-			{
-				Funcionalidad f = usuario.getRol().getPermisos().get(Integer.parseInt(opcionElegida)-1);
-				f.desplegarConsola(usuario,terminal_ID,teclado);				
-			}
-			else if (Integer.parseInt(opcionElegida) == ultimaOpcion){
-				flag = false;
-			}
-			else{
-				System.out.println("...Opcion Inexistente...");
-			}
+//			if(Integer.parseInt(opcionElegida) < ultimaOpcion)
+//			{
+//				Funcionalidad f = usuario.getRol().getPermisos().get(Integer.parseInt(opcionElegida)-1);
+//				f.desplegarConsola(usuario,terminal_ID,teclado);				
+//			}
+//			else if (Integer.parseInt(opcionElegida) == ultimaOpcion){
+//				flag = false;
+//			}
+//			else{
+//				System.out.println("...Opcion Inexistente...");
+//			}
 		}
 	}
 }

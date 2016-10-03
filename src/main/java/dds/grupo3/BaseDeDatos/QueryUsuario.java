@@ -11,13 +11,13 @@ import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.User.Usuario;
 
 public class QueryUsuario {
-	public static boolean realizarBusqueda(Session session,String usuario,String password){
+	public static Usuario realizarBusqueda(Session session,String usuario,String password){
 		Query query= session.createQuery("FROM Usuario u WHERE (u.username LIKE '"+usuario+"') AND (u.contrasenia LIKE '"+password+"')");
 	    List<Usuario> u=query.getResultList();
 	    if(u.isEmpty()){
-	    	return false;
+	    	return null;
 	    }
 		System.out.println("Encontrados");
-		return true;
+		return u.get(0);
 	}
 }

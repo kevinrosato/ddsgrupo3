@@ -24,10 +24,12 @@ public class ControllerLogin {
 		if (username==null) username="";
 		String password=request.queryParams("password");
 		if (password==null) password="";
-		if(QueryUsuario.realizarBusqueda(session, username, password)){
-			user.setNombre(username);
-			user.setContrasenia(password);
-			user.setRol(new RolAdmin().crearRol());
+		Usuario u=QueryUsuario.realizarBusqueda(session, username, password);
+		if(u!=null){
+			user.setNombre(u.getNombre());
+			user.setUsername(u.getUsername());
+			user.setContrasenia(u.getContrasenia());
+			user.setRol(u.getRol());
 			return new ModelAndView(viewModel, "redirectLoginAMenu.html");
 		}
 		else{

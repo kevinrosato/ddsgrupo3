@@ -24,7 +24,6 @@ public class RolAdmin implements creadorRoles
 		for(String i:listaPermisos){
 			permisos.add((Funcionalidad) Factory.getObject(i));
 		}
-		admin.setPermisos(permisos);
 		return admin;
 	}	
 	

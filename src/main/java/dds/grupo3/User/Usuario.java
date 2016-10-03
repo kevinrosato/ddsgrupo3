@@ -27,9 +27,8 @@ public class Usuario implements User,Serializable{
 	@Column(name="contrasenia")
 	private String contrasenia;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "rol_id", nullable = false)
-	@Transient
+	@ManyToOne (cascade = CascadeType.ALL)
+	@JoinColumn(name = "rol_id")
 	private Rol rol;
 	
 	@Transient
@@ -49,11 +48,22 @@ public class Usuario implements User,Serializable{
 	{
 		Integer j = 0;
 		System.out.println("canto opciones: "+Integer.toString(this.getRol().getPermisos().size()));
-		for (Funcionalidad i: this.getRol().getPermisos())
+		for (String i: this.getRol().getPermisos())
 		{
 			j++;
 			System.out.print(j.toString()+"->	");
-			i.mostrarOpcion();
+			try {
+				((Funcionalidad) Class.forName(this.getClass().getPackage().getName()+"."+i).newInstance()).mostrarOpcion();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return j;
 	}	

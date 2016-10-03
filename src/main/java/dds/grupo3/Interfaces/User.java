@@ -23,4 +23,6 @@ public interface User
 	public void setRol(Rol rol);
 	public AdministradorPOIs getMapa();
 	public void setMapa(AdministradorPOIs mapa);
+	
+	public String getUsername();
 }

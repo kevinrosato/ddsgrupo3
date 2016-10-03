@@ -14,8 +14,7 @@ public class ControllerPantallaInicio {
 		request.session().attribute("totalFecha", "false");
 		request.session().attribute("totalUsuario", "false");
 		if(usuario.getNombre()!=""){
-			usuario.setNombre("");
-			usuario.setContrasenia("");
+			usuario=new Usuario();
 			usuario.setRol(new RolTerminal().crearRol());
 		}
 		HashMap<String, Object> viewModel = new HashMap<>();

@@ -15,7 +15,7 @@
     <mapping class="dds.grupo3.DTOs.ResultadoBusquedaDTO"/>
     <mapping class="dds.grupo3.POIsSistema.Ubicacion"/>
     <mapping class="dds.grupo3.User.Usuario"/>
-    
+    <mapping class="dds.grupo3.User.Rol"/>
 	
   </session-factory>
 </hibernate-configuration>
