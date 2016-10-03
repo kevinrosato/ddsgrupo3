@@ -24,7 +24,7 @@ public class App {
 
 		session=iniciarSesionBDD();
 //		AdministradorPOIs mapa=Inicializacion.init();
-		Integer aux = 100;
+		Integer aux = 100000;
 		Cronometrador.establecerTope(aux.longValue());
 		Usuario usuario=new Usuario();
 //		usuario.setMapa(mapa);

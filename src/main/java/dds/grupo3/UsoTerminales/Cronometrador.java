@@ -20,11 +20,11 @@ public class Cronometrador {
 	static	public	Integer	finCuenta()
 	{
 		tiempoFin=System.nanoTime();
-		return (int) ((tiempoFin-tiempoComienzo)/1000);
+		return (int) ((tiempoFin-tiempoComienzo)/1000000);
 	}
 	static	public	void	checkRetraso(BusquedaDTO Busqueda)
 	{
-		if (((tiempoFin-tiempoComienzo)/1000000) > topeEnMicros)
+		if (Busqueda.getRetardo() > topeEnMicros)
 		{
 			reportarRetraso(Busqueda);
 		}

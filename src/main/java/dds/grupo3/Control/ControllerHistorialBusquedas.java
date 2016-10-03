@@ -53,26 +53,30 @@ public class ControllerHistorialBusquedas {
 		if (!yF.isEmpty() || !mF.isEmpty()|| !dF.isEmpty())
 		{
 			where=" WHERE ";	
-			parametro2 = "b.Fecha>= "+yF+"-"+mF+"-"+dF;
+			parametro2 = "year(b.Fecha) <= "+yF+" and "
+						+"month(b.Fecha) <= "+mF+" and "
+						+"day(b.Fecha) <= "+dF;
 		}
 		if (!yI.isEmpty() || !mI.isEmpty()|| !dI.isEmpty())
 		{
 			where=" WHERE ";
-			parametro3 = "b.Fecha<= "+yI+"-"+mI+"-"+dI;
+			parametro3 = "year(b.Fecha) >= "+yI+" and "
+						+"month(b.Fecha) >= "+mI+" and "
+						+"day(b.Fecha) >= "+dI;
 		}
 		
 		if(!username.isEmpty())
 		{
 			if(!yI.isEmpty() || !mI.isEmpty()|| !dI.isEmpty() || !yF.isEmpty() || !mF.isEmpty()|| !dF.isEmpty())
 			{
-				parametro1.concat(" AND ");		
+				parametro1 = parametro1.concat(" AND ");		
 			}
 		}
-		if(!yI.isEmpty() || !mI.isEmpty()|| !dI.isEmpty())
+		if(!yF.isEmpty() || !mF.isEmpty()|| !dF.isEmpty())
 		{
-			if(!yF.isEmpty() || !mF.isEmpty()|| !dF.isEmpty())
+			if(!yI.isEmpty() || !mI.isEmpty()|| !dI.isEmpty())
 			{
-				parametro2.concat(" AND ");		
+				parametro2 = parametro2.concat(" AND ");
 			}
 		}
 		qry	=	qry.concat(where).concat(parametro1).concat(parametro2).concat(parametro3);
