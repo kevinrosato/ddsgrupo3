@@ -24,10 +24,14 @@ public class ControllerHistorialBusquedas {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		if(!request.queryParams().isEmpty()){
 			String param=request.queryParams("paramU");
-			String fechaI=request.queryParams("paramF1");
-			String fechaF=request.queryParams("paramF2");
+			String dI=request.queryParams("DI");
+			String mI=request.queryParams("MI");
+			String yI=request.queryParams("YI");
+			String dF=request.queryParams("DF");
+			String mF=request.queryParams("MF");
+			String yF=request.queryParams("YF");
 
-			listaHistorial = obtenerBusquedas(param,fechaI,fechaF,session); 
+			listaHistorial = obtenerBusquedas(param,dI,mI,yI,dF,mF,yF,session); 
 			viewModel.put("resultados", listaHistorial);
 			return new ModelAndView(viewModel,"historialBusquedas.html");
 		}
@@ -35,7 +39,7 @@ public class ControllerHistorialBusquedas {
 			return new ModelAndView(viewModel, "historialBusquedas.html");
 		}
 	}
-	public List<Busquedas> obtenerBusquedas(String username,String nombre1,String nombre2,Session session){
+	public List<Busquedas> obtenerBusquedas(String username,String dI,String mI,String yI,String dF,String mF,String yF,Session session){
 		String parametro1 = "";
 		String parametro2 = "";
 		String parametro3 = "";
@@ -46,27 +50,27 @@ public class ControllerHistorialBusquedas {
 			where=" WHERE ";
 			parametro1 = "b.Terminal like '%"+username+"%'";
 		}
-		if (!nombre1.isEmpty())
+		if (!yF.isEmpty() || !mF.isEmpty()|| !dF.isEmpty())
 		{
 			where=" WHERE ";	
-			parametro2 = "b.FechaD>='"+nombre1+"'";
+			parametro2 = "b.Fecha>= "+yF+"-"+mF+"-"+dF;
 		}
-		if (!nombre2.isEmpty())
+		if (!yI.isEmpty() || !mI.isEmpty()|| !dI.isEmpty())
 		{
 			where=" WHERE ";
-			parametro3 = "b.FechaD<='".concat(nombre2).concat("'");
+			parametro3 = "b.Fecha<= "+yI+"-"+mI+"-"+dI;
 		}
 		
 		if(!username.isEmpty())
 		{
-			if(!nombre1.isEmpty() || !nombre2.isEmpty())
+			if(!yI.isEmpty() || !mI.isEmpty()|| !dI.isEmpty() || !yF.isEmpty() || !mF.isEmpty()|| !dF.isEmpty())
 			{
 				parametro1.concat(" AND ");		
 			}
 		}
-		if(!nombre1.isEmpty())
+		if(!yI.isEmpty() || !mI.isEmpty()|| !dI.isEmpty())
 		{
-			if(!nombre2.isEmpty())
+			if(!yF.isEmpty() || !mF.isEmpty()|| !dF.isEmpty())
 			{
 				parametro2.concat(" AND ");		
 			}

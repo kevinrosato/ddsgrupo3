@@ -79,7 +79,7 @@ public class TestsEntrega4 {
 	public void testApk() {
 	ControllerHistorialBusquedas control = new ControllerHistorialBusquedas();
 	
-	List<Busquedas> lista = control.obtenerBusquedas("Test","","", session);
+	List<Busquedas> lista = control.obtenerBusquedas("Test","","","","","","", session);
 	System.out.println(lista.toString());
 	}
 }

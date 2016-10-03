@@ -20,6 +20,7 @@ public class ControllerInfoAvanzada {
 		List<InformacionPoi> informacionPois=new ArrayList<InformacionPoi>();
 		List<String> infoRecibida=new ArrayList<String>();
 		String imagen="";
+
 		for(POIGral poi:resultadosAnteriores){
 			if(poi.get_id_vista().equals(idPoi)){
 				imagen=poi.getImagen();
