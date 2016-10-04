@@ -7,6 +7,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
+import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
+import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
 //import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
 //import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
 import dds.grupo3.DTOs.Busquedas;
@@ -46,7 +48,7 @@ public class App {
 		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,session),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res,session),engine);
 		Spark.get("/historial", (req, res) -> historial.show(req, res,session),engine);
-		Spark.get("/acciones",(req,res)->consulta.show(req, res), engine);
+		Spark.get("/acciones",(req,res)->consulta.show(req, res,usuario,session), engine);
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario,session), engine);
 		Spark.post("/login", (req, res) -> login.show(req, res,usuario,session), engine);
 		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario,session), engine);
@@ -71,14 +73,15 @@ public class App {
         configuration.addAnnotatedClass(Busquedas.class);
         configuration.addAnnotatedClass(Usuario.class);
         configuration.addAnnotatedClass(Rol.class);
+        configuration.addAnnotatedClass(RealizarAcciones.class);
         
         ServiceRegistry serviceRegistry = 
       		new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         Session session= sessionFactory.openSession();
-//        CreadorDePoisBDD.inicializar(session);
-//        CreadorDeUsuariosBDD.inicializar(session);
+     //   CreadorDePoisBDD.inicializar(session);
+     //   CreadorDeUsuariosBDD.inicializar(session);
         return session;
 	}
 	
