@@ -1,5 +1,6 @@
 package ddsgrupo3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -28,29 +29,20 @@ public class TestsEntrega4 {
 	//Parametros Iniciales
 	//----------
     Session 		session;
-//	Calendar 		calendario;
-//	LevenshteinDistance calculador;
-//	AdministradorPOIs 			mapa;
-//	SucursalBanco 	sucursal,	sucursal2;
-//	Local 			local,		local2,		carrousel;
-//	ParadaColectivo parada,		parada2;
-//	CGP 			cgp, 		cgp2, 		cgp3;
-//	Servicio 		rubroM,		servicio1,	servicio2,	servicio3,	comercial;
-//	Integer 		comunaActual;
-//	Ubicacion 		ubicacionActual;
-//	Horario 		horario,	horario1,	horario2,	horario3,	horario4,	horario5;
-//	CentroDTO		cgpDTO1,	cgpDTO2,	cgpDTO3,	cgpDTO4,	cgpDTO5;
-//	ServDTO			servDTO1,	servDTO2,	servDTO3,	servDTO4,	servDTO5;
-//	HorariosServDTO	horServDTO1,horServDTO2,horServDTO3,horServDTO4,horServDTO5;
-//	CGPDAO			cgpDAO;
-//	Rol				admin, standar;
+
+    SucursalBanco 	sucursal,	sucursal2,	sucursal3;
+	Local 			local,		local2,		local3;
+	ParadaColectivo parada,		parada2,	parada3;
+	CGP 			cgp, 		cgp2, 		cgp3;
+	Servicio 		servicio1,	servicio2,	servicio3,	servicio4;
+	Ubicacion 		ubicacionActual;
+	Horario 		horario,	horario1,	horario2,	horario3,	horario4,	horario5;
 	@Before
 	public void init() {
 		SessionFactory sessionFactory;
 		
         Configuration configuration=new Configuration();
         configuration.configure();
-        //TODO esto lo sacan de comentario para crear las tablas o si las quieren vaciar
         configuration.addAnnotatedClass(POI.class);
         configuration.addAnnotatedClass(Local.class);
         configuration.addAnnotatedClass(ParadaColectivo.class);
@@ -69,6 +61,76 @@ public class TestsEntrega4 {
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         session= sessionFactory.openSession();
+	
+        //TODO esto es para POIs
+		sucursal 	= new SucursalBanco("Santander Rio 14");
+		sucursal.setAltura(2491);
+		sucursal.setBarrio("Belgrano");
+		sucursal.setCalle("Av. Cabildo");
+		sucursal.setCallesPerpenDer("Monroe");
+		sucursal.setCallesPerpenIzq("Blanco Encalada");
+		sucursal.setCodigoPostal(2828);
+		sucursal.setComuna(14);
+		sucursal.setLocalidad("");
+		sucursal.setPais("Argentina");
+		sucursal.setProvincia("CABA");
+		sucursal.setLatitud(800.00);
+		sucursal.setLongitud(444.00);
+		horario3 = new Horario();
+			horario3.setDiaInicio(2);
+			horario3.setDiaFinal(6);
+			horario3.setHorarioInicio(1000);
+			horario3.setHorarioCierre(1500);
+			List<Horario> lista5 = new ArrayList<>();
+			lista5.add(horario3);
+			servicio1 = new Servicio("Transferencia");
+			servicio1.setHorario(lista5);
+			servicio2 = new Servicio("Deposito");
+			servicio2.setHorario(lista5);
+			servicio3 = new Servicio("Extracciones");
+			servicio3.setHorario(lista5);			
+		sucursal.setServicio(servicio1);
+		sucursal.setServicio(servicio2);
+		sucursal.setServicio(servicio3);
+
+		sucursal2 	= new SucursalBanco("Galicia 6");
+		sucursal.setAltura(7121);
+		sucursal.setBarrio("Flores");
+		sucursal.setCalle("Av. Rivadavia");
+		sucursal.setCallesPerpenDer("Brint");
+		sucursal.setCallesPerpenIzq("Corrientes");
+		sucursal.setCodigoPostal(2828);
+		sucursal.setComuna(6);
+		sucursal.setLocalidad("");
+		sucursal.setPais("Argentina");
+		sucursal.setProvincia("CABA");
+		sucursal.setLatitud(800.00);
+		sucursal.setLongitud(444.00);
+		horario3 = new Horario();
+			horario3.setDiaInicio(2);
+			horario3.setDiaFinal(6);
+			horario3.setHorarioInicio(1000);
+			horario3.setHorarioCierre(1500);
+			List<Horario> lista5 = new ArrayList<>();
+			lista5.add(horario3);
+			servicio1 = new Servicio("Transferencia");
+			servicio1.setHorario(lista5);
+			servicio2 = new Servicio("Deposito");
+			servicio2.setHorario(lista5);
+			servicio3 = new Servicio("Extracciones");
+			servicio3.setHorario(lista5);			
+		sucursal.setServicio(servicio1);
+		sucursal.setServicio(servicio2);
+		sucursal.setServicio(servicio3);
+
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 	
 	//-----------------
