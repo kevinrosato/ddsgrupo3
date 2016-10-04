@@ -15,6 +15,7 @@
     <mapping class="dds.grupo3.POIsSistema.Ubicacion"/>
     <mapping class="dds.grupo3.User.Usuario"/>
     <mapping class="dds.grupo3.User.Rol"/>
+	<mapping class="dds.grupo3.User.RealizarAcciones"/>
 	
   </session-factory>
 </hibernate-configuration>

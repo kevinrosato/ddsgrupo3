@@ -10,9 +10,7 @@ import spark.Response;
 
 public class ControllerPantallaInicio {
 	public ModelAndView show( Request request, Response response,User usuario) {
-		request.session().attribute("log", "false");
-		request.session().attribute("totalFecha", "false");
-		request.session().attribute("totalUsuario", "false");
+		
 		if(usuario.getNombre()!=""){
 			usuario.setNombre("");
 			usuario.setContrasenia("");
