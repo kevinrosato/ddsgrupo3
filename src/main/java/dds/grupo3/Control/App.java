@@ -41,6 +41,7 @@ public class App {
 		ControllerAccionConsulta consulta= new ControllerAccionConsulta();
 		ControllerLogin login = new ControllerLogin();
 		ControllerMenu menu = new ControllerMenu();
+		ControllerAltaPOI altaPoi = new ControllerAltaPOI();
 
 		Spark.staticFileLocation("/templates");
 		
@@ -52,7 +53,8 @@ public class App {
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario,session), engine);
 		Spark.post("/login", (req, res) -> login.show(req, res,usuario,session), engine);
 		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario,session), engine);
-		Spark.get("/altaPoi", (req, res) ->ControllerAltaPOI.show(req, res, usuario),engine);
+		Spark.get("/altaPoi", (req, res) ->altaPoi.show(req, res, session,usuario),engine);
+		Spark.post("/altaPoi", (req, res) ->altaPoi.show(req, res,session, usuario),engine);
 		//cerrarSesion(session);
 	}
 	

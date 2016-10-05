@@ -41,6 +41,10 @@ public class CGP extends Local implements Serializable{
 		lista.add("Numero de CGP:");
 		return lista;
 	}
+	public void settearCampos(String[] campos){
+		super.settearCampos(campos);
+		if (!campos[16].isEmpty()){this.setNumeroCGP(Byte.parseByte(campos[16]));};
+	}
 	
 	public String conocerTipo(){
 		return "CGP";

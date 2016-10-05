@@ -28,12 +28,12 @@
   			<option value="SucursalBanco">Banco</option>
   			<option value="ParadaColectivo">Parada de Colectivo</option>
 	</select>
-	<form>
+	<form action="/altaPoi" method="post">
 		{{#each parametros}}
   		<div class="form-group">
     		<label class="col-sm-2 control-label"><h5>{{campoNombre}}</h5></label>
     		<div class="col-md-9 col-md-push-3">
-      			<input type="nombre" class="form-control" value="{{resultado}}" placeholder="Ingrese el campo">
+      			<input type="nombre" class="form-control" name="resultado" placeholder="Ingrese el campo">
     		</div>
   		</div>
   		{{/each}}

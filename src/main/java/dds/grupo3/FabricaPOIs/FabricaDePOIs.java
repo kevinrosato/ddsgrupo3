@@ -24,17 +24,17 @@ public class FabricaDePOIs {
 		return teclado.nextLine();
 	}	
 	public static void cargarPOI(POI poi,String[] campos){
-		poi.setComuna(Integer.parseInt(campos[0]));
-		poi.setLatitud(Double.parseDouble(campos[1]));
-		poi.setLongitud(Double.parseDouble(campos[2]));
-		poi.setNombre(campos[3]);
-		poi.setCalle(campos[4]);
-		poi.setAltura(Integer.parseInt(campos[5]));
-		poi.setCallesPerpenIzq(campos[6]);
-		poi.setCallesPerpenDer(campos[7]);
-		poi.setBarrio(campos[8]);
-		poi.setLocalidad(campos[9]);
-		poi.setProvincia(campos[10]);
-		poi.setPais(campos[11]);
+//		poi.setComuna(Integer.parseInt(campos[0]));
+//		poi.setLatitud(Double.parseDouble(campos[1]));
+//		poi.setLongitud(Double.parseDouble(campos[2]));
+		poi.setNombre(campos[0]);
+		poi.setBarrio(campos[1]);
+		poi.setCalle(campos[2]);
+		poi.setAltura(Integer.parseInt(campos[3]));
+		poi.setCallesPerpenIzq(campos[4]);
+		poi.setCallesPerpenDer(campos[5]);
+		poi.setLocalidad(campos[6]);
+		poi.setProvincia(campos[7]);
+		poi.setPais(campos[8]);
 	}
 }
