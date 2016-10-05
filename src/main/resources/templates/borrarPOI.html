@@ -20,7 +20,7 @@
            <h2 class="card-header">Baja de POI</h2>
      </div>
 
-	<form action="/busqueda" method="get">
+	<form action="/bajaPoi" method="get">
     	 <div class="col-sm-9">
      			<p> </p>
      			<b><h4>Criterio de busqueda</h4></b>
@@ -49,9 +49,9 @@
 
 	  </tr>
 	 {{#each resultados}}
-	 <form action="/infoAvanzada" method="get">
+	 <form action="/bajaPoi" method="get">
       	 <tr>
-         		<th><a href="/infoAvanzada?value_key={{id}}">{{nombre}}<a></th>
+         		<th><a href="/bajaPoi?value_key={{id}}">{{nombre}}<a></th>
         		<th>{{direccion}}</th>
      	 </tr>
      </form>	

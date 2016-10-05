@@ -77,6 +77,13 @@ public class Local extends POI implements Serializable{
 		//falta RUBRO
 		return lista;
 	}
+	public void settearCampos(String[] campos){
+		super.settearCampos(campos);
+		if (!campos[12].isEmpty()){this.setCodigoPostal(Integer.parseInt(campos[12]));};
+		if (!campos[13].isEmpty()){this.setDepartamento(Byte.parseByte(campos[13]));};
+		if (!campos[14].isEmpty()){this.setPiso(Byte.parseByte(campos[14]));};
+		if (!campos[15].isEmpty()){this.setUnidad(Byte.parseByte(campos[15]));};
+	}
 	
 	public String conocerTipo(){
 		return "Local";

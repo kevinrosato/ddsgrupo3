@@ -116,6 +116,9 @@ public abstract class POI	implements POIGral,Serializable{
 	
 	public List<String> mostrarNombresCampos(){
 		List<String> lista=new ArrayList<String>();
+		lista.add("Latitud:");
+		lista.add("Longitud:");
+		lista.add("Comuna:");
 		lista.add("Nombre:");
 		lista.add("Barrio:");
 		lista.add("Calle:");
@@ -127,6 +130,22 @@ public abstract class POI	implements POIGral,Serializable{
 		lista.add("Pais:");
 		return lista;
 	}
+	
+	public void settearCampos(String[] campos){
+		if (!campos[0].isEmpty()){this.setLatitud(Double.parseDouble(campos[0]));};
+		if (!campos[1].isEmpty()){this.setLongitud(Double.parseDouble(campos[1]));};
+		if (!campos[2].isEmpty()){this.setComuna(Integer.parseInt(campos[2]));};
+		this.setNombre(campos[3]);
+		this.setBarrio(campos[4]);
+		this.setCalle(campos[5]);
+		if (!campos[6].isEmpty()){this.setAltura(Integer.parseInt(campos[6]));};
+		this.setCallesPerpenIzq(campos[7]);
+		this.setCallesPerpenDer(campos[8]);
+		this.setLocalidad(campos[9]);
+		this.setProvincia(campos[10]);
+		this.setPais(campos[11]);
+	}
+	
 	//----------------
 	//Getters y Setters
 	//----------------
