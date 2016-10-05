@@ -7,8 +7,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
-import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
-import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
 //import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
 //import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
 import dds.grupo3.DTOs.Busquedas;
@@ -25,11 +23,9 @@ public class App {
 	public static void main(String[] args) {
 
 		session=iniciarSesionBDD();
-//		AdministradorPOIs mapa=Inicializacion.init();
 		Integer aux = 100000;
 		Cronometrador.establecerTope(aux.longValue());
 		Usuario usuario=new Usuario();
-//		usuario.setMapa(mapa);
 		usuario.setRol(new RolTerminal().crearRol());
 
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
@@ -42,7 +38,8 @@ public class App {
 		ControllerLogin login = new ControllerLogin();
 		ControllerMenu menu = new ControllerMenu();
 		ControllerAltaPOI altaPoi = new ControllerAltaPOI();
-
+		ControllerBajaPOI bajaPoi = new ControllerBajaPOI();
+		
 		Spark.staticFileLocation("/templates");
 		
 		Spark.get("/pantallaInicio", (req, res) ->inicio.show(req, res,usuario),engine);
@@ -55,6 +52,7 @@ public class App {
 		Spark.get("/menuPrincipal", (req, res) ->menu.show(req, res,usuario,session), engine);
 		Spark.get("/altaPoi", (req, res) ->altaPoi.show(req, res, session,usuario),engine);
 		Spark.post("/altaPoi", (req, res) ->altaPoi.show(req, res,session, usuario),engine);
+		Spark.get("/bajaPoi", (req, res) ->bajaPoi.show(req, res, session),engine);
 		//cerrarSesion(session);
 	}
 	
@@ -82,8 +80,8 @@ public class App {
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         Session session= sessionFactory.openSession();
-     //   CreadorDePoisBDD.inicializar(session);
-     //   CreadorDeUsuariosBDD.inicializar(session);
+//        CreadorDePoisBDD.inicializar(session);
+//        CreadorDeUsuariosBDD.inicializar(session);
         return session;
 	}
 	
