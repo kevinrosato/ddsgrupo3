@@ -14,7 +14,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -35,7 +36,7 @@ public class Local extends POI implements Serializable{
 	private Byte 		piso;
 	@Column(name="unidad")
 	private Byte 		unidad;
-	@ManyToOne(cascade= CascadeType.ALL)
+	@OneToOne(cascade= CascadeType.ALL) // cambie de manyToOne a oneToOne
 	@JoinColumn(name = "servicio_id")
 	private Servicio 	rubro; 
 	

@@ -11,7 +11,7 @@
     <mapping class="dds.grupo3.Interfaces.POI"/>
     <mapping class="dds.grupo3.POIsSistem.Servicio"/>
     <mapping class="dds.grupo3.POIsSistem.Horario"/>
-    <mapping class="dds.grupo3.DTOs.ResultadoBusquedaDTO"/>
+    <mapping class="dds.grupo3.DTOs.BusquedaDTO"/>
     <mapping class="dds.grupo3.POIsSistema.Ubicacion"/>
     <mapping class="dds.grupo3.User.Usuario"/>
     <mapping class="dds.grupo3.User.Rol"/>
