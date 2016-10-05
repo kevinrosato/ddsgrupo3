@@ -235,7 +235,7 @@ public class Inicializacion {
 			parada2.setCallesPerpenDer("Conde");
 			parada2.setLineas("60,120,151");
 			
-			cgp	= new CGP("CGP 5, Sede Medrano",(byte) 5);
+			cgp	= new CGP("CGP 5, Sede Almagro",(byte) 5);
 				servicio1 = new Servicio("Asesoramiento Contable");
 					horario2 = new Horario(servicio1); 	horario2.setDiaInicio(7);	horario2.setDiaFinal(7);
 					horario2.setHorarioInicio(1100);	horario2.setHorarioCierre(1200);
@@ -251,23 +251,22 @@ public class Inicializacion {
 			cgp.setServicio(servicio1);
 			cgp.setServicio(servicio2);
 			cgp.setComuna(5);
-			cgp.setAltura(123);
-			cgp.setBarrio("Avellaneda");
-			cgp.setCalle("San Martin");
+			cgp.setAltura(1273);
+			cgp.setBarrio("Almagro, Boedo");
+			cgp.setCalle("Sarandí");
 			cgp.setCallesPerpenDer("Salta");
 			cgp.setCallesPerpenIzq("Jujuy");
 			cgp.setCodigoPostal(1645);
-			cgp.setComuna(5);
-			cgp.setLocalidad("Palermo");
+			cgp.setLocalidad("");
 			cgp.setPais("Argentina");
 			cgp.setProvincia("CABA");
 
-			cgp2 = new CGP("CGP 1, Sede Caballito",(byte) 6);
+			cgp2 = new CGP("CGP 6, Sede Caballito",(byte) 6);
 				servicio3 = new Servicio("Asesoramiento Legal");
 			cgp2.setServicio(servicio3);
-			cgp2.setAltura(1234);
+			cgp2.setAltura(4558);
 			cgp2.setBarrio("Azul");
-			cgp2.setCalle("Alemania");
+			cgp2.setCalle("Av. Diaz Vélez");
 			cgp2.setCallesPerpenDer("Espada");
 			cgp2.setCallesPerpenIzq("Pared");
 			cgp2.setCodigoPostal(2524);

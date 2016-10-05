@@ -10,16 +10,12 @@ import dds.grupo3.BaseDeDatos.QuerysPois;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.User.ConsultarPOI;
-import dds.grupo3.UsoTerminales.BusquedasHAO;
-import dds.grupo3.UsoTerminales.Cronometrador;
-import ddsgrupo3.Factory;
 import ddsgrupo3.Mapa;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
 public class ControllerBajaPOI {
-	private static String terminalID = (String) Factory.getString("IDterminal");
 	private List<POIGral> resultadosAnteriores = new ArrayList<POIGral>();
 
 	public ModelAndView show(Request request, Response response, Session session) {
@@ -30,9 +26,6 @@ public class ControllerBajaPOI {
 			String[] agregar = request.queryParamsValues("agregar");
 			List<ResultadoBusqueda> resultados = new ArrayList<ResultadoBusqueda>();
 			if ((agregar == null) || (resultadosAnteriores.isEmpty())) {
-				// Hizo click en buscar->los resultados anteriores en realidad
-				// es todo el mapa
-				// Hizo click en agregar pero no hay resulados anteriores
 				resultados = obtenerBusquedas(new ArrayList<POIGral>(), nombre1, session);
 			} else {
 				resultados = obtenerBusquedas(resultadosAnteriores, nombre1, session);

@@ -32,8 +32,6 @@ public class ControllerBusqueda {
 			String[] agregar=request.queryParamsValues("agregar");
 			List<ResultadoBusqueda> resultados=new ArrayList<ResultadoBusqueda>();
 			if((agregar==null) || (resultadosAnteriores.isEmpty())){
-				//Hizo click en buscar->los resultados anteriores en realidad es todo el mapa
-				//Hizo click en agregar pero no hay resulados anteriores
 				resultados=obtenerBusquedas(new ArrayList<POIGral>(),nombre1,nombre2,session); 
 			}
 			else{

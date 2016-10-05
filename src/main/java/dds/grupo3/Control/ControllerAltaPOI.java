@@ -3,16 +3,12 @@ package dds.grupo3.Control;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Session;
 
-import dds.grupo3.FabricaPOIs.FabricaDePOIs;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
 import dds.grupo3.Interfaces.User;
-import dds.grupo3.POIsSistem.Local;
-import dds.grupo3.User.RolTerminal;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
