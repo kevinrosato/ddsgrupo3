@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
+import dds.grupo3.BaseDeDatos.BorrarBusqueda;
 //import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
 //import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
 import dds.grupo3.DTOs.Busquedas;
@@ -23,6 +24,7 @@ public class App {
 	public static void main(String[] args) {
 
 		session=iniciarSesionBDD();
+		
 		Integer aux = 100000;
 		Cronometrador.establecerTope(aux.longValue());
 		Usuario usuario=new Usuario();
@@ -39,6 +41,7 @@ public class App {
 		ControllerMenu menu = new ControllerMenu();
 		ControllerAltaPOI altaPoi = new ControllerAltaPOI();
 		ControllerBajaPOI bajaPoi = new ControllerBajaPOI();
+		ControllerPoiABorrar poiABorrar=new ControllerPoiABorrar();
 		
 		Spark.staticFileLocation("/templates");
 		
@@ -53,6 +56,7 @@ public class App {
 		Spark.get("/altaPoi", (req, res) ->altaPoi.show(req, res, session,usuario),engine);
 		Spark.post("/altaPoi", (req, res) ->altaPoi.show(req, res,session, usuario),engine);
 		Spark.get("/bajaPoi", (req, res) ->bajaPoi.show(req, res, session),engine);
+		Spark.get("/infoPOIaBorrar", (req, res) ->poiABorrar.show(req, res, session),engine);
 		//cerrarSesion(session);
 	}
 	

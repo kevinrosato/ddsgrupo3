@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+import dds.grupo3.BaseDeDatos.BorrarBusqueda;
 import dds.grupo3.BaseDeDatos.QuerysPois;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
@@ -37,10 +38,13 @@ public class ControllerBajaPOI {
 			//elimina el poi
 			if (key != null) {
 				POIGral poi = QuerysPois.buscarPOI(session, key);
-				session.beginTransaction();
-				session.delete(poi);
-				session.getTransaction().commit();
-			} 
+				if (poi.get_id_vista().charAt(0) != 'J') {
+					BorrarBusqueda.borrarBusqueda(session, poi.get_id_vista());
+					session.beginTransaction();
+					session.delete(poi);
+					session.getTransaction().commit();
+				}
+			}
 		}
 		return new ModelAndView(viewModel, "borrarPOI.html");
 	}

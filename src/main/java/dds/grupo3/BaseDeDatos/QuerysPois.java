@@ -20,7 +20,6 @@ public class QuerysPois {
 		}
 		return listaResultante;
 	}
-	
 	public	static POI	buscarPOI(Session session, String ID)
 	{
 		List<POI> listaResultante=new ArrayList<POI>();

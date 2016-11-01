@@ -66,13 +66,16 @@ public class SucursalBanco extends Local implements Serializable{
 	@Override
 	public List<String> mostrarInformacionAvanzada(){
 		List<String> informacion=new ArrayList<String>();
-		informacion.addAll(super.mostrarInfo());
+		informacion.add("Direccion=" + this.getCalle() + " " + this.getAltura());
+		informacion.add("Nombre=" + this.getNombre());
 		String servicios="";
 		for(Servicio s:this.getServicios()){
 			if(!servicios.equals("")){servicios=servicios+", "+s.getNombre();}
 			else {servicios=s.getNombre();}
 		}
-		informacion.add("Servicios="+servicios);
+		if (servicios != "") {
+			informacion.add("Servicios=" + servicios);
+		}
 		return informacion;
 	}
 	//----------

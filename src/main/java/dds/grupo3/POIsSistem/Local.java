@@ -60,7 +60,7 @@ public class Local extends POI implements Serializable{
 		this.piso = 0;
 		this.unidad = 0;
 		this.palabrasClaves = "";
-		this.rubro=new Servicio("");
+		this.rubro=null;
 	}
 
 
@@ -131,9 +131,11 @@ public class Local extends POI implements Serializable{
 	@Override
 	public List<String> mostrarInformacionAvanzada() {
 		List<String> informacion=new ArrayList<String>();
-		informacion.add("Direccion="+this.getCalle()+" "+this.getAltura());
-		informacion.add("Nombre="+this.getNombre());
-		informacion.add("Rubro="+this.getRubro().getNombre());
+		informacion.add("Direccion=" + this.getCalle() + " " + this.getAltura());
+		informacion.add("Nombre=" + this.getNombre());
+		if (this.getRubro() != null) {
+			informacion.add("Rubro=" + this.getRubro().getNombre());
+		}
 		return informacion;
 	}
 	
