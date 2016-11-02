@@ -12,7 +12,7 @@ import dds.grupo3.Interfaces.User;
 public class ModificarPOI implements Funcionalidad{
 
 	private POIGral poiNuevo;
-	private String archivo;
+	private String archivo="/modificacionPoi";
 	
 	@Override
 	public POIGral realizarFuncion(List<POIGral> listaPois, Object poi)

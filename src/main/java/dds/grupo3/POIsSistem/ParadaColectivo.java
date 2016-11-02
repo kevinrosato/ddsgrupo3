@@ -31,9 +31,17 @@ public class ParadaColectivo extends POI implements Serializable{
 		lista.add("Lineas:");
 		return lista;
 	}
+	public String[] mostrarContenidosCampos(){
+		String[] lista=new String[13];
+		for(int i=0; i<super.mostrarContenidosCampos().length;i++){
+			lista[i]=super.mostrarContenidosCampos()[i];
+		}
+		lista[12]=this.getLineas();
+		return lista;
+	}
 	public void settearCampos(String[] campos){
 		super.settearCampos(campos);
-		this.setLineas(campos[12]);
+		if(campos[12]!=""){this.setLineas(campos[12]);}
 	}
 	
 	public String conocerTipo(){

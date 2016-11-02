@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<title>Baja de POI</title>
+  	<title>Modificacion de POI</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -18,30 +18,28 @@
      </div>  
   
      <div class="container">
-     
-       <div align="center" class="container"> 
-         <p><img src="{{imagen}}" height="400" width="600"></p>
-       </div>
+     <form action="/modificacionPoi?value_key={{id}}" method="post">
        <table class="table table-striped table-hover">
               <tr>
 			     <th>Campo</th>
-			     <th>Informacion</th>
+			     <th>Informacion Antigua</th>
+			     <th>Informacion Nueva</th>
 			  </tr>
-			  {{#each infoAvanzada}}
+			  {{#each parametros}}
 			  <tr>
-			     <th>{{campo}}</th>
-			     <th>{{informacion}}</th>
+			     <th>{{campoNombre}}</th>
+			     <th>{{contenido}}</th>
+			     <th><input type="nombre" class="form-control" name="resultado" placeholder="Ingrese el campo"></th>
 			  </tr>
 			  {{/each}}
        </table>
-     
-     </div>
-     
-     <div align="center" class="container">
+       <div align="center" class="container">
 			<div class="row">
-					<button class="btn btn-primary" onClick=" window.location.href='/bajaPoi?value_key={{id}}' "> BORRAR POI </button>
+				<button class="btn btn-primary"> INGRESAR MODIFICACIONES </button>
 			</div>
-	</div>
-     <a href="/bajaPoi">Volver atras </a>
+	   </div>
+     </form>
+     </div>
+     <a href="/modificacionPoi">Volver atras </a>
   </body>
 </html>

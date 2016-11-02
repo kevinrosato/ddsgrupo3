@@ -16,4 +16,5 @@ public interface POIGral
 	String	conocerTipo();
 	String	getImagen();
 	String	get_id_vista();
+	void settearCampos(String[] campos);
 }

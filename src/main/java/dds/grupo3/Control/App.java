@@ -42,6 +42,8 @@ public class App {
 		ControllerAltaPOI altaPoi = new ControllerAltaPOI();
 		ControllerBajaPOI bajaPoi = new ControllerBajaPOI();
 		ControllerPoiABorrar poiABorrar=new ControllerPoiABorrar();
+		ControllerModificacionPOI modificacionPOI=new ControllerModificacionPOI();
+		ControllerPoiAModificar poiAModificar=new ControllerPoiAModificar();
 		
 		Spark.staticFileLocation("/templates");
 		
@@ -57,6 +59,9 @@ public class App {
 		Spark.post("/altaPoi", (req, res) ->altaPoi.show(req, res,session, usuario),engine);
 		Spark.get("/bajaPoi", (req, res) ->bajaPoi.show(req, res, session),engine);
 		Spark.get("/infoPOIaBorrar", (req, res) ->poiABorrar.show(req, res, session),engine);
+		Spark.get("/modificacionPoi", (req, res) ->modificacionPOI.show(req, res, session),engine);
+		Spark.get("/infoPOIaModificar", (req, res) ->poiAModificar.show(req, res, session),engine);
+		Spark.post("/modificacionPoi", (req, res) ->modificacionPOI.show(req, res,session),engine);
 		//cerrarSesion(session);
 	}
 	

@@ -149,4 +149,9 @@ public class SucursalBancoJSON  implements POIGral { //POI del tipo SucursalBanc
 	public void setJson_id(int json_id) {
 		this.json_id = json_id;
 	}
+	@Override
+	public void settearCampos(String[] campos) {
+		// TODO Auto-generated method stub
+		
+	}
 }

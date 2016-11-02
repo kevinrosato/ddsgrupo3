@@ -3,13 +3,12 @@ package dds.grupo3.Control;
 public class ParametrosPOI {
 
 	String campoNombre;
-	String resultado;
-	String campoCodigo;
+	String contenido;
+	
 	public ParametrosPOI() {
 		super();
 		this.campoNombre = "";
-		this.resultado = "";
-		this.campoCodigo = "";
+		this.contenido = "";
 	}
 	public String getCampoNombre() {
 		return campoNombre;
@@ -17,18 +16,11 @@ public class ParametrosPOI {
 	public void setCampoNombre(String campoNombre) {
 		this.campoNombre = campoNombre;
 	}
-	public String getResultado() {
-		return resultado;
+	public String getContenido() {
+		return contenido;
 	}
-	public void setResultado(String resultado) {
-		this.resultado = resultado;
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
 	}
-	public String getCampoCodigo() {
-		return campoCodigo;
-	}
-	public void setCampoCodigo(String campoCodigo) {
-		this.campoCodigo = campoCodigo;
-	}
-	
 	
 }
