@@ -24,24 +24,28 @@
 	
 	
 	</div>
-	<form action="/acciones" method="get">
-	<select name="log" class="form-control">
+	 <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = '/acciones?value_key='+this.options[this.selectedIndex].value);">
         <option value=1>Seleccionar opcion</option>
         <option value=2>Generar Log</option>
         <option value=3>Otros</option>
      </select>
+     
+     <form action="/acciones" method="get">
      <table class="table table-striped table-hover"> 
 	  <tr>
-			<th><h3>Acciones</h3><th>
+			<th><h3>{{acciones}}</h3><th>
 	  </tr>
       <tr>
-			<th><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="true" name="totalFecha">Totalizar por fecha<label></th>
-	  </tr>
-	  <tr>
-			<th><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="true" name="totalUsuario">Totalizar por usuario<label></th>
+      		{{#each filro}}
+				<th><label class="checkbox-inline"><input type="checkbox" id="inlineCheckbox1" value="true" name="totalFecha">{{filtro}}<label></th>
+	  		{{/each}}
 	  </tr>
 	</table> 
-	  
+	
+		<div align="center" class="container">
+			<a href="logs/log.txt" download target="_blank"><h4>{{log}}</h4></a>
+	  	</div>
+	  	
 		<div align="center" class="container">
 			<div class="row">
 					<input type="submit" class="btn btn-primary" value="GUARDAR ACCION" />

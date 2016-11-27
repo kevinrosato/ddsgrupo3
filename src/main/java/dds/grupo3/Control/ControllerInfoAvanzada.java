@@ -14,6 +14,7 @@ import spark.Response;
 public class ControllerInfoAvanzada {
 
 	POIGral poi;
+	String pathResultadoAnterior="";
 	
 	public ModelAndView show( Request request, Response response,Session session) {
 		HashMap<String, Object> viewModel = new HashMap<String, Object>();
@@ -32,10 +33,19 @@ public class ControllerInfoAvanzada {
 			}
 		viewModel.put("imagen", imagen);
 		viewModel.put("infoAvanzada", informacionPois);
+		viewModel.put("atras", pathResultadoAnterior);
 		return new ModelAndView(viewModel,"infoAvanzada.html");
 	}
 	
 	public void setPoi(POIGral poi){
 		this.poi=poi;
+	}
+
+	public String getPathResultadoAnterior() {
+		return pathResultadoAnterior;
+	}
+
+	public void setPathResultadoAnterior(String pathResultadoAnterior) {
+		this.pathResultadoAnterior = pathResultadoAnterior;
 	}
 }

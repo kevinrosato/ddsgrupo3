@@ -20,7 +20,7 @@ public class ControllerHistorialBusquedas {
 	public void setListaHistorial(List<Busquedas> listaHistorial) {
 		this.listaHistorial = listaHistorial;
 	}
-	public ModelAndView show( Request request, Response response, Session session) {
+	public ModelAndView show( Request request, Response response, Session session, ControllerInfoAvanzada infoAv) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 		if(!request.queryParams().isEmpty()){
 			String param=request.queryParams("paramU");
@@ -31,8 +31,10 @@ public class ControllerHistorialBusquedas {
 			String mF=request.queryParams("MF");
 			String yF=request.queryParams("YF");
 
+			infoAv.setPathResultadoAnterior(request.uri()+"?paramU="+param+"&DI="+dI+"&MI="+mI+"&YI="+yI+"&DF="+dF+"&MF="+mF+"&YF="+yF+"&buscar=BUSCAR");
 			listaHistorial = QueryBusquedas.obtenerBusquedas(param,dI,mI,yI,dF,mF,yF,session); 
 			viewModel.put("resultados", listaHistorial);
+			viewModel.put("cantidad", this.listaHistorial.size());
 			return new ModelAndView(viewModel,"historialBusquedas.html");
 		}
 		else{

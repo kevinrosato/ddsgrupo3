@@ -8,7 +8,7 @@ import javax.persistence.Query;
 import org.hibernate.Session;
 import dds.grupo3.DTOs.Busquedas;
 import dds.grupo3.Interfaces.POI;
-import ddsgrupo3.Factory;
+import dds.grupo3.OtrasClases.Factory;
 
 public class BusquedasHAO {
 		

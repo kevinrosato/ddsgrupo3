@@ -24,7 +24,6 @@ public class CreadorDeUsuariosBDD {
 		permisos.add("BorrarPOI");
 		permisos.add("ConsultarPOI");
 		permisos.add("ModificarPOI");
-		permisos.add("ReportarPOI");
 		permisos.add("VerHistorial");
 		permisos.add("RealizarAcciones");
 		rol.setPermisos(permisos);

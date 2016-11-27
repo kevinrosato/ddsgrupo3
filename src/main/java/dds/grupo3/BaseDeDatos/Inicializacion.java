@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import dds.grupo3.Interfaces.AdministradorPOIs;
+import dds.grupo3.OtrasClases.Factory;
 import dds.grupo3.POIsSistem.CGP;
 import dds.grupo3.POIsSistem.Horario;
 import dds.grupo3.POIsSistem.Local;
@@ -13,7 +14,6 @@ import dds.grupo3.POIsSistem.Servicio;
 import dds.grupo3.POIsSistem.SucursalBanco;
 import dds.grupo3.POIsSistem.Ubicacion;
 import dds.grupo3.UsoTerminales.Cronometrador;
-import ddsgrupo3.Factory;
 
 public class Inicializacion {
 
@@ -211,7 +211,7 @@ public class Inicializacion {
 			
 			parada	= new ParadaColectivo();
 			parada.setNombre("Parada 1");
-			parada.setImagen("parada.jpg");
+			parada.setImagen("imagenes/parada.jpg");
 			parada.setLatitud(1.0008);
 			parada.setLongitud(1.00);
 			parada.setLocalidad("Medrano");
@@ -253,7 +253,7 @@ public class Inicializacion {
 			cgp.setComuna(5);
 			cgp.setAltura(1273);
 			cgp.setBarrio("Almagro, Boedo");
-			cgp.setCalle("Sarandí");
+			cgp.setCalle("Sarandi");
 			cgp.setCallesPerpenDer("Salta");
 			cgp.setCallesPerpenIzq("Jujuy");
 			cgp.setCodigoPostal(1645);
@@ -266,7 +266,7 @@ public class Inicializacion {
 			cgp2.setServicio(servicio3);
 			cgp2.setAltura(4558);
 			cgp2.setBarrio("Azul");
-			cgp2.setCalle("Av. Diaz Vélez");
+			cgp2.setCalle("Av. Diaz Velez");
 			cgp2.setCallesPerpenDer("Espada");
 			cgp2.setCallesPerpenIzq("Pared");
 			cgp2.setCodigoPostal(2524);
@@ -277,7 +277,7 @@ public class Inicializacion {
 			
 			cgp3 = new CGP("CGP 4, Sede Microcentro",(byte) 8);
 			cgp3.setServicio(servicio3);
-			cgp3.setImagen("comuna.jpg");
+			cgp3.setImagen("imagenes/comuna.jpg");
 			cgp3.setAltura(432);
 			cgp3.setBarrio("Zamore");
 			cgp3.setCalle("Cielo");

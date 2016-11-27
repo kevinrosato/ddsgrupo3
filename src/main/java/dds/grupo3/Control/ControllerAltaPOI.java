@@ -41,7 +41,12 @@ public class ControllerAltaPOI {
 			}
 		} else {
 			if (!resultados.isEmpty()) {
-				crearPOI(request,session);
+				try{
+					crearPOI(request,session);
+				}catch (IllegalArgumentException e) {
+					e.printStackTrace();
+					viewModel.put("error", "Error. Vuelva a ingresar los campos correctamente.");
+				}
 			}
 		}
 		return new ModelAndView(viewModel, "agregarPOI.html");

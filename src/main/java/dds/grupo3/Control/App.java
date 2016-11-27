@@ -1,5 +1,7 @@
 package dds.grupo3.Control;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -8,6 +10,8 @@ import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import dds.grupo3.BaseDeDatos.BorrarBusqueda;
+import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
+import dds.grupo3.BaseDeDatos.QueryPermisos;
 //import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
 //import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
 import dds.grupo3.DTOs.Busquedas;
@@ -28,7 +32,6 @@ public class App {
 		Integer aux = 100000;
 		Cronometrador.establecerTope(aux.longValue());
 		Usuario usuario=new Usuario();
-		usuario.setRol(new RolTerminal().crearRol());
 
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 
@@ -48,9 +51,9 @@ public class App {
 		Spark.staticFileLocation("/templates");
 		
 		Spark.get("/pantallaInicio", (req, res) ->inicio.show(req, res,usuario),engine);
-		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,session),engine);
+		Spark.get("/busqueda", (req, res) -> busqueda.show(req, res,session,informacion),engine);
 		Spark.get("/infoAvanzada",(req,res)->informacion.show(req, res,session),engine);
-		Spark.get("/historial", (req, res) -> historial.show(req, res,session),engine);
+		Spark.get("/historial", (req, res) -> historial.show(req, res,session,informacion),engine);
 		Spark.get("/acciones",(req,res)->consulta.show(req, res,usuario,session), engine);
 		Spark.get("/login", (req, res) -> login.show(req, res,usuario,session), engine);
 		Spark.post("/login", (req, res) -> login.show(req, res,usuario,session), engine);

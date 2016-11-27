@@ -11,6 +11,22 @@ public class BorrarPOI implements Funcionalidad{
 	
 	private String archivo="/bajaPoi";
 	
+
+	@Override
+	public String mostrarOpcion() {
+		return "BORRAR POI";
+	}
+
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+	
+	/**************METODOS EN DESUSO*********************/
+	
 	@Override
 	public Object realizarFuncion(List<POIGral> listaPois, Object poi)
 	{
@@ -25,18 +41,5 @@ public class BorrarPOI implements Funcionalidad{
 	public Integer desplegarConsola(User usuario, String terminal_ID,Scanner teclado) {
 		usuario.borrarPOI(usuario.consultarPOI(terminal_ID));
 		return 0;
-	}
-
-	@Override
-	public String mostrarOpcion() {
-		return "BORRAR POI";
-	}
-
-	public String getArchivo() {
-		return archivo;
-	}
-
-	public void setArchivo(String archivo) {
-		this.archivo = archivo;
 	}
 }

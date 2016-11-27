@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 import dds.grupo3.Interfaces.BusquedaDTO;
-import ddsgrupo3.Mailbox;
+import dds.grupo3.OtrasClases.Mailbox;
 
 public class Cronometrador {
 

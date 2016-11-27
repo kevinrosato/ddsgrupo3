@@ -152,31 +152,31 @@ public abstract class POI implements POIGral, Serializable {
 		if (!campos[2].isEmpty()) {
 			this.setComuna(Integer.parseInt(campos[2]));
 		}
-		if (campos[3] != "") {
+		if (campos[3].length()!=0) {
 			this.setNombre(campos[3]);
 		}
-		if (campos[4] != "") {
+		if (campos[4].length()!=0) {
 			this.setBarrio(campos[4]);
 		}
-		if (campos[5] != "") {
+		if (campos[5].length()!=0) {
 			this.setCalle(campos[5]);
 		}
-		if (!campos[6].isEmpty()) {
+		if (campos[6].length()!=0) {
 			this.setAltura(Integer.parseInt(campos[6]));
 		}
-		if (campos[7] != "") {
+		if (campos[7].length()!=0) {
 			this.setCallesPerpenIzq(campos[7]);
 		}
-		if (campos[8] != "") {
+		if (campos[8].length()!=0) {
 			this.setCallesPerpenDer(campos[8]);
 		}
-		if (campos[9] != "") {
+		if (campos[9].length()!=0) {
 			this.setLocalidad(campos[9]);
 		}
-		if (campos[10] != "") {
+		if (campos[10].length()!=0) {
 			this.setProvincia(campos[10]);
 		}
-		if (campos[11] != "") {
+		if (campos[11].length()!=0) {
 			this.setPais(campos[11]);
 		}
 	}

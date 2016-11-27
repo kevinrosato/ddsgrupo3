@@ -40,6 +40,7 @@ public class ControllerLogin {
 			if (a.getLogeo().contains("Y"))	request.session().attribute("log", "true");
 			if (a.getTotal_fecha().contains("Y"))request.session().attribute("totalFecha", "true");
 			if (a.getTotal_usuario().contains("Y"))request.session().attribute("totalUsuario", "true");
+			
 		//	System.out.println("log "+request.session().attribute("log"));
 		//	System.out.println("totalfecha "+request.session().attribute("totalFecha"));
 		//	System.out.println("totalusuario "+request.session().attribute("totalUsuario"));

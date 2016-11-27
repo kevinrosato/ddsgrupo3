@@ -59,11 +59,6 @@ public class Servicio implements Serializable{
 	public Boolean tieneLaClave(String clave) {
 		return	(this.getNombre().contains(clave));
 	}
-
-	//public boolean estasEnHorarioBancario(Calendar horario2, SucursalBanco banco) {
-	//	Integer horaSolicitada= horario2.get(Calendar.HOUR_OF_DAY)*100+horario2.get(Calendar.MINUTE);
-	//	return (horaSolicitada>=10 && horaSolicitada<=15);	
-	//}
 	public Boolean atendesEnEsteHorario(Calendar horario){
 		return this.getHorario().stream().anyMatch(unHorario -> unHorario.estaEnElRango(horario));
 	}

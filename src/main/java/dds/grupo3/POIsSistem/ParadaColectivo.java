@@ -41,7 +41,7 @@ public class ParadaColectivo extends POI implements Serializable{
 	}
 	public void settearCampos(String[] campos){
 		super.settearCampos(campos);
-		if(campos[12]!=""){this.setLineas(campos[12]);}
+		if(campos[12].length()!=0){this.setLineas(campos[12]);}
 	}
 	
 	public String conocerTipo(){

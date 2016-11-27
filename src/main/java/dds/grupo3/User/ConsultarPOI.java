@@ -16,6 +16,29 @@ public class ConsultarPOI implements Funcionalidad {
 	private String archivo="/busqueda";
 	private List<POIGral> listaResultante = new ArrayList<POIGral>();
 	private List<String> claves=new ArrayList<String>(); 
+	
+	
+	@Override
+	public String mostrarOpcion() {
+		return "BUSCAR UN POI";
+	}
+	
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+	public List<String> getClaves() {
+		return claves;
+	}
+	public void setClaves(List<String> claves) {
+		this.claves = claves;
+	}
+	
+	/********************************METODOS EN DESUSO**********************/
+	
 	@Override
 	public Object realizarFuncion(List<POIGral> listaPois, Object poi)
 	{
@@ -80,6 +103,7 @@ public class ConsultarPOI implements Funcionalidad {
 		return listaAux;	
 	}
 	
+	
 	public String mostrarPOIs(String palabraClave, List<POIGral> lista,Scanner scanner)
 	{
 		String flag = new String();
@@ -118,24 +142,4 @@ public class ConsultarPOI implements Funcionalidad {
 		return 0;
 	}
 
-	@Override
-	public String mostrarOpcion() {
-		return "BUSCAR UN POI";
-	}
-	
-	
-
-	public String getArchivo() {
-		return archivo;
-	}
-
-	public void setArchivo(String archivo) {
-		this.archivo = archivo;
-	}
-	public List<String> getClaves() {
-		return claves;
-	}
-	public void setClaves(List<String> claves) {
-		this.claves = claves;
-	}
 }

@@ -7,11 +7,11 @@ import java.util.List;
 import dds.grupo3.BaseDeDatos.QuerysPois;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
+import dds.grupo3.OtrasClases.Factory;
+import dds.grupo3.OtrasClases.Mapa;
 import dds.grupo3.User.ConsultarPOI;
 import dds.grupo3.UsoTerminales.BusquedasHAO;
 import dds.grupo3.UsoTerminales.Cronometrador;
-import ddsgrupo3.Factory;
-import ddsgrupo3.Mapa;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -23,13 +23,14 @@ public class ControllerBusqueda {
 	private static String terminalID= (String) Factory.getString("IDterminal");
 	private List<POIGral> resultadosAnteriores=new ArrayList<POIGral>();
 	
-	public ModelAndView show( Request request, Response response,Session session) {
+	public ModelAndView show( Request request, Response response,Session session,ControllerInfoAvanzada infoAv) {
 	
 		HashMap<String, Object> viewModel = new HashMap<>();
 		if(!request.queryParams().isEmpty()){
 			String nombre1=request.queryParams("nombre1");
 			String nombre2=request.queryParams("nombre2");
 			String[] agregar=request.queryParamsValues("agregar");
+			infoAv.setPathResultadoAnterior(request.uri()+"?nombre1="+nombre1+"&nombre2="+nombre2+"&buscar=BUSCAR");
 			List<ResultadoBusqueda> resultados=new ArrayList<ResultadoBusqueda>();
 			if((agregar==null) || (resultadosAnteriores.isEmpty())){
 				resultados=obtenerBusquedas(new ArrayList<POIGral>(),nombre1,nombre2,session); 

@@ -8,9 +8,9 @@ import javax.persistence.*;
 import dds.grupo3.Interfaces.AdministradorPOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POIGral;
-import dds.grupo3.Interfaces.Reporte;
 import dds.grupo3.Interfaces.User;
-import ddsgrupo3.Factory;
+import dds.grupo3.Interfaces.EnDesuso.Reporte;
+import dds.grupo3.OtrasClases.Factory;
 
 
 @SuppressWarnings("serial")
@@ -41,9 +41,47 @@ public class Usuario implements User,Serializable{
 	public Usuario(){
 		this.setNombre("");
 		this.setContrasenia("");
-		this.setRol(new RolAdmin().crearRol());
-		this.setMapa((AdministradorPOIs) Factory.getObject("AdminPOIs"));
+		this.setRol(null);
+		this.setMapa(null);
 	}
+	
+	
+	//GETTERS Y SETTERS
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getContrasenia() {
+		return contrasenia;
+	}
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+	public Rol getRol() {
+		return rol;
+	}
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+	public AdministradorPOIs getMapa() {
+		return mapa;
+	}
+	public void setMapa(AdministradorPOIs mapa) {
+		this.mapa = mapa;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	/***************************METODOS EN DESUSO***********************/
 	
 	public Integer	mostrarOpciones()
 	{
@@ -107,40 +145,5 @@ public class Usuario implements User,Serializable{
 			System.out.println("No tiene permisos para realizar la accion.");
 			return null;
 		}
-	}
-	
-	//GETTERS Y SETTERS
-	
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public String getContrasenia() {
-		return contrasenia;
-	}
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
-	}
-	public Rol getRol() {
-		return rol;
-	}
-	public void setRol(Rol rol) {
-		this.rol = rol;
-	}
-	public AdministradorPOIs getMapa() {
-		return mapa;
-	}
-	public void setMapa(AdministradorPOIs mapa) {
-		this.mapa = mapa;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 }

@@ -70,29 +70,6 @@ public class Horario implements Serializable{
 		return ", Fecha: "+this.getDiaInicio()+", Hora: "+this.getHorarioInicio()+"-"+this.getHorarioCierre();
 	}
 	
-	//Metodo Obsoleto
-//	
-//	private String parserDias(Integer numeroDia){
-//		switch(numeroDia){
-//			case 1:
-//				return "Domingo";
-//			case 2:
-//				return "Lunes";
-//			case 3:
-//				return "Martes";
-//			case 4:
-//				return "Miercoles";
-//			case 5:
-//				return "Jueves";
-//			case 6:
-//				return "Viernes";
-//			case 7:
-//				return "Sabado";
-//			default:
-//				return "Invalido";
-//		}
-//	}
-	
 	//----------
 	//Getters y Setters
 	//----------

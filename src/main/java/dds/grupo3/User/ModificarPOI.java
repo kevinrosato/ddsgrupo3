@@ -3,7 +3,7 @@ package dds.grupo3.User;
 import java.util.List;
 import java.util.Scanner;
 
-import dds.grupo3.FabricaPOIs.FabricaDePOIs;
+import dds.grupo3.FabricaPOIs_EnDesuso.FabricaDePOIs;
 import dds.grupo3.Interfaces.Funcionalidad;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
@@ -14,6 +14,19 @@ public class ModificarPOI implements Funcionalidad{
 	private POIGral poiNuevo;
 	private String archivo="/modificacionPoi";
 	
+	
+	@Override
+	public String mostrarOpcion() {
+		return "MODIFICAR POI EXISTENTE";
+	}
+	public String getArchivo() {
+		return archivo;
+	}
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+	
+	/***************************METODOS EN DESUSO****************************/
 	@Override
 	public POIGral realizarFuncion(List<POIGral> listaPois, Object poi)
 	{
@@ -35,15 +48,5 @@ public class ModificarPOI implements Funcionalidad{
 		POI poiNuevo = FabricaDePOIs.crearPOICompleto(poiOriginal.conocerTipo());
 		usuario.modificarPOI(poiOriginal, poiNuevo);
 		return 0;
-	}
-	@Override
-	public String mostrarOpcion() {
-		return "MODIFICAR POI EXISTENTE";
-	}
-	public String getArchivo() {
-		return archivo;
-	}
-	public void setArchivo(String archivo) {
-		this.archivo = archivo;
 	}
 }

@@ -13,7 +13,6 @@ public class QueryUsuario {
 	    if(u.isEmpty()){
 	    	return null;
 	    }
-		System.out.println("Encontrados");
 		return u.get(0);
 	}
 }
