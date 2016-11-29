@@ -15,8 +15,18 @@ public class CreadorDeUsuariosBDD {
         	session.save(u);
         	session.getTransaction().commit();
         }	
+        
+        Rol rol=new Rol();
+		rol.setNombre("transeunte");
+		List<String> permisos=new ArrayList<String>();
+		permisos.add("ConsultarPOI");
+		rol.setPermisos(permisos);
+		session.beginTransaction();
+    	session.save(rol);
+    	session.getTransaction().commit();
    }
 	private static List<Usuario> cargarUsuarios(){
+		
 		Rol rol=new Rol();
 		rol.setNombre("administrador 1");
 		List<String> permisos=new ArrayList<String>();
