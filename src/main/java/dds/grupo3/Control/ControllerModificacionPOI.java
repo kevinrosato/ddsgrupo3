@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import dds.grupo3.BaseDeDatos.BorrarBusqueda;
 import dds.grupo3.BaseDeDatos.QuerysPois;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;
@@ -40,9 +39,6 @@ public class ControllerModificacionPOI {
 			if (key != null) {
 				String[] campos = request.queryParamsValues("resultado");
 				POIGral poi = QuerysPois.buscarPOI(session, key);
-				for(int i=0;i<campos.length;i++){
-					System.out.println(campos[i]);
-				}
 				poi.settearCampos(campos);
 				session.beginTransaction();
 				session.update(poi);

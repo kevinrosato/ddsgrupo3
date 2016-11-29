@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import dds.grupo3.BaseDeDatos.BorrarBusqueda;
 import dds.grupo3.BaseDeDatos.QuerysPois;
 import dds.grupo3.Interfaces.POI;
 import dds.grupo3.Interfaces.POIGral;

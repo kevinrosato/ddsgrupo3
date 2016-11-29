@@ -2,11 +2,9 @@ package dds.grupo3.BaseDeDatos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import dds.grupo3.Interfaces.User;
 import dds.grupo3.User.Rol;

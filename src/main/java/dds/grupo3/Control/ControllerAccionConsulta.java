@@ -1,32 +1,21 @@
 package dds.grupo3.Control;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.Charset;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.Session;
 
-import com.google.common.io.Files;
-
 import dds.grupo3.BaseDeDatos.QueryBusquedas;
 import dds.grupo3.DTOs.Busquedas;
 import dds.grupo3.Interfaces.POI;
-import dds.grupo3.User.RealizarAcciones;
 import dds.grupo3.User.Usuario;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
 public class ControllerAccionConsulta {
-	@SuppressWarnings("resource")
 	public ModelAndView show(Request request, Response response, Usuario user, Session session) {
 		HashMap<String, Object> viewModel = new HashMap<>();
 
@@ -43,14 +32,15 @@ public class ControllerAccionConsulta {
 							writer.println(busq.getFecha() + " Terminal:" + busq.getTerminal() + " Parametro:"
 									+ busq.getParametro() + " Retardo:" + busq.getRetardo().toString() + " Respuestas:"
 									+ busq.getCantRespuestas().toString() + " " + poi.getNombre() + "\n");
+							writer.flush();
 						}
 					}
-					writer.flush();
 				} catch (IOException e) {
 					// do something
 				} finally {
 					writer.close();
 				}
+				viewModel.put("path","logs/log.txt");
 				viewModel.put("log", "Descargar Log");
 			}
 		}

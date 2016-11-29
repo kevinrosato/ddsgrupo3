@@ -8,6 +8,10 @@
     <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
     <property name="hibernate.show_sql">true</property>
     
+    <!--
+   		<property name="hibernate.hbm2ddl.auto">create</property>
+    -->
+    
     <mapping class="dds.grupo3.Interfaces.POI"/>
     <mapping class="dds.grupo3.POIsSistem.Servicio"/>
     <mapping class="dds.grupo3.POIsSistem.Horario"/>

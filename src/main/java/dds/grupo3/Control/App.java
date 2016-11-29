@@ -1,6 +1,5 @@
 package dds.grupo3.Control;
 
-import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,9 +8,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import spark.template.handlebars.HandlebarsTemplateEngine;
-import dds.grupo3.BaseDeDatos.BorrarBusqueda;
-import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
-import dds.grupo3.BaseDeDatos.QueryPermisos;
 //import dds.grupo3.BaseDeDatos.CreadorDePoisBDD;
 //import dds.grupo3.BaseDeDatos.CreadorDeUsuariosBDD;
 import dds.grupo3.DTOs.Busquedas;
@@ -89,7 +85,7 @@ public class App {
         
         ServiceRegistry serviceRegistry = 
       		new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-
+        
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         Session session= sessionFactory.openSession();
 //        CreadorDePoisBDD.inicializar(session);

@@ -22,7 +22,6 @@ public class ControllerMenu {
 		permisos=buscarPermisos(session,usuario);
 		for(String p:permisos){
 			try {
-				System.out.println("dds.grupo3.User."+p);
 				Funcionalidad func = (Funcionalidad) Class.forName("dds.grupo3.User."+p).newInstance();
 				OpcionDelMenu opcion=new OpcionDelMenu(func.getArchivo(),func.mostrarOpcion());
 				opcionesMenu.add(opcion);

@@ -22,8 +22,8 @@ public class BorrarBusqueda {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private static List<Integer> realizarQuery(String hql, Session session) {
-		System.out.println("Buscando:" + hql);
 		Query query = session.createQuery(hql);
 		return (List<Integer>) query.getResultList();
 	}
